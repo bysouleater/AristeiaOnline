@@ -1,37 +1,51 @@
-package aristeiaonline
+package com.ao
+
 
 import com.ao.Warrior
 import com.facebook.api.*
 import org.w3c.dom.Document
 
-class MainController {
+class WarriorController {
 	
 	static final String FB_APP_URL = "http://apps.facebook.com/aristeia_online/"
-	static final String FB_APP_ADD_URL = "http://www.facebook.com/add.php?api_key="
-	static final String FB_API_KEY = "41f82a404dc9b0bbb4579a993c51ae4d"
-	static final String FB_SECRET_KEY = "c5b463359f752c1070dcd15db30cdcf9"
-	
-	def getAuthenticatedFacebookClient(def request, def response){
-		Facebook fb = new Facebook(request, response,FB_API_KEY, FB_SECRET_KEY)
-		String next = request.getServletPath().substring(1)
+		static final String FB_APP_ADD_URL = "http://www.facebook.com/add.php?api_key="
+		static final String FB_API_KEY = "41f82a404dc9b0bbb4579a993c51ae4d"
+		static final String FB_SECRET_KEY = "c5b463359f752c1070dcd15db30cdcf9"
 		
-		if (fb.requireLogin(next))
-			return null
-		return fb.getFacebookRestClient()
-	}
-	
-	
-	
-	def index = {
+		def getAuthenticatedFacebookClient(def request, def response){
+			Facebook fb = new Facebook(request, response,FB_API_KEY, FB_SECRET_KEY)
+			String next = request.getServletPath().substring(1)
+			
+			if (fb.requireLogin(next))
+				return null
+			return fb.getFacebookRestClient()
+		}
+
+    def index = { }
+    
+    def create = {
 		FacebookRestClient facebook = getAuthenticatedFacebookClient(request, response)
 		if(facebook){
 			if(getFacebookInfo(request, facebook)){
-				[warriorlist:Warrior.findAllByOwner_id(request.getAttribute("uid") as Long)]
-			}
+				[]
+			}	
 		}
-	}
-	
-	/*
+    }
+    
+    def save = {
+		FacebookRestClient facebook = getAuthenticatedFacebookClient(request, response)
+		if(facebook){
+			if(getFacebookInfo(request, facebook)){
+				def warrior = new Warrior(name:params.name,owner_id:request.getAttribute("uid") as Long)
+		    	if(warrior.validate()){
+		    		warrior.save()
+		    	}
+		    	redirect(controller:"main",action:"index")
+			}	
+		}
+    }
+    
+    /*
 	 * This method obtains some basic Facebook profile
 	 * information from the logged in user who is
 	 * accessing our application in the current HTTP request.
