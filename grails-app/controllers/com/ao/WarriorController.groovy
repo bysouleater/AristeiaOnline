@@ -36,7 +36,8 @@ class WarriorController {
 		FacebookRestClient facebook = getAuthenticatedFacebookClient(request, response)
 			if(facebook){
 				if(getFacebookInfo(request, facebook)){
-					def warrior = new Warrior(name:params.name,owner_id:request.getAttribute("uid") as Long)
+					def warrior = new Warrior(params)
+					warrior.owner_id = request.getAttribute("uid") as Long
 						if(warrior.validate()){
 							warrior.save()
 						}
