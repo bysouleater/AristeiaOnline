@@ -66,10 +66,10 @@
 				<img class="fleft" src="/images/male_paladin.png"/>
 				<label class="charinfo fright" style="margin-right:5px;"><a href="">x</a></label>
 				<label class="charinfo fleft">${it.name}</label>
-				<label class="charinfo fleft">HP: 15 / 15</label>
-				<label class="charinfo fleft">Newbie Lvl 1</label>
-				<label class="charinfo fleft status normal">Fishing...</label>
-				<a href="<g:createLink controller='warrior' action='game' id='${it.id}' />"><input type="button" value="Play with ${it.name}" class="charbut"/></a>
+				<label class="charinfo fleft">HP: ${it.actualHP} / ${it.maxHP}</label>
+				<label class="charinfo fleft">${it.job} Nivel ${it.level}</label>
+				<label class="charinfo fleft status normal">Pescando...</label>
+				<a href="<g:createLink controller='warrior' action='game' id='${it.id}' />"><input type="button" value="Entrar con ${it.name}" class="charbut"/></a>
 			</div> 	
 		</g:each>
 		<div class="clear"></div>

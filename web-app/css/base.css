@@ -1,0 +1,156 @@
+body  
+{  
+	font-family: "lucida grande", tahoma, verdana, arial, sans-serif;  
+}  
+#content {
+	background:none repeat scroll 0 0 white;
+	border-color:#AAAAAA -moz-use-text-color #AAAAAA #AAAAAA;
+	border-style:solid none solid solid;
+	border-width:1px medium 1px 1px;
+	color:black;
+	line-height:1.5em;
+}
+#content {
+	margin:0 0 0 0.5em;
+	padding:0 1em 1.5em;
+	position:relative;
+	z-index:2;
+}
+h1, h2, h3, h4, h5, h6 {
+	background:none repeat scroll 0 0 transparent;
+	border-bottom:1px solid #CCCCCC;
+	color:black;
+	font-weight:normal;
+	margin:0;
+	padding-bottom:0.17em;
+	padding-top:0.5em;
+	margin-bottom:0.6em;
+}
+h2 {
+	font-size:150%;
+	margin-top:2em;
+}
+input.search { 
+	background:white url(facebook.com/images/magglass.png) no-repeat scroll 3px 4px; 
+	padding-left:17px; 
+} 
+input, textarea, select { 
+	border:1px solid #BDC7D8; 
+	font-family:"lucida grande",tahoma,verdana,arial,sans-serif; 
+	font-size:11px; 
+	padding:3px; 
+	width:155px;
+} 
+input:focus, textarea:focus, select:focus {
+	border-color:#687FB0
+} 
+.field {
+	border:1px solid #bdc7d8; 
+	padding:2px
+} 
+.field:focus {
+	border-color:#687FB0
+} 
+textarea.field {
+	width:98.5%;
+	height:100px
+} 
+button { 
+	padding:1px 3px 1px 4px; 
+	font-size:1em; 
+	cursor:pointer; 
+	background:#3b5998; 
+	color:#fff; 
+	border:1px solid #0e1f5b; 
+	border-left-color:#D9DFEA; 
+	border-top-color:#D9DFEA; 
+}
+button.next, button.cancel { 
+	background:#ddd; 
+	color:#111; 
+	border:1px solid #666; 
+	border-left-color:#ddd; 
+	border-top-color:#ddd 
+} 
+.formButtons{
+	text-align:center;
+}
+.clear{
+	clear:both;
+}
+.labeltd{
+	color:#555555;
+	font-weight:bold;
+	text-align:right;
+	width:100px;
+	padding-right:10px;
+	font-size:11px;
+}
+.labelradio{
+	font-size:11px;
+	text-align:left;
+	margin-right:10px;
+}
+.inputradio {
+	margin:0;
+	padding:0;
+	vertical-align:middle;
+}
+#rightcontent{
+	float:left;
+	background:none repeat scroll 0 0 white;
+	border-color:#AAAAAA -moz-use-text-color #AAAAAA #AAAAAA;
+	border-style:solid none solid solid;
+	border-width:1px medium 1px 1px;
+	color:black;
+	line-height:1.5em;
+	width:500px;
+}
+#charsheet{
+	float:left;
+	margin:0;
+	padding:0 1em 1.5em;
+	z-index:2;
+	width:200px;
+}
+.statusbartext{
+	font-size:12px;
+}
+.statusbar{
+	width:150px;
+	height:4px;
+}
+.inside{
+	
+}
+.outside{
+	margin-top:5px;
+	margin-bottom:5px;
+	border:solid 1px;
+}
+.actionspro { 
+	list-style: none; 
+	margin: 0px; 
+	padding: 0px;
+	font-size:12px;
+} 
+.actionspro li { 
+	border-bottom: 1px solid #D8DFEA; 
+	margin-bottom: 5px;
+} 
+.actionspro a { 
+	background: transparent; 
+	display: block; 
+	margin: 0px; 
+	padding: 2px 3px; 
+	text-decoration: none; 
+} 
+.actionspro a:hover { 
+	background: #3b5998; 
+	color: white; 
+	text-decoration: none; 
+} 
+.actionspro .inactive { 
+	padding: 2px 3px; 
+	color: gray; 
+} 
