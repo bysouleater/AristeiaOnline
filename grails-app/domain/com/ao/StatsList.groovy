@@ -12,9 +12,9 @@ class StatsList {
 	double AGIP = 0
 	
 	int HP = 0
-	int HPP = 0
+	double HPP = 0
 	int STA = 0
-	int STAP = 0
+	double STAP = 0
 	
 	int PAtk = 0
 	int PDef = 0
