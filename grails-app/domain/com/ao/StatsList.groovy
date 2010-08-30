@@ -2,18 +2,14 @@ package com.ao
 
 class StatsList {
 	
-	double STR = 0
-	double STRP = 0
-	double DEX = 0
-	double DEXP = 0
-	double CON = 0
-	double CONP = 0
-	double AGI = 0
-	double AGIP = 0
+	int STR = 0
+	int DEX = 0
+	int CON = 0
+	int AGI = 0
 	
 	int HP = 0
-	double HPP = 0
 	int STA = 0
+	double HPP = 0
 	double STAP = 0
 	
 	int PAtk = 0

@@ -16,7 +16,7 @@ body
 	position:relative;
 	z-index:2;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h6 {
 	background:none repeat scroll 0 0 transparent;
 	border-bottom:1px solid #CCCCCC;
 	color:black;
@@ -25,6 +25,15 @@ h1, h2, h3, h4, h5, h6 {
 	padding-bottom:0.17em;
 	padding-top:0.5em;
 	margin-bottom:0.6em;
+}
+h5 {
+	background:none repeat scroll 0 0 transparent;
+	color:black;
+	font-weight:normal;
+	margin:0;
+	/*padding-bottom:0.17em;*/
+	padding-top:0.5em;
+	/*margin-bottom:0.6em;*/
 }
 h2 {
 	font-size:150%;

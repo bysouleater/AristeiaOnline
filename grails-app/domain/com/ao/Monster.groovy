@@ -1,16 +1,16 @@
 package com.ao
 
-import java.util.HashMap;
-
-class City {
-
+class Monster {
+	
 	String name
 	StatsList stats
-	Map map
+	Long exp
+	Long gold
+	
+	static hasMany = [loot:Item]
 
     static constraints = {
 		name(nullable:false,blank:false,unique:true,maxSize:30)
 		stats(nullable:false)
-		map(nullable:false)
     }
 }

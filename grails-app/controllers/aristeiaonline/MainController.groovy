@@ -23,12 +23,14 @@ class MainController {
 	
 	
 	def index = {
-		FacebookRestClient facebook = getAuthenticatedFacebookClient(request, response)
-		if(facebook){
-			if(getFacebookInfo(request, facebook)){
-				[warriorlist:Warrior.findAllByOwner_id(request.getAttribute("uid") as Long)]
-			}
-		}
+//		FacebookRestClient facebook = getAuthenticatedFacebookClient(request, response)
+//		if(facebook){
+//			if(getFacebookInfo(request, facebook)){
+//				[warriorlist:Warrior.findAllByOwner_id(request.getAttribute("uid") as Long)]
+//			}
+//		}
+		
+		[warriorlist:Warrior.findAllByOwner_id(123L)]
 	}
 	
 	/*

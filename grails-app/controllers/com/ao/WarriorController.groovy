@@ -28,29 +28,29 @@ class WarriorController {
 	def index = { }
 
 	def create = {
-		FacebookRestClient facebook = getAuthenticatedFacebookClient(request, response)
-		if(facebook){
-			if(getFacebookInfo(request, facebook)){
+//		FacebookRestClient facebook = getAuthenticatedFacebookClient(request, response)
+//		if(facebook){
+//			if(getFacebookInfo(request, facebook)){
 				[cities:City.list()]
-			}	
-		}
+//			}	
+//		}
 	}
 
 	def save = {
-		FacebookRestClient facebook = getAuthenticatedFacebookClient(request, response)
-			if(facebook){
-				if(getFacebookInfo(request, facebook)){
+//		FacebookRestClient facebook = getAuthenticatedFacebookClient(request, response)
+//			if(facebook){
+//				if(getFacebookInfo(request, facebook)){
 					def city = City.get(params.origin as Long)
 					def job = Job.get(NEWBIE);
 					def warrior = new Warrior(name:params.name, gender:params.gender,
-						job:job,origin:city, owner_id: request.getAttribute("uid") as Long)
+						job:job,origin:city, owner_id: 123L/*request.getAttribute("uid") as Long*/)
 					warrior.initWarrior()
 					if(warrior.validate()){
 						warrior.save()
 					}
 					redirect(controller:"main",action:"index")
-				}	
-			}
+//				}	
+//			}
 	}
 
 	def game = {

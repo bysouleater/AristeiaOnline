@@ -10,24 +10,95 @@ class Warrior {
 	int actualHP
 	int actualSTA
 	int statPoints
+	Long gold
 	
 	Job job
 	StatsList stats
 	City origin
+	Map actualLocation
+	
+	static hasMany = [equip:Item,inventory:Item]
 
     static constraints = {
+		owner_id(nullable:false)
+		name(nullable:false,blank:false,maxSize:30,unique:true)
+		gender(inList:["M","F"])
+		actualHP(minSize:0)
+		actualSTA(minSize:0)
+		statPoints(minSize:0)
+		gold(minSize:0)
+		job(nullable:false)
+		stats(nullable:false)
+		origin(nullable:false)
+		actualLocation(nullable:false)
     }
 	
-	int getStat(String stat, boolean perc){
+	void initWarrior(){
+		level = 1
+		actualExp = 0
+		statPoints = 0
+		StatsList stats = new StatsList()
+		origin.stats.all().each{key, val -> stats."$key" = val}
+		job.baseStats.all().each{key, val -> stats."$key" += val}
+		gender == "M"?stats.STR++:stats.AGI++
+		stats.save()
+		this.stats = stats
+		refreshBaseStats()
+		actualHP = baseStat("HP")
+		actualSTA = baseStat("STA")
+		gold = 100
+		actualLocation = origin.map
+	}
+	
+	void refreshBaseStats(){
+		stats."PAtk"  =   stats."STR" + level
+		stats."PDef"  =   stats."CON" + level
+		stats."Acc"   = ((stats."DEX" + level) / 2)
+		stats."Eva"   = ((stats."AGI" + level) / 2)
+		stats."ARate" = ((stats."AGI" + level) / 5)
+		stats."CRate" = ((stats."DEX" + level) / 5)
+		stats."Init"  = ((stats."DEX" + level) / 10)
+		stats."Luck"  = ((stats."AGI" + level) / 10)
+		stats."STAP"  = (double)((double)(stats."STR" + level) / 100)
+		stats."HPP"   = (double)((double)(stats."CON" + level) / 100)
+	}
+	
+	int baseStat(String stat){
 		double value = stats."$stat"
-		value += job.stats."$stat"
-		if(perc){
+		if(stat == "HP" || stat == "STA"){
 			def sp = stat+"P"
 			value += (double)((double)value * (double)stats."$sp")
-			value += (double)((double)value * (double)job.stats."$sp")
 		}
 		return value.intValue()
 	}
+	
+	int bonusStat(String stat){
+		//despues veo
+		return 0
+	}
+	
+	int completeStat(String stat){
+		return baseStat(stat) + bonusStat(stat)
+	}
+	
+//	int getStatBonus(String stat, boolean perc){
+//		def sp = stat+"P"
+//		double value
+//		
+//		if(equip){
+//			equip.each{ item ->
+//				value += item.type.stats."$stat"
+//				if(perc){
+//					value += (double)((double)value * (double)stats."$sp")
+//					value += (double)((double)value * (double)job.stats."$sp")
+//				}
+//			}	
+//		}
+//		 
+//		
+//		
+//		return value.intValue()
+//	}
 	
 	Long nextLvlExp(){
 		return lvlExp(level)
@@ -54,50 +125,20 @@ class Warrior {
 		return (((actualExp-baseLvlExp()) * 100 / (nextLvlExp()-baseLvlExp())) * 1.5).intValue()
 	}
 	
-	void initWarrior(){
-		level = 1
-		actualExp = 0
-		statPoints = 0
-		
-		StatsList stats = new StatsList()
-		
-		origin.stats.all().each{key, val -> stats."$key" += val}
-		job.stats.all().each{key, val -> stats."$key" += val}
-		gender == "M"?stats.STR++:stats.AGI++
-		stats.save()
-		this.stats = stats
-		refreshStats()
-		actualHP = getStat("HP",true)
-		actualSTA = getStat("STA",true)
-	}
-	
-	void refreshStats(){
-		stats."PAtk"  =   stats."STR" + level
-		stats."PDef"  =   stats."CON" + level
-		stats."Acc"   = ((stats."DEX" + level) / 2) 
-		stats."Eva"   = ((stats."AGI" + level) / 2)
-		stats."ARate" = ((stats."AGI" + level) / 5) 
-		stats."CRate" = ((stats."DEX" + level) / 5)
-		stats."Init"  = ((stats."DEX" + level) / 10)
-		stats."Luck"  = ((stats."AGI" + level) / 10)
-		stats."STAP"  = (double)((double)(stats."STR" + level) / 100) 
-		stats."HPP"   = (double)((double)(stats."CON" + level) / 100)
-	}
-	
 	void levelUp(){
 		statPoints += 2
 		level++
-		job.stats.all().each{key, val -> stats."$key" += val}
-		refreshStats()
-		actualHP = getStat("HP",true)
-		actualSTA = getStat("STA",true)
+		job.levelUpStats.all().each{key, val -> stats."$key" += val}
+		refreshBaseStats()
+		actualHP = completeStat("HP")
+		actualSTA = completeStat("STA")
 		save()
 	}
 	
 	void updateStat(def stat){
 		stats."$stat"++
 		statPoints--
-		refreshStats()
+		refreshBaseStats()
 		save()
 	}
 }

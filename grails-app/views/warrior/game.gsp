@@ -14,12 +14,12 @@
 						<img src="/images/male_paladin.png"/>
 					</td>
 					<td width="160" valign="top">
-						<div class="statusbartext">HP &nbsp;&nbsp;${warrior.actualHP} / ${warrior.getStat("HP",true)}</div>
+						<div class="statusbartext">HP &nbsp;&nbsp;${warrior.actualHP} / ${warrior.completeStat("HP")}</div>
 						<div class="statusbar outside">
-							<div class="statusbar inside" style="width:${((warrior.actualHP * 100 / warrior.getStat("HP",true)) * 1.5).intValue()}px;background-color:#FF0000"></div></div>
+							<div class="statusbar inside" style="width:${((warrior.actualHP * 100 / warrior.completeStat("HP")) * 1.5).intValue()}px;background-color:#FF0000"></div></div>
 						<div class="statusbartext">STA &nbsp;&nbsp;${warrior.actualSTA} / ${warrior.getStat("STA",true)}</div>
 						<div class="statusbar outside">
-							<div class="statusbar inside" style="width:${((warrior.actualSTA * 100 / warrior.getStat("STA",true)) * 1.5).intValue()}px;background-color:#FFE303"></div></div>
+							<div class="statusbar inside" style="width:${((warrior.actualSTA * 100 / warrior.completeStat("STA")) * 1.5).intValue()}px;background-color:#FFE303"></div></div>
 						<div class="statusbartext" style="font-size:10px;">EXP &nbsp;&nbsp;${warrior.actualExp} / ${warrior.nextLvlExp()}</div>
 						<div class="statusbar outside">
 							<div class="statusbar inside" style="width:${warrior.actualExpPerc()}px;background-color:#0000FF"></div></div>
@@ -33,45 +33,45 @@
 							<table width="100%" style="font-size:12px;">
 								<tr>
 									<td>STR</td>
-									<td align="right" style="padding-right:5px;">${warrior.getStat("STR",true)}</td>
+									<td align="right" style="padding-right:5px;">${warrior.completeStat("STR")}</td>
 									<td width="15"><g:if test="${warrior.statPoints > 0}">
 											<a href="javascript:updateStat('STR');" style="text-decoration:none;">+</a>
 										</g:if>
 									</td>
 									<td>DEX</td>
-									<td align="right" style="padding-right:5px;">${warrior.getStat("DEX",true)}</td>
+									<td align="right" style="padding-right:5px;">${warrior.completeStat("DEX")}</td>
 									<td width="15"><g:if test="${warrior.statPoints > 0}">
 											<a href="javascript:updateStat('DEX');" style="text-decoration:none;">+</a>
 										</g:if>
 									</td>
-									<td>P.Attack</td><td align="right" style="padding-right:5px;">${warrior.getStat("PAtk",false)}</td>
-									<td>P.Def</td><td align="right" style="padding-right:5px;">${warrior.getStat("PDef",false)}</td>
+									<td>P.Attack</td><td align="right" style="padding-right:5px;">${warrior.completeStat("PAtk")}</td>
+									<td>P.Def</td><td align="right" style="padding-right:5px;">${warrior.completeStat("PDef")}</td>
 								</tr>
 								<tr>
 									<td>CON</td>
-									<td align="right" style="padding-right:5px;">${warrior.getStat("CON",true)}</td>
+									<td align="right" style="padding-right:5px;">${warrior.completeStat("CON")}</td>
 									<td width="15"><g:if test="${warrior.statPoints > 0}">
 											<a href="javascript:updateStat('CON');" style="text-decoration:none;">+</a>
 										</g:if>
 									</td>
 									<td>AGI</td>
-									<td align="right" style="padding-right:5px;">${warrior.getStat("AGI",true)}</td>
+									<td align="right" style="padding-right:5px;">${warrior.completeStat("AGI")}</td>
 									<td width="15"><g:if test="${warrior.statPoints > 0}">
 											<a href="javascript:updateStat('AGI');" style="text-decoration:none;">+</a>
 										</g:if>
 									</td>
-									<td>Accuracy</td><td align="right" style="padding-right:5px;">${warrior.getStat("Acc",false)}</td>
-									<td>Evasion</td><td align="right" style="padding-right:5px;">${warrior.getStat("Eva",false)}</td>
+									<td>Accuracy</td><td align="right" style="padding-right:5px;">${warrior.completeStat("Acc")}</td>
+									<td>Evasion</td><td align="right" style="padding-right:5px;">${warrior.completeStat("Eva")}</td>
 								</tr>
 								<tr>
 									<td colspan="6">Stats Points&nbsp;&nbsp;${warrior.statPoints}</td>
-									<td>Attack Rate</td><td align="right" style="padding-right:5px;">${warrior.getStat("ARate",false)}</td>
-									<td>Critic Rate</td><td align="right" style="padding-right:5px;">${warrior.getStat("CRate",false)}</td>
+									<td>Attack Rate</td><td align="right" style="padding-right:5px;">${warrior.completeStat("ARate")}</td>
+									<td>Critic Rate</td><td align="right" style="padding-right:5px;">${warrior.completeStat("CRate")}</td>
 								</tr>
 								<tr>
 									<td colspan="6">Actual Location&nbsp;&nbsp;${warrior.origin.name} City</td>
-									<td>Luck</td><td align="right" style="padding-right:5px;">${warrior.getStat("Luck",false)}</td>
-									<td>Initiative</td><td align="right" style="padding-right:5px;">${warrior.getStat("Init",false)}</td>
+									<td>Luck</td><td align="right" style="padding-right:5px;">${warrior.completeStat("Luck")}</td>
+									<td>Initiative</td><td align="right" style="padding-right:5px;">${warrior.completeStat("Init")}</td>
 								</tr>
 							</table>
 						<script>
@@ -117,7 +117,8 @@
 						</div>
 					</td>
 				</tr>
-			</table>			
+			</table>
+			<div style="text-align:right; font-size:12px;margin-top:20px;"><g:link style="text-decoration:none;" action="index" controller="main">Back to warriors list</g:link></div>			
 		</div>
 	</body>
 </html>
