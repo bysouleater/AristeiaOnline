@@ -97,6 +97,6 @@ class WarriorController {
 		def warrior = Warrior.get(params.id)
 		warrior.actualExp = warrior.nextLvlExp() + 1000
 		warrior.levelUp()
-		redirect(controller:"warrior",action:"game",id:params.id)
+		redirect(controller:"warrior",action:"index",id:params.id)
 	}
 }
