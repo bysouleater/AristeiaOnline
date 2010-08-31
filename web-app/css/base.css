@@ -19,7 +19,7 @@ body
 h1, h2, h3, h4, h6 {
 	background:none repeat scroll 0 0 transparent;
 	border-bottom:1px solid #CCCCCC;
-	color:black;
+	color:#444444;
 	font-weight:normal;
 	margin:0;
 	padding-bottom:0.17em;
@@ -28,7 +28,7 @@ h1, h2, h3, h4, h6 {
 }
 h5 {
 	background:none repeat scroll 0 0 transparent;
-	color:black;
+	color:#444444;
 	font-weight:normal;
 	margin:0;
 	/*padding-bottom:0.17em;*/
@@ -124,17 +124,22 @@ button.next, button.cancel {
 }
 .statusbartext{
 	font-size:12px;
+	color:#444444;
+	font-weight:bold;
+}
+.statusbarvalue{
+	font-size:12px;
+	color:#444444;
+	
 }
 .statusbar{
-	width:150px;
+	width:125px;
 	height:4px;
 }
 .inside{
 	
 }
 .outside{
-	margin-top:5px;
-	margin-bottom:5px;
 	border:solid 1px;
 }
 .actionspro { 

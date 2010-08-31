@@ -2,10 +2,10 @@ package com.ao
 
 class StatsList {
 	
-	int STR = 0
-	int DEX = 0
-	int CON = 0
-	int AGI = 0
+	double STR = 0
+	double DEX = 0
+	double CON = 0
+	double AGI = 0
 	
 	int HP = 0
 	int STA = 0

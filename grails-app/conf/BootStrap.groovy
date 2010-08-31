@@ -5,10 +5,10 @@ class BootStrap {
     def init = { servletContext ->
 		
 		// Init Cities
-    	def cs1 = new StatsList(STR:8,DEX:5,CON:5,AGI:5)
-    	def cs2 = new StatsList(STR:5,DEX:8,CON:5,AGI:5)
-    	def cs3 = new StatsList(STR:5,DEX:5,CON:8,AGI:5)
-    	def cs4 = new StatsList(STR:5,DEX:5,CON:5,AGI:8)
+    	def cs1 = new StatsList(STR:8d,DEX:5d,CON:5d,AGI:5d)
+    	def cs2 = new StatsList(STR:5d,DEX:8d,CON:5d,AGI:5d)
+    	def cs3 = new StatsList(STR:5d,DEX:5d,CON:8d,AGI:5d)
+    	def cs4 = new StatsList(STR:5d,DEX:5d,CON:5d,AGI:8d)
     	cs1.save();cs2.save();cs3.save();cs4.save();
 		
 		def cm1 = new Map(name:"Cebrene city", 	city:true)
