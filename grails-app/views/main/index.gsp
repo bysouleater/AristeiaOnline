@@ -108,7 +108,7 @@
 										</tr>
 										<tr>
 											<td colspan="12" style="padding-top:9px;" align="center">
-												<a style="text-decoration:none;" href="<g:createLink controller='warrior' action='index' id='${warrior.id}' />"><button>Play with ${warrior.name}</button></a>
+												<a style="text-decoration:none;" href="<g:createLink controller='warrior' action='index' id='${warrior.id}' />"><button type="button">Play with ${warrior.name}</button></a>
 											</td>
 										</tr>
 									</table>
@@ -124,7 +124,7 @@
 					</table>
 					<hr>
 				</g:each>
-				<g:if test="${warriorlist.size() < 6}">
+				<g:if test="${warriorlist.size() < 3}">
 					<div style="text-align:right; font-size:12px;margin-top:20px;">or <g:link style="text-decoration:none;" action="create" controller="warrior">Create a new warrior</g:link></div>
 				</g:if>
     		</div>

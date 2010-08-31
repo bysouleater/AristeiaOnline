@@ -147,7 +147,7 @@
 						<h4>Actions</h4>
 						<ul class="actionspro">
 							<li><a href="<g:createLink controller='warrior' action='index' id='${warrior.id}'/>">Journal</a></li>
-							<li><a href="#">Action2</a></li>
+							<!-- <li><a href="#">Action2</a></li>
 							<li><a href="#">Action</a></li>
 							<li><a href="#">Action2</a></li>
 							<li><a href="#">Action</a></li>
@@ -157,7 +157,7 @@
 							<li><a href="#">Action</a></li>
 							<li><a href="#">Action2</a></li>
 							<li><a href="#">Action</a></li>
-							<li><a href="#">Action2</a></li>
+							<li><a href="#">Action2</a></li>-->
 						</ul>
 					</td>
 					<g:layoutBody />
@@ -165,5 +165,12 @@
 			</table>
 			<div style="text-align:right; font-size:12px;margin-top:20px;"><g:link style="text-decoration:none;" action="index" controller="main">Back to warriors list</g:link></div>			
 		</div>
+		
+		<script>
+		window.fbAsyncInit = function() {
+			  FB.Canvas.setAutoResize();
+			}
+
+		</script>
 	</body>
 </html>

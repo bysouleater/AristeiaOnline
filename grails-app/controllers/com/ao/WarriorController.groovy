@@ -1,10 +1,7 @@
 package com.ao
 
-
 import com.ao.Warrior
 import com.ao.City
-import com.facebook.api.*
-import org.w3c.dom.Document
 
 class WarriorController {
 	
@@ -21,7 +18,7 @@ class WarriorController {
 	
 	def create = {
 		def warriorqty = Warrior.findAllByOwner_id(123L).size()
-		if(warriorqty == 6)
+		if(warriorqty == 3)
 			redirect(controller:"main",action:"index")
 		[cities:City.list()]
 	}
