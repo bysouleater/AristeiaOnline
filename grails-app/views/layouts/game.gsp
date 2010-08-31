@@ -1,8 +1,24 @@
 <html>
 	<head>
-		<meta name="layout" content="main"></meta>
+		<title><g:layoutTitle default="Grails" /></title>
+        <link rel="stylesheet" href="${resource(dir:'css',file:'base.css')}" />
+        <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
+        <g:layoutHead />
+        <g:javascript library="application" />
 	</head>
 	<body>
+		<div id="spinner" class="spinner" style="display:none;">
+            <img src="${resource(dir:'images',file:'spinner.gif')}" alt="${message(code:'spinner.alt',default:'Loading...')}" />
+        </div>
+        <div style="height:26px;margin:0 0 0 0.5em;
+	position:relative;
+	z-index:2;border-color:#AAAAAA -moz-use-text-color #AAAAAA #AAAAAA;
+	border-style:solid none none solid;
+	border-width:1px medium 1px 1px;background-color:#627AAD" width="100%"><!--<tr>
+        	<td valign="center">--><img style="float:left;padding-top:3px;padding-left:3px;" src="${resource(dir:'images',file:'shield.png')}" alt="Grails" border="0" width="20" height="20" /><!-- </td>
+        	<td valign="center">--><div style="float:left;font-weight:bold;padding-top:3px;margin-left:3px;color:#FFFFFF">Aristeia Online</div><!-- </td>
+        </tr></table>--></div>
+        <div class="clear"></div>
 		<div id="content">
 			<h3>
 				<span>${warrior.name} - ${warrior.job.name} Lvl ${warrior.level} <g:link controller="warrior" action="levelup" id="${warrior.id}" style="text-decoration:none;">+</g:link></span>
@@ -107,11 +123,11 @@
 									<td colspan="12" style="padding-top:12px;" align="center">
 										<table><tr>
 										<td><img border="0" width="15" height="15" src="/images/skills.jpg"/></td>
-										<td valign="middle" class="statusbartext" align="center" style="padding-right:10px;">Skills</td>
+										<td valign="middle" class="statusbartext" align="center" style="padding-right:10px;"><a href="<g:createLink controller='warrior' action='skills' id='${warrior.id}'/>">Skills</a></td>
 										<td><img border="0" width="15" height="15" src="/images/equip.png"/></td>
-										<td valign="middle" class="statusbartext" align="center" style="padding-right:10px;">Equip</td>
+										<td valign="middle" class="statusbartext" align="center" style="padding-right:10px;"><a href="<g:createLink controller='warrior' action='equip' id='${warrior.id}'/>">Equipment</a></td>
 										<td><img border="0" width="15" height="15" src="/images/inventory.png"/></td>
-										<td valign="middle" class="statusbartext" align="center" style="padding-right:10px;">Inventory</td></tr></table>
+										<td valign="middle" class="statusbartext" align="center" style="padding-right:10px;"><a href="<g:createLink controller='warrior' action='inventory' id='${warrior.id}'/>">Inventory</a></td></tr></table>
 									</td>
 								</tr>
 							</table>
@@ -130,7 +146,7 @@
 					<td width="150" valign="top">
 						<h4>Actions</h4>
 						<ul class="actionspro">
-							<li><a href="#">Action</a></li>
+							<li><a href="<g:createLink controller='warrior' action='index' id='${warrior.id}'/>">Journal</a></li>
 							<li><a href="#">Action2</a></li>
 							<li><a href="#">Action</a></li>
 							<li><a href="#">Action2</a></li>
@@ -144,19 +160,7 @@
 							<li><a href="#">Action2</a></li>
 						</ul>
 					</td>
-					<td valign="top">
-						<div id="content">
-							<h4>Journal</h4>
-							<ul style="font-size:12px;">
-								<li>Lorem ipsum  ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an.</li>
-								<li>Lorem ipsum  ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an.</li>
-								<li>Lorem ipsum  ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an.</li>
-								<li>Lorem ipsum  ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an.</li>
-								<li>Lorem ipsum  ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an.</li>
-								<li>Lorem ipsum  ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an.</li>
-							</ul>
-						</div>
-					</td>
+					<g:layoutBody />
 				</tr>
 			</table>
 			<div style="text-align:right; font-size:12px;margin-top:20px;"><g:link style="text-decoration:none;" action="index" controller="main">Back to warriors list</g:link></div>			

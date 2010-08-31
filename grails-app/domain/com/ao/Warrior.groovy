@@ -2,6 +2,9 @@ package com.ao
 
 class Warrior {
 	
+	static int INVENTORY_MAX_QTY = 20
+	static Long NEWBIE = 1
+	
 	Long owner_id
 	String name
 	String gender
@@ -20,8 +23,6 @@ class Warrior {
 	
 	static hasMany = [inventory:Item]
 	
-	static int INVENTORY_MAX_QTY = 20
-
     static constraints = {
 		owner_id(nullable:false)
 		name(nullable:false,blank:false,maxSize:30,unique:true)
@@ -37,7 +38,11 @@ class Warrior {
 		equip(nullable:false)
     }
 	
-	void initWarrior(){
+	void initWarrior(def params){
+		name = params.name
+		gender = params.gender
+		origin = City.get(params.origin as Long)
+		job = Job.get(NEWBIE);
 		level = 1
 		actualExp = 0
 		statPoints = 0
