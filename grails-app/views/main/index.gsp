@@ -98,7 +98,7 @@
 		<g:else>
 			<div id="content">
 				<h3><span>Welcome to Aristeia Online</span></h3>
-	     		<div style="text-align:center;margin-top:50px;">You don't have any warrior. <g:link action="create" controller="warrior">Create a new warrior</g:link> to start playing!</div>
+	     		<div style="text-align:center;margin-top:50px;">You don't have any warrior. <g:link action="create" style="text-decoration:none;" controller="warrior">Create a new warrior</g:link> to start playing!</div>
 	     	</div>
 		</g:else>
     </body>

@@ -23,10 +23,10 @@ class BootStrap {
 		new City(name:"Mallia",		stats:cs4, map:cm4).save()
 		
 		// Init Jobs
-		def nbs = new StatsList(HP:40,STA:40)
-		def nls = new StatsList(HP:20,STA:20)
+		def nbs = new StatsList(HP:40,STA:20)
+		def nls = new StatsList(HP:40,STA:10)
     	nbs.save();nls.save()
-    	new Job(name:"Newbie", baseStats:nbs, levelUpStats: nls).save()
+    	new Job(name:"Newbie", baseStats:nbs, levelUpStats: nls, maxLevel: 5).save()
     }
     def destroy = {
     }

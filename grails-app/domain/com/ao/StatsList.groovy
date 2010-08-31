@@ -24,13 +24,9 @@ class StatsList {
 	def all(){
 		def map = [:]
 		map["STR"] = STR
-		map["STRP"] = STRP
 		map["DEX"] = DEX
-		map["DEXP"] = DEXP
 		map["CON"] = CON
-		map["CONP"] = CONP
 		map["AGI"] = AGI
-		map["AGIP"] = AGIP
 		map["HP"] = HP
 		map["HPP"] = HPP
 		map["STA"] = STA

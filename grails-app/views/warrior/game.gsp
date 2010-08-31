@@ -17,7 +17,7 @@
 						<div class="statusbartext">HP &nbsp;&nbsp;${warrior.actualHP} / ${warrior.completeStat("HP")}</div>
 						<div class="statusbar outside">
 							<div class="statusbar inside" style="width:${((warrior.actualHP * 100 / warrior.completeStat("HP")) * 1.5).intValue()}px;background-color:#FF0000"></div></div>
-						<div class="statusbartext">STA &nbsp;&nbsp;${warrior.actualSTA} / ${warrior.getStat("STA",true)}</div>
+						<div class="statusbartext">STA &nbsp;&nbsp;${warrior.actualSTA} / ${warrior.completeStat("STA")}</div>
 						<div class="statusbar outside">
 							<div class="statusbar inside" style="width:${((warrior.actualSTA * 100 / warrior.completeStat("STA")) * 1.5).intValue()}px;background-color:#FFE303"></div></div>
 						<div class="statusbartext" style="font-size:10px;">EXP &nbsp;&nbsp;${warrior.actualExp} / ${warrior.nextLvlExp()}</div>
@@ -69,7 +69,7 @@
 									<td>Critic Rate</td><td align="right" style="padding-right:5px;">${warrior.completeStat("CRate")}</td>
 								</tr>
 								<tr>
-									<td colspan="6">Actual Location&nbsp;&nbsp;${warrior.origin.name} City</td>
+									<td colspan="6">Actual Location&nbsp;&nbsp;${warrior.actualLocation.name}</td>
 									<td>Luck</td><td align="right" style="padding-right:5px;">${warrior.completeStat("Luck")}</td>
 									<td>Initiative</td><td align="right" style="padding-right:5px;">${warrior.completeStat("Init")}</td>
 								</tr>
