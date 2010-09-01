@@ -69,7 +69,7 @@
 								<tr>
 									<td class="statusbartext">STR</td>
 									<td align="right" class="statusbarvalue">${warrior.baseStat("STR").intValue()}</td>
-									<td align="left" class="statusbarvalue"><g:if test="${warrior.bonusBaseStat('STR').intValue() > -1}">+${warrior.bonusBaseStat("STR").intValue()}</g:if></td>
+									<td align="left" class="statusbarvalue"><g:if test="${warrior.bonusBaseStat('STR').intValue() > 0}">+${warrior.bonusBaseStat("STR").intValue()}</g:if></td>
 									<td width="15"><g:if test="${warrior.statPoints > 0}">
 											<a href="javascript:updateStat('STR');" style="text-decoration:none;"><img border="0" width="10" height="10" src="/images/up.png"/></a>
 										</g:if>
@@ -89,7 +89,7 @@
 								<tr>
 									<td class="statusbartext">CON</td>
 									<td align="right" class="statusbarvalue">${warrior.baseStat("CON").intValue()}</td>
-									<td align="left" class="statusbarvalue"><g:if test="${warrior.bonusBaseStat('CON').intValue() > -1}">+${warrior.bonusBaseStat("CON").intValue()}</g:if></td>
+									<td align="left" class="statusbarvalue"><g:if test="${warrior.bonusBaseStat('CON').intValue() > 0}">+${warrior.bonusBaseStat("CON").intValue()}</g:if></td>
 									<td width="15"><g:if test="${warrior.statPoints > 0}">
 											<a href="javascript:updateStat('CON');" style="text-decoration:none;"><img border="0" width="10" height="10" src="/images/up.png"/></a>
 										</g:if>
@@ -97,7 +97,7 @@
 									
 									<td class="statusbartext">AGI</td>
 									<td align="right" class="statusbarvalue">${warrior.baseStat("AGI").intValue()}</td>
-									<td align="left" class="statusbarvalue"><g:if test="${warrior.bonusBaseStat('DEX').intValue() > -1}">+${warrior.bonusBaseStat("AGI").intValue()}</g:if></td>
+									<td align="left" class="statusbarvalue"><g:if test="${warrior.bonusBaseStat('DEX').intValue() > 0}">+${warrior.bonusBaseStat("AGI").intValue()}</g:if></td>
 									<td width="15"><g:if test="${warrior.statPoints > 0}">
 											<a href="javascript:updateStat('AGI');" style="text-decoration:none;"><img border="0" width="10" height="10" src="/images/up.png"/></a>
 										</g:if>
@@ -147,6 +147,7 @@
 						<h4>Actions</h4>
 						<ul class="actionspro">
 							<li><a href="<g:createLink controller='warrior' action='index' id='${warrior.id}'/>">Journal</a></li>
+							<li><a href="<g:createLink controller='warrior' action='explore' id='${warrior.id}'/>">Explore</a></li>
 							<!-- <li><a href="#">Action2</a></li>
 							<li><a href="#">Action</a></li>
 							<li><a href="#">Action2</a></li>

@@ -3,7 +3,6 @@ package com.ao
 class Warrior {
 	
 	static int INVENTORY_MAX_QTY = 20
-	static Long NEWBIE = 1
 	
 	Long owner_id
 	String name
@@ -42,7 +41,7 @@ class Warrior {
 		name = params.name
 		gender = params.gender
 		origin = City.get(params.origin as Long)
-		job = Job.get(NEWBIE);
+		job = Job.get(Job.NEWBIE);
 		level = 1
 		actualExp = 0
 		statPoints = 0

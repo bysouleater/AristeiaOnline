@@ -81,7 +81,16 @@ class WarriorController {
 		[warrior:warrior]
 	}
 	
+	def explore = {
+		if(!params.id)
+			redirect(controller:"main",action:"index")
 	
+		def warrior = Warrior.get(params.id as Long)
+		if(!warrior)
+			redirect(controller:"main",action:"index")
+	
+		[warrior:warrior]
+	}
 	
 	
 	
