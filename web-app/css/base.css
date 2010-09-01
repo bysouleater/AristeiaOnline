@@ -168,3 +168,16 @@ button.next, button.cancel {
 	padding: 2px 3px; 
 	color: gray; 
 } 
+.paginator{
+	font-size:12px;
+	text-align:right;
+	font-weight:bold;
+}
+.paginator a{
+	margin-right:5px;	
+}
+.paginator span{
+	margin-right:5px;
+	
+	margin-top:2px;
+}

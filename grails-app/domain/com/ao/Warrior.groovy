@@ -20,8 +20,12 @@ class Warrior {
 	Map actualLocation
 	Equipment equip
 	
-	static hasMany = [inventory:Item]
+	static hasMany = [inventory:Item, journal:JournalEntry]
 	
+	static mapping = {
+		journal sort:"dateCreated", order: "desc"
+	}		
+		
     static constraints = {
 		owner_id(nullable:false)
 		name(nullable:false,blank:false,maxSize:30,unique:true)
@@ -63,6 +67,10 @@ class Warrior {
 		refreshDerivedStats()
 		actualHP = maxHP()
 		actualSTA = maxSTA()
+		
+		def je = new JournalEntry(text:"A new warrior was born under the name of ${name}. Good luck warrior!")
+		je.save()
+		addToJournal(je)
 	}
 	
 	//Los jobs no pueden dar estos stats
@@ -168,6 +176,18 @@ class Warrior {
 		stats."$stat" += 1
 		statPoints--
 		refreshDerivedStats()
+		save()
+	}
+	
+	void giveExp(Long exp){
+		actualExp += exp
+		while(actualExp >= nextLvlExp()){
+			levelUp()
+			def je = new JournalEntry(text:"You reach the next level! Now you are level ${level}. Congrats!")
+			je.save()
+			addToJournal(je)
+			
+		}
 		save()
 	}
 }

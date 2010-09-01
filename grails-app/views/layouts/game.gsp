@@ -147,18 +147,8 @@
 						<h4>Actions</h4>
 						<ul class="actionspro">
 							<li><a href="<g:createLink controller='warrior' action='index' id='${warrior.id}'/>">Journal</a></li>
-							<li><a href="<g:createLink controller='warrior' action='explore' id='${warrior.id}'/>">Explore</a></li>
-							<!-- <li><a href="#">Action2</a></li>
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Action2</a></li>
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Action2</a></li>
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Action2</a></li>
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Action2</a></li>
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Action2</a></li>-->
+							<li><a href="<g:createLink controller='warrior' action='exploration' id='${warrior.id}'/>">Exploration</a></li>
+							<li><a href="<g:createLink controller='warrior' action='training' id='${warrior.id}'/>">Training</a></li>
 						</ul>
 					</td>
 					<g:layoutBody />

@@ -9,11 +9,22 @@ class WarriorController {
 		if(!params.id)
 			redirect(controller:"main",action:"index")
 
-		def warrior = Warrior.get(params.id as Long)
-		if(!warrior)
+		def w = Warrior.get(params.id as Long)
+		if(!w)
 			redirect(controller:"main",action:"index")
-
-		[warrior:warrior]
+			
+		def journal = JournalEntry.withCriteria {
+			warrior {
+				eq('id', w.id)
+			}
+			maxResults(params.max?params.max as Integer:6)
+			firstResult(params.offset?params.offset as Integer:0)
+			order("dateCreated", "desc")
+		 }
+//		def journal = JournalEntry.findAllByWarrior(warrior.id, [max:6,offset:0, 
+//			sort:"dateCreated",order:"desc"])
+			
+		[warrior:w,journal:journal]
 	}
 	
 	def create = {
@@ -81,7 +92,7 @@ class WarriorController {
 		[warrior:warrior]
 	}
 	
-	def explore = {
+	def exploration = {
 		if(!params.id)
 			redirect(controller:"main",action:"index")
 	
@@ -92,6 +103,34 @@ class WarriorController {
 		[warrior:warrior]
 	}
 	
+	def training = {
+		if(!params.id)
+			redirect(controller:"main",action:"index")
+	
+		def warrior = Warrior.get(params.id as Long)
+		if(!warrior)
+			redirect(controller:"main",action:"index")
+	
+		[warrior:warrior]
+	}
+	
+	def explore = {
+		if(!params.id)
+			redirect(controller:"main",action:"index")
+	
+		def warrior = Warrior.get(params.id as Long)
+		if(!warrior)
+			redirect(controller:"main",action:"index")
+	
+		if(warrior.actualSTA > 5){
+			warrior.actualSTA -= 5
+			def je = new JournalEntry(text:"While exploring you encounter a Wolf. You won the fight. Gained 500 EXP.")
+			je.save()
+			warrior.addToJournal(je)
+			warrior.giveExp(500L)
+		}
+		redirect(controller:"warrior",action:"index", id:params.id)
+	}
 	
 	
 	
