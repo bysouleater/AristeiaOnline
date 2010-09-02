@@ -21,8 +21,6 @@ class WarriorController {
 			firstResult(params.offset?params.offset as Integer:0)
 			order("dateCreated", "desc")
 		 }
-//		def journal = JournalEntry.findAllByWarrior(warrior.id, [max:6,offset:0, 
-//			sort:"dateCreated",order:"desc"])
 			
 		[warrior:w,journal:journal]
 	}
@@ -132,7 +130,16 @@ class WarriorController {
 		redirect(controller:"warrior",action:"index", id:params.id)
 	}
 	
+	def quests = {
+		if(!params.id)
+			redirect(controller:"main",action:"index")
 	
+		def warrior = Warrior.get(params.id as Long)
+		if(!warrior)
+			redirect(controller:"main",action:"index")
+	
+		[warrior:warrior]
+	}
 	
 	
 	
