@@ -1,7 +1,7 @@
 <g:if test="${warriorlist}">
 	<div id="content">
 		<h3><span>My Warriors</span></h3>
-  			<g:each in="${warriorlist}" var="warrior">
+  			<g:each in="${warriorlist}" status="i" var="warrior">
    			<h5>
 				<span>${warrior.name} - ${warrior.job.name} Lvl ${warrior.level}</span>
 				<span style="float:right;">Origin: ${warrior.origin.name}</span>
@@ -11,7 +11,7 @@
 					<a style="text-decoration:none;" href="<g:createLink controller='warrior' action='index' id='${warrior.id}' />"><button type="button">Play with ${warrior.name}</button></a>
 				</td>
 			</g:warriorSheet>
-			<hr>
+			<g:if test="${i+1 < warriorlist.size()}"><hr></g:if>
 		</g:each>
 		<g:if test="${warriorlist.size() < 3}">
 			<div style="text-align:right; font-size:12px;margin-top:20px;">or <g:link style="text-decoration:none;" action="create" controller="warrior">Create a new warrior</g:link></div>

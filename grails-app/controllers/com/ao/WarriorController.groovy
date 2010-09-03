@@ -122,10 +122,26 @@ class WarriorController {
 	
 		if(warrior.actualSTA > 5){
 			warrior.actualSTA -= 5
-			def je = new JournalEntry(text:"While exploring you encounter a Wolf. You won the fight. Gained 500 EXP.")
-			je.save()
-			warrior.addToJournal(je)
-			warrior.giveExp(500L)
+			boolean encountered = false;
+			warrior.actualLocation.encounters.each{
+				if(encountered)
+					return
+					
+				def chance = new Random().nextInt(100)+1
+				if(chance <= it.chance){
+					def je = new JournalEntry(type:JournalEntry.EXPLORATION_MONSTER_FOUND,encounter:it,won:true)
+					je.save()
+					warrior.addToJournal(je)
+					warrior.giveExp(it.totalExp())
+					warrior.gold += it.totalGold()
+					encountered = true
+				}
+			}
+			if(!encountered){
+				def je = new JournalEntry(type:JournalEntry.TEXT, text:"You explore the area but didn't find anything.")
+				je.save()
+				warrior.addToJournal(je)
+			}
 		}
 		redirect(controller:"warrior",action:"index", id:params.id)
 	}

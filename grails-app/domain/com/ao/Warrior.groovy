@@ -68,7 +68,7 @@ class Warrior {
 		actualHP = maxHP()
 		actualSTA = maxSTA()
 		
-		def je = new JournalEntry(text:"A new warrior was born under the name of ${name}. Good luck warrior!")
+		def je = new JournalEntry(type:JournalEntry.TEXT, text:"A new warrior was born under the name of ${name}. Good luck warrior!")
 		je.save()
 		addToJournal(je)
 	}
@@ -183,7 +183,7 @@ class Warrior {
 		actualExp += exp
 		while(actualExp >= nextLvlExp()){
 			levelUp()
-			def je = new JournalEntry(text:"You reach the next level! Now you are level ${level}. Congrats!")
+			def je = new JournalEntry(type:JournalEntry.TEXT, text:"You reach the next level! You are now level ${level}. Congrats!")
 			je.save()
 			addToJournal(je)
 			

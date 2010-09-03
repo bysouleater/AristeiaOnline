@@ -1,3 +1,5 @@
+import com.ao.StatsList;
+
 import com.ao.*
 
 class BootStrap {
@@ -25,6 +27,23 @@ class BootStrap {
 		// Init Jobs
 		Job.initJobs()
 		
+		def wstats = new StatsList()
+		wstats.save()
+		def wolf = new Monster(name: "Wolf",stats: wstats, exp: 200L, gold: 50L)
+		wolf.save()
+		
+		def wolfencounter = new Encounter(chance:75,description:"a Wolf")
+		wolfencounter.addToMonsters(wolf)
+		wolfencounter.save()
+		
+		cm1.addToEncounters(wolfencounter)
+		cm1.save()
+		cm2.addToEncounters(wolfencounter)
+		cm2.save()
+		cm3.addToEncounters(wolfencounter)
+		cm3.save()
+		cm4.addToEncounters(wolfencounter)
+		cm4.save()
 		
 		
     }
