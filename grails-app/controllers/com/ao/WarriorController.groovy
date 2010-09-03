@@ -21,6 +21,9 @@ class WarriorController {
 			firstResult(params.offset?params.offset as Integer:0)
 			order("dateCreated", "desc")
 		 }
+		
+		w.refreshSTA()
+		w.refreshHP()
 			
 		[warrior:w,journal:journal]
 	}

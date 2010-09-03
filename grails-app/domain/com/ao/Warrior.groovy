@@ -1,5 +1,7 @@
 package com.ao
 
+import org.joda.time.DateTime;
+
 class Warrior {
 	
 	static int INVENTORY_MAX_QTY = 20
@@ -19,6 +21,11 @@ class Warrior {
 	City origin
 	Map actualLocation
 	Equipment equip
+	
+	Long lastSTAModified
+	Long lastSTAModifiedDelta
+	Long lastHPModified
+	Long lastHPModifiedDelta
 	
 	static hasMany = [inventory:Item, journal:JournalEntry]
 	
@@ -67,6 +74,10 @@ class Warrior {
 		refreshDerivedStats()
 		actualHP = maxHP()
 		actualSTA = maxSTA()
+		lastSTAModified = new DateTime().getMillis()
+		lastSTAModifiedDelta = 0 
+		lastHPModified = new DateTime().getMillis()
+		lastHPModifiedDelta = 0
 		
 		def je = new JournalEntry(type:JournalEntry.TEXT, text:"A new warrior was born under the name of ${name}. Good luck warrior!")
 		je.save()
@@ -169,6 +180,10 @@ class Warrior {
 		refreshDerivedStats()
 		actualHP = maxHP()
 		actualSTA = maxSTA()
+		lastSTAModified = new DateTime().getMillis()
+		lastSTAModifiedDelta = 0
+		lastHPModified = new DateTime().getMillis()
+		lastHPModifiedDelta = 0
 		save()
 	}
 	
@@ -188,6 +203,48 @@ class Warrior {
 			addToJournal(je)
 			
 		}
+		save()
+	}
+	
+	int STARecoverAmount(){
+		return 5 * maxSTA() / 100  
+	}
+	
+	int HPRecoverAmount(){
+		return 5 * maxHP() / 100
+	}
+	
+	void refreshSTA(){
+		Long now = new DateTime().getMillis()
+		Long dif = now - lastSTAModified + lastSTAModifiedDelta  
+		int refresh_rate = (100-completeBaseStat("AGI") + 20) * 1000
+		int sta = (dif - (dif % refresh_rate)) / refresh_rate
+		if(sta < 1)
+			return
+		if(actualSTA + (sta * STARecoverAmount()) > maxSTA())
+			actualSTA = maxSTA()
+		else
+			actualSTA += sta * STARecoverAmount()
+			
+		lastSTAModified = now
+		lastSTAModifiedDelta = dif % refresh_rate
+		save()
+	}
+	
+	void refreshHP(){
+		Long now = new DateTime().getMillis()
+		Long dif = now - lastHPModified + lastHPModifiedDelta
+		int refresh_rate = (100-completeBaseStat("CON") + 20) * 1000
+		int hp = (dif - (dif % refresh_rate)) / refresh_rate
+		if(hp < 1)
+			return
+		if(actualHP + (hp * HPRecoverAmount()) > maxHP())
+			actualHP = maxHP()
+		else
+			actualHP += hp * HPRecoverAmount()
+			
+		lastHPModified = now
+		lastHPModifiedDelta = dif % refresh_rate
 		save()
 	}
 }

@@ -6,19 +6,19 @@
 		<td width="130" valign="top">
 			<table width="100%" border="0">
 				<tr>
-					<td width="25" align="left" class="statusbartext">HP</td>
-					<td align="left" class="statusbarvalue">${warrior.actualHP} / ${warrior.maxHP()}</td>
+					<td width="25" align="left" class="statusbartext"><span title="${warrior.HPRecoverAmount()} every ${100-warrior.completeDerivedStat("CON") + 20} segs">HP</span></td>
+					<td align="left" class="statusbarvalue"><span title="${warrior.HPRecoverAmount()} every ${100-warrior.completeDerivedStat("CON") + 20} segs">${warrior.actualHP} / ${warrior.maxHP()}</span></td>
 				</tr>
 				<tr><td colspan="2" align="left">
-					<div class="statusbar outside">
+					<div class="statusbar outside" title="${warrior.HPRecoverAmount()} every ${100-warrior.completeDerivedStat("CON") + 20} segs">
 						<div class="statusbar inside" style="width:${((warrior.actualHP * 100 / warrior.maxHP()) * 1.25).intValue()}px;background-color:#FF0000"></div></div>
 				</td></tr>
 				<tr>
-					<td width="25" align="left" class="statusbartext">STA</td>
-					<td align="left" class="statusbarvalue">${warrior.actualSTA} / ${warrior.maxSTA()}</td>
+					<td width="25" align="left" class="statusbartext"><span title="${warrior.STARecoverAmount()} every ${100-warrior.completeDerivedStat("AGI") + 20} segs">STA</span></td>
+					<td align="left" class="statusbarvalue"><span title="${warrior.STARecoverAmount()} every ${100-warrior.completeDerivedStat("AGI") + 20} segs">${warrior.actualSTA} / ${warrior.maxSTA()}</span></td>
 				</tr>
 				<tr><td colspan="2" align="left">
-					<div class="statusbar outside">
+					<div class="statusbar outside" title="${warrior.STARecoverAmount()} every ${100-warrior.completeDerivedStat("AGI") + 20} segs">
 						<div class="statusbar inside" style="width:${((warrior.actualSTA * 100 / warrior.maxSTA()) * 1.25).intValue()}px;background-color:#FFE303"></div></div>
 				</td></tr>
 				<tr>
