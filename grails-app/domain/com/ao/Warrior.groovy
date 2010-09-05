@@ -79,7 +79,7 @@ class Warrior {
 		lastHPModified = new DateTime().getMillis()
 		lastHPModifiedDelta = 0
 		
-		def je = new JournalEntry(type:JournalEntry.TEXT, text:"A new warrior was born under the name of ${name}. Good luck warrior!")
+		def je = new JournalEntry(type:JournalEntry.TEXT, text:"<b>A new warrior was born under the name of ${name}. Good luck warrior! Try to do your best!</b>")
 		je.save()
 		addToJournal(je)
 	}
@@ -198,7 +198,7 @@ class Warrior {
 		actualExp += exp
 		while(actualExp >= nextLvlExp()){
 			levelUp()
-			def je = new JournalEntry(type:JournalEntry.TEXT, text:"You reach the next level! You are now level ${level}. Congrats!")
+			def je = new JournalEntry(type:JournalEntry.TEXT, text:"<b>You reach the next level! You are now level ${level}. Congrats!</b>")
 			je.save()
 			addToJournal(je)
 			

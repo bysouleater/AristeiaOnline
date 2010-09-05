@@ -1,7 +1,7 @@
 <g:applyLayout name="main">
 	<div id="content">
 		<h3>
-			<span>${warrior.name} - ${warrior.job.name} Lvl ${warrior.level} <g:link controller="warrior" action="levelup" id="${warrior.id}" style="text-decoration:none;">+</g:link></span>
+			<span>${warrior.name} - ${warrior.job.name} Lvl ${warrior.level} <!--  <g:link controller="warrior" action="levelup" id="${warrior.id}" style="text-decoration:none;">+</g:link>--></span>
 			<span style="float:right;">Origin: ${warrior.origin.name}</span>
 		</h3>
 		<g:warriorSheet warrior="${warrior}">

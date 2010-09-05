@@ -5,15 +5,8 @@
 	<body>
 		<td valign="top">
 			<div id="content">
-				<h4>Equipment</h4>
-				<ul style="font-size:12px;">
-					<li>Lorem ipsum  ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an.</li>
-					<li>Lorem ipsum  ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an.</li>
-					<li>Lorem ipsum  ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an.</li>
-					<li>Lorem ipsum  ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an.</li>
-					<li>Lorem ipsum  ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an.</li>
-					<li>Lorem ipsum  ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an.</li>
-				</ul>
+				<h4>Quests</h4>
+				<div style="padding-left:30px;font-size:12px;">There's no available quests right now.</div>
 			</div>
 		</td>
 	</body>

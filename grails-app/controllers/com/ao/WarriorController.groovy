@@ -123,7 +123,7 @@ class WarriorController {
 		if(!warrior)
 			redirect(controller:"main",action:"index")
 	
-		if(warrior.actualSTA > 5){
+		if(warrior.actualSTA >= 5){
 			warrior.actualSTA -= 5
 			boolean encountered = false;
 			warrior.actualLocation.encounters.each{
