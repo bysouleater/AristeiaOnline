@@ -1,24 +1,35 @@
 <g:applyLayout name="main">
-	<div id="content">
-		<h3>
-			<span>${warrior.name} - ${warrior.job.name} Lvl ${warrior.level} <!--  <g:link controller="warrior" action="levelup" id="${warrior.id}" style="text-decoration:none;">+</g:link>--></span>
+<div id="content">
+	<h3>${warrior.name} - ${warrior.job.name} Lvl ${warrior.level} 
+	<label style="float:right;font-size:12px;"><b>Origin</b> ${warrior.origin.name}</label></h3>
+		<!-- <h3>
+			<span>${warrior.name} - ${warrior.job.name} Lvl ${warrior.level}   <g:link controller="warrior" action="levelup" id="${warrior.id}" style="text-decoration:none;">+</g:link></span>
 			<span style="float:right;">Origin: ${warrior.origin.name}</span>
-		</h3>
+		</h3> -->
 		<g:warriorSheet warrior="${warrior}">
-			<td colspan="12" style="padding-top:12px;" align="center">
-				<table><tr>
-				<td><button class="expButton2" style="line-height:1.2em"><img style="float:left;margin-right:5px;" width="15" height="15" src="/images/skills.jpg"/><b>Skills</b></button></td>
-				<td><button class="expButton2" style="line-height:1.2em"><img style="float:left;margin-right:5px;" width="15" height="15" src="/images/equip.png"/><b>Equipment</b></button></td>
-				<td><button class="expButton2" style="line-height:1.2em"><img style="float:left;margin-right:5px;" width="15" height="15" src="/images/inventory.png"/><b>Inventory</b></button></td>
-				</tr></table>
-				<!--  
-				<td><img border="0" width="15" height="15" src="/images/skills.jpg"/></td>
-				<td valign="middle" class="statusbartext" align="center" style="padding-right:10px;"><a href="<g:createLink controller='warrior' action='skills' id='${warrior.id}'/>">Skills</a></td>
-				<td><img border="0" width="15" height="15" src="/images/equip.png"/></td>
-				<td valign="middle" class="statusbartext" align="center" style="padding-right:10px;"><a href="<g:createLink controller='warrior' action='equip' id='${warrior.id}'/>">Equipment</a></td>
-				<td><img border="0" width="15" height="15" src="/images/inventory.png"/></td>
-				<td valign="middle" class="statusbartext" align="center" style="padding-right:10px;"><a href="<g:createLink controller='warrior' action='inventory' id='${warrior.id}'/>">Inventory</a></td>
-				-->
+			<td colspan="12" style="padding-top:5px;" align="center">
+				<table>
+					<tr>
+						<td><a href="<g:createLink controller='warrior' action='skills' id='${warrior.id}'/>">
+							<button class="expButton2" style="line-height:1.2em">
+								<img style="float:left;margin-right:5px;" width="15" height="15" src="/images/skills.jpg"/>
+								<b>Skills</b>
+							</button></a>
+						</td>
+						<td><a href="<g:createLink controller='warrior' action='equip' id='${warrior.id}'/>">
+							<button class="expButton2" style="line-height:1.2em">
+								<img style="float:left;margin-right:5px;" width="15" height="15" src="/images/equip.png"/>
+								<b>Equipment</b>
+							</button></a>
+						</td>
+						<td><a href="<g:createLink controller='warrior' action='inventory' id='${warrior.id}'/>">
+							<button class="expButton2" style="line-height:1.2em">
+								<img style="float:left;margin-right:5px;" width="15" height="15" src="/images/inventory.png"/>
+								<b>Inventory</b>
+							</button></a>
+						</td>
+					</tr>
+				</table>
 			</td>
 		</g:warriorSheet>
 		<table width="100%">
