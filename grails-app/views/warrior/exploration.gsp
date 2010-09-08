@@ -8,17 +8,13 @@
 				<h4>Exploration</h4>
 				<div style="font-size:14px;">You are now in <b>${warrior.actualLocation.name}</b></div>
 				
-				<table width="100%">
+				<table style="margin:20px 0px 20px 20px;">
 					<tr>
-						<td><button style="background:#FFFFFF;border:0;color:#333333;font-size:12px;line-height:1.2em"><img style="float:left;margin-right:10px;" width="32" height="32" src="/images/search.png"/><b>Search for items & monsters</b><br>(Consumes 5 STA)</button></td>
-						<td><button style="background:#FFFFFF;border:0;color:#333333;font-size:12px;line-height:1.2em"><img style="float:left;margin-right:10px;" width="32" height="32" src="/images/compass.png"/><b>Move to other map</b></button></td>
+						<td><button class="expButton" style="font-size:12px;line-height:1.2em"><img style="float:left;margin-right:10px;" width="32" height="32" src="/images/search.png"/><b>Search for items<br>and monsters</b> (5 STA)</button></td>
+						<td><button disabled="disabled" class="expButton" style="font-size:12px;line-height:1.2em"><img style="float:left;margin-right:10px;" width="32" height="32" src="/images/compass.png"/><p style="margin:8px 0px 0px 0px;"><b>Move to other map</b></p></button></td>
 					</tr>
 				</table>
-				
-				
-				
-				
-				<br><br><br>
+				<!--  
 				<div style="padding-left:30px;font-size:12px;"><g:if test="${warrior.actualSTA >= 5}">
 							<a href="<g:createLink controller='warrior' action='explore' id='${warrior.id}'/>"><b>Search for items and monsters</b></a> <i>(Consumes 5 STA)</i>
 						</g:if>
@@ -27,11 +23,19 @@
 						</g:else>
 				</div>
 				<div style="padding-left:30px;font-size:12px;"><b>Move to other map</b> <i>(Not yet implemented)</i></div>
+				-->
 				<g:if test="${warrior.actualLocation.isCity()}">
-					<div style="font-size:14px;">City places:</b></div>
-					<div style="padding-left:30px;font-size:12px;"><b>Weapons Store</b> <i>(Not yet implemented)</i></div>
-					<div style="padding-left:30px;font-size:12px;"><b>Armors Store</b> <i>(Not yet implemented)</i></div>
-					<div style="padding-left:30px;font-size:12px;"><b>Consumables Store</b> <i>(Not yet implemented)</i></div>
+					<div style="font-size:14px;">City places</b></div>
+					<table style="margin:20px 0px 20px 20px;">
+						<tr>
+							<td><button class="expButton" style="font-size:12px;line-height:1.2em"><img style="float:left;margin-right:10px;" width="32" height="32" src="/images/equip.png"/><p style="margin:8px 0px 0px 0px;"><b>Weapons Store</b></p></button></td>
+							<td><button class="expButton" style="font-size:12px;line-height:1.2em"><img style="float:left;margin-right:10px;" width="32" height="32" src="/images/armors.png"/><p style="margin:8px 0px 0px 0px;"><b>Armors Store</b></p></button></td>
+						</tr>
+						<tr>
+							<td><button class="expButton" style="font-size:12px;line-height:1.2em"><img style="float:left;margin-right:10px;" width="32" height="32" src="/images/consumables.png"/><p style="margin:8px 0px 0px 0px;"><b>Consumables Store</b></p></button></td>
+							<td></td>
+						</tr>
+					</table>
 				</g:if>
 			</div>
 		</td>

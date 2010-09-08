@@ -64,7 +64,7 @@ textarea.field {
 	width:98.5%;
 	height:100px
 } 
-button { 
+.buttonlindo { 
 	padding:1px 3px 1px 4px; 
 	font-size:1em; 
 	cursor:pointer; 
@@ -73,6 +73,28 @@ button {
 	border:1px solid #0e1f5b; 
 	border-left-color:#D9DFEA; 
 	border-top-color:#D9DFEA; 
+}
+.expButton{
+	cursor:pointer;
+	background:#FFFFFF;
+	border: 1px solid #777777;
+	padding: 5px;
+	color:#333333;	
+	width:230px;
+}
+.expButton2{
+	cursor:pointer;
+	background:#FFFFFF;
+	border: 1px solid #777777;
+	padding: 2px;
+	color:#333333;	
+	font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+	font-size:12px;
+}
+.expButton[disabled="disabled"]{
+	color:#AAAAAA;
+	border-color:#AAAAAA;
+	cursor:default;
 }
 button.next, button.cancel { 
 	background:#ddd; 
