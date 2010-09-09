@@ -7,11 +7,9 @@
         <g:javascript library="application" />
     </head>
     <body>
-        <div style="height:26px;margin:0 0 0 0.5em;
-			position:relative;z-index:2;border-color:#AAAAAA -moz-use-text-color #AAAAAA #AAAAAA;
-			border-style:solid none none solid;border-width:1px medium 1px 1px;background-color:#627AAD">
-			<img style="float:left;padding-top:3px;padding-left:3px;" src="${resource(dir:'images',file:'shield.png')}" alt="Grails" border="0" width="20" height="20" />
-			<div class="logo">Aristeia Online</div>
+        <div class="logo">
+			<img src="${resource(dir:'images',file:'shield.png')}" width="20" height="20"/>
+			<div>Aristeia Online</div>
 		</div>
         <div class="clear"></div>
         <g:layoutBody />

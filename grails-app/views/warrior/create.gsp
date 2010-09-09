@@ -4,33 +4,31 @@
 	</head>
 	<body>
 		<div id="content">
-			<h3><span>Create a new warrior</span></h3>
+			<h3>Create a new warrior</h3>
 			<g:form method="get" controller="warrior" action="save">
-				<table>
+				<table style="margin-left:20px;">
 					<tr>
-						<td class="labeltd">Name</td>
-						<td><g:textField name="name" value=""/></td>
+						<td align="right" class="labeltxt">Name</td>
+						<td><g:textField style="width:155px;" name="name" value=""/></td>
 					</tr>
 					<tr>
-						<td class="labeltd">Origin city</td>
-						<td>
-							<g:select name="origin" from="${cities}" noSelection="${[0:'Select origin city']}" optionKey="id" optionValue="name"/>
-						</td>
+						<td align="right" class="labeltxt">Origin city</td>
+						<td><g:select style="width:155px;" name="origin" from="${cities}" noSelection="${[0:'Select origin city']}" optionKey="id" optionValue="name"/></td>
 					</tr>			
 					<tr>
-						<td class="labeltd">Gender</td>
-						<td>
-							<input id="genderM" class="inputradio" type="radio" value="M" name="gender" checked="checked"/>
-							<label id="label_genderM" for="genderM" class="labelradio">Male</label>
-							<input id="genderF" class="inputradio" type="radio" value="F" name="gender"/>
-							<label id="label_genderF" for="genderF" class="labelradio">Female</label>
+						<td align="right" class="labeltxt">Gender</td>
+						<td class="labelvalue" valign="middle">
+							<input id="genderM" type="radio" value="M" name="gender" checked="checked"/>
+							<label id="label_genderM" for="genderM">Male</label>
+							<input id="genderF" type="radio" value="F" name="gender"/>
+							<label id="label_genderF" for="genderF">Female</label>
 						</td>
 					</tr>			
 				</table>
 				<div class="clear"></div>
 				<div class="formButtons">
-					<button type="submit">Create Warrior</button>
-					<g:link action="index" controller="main" style="text-decoration:none;"><button class="cancel">Cancel</button></g:link>
+					<button class="buttonlindo" type="submit">Create Warrior</button>
+					<g:link action="index" controller="main"><button class="buttonlindo cancel">Cancel</button></g:link>
 				</div>
 			</g:form>
 		</div>

@@ -6,21 +6,70 @@ body {
 a{
 	text-decoration: none;
 	}
+a:link, a:active{
+	color:#3B5998;
+	}
+a:hover{
+	color:#627AAD;
+	}
+a:visited{
+	color:#666666;
+	}
 img{
 	border:0;
 	}
-h1, h2, h3, h4, h6 {
+/*h1, h2, h3, h4, h6 {
 	border-bottom:1px solid #CCCCCC;
 	margin:0;
 	padding-bottom:0.17em;
 	padding-top:0.5em;
 	margin-bottom:0.6em;
 	font-weight: normal;
+	}*/
+h3, h5{
+	font-weight: normal;
+	margin:0;
+	padding-top:0.5em;
 	}
 h3{
 	font-size:18px;
+	border-bottom:1px solid #CCCCCC;
+	padding-bottom:0.17em;
+	margin-bottom:0.6em;
+	}
+h5 {
+	font-size:14px;
+}
+input, textarea, select { 
+	border:1px solid #BDC7D8; 
+	font-family:"lucida grande",tahoma,verdana,arial,sans-serif; 
+	font-size:11px; 
+	padding:3px; 
+}
+input:focus, textarea:focus, select:focus {
+	border-color:#687FB0
+}
+textarea.field {
+	width:98.5%;
+	height:100px
+}
+button{
+	cursor:pointer
+	}
+hr{
+	border:1px solid #CCCCCC;
 	}
 .logo{
+	height:26px;
+	margin:0 0 0 0.5em;
+	position:relative;
+	z-index:2;
+	border-color:#AAAAAA;
+	border-style:solid none none solid;
+	border-width:1px medium 1px 1px;
+	background-color:#627AAD
+	}
+.logo div{
 	float:left;
 	font-weight:bold;
 	padding-top:3px;
@@ -28,51 +77,73 @@ h3{
 	color:#FFFFFF;
 	font-size:16px;
 	}
-
-	
-	
+.logo img{
+	float:left;
+	padding-top:3px;
+	padding-left:3px;
+	}	
 #content {
-	background:none repeat scroll 0 0 white;
-	border-color:#AAAAAA -moz-use-text-color #AAAAAA #AAAAAA;
+	border-color:#AAAAAA;
 	border-style:solid none solid solid;
 	border-width:1px medium 1px 1px;
-	/*color:black;*/
 	line-height:1.5em;
-}
-#content {
 	margin:0 0 0 0.5em;
 	padding:0 1em 1.5em;
 	position:relative;
 	z-index:2;
 }
+.bigmsg{
+	text-align:center;
+	margin-top:50px;
+	font-size:16px;
+	}
+.labeltxt{
+	font-weight:bold;
+	font-size:12px;
+	padding-right:5px;
+	}
+.labelvalue{
+	font-size:12px;
+}
+.formButtons{
+	margin-top:20px;
+	text-align:center;
+}
+.buttonlindo { 
+	padding:3px 10px 3px 10px; 
+	font-size:14px;  
+	background:#3b5998; 
+	color:#fff; 
+	border:1px solid #0e1f5b; 
+	border-left-color:#D9DFEA; 
+	border-top-color:#D9DFEA; 
+}
+.cancel { 
+	background:#ddd; 
+	color:#111; 
+	border:1px solid #666; 
+	border-left-color:#ddd; 
+	border-top-color:#ddd 
+}
+.clear{
+	clear:both;
+}
 
-h5 {
-	background:none repeat scroll 0 0 transparent;
-	color:#444444;
-	font-weight:normal;
-	margin:0;
-	/*padding-bottom:0.17em;*/
-	padding-top:0.5em;
-	/*margin-bottom:0.6em;*/
-}
-h2 {
-	font-size:150%;
-	margin-top:2em;
-}
-input.search { 
-	background:white url(facebook.com/images/magglass.png) no-repeat scroll 3px 4px; 
-	padding-left:17px; 
-} 
-input, textarea, select { 
-	border:1px solid #BDC7D8; 
-	font-family:"lucida grande",tahoma,verdana,arial,sans-serif; 
-	font-size:11px; 
-	padding:3px; 
-	width:155px;
-} 
-input:focus, textarea:focus, select:focus {
-	border-color:#687FB0
-} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .field {
 	border:1px solid #bdc7d8; 
 	padding:2px
@@ -80,20 +151,9 @@ input:focus, textarea:focus, select:focus {
 .field:focus {
 	border-color:#687FB0
 } 
-textarea.field {
-	width:98.5%;
-	height:100px
-} 
-.buttonlindo { 
-	padding:1px 3px 1px 4px; 
-	font-size:1em; 
-	cursor:pointer; 
-	background:#3b5998; 
-	color:#fff; 
-	border:1px solid #0e1f5b; 
-	border-left-color:#D9DFEA; 
-	border-top-color:#D9DFEA; 
-}
+
+
+
 .expButton{
 	cursor:pointer;
 	background:#FFFFFF;
@@ -116,37 +176,11 @@ textarea.field {
 	border-color:#AAAAAA;
 	cursor:default;
 }
-button.next, button.cancel { 
-	background:#ddd; 
-	color:#111; 
-	border:1px solid #666; 
-	border-left-color:#ddd; 
-	border-top-color:#ddd 
-} 
-.formButtons{
-	text-align:center;
-}
-.clear{
-	clear:both;
-}
-.labeltd{
-	color:#555555;
-	font-weight:bold;
-	text-align:right;
-	width:100px;
-	padding-right:10px;
-	font-size:11px;
-}
-.labelradio{
-	font-size:11px;
-	text-align:left;
-	margin-right:10px;
-}
-.inputradio {
-	margin:0;
-	padding:0;
-	vertical-align:middle;
-}
+
+
+
+
+
 #rightcontent{
 	float:left;
 	background:none repeat scroll 0 0 white;
@@ -164,16 +198,7 @@ button.next, button.cancel {
 	z-index:2;
 	width:200px;
 }
-.statusbartext{
-	font-size:12px;
-	color:#444444;
-	font-weight:bold;
-}
-.statusbarvalue{
-	font-size:12px;
-	color:#444444;
-	
-}
+
 .statusbar{
 	width:125px;
 	height:4px;
