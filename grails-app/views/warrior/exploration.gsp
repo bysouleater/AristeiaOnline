@@ -1,28 +1,23 @@
-<html>
-	<head>
-		<meta name="layout" content="game"></meta>
-	</head>
-	<body>
-		<td valign="top">
-			<div id="content">
-				<h4>Exploration</h4>
-				<div style="font-size:14px;">You are now in <b>${warrior.actualLocation.name}</b></div>
-				
-				<table style="margin:20px 0px 20px 20px;">
-					<tr>
-						<td><g:if test="${warrior.actualSTA >= 5}">
-								<a href="<g:createLink controller='warrior' action='explore' id='${warrior.id}'/>">
-								<button class="expButton" style="font-size:12px;line-height:1.2em">
-									<table border="0" cellspacing="0" cellpadding="0" style="font-size:12px;">
+<g:applyLayout name="game">
+	<td valign="top">
+		<div id="content">
+			<h4>Exploration</h4>
+			<div style="font-size:14px;">You are now in <b>${warrior.actualLocation.name}</b></div>
+			<table style="margin:20px 0px 20px 20px;">
+				<tr>
+					<td><g:if test="${warrior.actualSTA >= 5}">
+							<a href="<g:createLink controller='warrior' action='explore' id='${warrior.id}'/>">
+								<button class="expButton" style="line-height:1.2em">
+									<table class="tablebutton" border="0" cellspacing="0" cellpadding="0">
 									<tr><td align="center" valign="middle"><img style="float:left;margin-right:10px;" width="32" height="32" src="/images/search.png"/></td>
 									<td valign="middle"><b>Search for items<br>and monsters</b> (5 STA)</td></tr>
 									</table>
 								</button>
-								</a>
-							</g:if>
-							<g:else>
-								<button disabled="disabled" class="expButton" style="font-size:12px;line-height:1.2em">
-									<table border="0" cellspacing="0" cellpadding="0" style="font-size:12px;">
+							</a>
+						</g:if>
+						<g:else>
+							<button disabled="disabled" class="expButton" style="line-height:1.2em">
+									<table class="disabledtablebutton" border="0" cellspacing="0" cellpadding="0">
 									<tr><td align="center" valign="middle"><img style="float:left;margin-right:10px;" width="32" height="32" src="/images/search.png"/></td>
 									<td valign="middle"><b>Search for items<br>and monsters</b> (5 STA)</td></tr>
 									</table>
@@ -31,8 +26,8 @@
 							
 						</td>
 						<td><a href="<g:createLink controller='warrior' action='explore' id='${warrior.id}'/>">
-							<button class="expButton" style="font-size:12px;line-height:1.2em">
-								<table border="0" cellspacing="0" cellpadding="0" style="font-size:12px;">
+							<button class="expButton" style="line-height:1.2em">
+								<table class="tablebutton" border="0" cellspacing="0" cellpadding="0">
 									<tr><td align="center" valign="middle"><img style="float:left;margin-right:10px;" width="32" height="32" src="/images/compass.png"/></td>
 									<td align="center" valign="middle"><b>Move to other map</b></td></tr>
 								</table>
@@ -65,5 +60,4 @@
 				</g:if>
 			</div>
 		</td>
-	</body>
-</html>
+</g:applyLayout>

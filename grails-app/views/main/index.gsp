@@ -12,7 +12,7 @@
 			<g:if test="${i+1 < warriorlist.size()}"><hr></g:if>
 		</g:each>
 		<g:if test="${warriorlist.size() < 3}">
-			<div style="text-align:right; font-size:12px;margin-top:20px;">or <g:link action="create" controller="warrior"><b>Create a new warrior</b></g:link></div>
+			<div style="text-align:right;margin-top:20px;">or <g:link action="create" controller="warrior"><b>Create a new warrior</b></g:link></div>
 		</g:if>
   		</div>
 </g:if>

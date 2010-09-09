@@ -6,32 +6,21 @@ body {
 a{
 	text-decoration: none;
 	}
-a:link, a:active{
+a:link, a:active, a:visited{
 	color:#3B5998;
 	}
 a:hover{
 	color:#627AAD;
 	}
-a:visited{
-	color:#666666;
-	}
 img{
 	border:0;
 	}
-/*h1, h2, h3, h4, h6 {
-	border-bottom:1px solid #CCCCCC;
-	margin:0;
-	padding-bottom:0.17em;
-	padding-top:0.5em;
-	margin-bottom:0.6em;
-	font-weight: normal;
-	}*/
-h3, h5{
+h3, h5, h4{
 	font-weight: normal;
 	margin:0;
 	padding-top:0.5em;
 	}
-h3{
+h3, h4{
 	font-size:18px;
 	border-bottom:1px solid #CCCCCC;
 	padding-bottom:0.17em;
@@ -40,6 +29,9 @@ h3{
 h5 {
 	font-size:14px;
 }
+h4{
+	font-size:16px;
+	}
 input, textarea, select { 
 	border:1px solid #BDC7D8; 
 	font-family:"lucida grande",tahoma,verdana,arial,sans-serif; 
@@ -128,77 +120,6 @@ hr{
 .clear{
 	clear:both;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.field {
-	border:1px solid #bdc7d8; 
-	padding:2px
-} 
-.field:focus {
-	border-color:#687FB0
-} 
-
-
-
-.expButton{
-	cursor:pointer;
-	background:#FFFFFF;
-	border: 1px solid #777777;
-	padding: 5px;
-	color:#333333;	
-	width:230px;
-}
-.expButton2{
-	cursor:pointer;
-	background:#FFFFFF;
-	border: 1px solid #777777;
-	padding: 2px;
-	color:#333333;	
-	font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
-	font-size:12px;
-}
-.expButton[disabled="disabled"]{
-	color:#AAAAAA;
-	border-color:#AAAAAA;
-	cursor:default;
-}
-
-
-
-
-
-#rightcontent{
-	float:left;
-	background:none repeat scroll 0 0 white;
-	border-color:#AAAAAA -moz-use-text-color #AAAAAA #AAAAAA;
-	border-style:solid none solid solid;
-	border-width:1px medium 1px 1px;
-	color:black;
-	line-height:1.5em;
-	width:500px;
-}
-#charsheet{
-	float:left;
-	margin:0;
-	padding:0 1em 1.5em;
-	z-index:2;
-	width:200px;
-}
-
 .statusbar{
 	width:125px;
 	height:4px;
@@ -234,7 +155,7 @@ hr{
 .actionspro .inactive { 
 	padding: 2px 3px; 
 	color: gray; 
-} 
+}
 .paginator{
 	font-size:12px;
 	text-align:right;
@@ -248,3 +169,38 @@ hr{
 	
 	margin-top:2px;
 }
+
+
+
+
+
+.expButton{
+	cursor:pointer;
+	background:#FFFFFF;
+	border: 1px solid #AAAAAA;
+	padding: 5px;
+	color:#3B5998;
+	width:230px;
+}
+.expButton2{
+	cursor:pointer;
+	background:#FFFFFF;
+	border: 1px solid #AAAAAA;
+	padding: 2px;
+	color:#3B5998;
+	font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+	font-size:12px;
+}
+.expButton[disabled="disabled"]{
+	cursor:default;
+}
+
+
+.tablebutton{
+	font-size:12px;
+	color:#3B5998;
+	}
+.disabledtablebutton{
+	font-size:12px;
+	color:#AAAAAA;
+	}

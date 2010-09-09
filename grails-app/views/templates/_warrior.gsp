@@ -45,7 +45,7 @@
 						<td align="right" class="labelvalue">${warrior.baseStat("STR").intValue()}</td>
 						<td align="left" class="labelvalue"><g:if test="${warrior.bonusBaseStat('STR').intValue() > 0}">+${warrior.bonusBaseStat("STR").intValue()}</g:if></td>
 						<td width="15"><g:if test="${warrior.statPoints > 0}">
-								<a href="javascript:updateStat('STR');" style="text-decoration:none;"><img border="0" width="10" height="10" src="/images/up.png"/></a>
+								<a href="javascript:updateStat('STR');"><img width="10" height="10" src="/images/up.png"/></a>
 							</g:if>
 						</td>
 						
@@ -53,7 +53,7 @@
 						<td align="right" class="labelvalue">${warrior.baseStat("DEX").intValue()}</td>
 						<td align="left" class="labelvalue"><g:if test="${warrior.bonusBaseStat('DEX').intValue() > 0}">+${warrior.bonusBaseStat("DEX").intValue()}</g:if></td>
 						<td width="15"><g:if test="${warrior.statPoints > 0}">
-								<a href="javascript:updateStat('DEX');" style="text-decoration:none;"><img border="0" width="10" height="10" src="/images/up.png"/></a>
+								<a href="javascript:updateStat('DEX');"><img width="10" height="10" src="/images/up.png"/></a>
 							</g:if>
 						</td>
 						
@@ -65,7 +65,7 @@
 						<td align="right" class="labelvalue">${warrior.baseStat("CON").intValue()}</td>
 						<td align="left" class="labelvalue"><g:if test="${warrior.bonusBaseStat('CON').intValue() > 0}">+${warrior.bonusBaseStat("CON").intValue()}</g:if></td>
 						<td width="15"><g:if test="${warrior.statPoints > 0}">
-								<a href="javascript:updateStat('CON');" style="text-decoration:none;"><img border="0" width="10" height="10" src="/images/up.png"/></a>
+								<a href="javascript:updateStat('CON');"><img width="10" height="10" src="/images/up.png"/></a>
 							</g:if>
 						</td>
 						
@@ -73,7 +73,7 @@
 						<td align="right" class="labelvalue">${warrior.baseStat("AGI").intValue()}</td>
 						<td align="left" class="labelvalue"><g:if test="${warrior.bonusBaseStat('DEX').intValue() > 0}">+${warrior.bonusBaseStat("AGI").intValue()}</g:if></td>
 						<td width="15"><g:if test="${warrior.statPoints > 0}">
-								<a href="javascript:updateStat('AGI');" style="text-decoration:none;"><img border="0" width="10" height="10" src="/images/up.png"/></a>
+								<a href="javascript:updateStat('AGI');"><img width="10" height="10" src="/images/up.png"/></a>
 							</g:if>
 						</td>
 						
@@ -89,7 +89,9 @@
 					</tr>
 					<tr>
 						<td colspan="8" align="left" valign="top">
-							<table border="0" cellspacing="0" cellpadding="0"><tr><td style="padding-right:10px;" class="labeltxt">Actual Location</td><td class="labelvalue">${warrior.actualLocation.name}</td></tr></table>
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tr><td style="padding-right:10px;" class="labeltxt">Actual Location</td><td class="labelvalue">${warrior.actualLocation.name}</td></tr></table>
+						</td>
 						<td class="labeltxt">Luck</td><td class="labelvalue" align="right" style="padding-right:5px;">${warrior.completeDerivedStat("Luck")}</td>
 						<td class="labeltxt">Initiative</td><td class="labelvalue" align="right" style="padding-right:5px;">${warrior.completeDerivedStat("Init")}</td>
 					</tr>
