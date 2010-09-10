@@ -5,21 +5,18 @@
 	<g:warriorSheet warrior="${warrior}">
 		<td colspan="12" style="padding-top:5px;" align="center">
 			<table><tr>
-				<td><a href="<g:createLink controller='warrior' action='skills' id='${warrior.id}'/>">
-					<button class="expButton2">
-						<img style="float:left;margin-right:5px;" width="15" height="15" src="/images/skills.jpg"/>
-						<b>Skills</b>
-					</button></a></td>
-				<td><a href="<g:createLink controller='warrior' action='equip' id='${warrior.id}'/>">
-					<button class="expButton2">
-						<img style="float:left;margin-right:5px;" width="15" height="15" src="/images/equip.png"/>
-						<b>Equipment</b>
-					</button></a></td>
-				<td><a href="<g:createLink controller='warrior' action='inventory' id='${warrior.id}'/>">
-					<button class="expButton2">
-						<img style="float:left;margin-right:5px;" width="15" height="15" src="/images/inventory.png"/>
-						<b>Inventory</b>
-					</button></a></td>
+				<td><a class="buttonlink" href="<g:createLink controller='warrior' action='skills' id='${warrior.id}'/>">
+					<img width="15" height="15" src="/images/skills.jpg"/>
+					<b>Skills</b></a></td>					
+				<td><a class="buttonlink" href="<g:createLink controller='warrior' action='equip' id='${warrior.id}'/>">
+					<img width="15" height="15" src="/images/equip.png"/>
+					<b>Equipment</b></a></td>
+				<td><a class="buttonlink" href="<g:createLink controller='warrior' action='inventory' id='${warrior.id}'/>">
+					<img width="15" height="15" src="/images/inventory.png"/>
+					<b>Inventory</b></a></td>
+				<td><a class="buttonlink" href="<g:createLink controller='warrior' action='insights' id='${warrior.id}'/>">
+					<img width="15" height="15" src="/images/insights.png"/>
+					<b>Insights</b></a></td>
 			</tr></table>
 		</td>
 	</g:warriorSheet>

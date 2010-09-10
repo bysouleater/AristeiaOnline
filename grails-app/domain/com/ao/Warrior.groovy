@@ -184,14 +184,14 @@ class Warrior {
 		lastSTAModifiedDelta = 0
 		lastHPModified = new DateTime().getMillis()
 		lastHPModifiedDelta = 0
-		save()
+//		save()
 	}
 	
 	void updateStat(def stat){
 		stats."$stat" += 1
 		statPoints--
 		refreshDerivedStats()
-		save()
+//		save()
 	}
 	
 	void giveExp(Long exp){
@@ -203,7 +203,7 @@ class Warrior {
 			addToJournal(je)
 			
 		}
-		save()
+//		save()
 	}
 	
 	int STARecoverAmount(){
@@ -228,7 +228,7 @@ class Warrior {
 			
 		lastSTAModified = now
 		lastSTAModifiedDelta = dif % refresh_rate
-		save()
+//		save()
 	}
 	
 	void refreshHP(){
@@ -245,6 +245,6 @@ class Warrior {
 			
 		lastHPModified = now
 		lastHPModifiedDelta = dif % refresh_rate
-		save()
+//		save()
 	}
 }

@@ -6,12 +6,12 @@ import com.ao.City
 class WarriorController {
 	
 	def index = { 
-		if(!params.id)
-			redirect(controller:"main",action:"index")
-
+//		if(!params.id)
+//			redirect(controller:"main",action:"index")
+//
 		def w = Warrior.get(params.id as Long)
-		if(!w)
-			redirect(controller:"main",action:"index")
+//		if(!w)
+//			redirect(controller:"main",action:"index")
 			
 		def journal = JournalEntry.withCriteria {
 			warrior {
@@ -24,6 +24,7 @@ class WarriorController {
 		
 		w.refreshSTA()
 		w.refreshHP()
+//		w.save()
 			
 		[warrior:w,journal:journal]
 	}
@@ -42,86 +43,103 @@ class WarriorController {
 		if(warrior.validate()){
 			warrior.save()
 			redirect(controller:"main",action:"index")
+		}else{
+			redirect(controller:"warrior",action:"create", params:params)
 		}
-		redirect(controller:"warrior",action:"create", params:params)
 	}
 	
 	def updateStat = {
-		if(!params.id)
-			redirect(controller:"main",action:"index")
-			
-		def warrior = Warrior.get(params.id as Long)
-		if(!warrior)
-			redirect(controller:"main",action:"index")
+//		if(!params.id)
+//			redirect(controller:"main",action:"index")
+//			
+//		def warrior = Warrior.get(params.id as Long)
+//		if(!warrior)
+//			redirect(controller:"main",action:"index")
 		
 		if(!params.stat)
 			redirect(controller:"warrior", action:"index", id:params.id)
 		warrior.updateStat(params.stat)
+		warrior.refreshSTA()
+		warrior.refreshHP()
+//		warrior.save()
 		redirect(controller:"warrior", action:"index", id:params.id)
 	}
 	
 	def skills = {
-		if(!params.id)
-			redirect(controller:"main",action:"index")
+//		if(!params.id)
+//			redirect(controller:"main",action:"index")
 	
 		def warrior = Warrior.get(params.id as Long)
-		if(!warrior)
-			redirect(controller:"main",action:"index")
+//		if(!warrior)
+//			redirect(controller:"main",action:"index")
 	
+		warrior.refreshSTA()
+		warrior.refreshHP()
+//		warrior.save()
 		[warrior:warrior]
 	}
 	
 	def equip = {
-		if(!params.id)
-			redirect(controller:"main",action:"index")
+//		if(!params.id)
+//			redirect(controller:"main",action:"index")
 	
 		def warrior = Warrior.get(params.id as Long)
-		if(!warrior)
-			redirect(controller:"main",action:"index")
+//		if(!warrior)
+//			redirect(controller:"main",action:"index")
 	
+		warrior.refreshSTA()
+		warrior.refreshHP()
+//		warrior.save()
 		[warrior:warrior]
 	}
 	
 	def inventory = {
-		if(!params.id)
-			redirect(controller:"main",action:"index")
+//		if(!params.id)
+//			redirect(controller:"main",action:"index")
 	
 		def warrior = Warrior.get(params.id as Long)
-		if(!warrior)
-			redirect(controller:"main",action:"index")
+//		if(!warrior)
+//			redirect(controller:"main",action:"index")
 	
+		warrior.refreshSTA()
+		warrior.refreshHP()
+//		warrior.save()
 		[warrior:warrior]
 	}
 	
 	def exploration = {
-		if(!params.id)
-			redirect(controller:"main",action:"index")
+//		if(!params.id)
+//			redirect(controller:"main",action:"index")
 	
 		def warrior = Warrior.get(params.id as Long)
-		if(!warrior)
-			redirect(controller:"main",action:"index")
-	
+//		if(!warrior)
+//			redirect(controller:"main",action:"index")
+		warrior.refreshSTA()
+		warrior.refreshHP()
+//		warrior.save()
 		[warrior:warrior]
 	}
 	
 	def training = {
-		if(!params.id)
-			redirect(controller:"main",action:"index")
+//		if(!params.id)
+//			redirect(controller:"main",action:"index")
 	
 		def warrior = Warrior.get(params.id as Long)
-		if(!warrior)
-			redirect(controller:"main",action:"index")
-	
+//		if(!warrior)
+//			redirect(controller:"main",action:"index")
+		warrior.refreshSTA()
+		warrior.refreshHP()
+//		warrior.save()
 		[warrior:warrior]
 	}
 	
 	def explore = {
-		if(!params.id)
-			redirect(controller:"main",action:"index")
+//		if(!params.id)
+//			redirect(controller:"main",action:"index")
 	
 		def warrior = Warrior.get(params.id as Long)
-		if(!warrior)
-			redirect(controller:"main",action:"index")
+//		if(!warrior)
+//			redirect(controller:"main",action:"index")
 	
 		if(warrior.actualSTA >= 5){
 			warrior.actualSTA -= 5
@@ -146,17 +164,22 @@ class WarriorController {
 				warrior.addToJournal(je)
 			}
 		}
+		warrior.refreshSTA()
+		warrior.refreshHP()
+		//warrior.save()
 		redirect(controller:"warrior",action:"index", id:params.id)
 	}
 	
 	def quests = {
-		if(!params.id)
-			redirect(controller:"main",action:"index")
+//		if(!params.id)
+//			redirect(controller:"main",action:"index")
 	
 		def warrior = Warrior.get(params.id as Long)
-		if(!warrior)
-			redirect(controller:"main",action:"index")
-	
+//		if(!warrior)
+//			redirect(controller:"main",action:"index")
+		warrior.refreshSTA()
+		warrior.refreshHP()
+//		warrior.save()
 		[warrior:warrior]
 	}
 	
