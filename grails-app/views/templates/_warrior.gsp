@@ -22,11 +22,11 @@
 						<div class="statusbar inside" style="width:${((warrior.actualSTA * 100 / warrior.maxSTA()) * 1.25).intValue()}px;background-color:#FFE303"></div></div>
 				</td></tr>
 				<tr>
-					<td width="25" align="left" class="labeltxt" style="font-size:10px;">EXP</td>
-					<td align="left" class="labelvalue" style="font-size:10px;">${warrior.actualExp} / ${warrior.nextLvlExp()}</td>
+					<td width="25" align="left" class="labeltxt" style="font-size:10px;"><span title="${(warrior.actualExpPerc() / 1.25).intValue()}%">EXP</span></td>
+					<td align="left" class="labelvalue" style="font-size:10px;"><span title="${(warrior.actualExpPerc() / 1.25).intValue()}%">${warrior.actualExp} / ${warrior.nextLvlExp()}</span></td>
 				</tr>
 				<tr><td colspan="2" align="left">
-					<div class="statusbar outside">
+					<div class="statusbar outside" title="${(warrior.actualExpPerc() / 1.25).intValue()}%">
 						<div class="statusbar inside" style="width:${warrior.actualExpPerc()}px;background-color:#0000FF"></div></div>
 				</td></tr>
 				<tr height="25">

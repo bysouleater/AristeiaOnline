@@ -18,6 +18,7 @@ class Warrior {
 	
 	Job job
 	StatsList stats
+	SkillsList skills
 	City origin
 	Map actualLocation
 	Equipment equip
@@ -58,6 +59,10 @@ class Warrior {
 		statPoints = 0
 		gold = 100
 		actualLocation = origin.map
+		
+		SkillsList skills = new SkillsList()
+		skills.save()
+		this.skills = skills
 		
 		StatsList stats = new StatsList()
 		origin.stats.all().each{key, val -> stats."$key" = val}

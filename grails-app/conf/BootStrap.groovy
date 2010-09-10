@@ -45,6 +45,35 @@ class BootStrap {
 		cm4.addToEncounters(wolfencounter)
 		cm4.save()
 		
+		def sk1 = new SkillsList(Aiming:1d)
+		sk1.save()
+		def tp1 = new TrainingPlace(name:"Chalcedon Shooting Camp", STArequired:5, skills:sk1)
+		tp1.save()
+		
+		def sk2 = new SkillsList(Athletics:1d)
+		sk2.save()
+		def tp2 = new TrainingPlace(name:"Cebrene Speed Ring", STArequired:5, skills:sk2)
+		tp1.save()
+		
+		def sk3 = new SkillsList(Escape_Artist:1d)
+		sk3.save()
+		def tp3 = new TrainingPlace(name:"Mallia Laberinth", STArequired:5, skills:sk3)
+		tp1.save()
+		
+		def sk4 = new SkillsList(Endurance:1d)
+		sk4.save()
+		def tp4 = new TrainingPlace(name:"Baris Rocks", STArequired:5, skills:sk4)
+		tp1.save()
+		
+		cm1.addToTrainingPlaces(tp2)
+		cm2.addToTrainingPlaces(tp1)
+		cm3.addToTrainingPlaces(tp4)
+		cm4.addToTrainingPlaces(tp3)
+		cm1.save()
+		cm2.save()
+		cm3.save()
+		cm4.save()
+		
 		
     }
     def destroy = {

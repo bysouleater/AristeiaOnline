@@ -14,6 +14,7 @@ class Job {
 	StatsList baseStats
 	StatsList levelUpStats
 	int maxLevel
+	int maxSkillsValue
 
     static constraints = {
 		name(nullable:false,blank:false,maxSize:30,unique:true)
@@ -28,7 +29,7 @@ class Job {
 		newbie_base_stats.save()
 		newbie_levelup_stats.save()
 		def newbie = new Job(name:"Newbie", baseStats:newbie_base_stats, 
-			levelUpStats: newbie_levelup_stats, maxLevel: 5)
+			levelUpStats: newbie_levelup_stats, maxLevel: 5, maxSkillsValue: 20)
 		newbie.save()
 		NEWBIE = newbie.id
 		
@@ -38,7 +39,7 @@ class Job {
 		barbarian_base_stats.save()
 		barbarian_levelup_stats.save()
 		def barbarian = new Job(name:"Barbarian", baseStats:barbarian_base_stats,
-			levelUpStats: barbarian_levelup_stats, maxLevel: 15)
+			levelUpStats: barbarian_levelup_stats, maxLevel: 15, maxSkillsValue: 60)
 		barbarian.save()
 		BARBARIAN = barbarian.id
 		
@@ -48,7 +49,7 @@ class Job {
 		soldier_base_stats.save()
 		soldier_levelup_stats.save()
 		def soldier = new Job(name:"Soldier", baseStats:soldier_base_stats,
-			levelUpStats: soldier_levelup_stats, maxLevel: 15)
+			levelUpStats: soldier_levelup_stats, maxLevel: 15, maxSkillsValue: 60)
 		soldier.save()
 		SOLDIER = soldier.id
 		
@@ -58,7 +59,7 @@ class Job {
 		adept_base_stats.save()
 		adept_levelup_stats.save()
 		def adept = new Job(name:"Soldier", baseStats:adept_base_stats,
-			levelUpStats: adept_levelup_stats, maxLevel: 15)
+			levelUpStats: adept_levelup_stats, maxLevel: 15, maxSkillsValue: 60)
 		adept.save()
 		ADEPT = adept.id
 		
@@ -68,7 +69,7 @@ class Job {
 		shooter_base_stats.save()
 		shooter_levelup_stats.save()
 		def shooter = new Job(name:"Shooter", baseStats:shooter_base_stats,
-			levelUpStats: shooter_levelup_stats, maxLevel: 15)
+			levelUpStats: shooter_levelup_stats, maxLevel: 15, maxSkillsValue: 60)
 		shooter.save()
 		SHOOTER = shooter.id
 		
@@ -78,7 +79,7 @@ class Job {
 		competent_base_stats.save()
 		competent_levelup_stats.save()
 		def competent = new Job(name:"Competent", baseStats:competent_base_stats,
-			levelUpStats: competent_levelup_stats, maxLevel: 15)
+			levelUpStats: competent_levelup_stats, maxLevel: 15, maxSkillsValue: 60)
 		competent.save()
 		COMPETENT = competent.id
 		
@@ -88,7 +89,7 @@ class Job {
 		specialist_base_stats.save()
 		specialist_levelup_stats.save()
 		def specialist = new Job(name:"Specialist", baseStats:specialist_base_stats,
-			levelUpStats: specialist_levelup_stats, maxLevel: 15)
+			levelUpStats: specialist_levelup_stats, maxLevel: 15, maxSkillsValue: 60)
 		specialist.save()
 		SPECIALIST = specialist.id
 	}
