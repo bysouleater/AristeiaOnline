@@ -111,7 +111,25 @@ class WarriorController {
 		[warrior:warrior]
 	}
 	
-	
+	def train = {
+		def warrior = Warrior.get(params.id as Long)
+		def tp = TrainingPlace.get(params.tp as Long)
+		if(warrior.actualLocation.trainingPlaces.contains(tp)){
+			if(warrior.actualSTA >= tp.STArequired){
+				warrior.actualSTA -= tp.STArequired
+				
+				tp.skills.all().each{
+					if(it.value > 0){
+						double gained = (double)((double)(new Random().nextInt((10*it.value).intValue())+1) / 10)
+						println gained
+						warrior.skills."$it.key" += gained
+					}
+				}
+				warrior.save()
+			}
+		}
+		redirect(controller:"warrior",action:"index", id:params.id)
+	}
 	
 	
 	
