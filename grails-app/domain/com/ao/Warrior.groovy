@@ -71,8 +71,10 @@ class Warrior {
 		stats.save()
 		this.stats = stats
 		
+		def knife = new Item(type:Weapon.get(1L))
+		knife.save()
 		
-		def equip = new Equipment()
+		def equip = new Equipment(weapon:knife)
 		equip.save()
 		this.equip = equip
 		
@@ -123,7 +125,12 @@ class Warrior {
 	 * Util para todos los stats
 	 */
 	double bonusBaseStat(String stat){
-		return equip.equipStat(stat)
+		double val = 0
+		if(stat == "STR"){
+			val += (skills.Athletics / 10).intValue()
+			val += (skills.Climb / 10).intValue()
+		}
+		return val + equip.equipStat(stat)
 	}
 	
 	/**

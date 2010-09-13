@@ -71,6 +71,11 @@ class WarriorController {
 		[warrior:warrior]
 	}
 	
+	def insights = {
+		def warrior = Warrior.get(params.id as Long)
+		[warrior:warrior]
+	}
+	
 	def training = {
 		def warrior = Warrior.get(params.id as Long)
 		[warrior:warrior]
@@ -118,13 +123,23 @@ class WarriorController {
 			if(warrior.actualSTA >= tp.STArequired){
 				warrior.actualSTA -= tp.STArequired
 				
+				def text = "You spent some time training in <b>${tp.name}</b>. <br>Gained "
+				boolean first = true
 				tp.skills.all().each{
 					if(it.value > 0){
 						double gained = (double)((double)(new Random().nextInt((10*it.value).intValue())+1) / 10)
-						println gained
+						if(!first)
+							text += " and "
+						else
+							first = false
+						text += "<b>${gained}</b> in <b>${it.key}</b>"
 						warrior.skills."$it.key" += gained
 					}
 				}
+				text += "."
+				def je = new JournalEntry(type:JournalEntry.TEXT, text:text)
+				je.save()
+				warrior.addToJournal(je)
 				warrior.save()
 			}
 		}

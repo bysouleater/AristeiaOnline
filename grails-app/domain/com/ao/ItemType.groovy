@@ -7,9 +7,9 @@ class ItemType {
 	
 	boolean consumable
 	
-	static mapping = {
-		tablePerHierarchy false
-	}
+//	static mapping = {
+//		tablePerHierarchy false
+//	}
 
     static constraints = {
 		name(nullable:false,blank:false,maxSize:50,unique:true)

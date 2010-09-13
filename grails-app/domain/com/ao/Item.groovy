@@ -4,14 +4,14 @@ class Item {
 	
 	ItemType type
 	int qty = 1
-	double lootChance 
-	Long playerPrice
-	int upgrade
+	double lootChance = 0
+	Long playerPrice = 0
+	int upgrade = 0
 
     static constraints = {
 		type(nullable:false)
 		qty(minSize:1)
-		lootChance(minSize:0.01)
+		lootChance(minSize:0)
 		playerPrice(minSize:0)
 		upgrade(minSize:0,maxSize:10)
     }

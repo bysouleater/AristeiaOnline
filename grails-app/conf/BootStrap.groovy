@@ -75,6 +75,13 @@ class BootStrap {
 		cm4.save()
 		
 		
+		def knifeStats = new StatsList(PAtk:5)
+		knifeStats.save()
+		def knife = new Weapon(name:"Knife", price:10, consumable:false, type:Weapon.LIGHT,handsQty:1,stats:knifeStats)
+		knife.save()
+		
+		
+		
     }
     def destroy = {
     }
