@@ -1,8 +1,6 @@
 package aristeiaonline
 
 import com.ao.Warrior
-import com.facebook.api.*
-import org.w3c.dom.Document
 
 class MainController {
 	
@@ -10,19 +8,24 @@ class MainController {
 	static final String FB_APP_ADD_URL = "http://www.facebook.com/add.php?api_key="
 	static final String FB_API_KEY = "41f82a404dc9b0bbb4579a993c51ae4d"
 	static final String FB_SECRET_KEY = "c5b463359f752c1070dcd15db30cdcf9"
+	static final String FB_API_ID = "141786259185672"
 	
-	def getAuthenticatedFacebookClient(def request, def response){
-		Facebook fb = new Facebook(request, response,FB_API_KEY, FB_SECRET_KEY)
-		String next = request.getServletPath().substring(1)
+	def ok = {
 		
-		if (fb.requireLogin(next))
-			return null
-		return fb.getFacebookRestClient()
+		render(view:"index",model:[warriorlist:Warrior.findAllByOwner_id(123L)])
 	}
 	
-	
-	
 	def index = {
+		def cookie = request.getCookie("fbs_"+FB_API_ID)
+		if(cookie){
+			def cookie_params = [:] 
+			cookie.split("&").each{
+				cookie_params[it.split("=")[0]] = it.split("=")[1] 
+			}
+			println cookie_params.uid
+			redirect("https://graph.facebook.com/oauth/authorize?client_id=...&redirect_uri=http://localhost:8080/ok")
+		}
+			
 //		FacebookRestClient facebook = getAuthenticatedFacebookClient(request, response)
 //		if(facebook){
 //			if(getFacebookInfo(request, facebook)){
@@ -31,43 +34,5 @@ class MainController {
 //		}
 		
 		[warriorlist:Warrior.findAllByOwner_id(123L)]
-	}
-	
-	/*
-	 * This method obtains some basic Facebook profile
-	 * information from the logged in user who is
-	 * accessing our application in the current HTTP request.
-	 */
-	private boolean getFacebookInfo(def request, FacebookRestClient facebook){
-		try {
-			long userID = facebook.users_getLoggedInUser()
-			Collection<Long> users = new ArrayList<Long>()
-			users.add(userID)
-			
-			
-			EnumSet<ProfileField> fields = EnumSet.of (
-					com.facebook.api.ProfileField.NAME,
-					com.facebook.api.ProfileField.PIC);
-			
-			Document d = facebook.users_getInfo(users, fields);
-			String name =
-					d.getElementsByTagName("name").item(0).getTextContent();
-			String picture =
-					d.getElementsByTagName("pic").item(0).getTextContent();
-			
-			request.setAttribute("uid", userID);
-			request.setAttribute("profile_name", name);
-			request.setAttribute("profile_picture_url", picture);
-		} catch (FacebookException e) {
-			
-//			HttpSession session = request.getSession();
-//			session.setAttribute("facebookSession", null);
-			return false;
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-			return false;
-		}
-		return true;
 	}
 }
