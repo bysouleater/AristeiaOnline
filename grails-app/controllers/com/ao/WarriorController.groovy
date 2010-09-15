@@ -146,15 +146,33 @@ class WarriorController {
 		redirect(controller:"warrior",action:"index", id:params.id)
 	}
 	
+	def movemap = {
+		def warrior = Warrior.get(params.id as Long)
+		[warrior:warrior]
+	}
 	
+	def weaponstore = {
+		def warrior = Warrior.get(params.id as Long)
+		render(view:"store", model:[storename:"Weapons",warrior:warrior])
+	}
 	
+	def armorstore = {
+		def warrior = Warrior.get(params.id as Long)
+		render(view:"store", model:[storename:"Armors",warrior:warrior])
+	}
 	
+	def consumablestore = {
+		def warrior = Warrior.get(params.id as Long)
+		render(view:"store", model:[storename:"Consumables",warrior:warrior])
+	}
 	
+	def transports = {
+		def warrior = Warrior.get(params.id as Long)
+		[warrior:warrior]
+	}
 	
-	def levelup = {
-		def warrior = Warrior.get(params.id)
-		warrior.actualExp = warrior.nextLvlExp() + 1000
-		warrior.levelUp()
-		redirect(controller:"warrior",action:"index",id:params.id)
+	def arena = {
+		def warrior = Warrior.get(params.id as Long)
+		[warrior:warrior]
 	}
 }
