@@ -4,6 +4,7 @@ class ItemType {
 	
 	String name
 	Long price
+	String icon
 	
 	boolean consumable
 	
@@ -13,6 +14,7 @@ class ItemType {
 
     static constraints = {
 		name(nullable:false,blank:false,maxSize:50,unique:true)
+		icon(nullable:true)
 		price(minSize:0)
     }
 }

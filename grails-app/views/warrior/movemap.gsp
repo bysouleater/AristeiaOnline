@@ -20,6 +20,24 @@
 						<td></td>
 						<td></td>
 						<td></td>
+						<td style="background-color:#DDDDDD;font-size:10px;">Cebrene City</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td style="background-color:#DDDDDD;font-size:10px;">Chalcedon City</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td style="background-color:#DDDDDD;font-size:10px;">Mallia City</td>
+						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -37,25 +55,7 @@
 					<tr>
 						<td></td>
 						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td style="background-color:#DDDDDD;font-size:10px;">Baris City</td>
 						<td></td>
 						<td></td>
 						<td></td>

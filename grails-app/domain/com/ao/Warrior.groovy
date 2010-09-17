@@ -74,7 +74,10 @@ class Warrior {
 		def knife = new Item(type:Weapon.get(1L))
 		knife.save()
 		
-		def equip = new Equipment(weapon:knife)
+		def shirt = new Item(type:Armor.get(2L))
+		shirt.save()
+		
+		def equip = new Equipment(weapon:knife,body:shirt)
 		equip.save()
 		this.equip = equip
 		

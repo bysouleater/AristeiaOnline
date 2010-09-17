@@ -77,8 +77,13 @@ class BootStrap {
 		
 		def knifeStats = new StatsList(PAtk:5)
 		knifeStats.save()
-		def knife = new Weapon(name:"Knife", price:10, consumable:false, type:Weapon.LIGHT,handsQty:1,stats:knifeStats)
+		def knife = new Weapon(name:"Knife", price:10, icon:"/images/knife.png", consumable:false, type:Weapon.LIGHT,handsQty:1,stats:knifeStats)
 		knife.save()
+		
+		def shirtStats = new StatsList(PDef:5)
+		shirtStats.save()
+		def shirt = new Armor(name:"Cotton Shirt", price:10, icon:"/images/shirt.png", consumable:false, type:Armor.BODY,stats:shirtStats)
+		shirt.save()
 		
 		
 		

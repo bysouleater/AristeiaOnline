@@ -6,7 +6,7 @@
 		<td valign="top">
 			<div id="content">
 				<h4>Equipment</h4>
-				<table style="font-size:12px;margin:15px 0px 20px 20px;">
+				<table style="font-size:12px;margin:15px 0px 20px 20px;" cellpadding="0">
 					<tr>
 						<td class="labeltxt">Head </td>
 						<g:if test="${warrior.equip.head}">
@@ -39,7 +39,9 @@
 						</g:else>
 						<td class="labeltxt">Weapon </td>
 						<g:if test="${warrior.equip.weapon}">
-							<td background="/images/empty.png"><img width="32" height="32" src="/images/knife.png"/></td>
+							<td width="32" height="32" align="center" valign="middle">
+							<button style="background:url('/images/empty.png');border:0px;width:32px;height:32px;"><img width="26" height="26" src="${warrior.equip.weapon.type.icon}"/></button>
+							</td>
 							<td width="200">${warrior.equip.weapon.type.name}</td>
 						</g:if>
 						<g:else>
@@ -50,7 +52,9 @@
 					<tr>
 						<td class="labeltxt">Body </td>
 						<g:if test="${warrior.equip.body}">
-							<td><img width="32" height="32" src="/images/empty.png"/></td>
+							<td width="32" height="32" align="center" valign="middle">
+							<button style="background:url('/images/empty.png');border:0px;width:32px;height:32px;"><img width="26" height="26" src="${warrior.equip.body.type.icon}"/></button>
+							</td>
 							<td width="200">${warrior.equip.body.type.name}</td>
 						</g:if>
 						<g:else>

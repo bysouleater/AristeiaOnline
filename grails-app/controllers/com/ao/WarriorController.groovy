@@ -57,17 +57,17 @@ class WarriorController {
 	}
 	
 	def create = {
-		def url_params = parse_signed_request(params.signed_request)
+//		def url_params = parse_signed_request(params.signed_request)
 		
-		def warriorqty = Warrior.findAllByOwner_id(url_params.user_id as Long).size()
+		def warriorqty = Warrior.findAllByOwner_id(123L).size()
 		if(warriorqty == 3)
 			redirect(controller:"main",action:"index")
 		[cities:City.list()]
 	}
 	
 	def save = {
-		def url_params = parse_signed_request(params.signed_request)
-		def warrior = new Warrior(owner_id: url_params.user_id as Long)
+//		def url_params = parse_signed_request(params.signed_request)
+		def warrior = new Warrior(owner_id: 123L)
 		warrior.initWarrior(params)
 		if(warrior.validate()){
 			warrior.save()
