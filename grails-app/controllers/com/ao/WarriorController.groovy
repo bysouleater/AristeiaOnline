@@ -5,6 +5,36 @@ import com.ao.City
 
 class WarriorController {
 	
+	static final String FB_SECRET_KEY = "c5b463359f752c1070dcd15db30cdcf9"	
+	
+	def parse_signed_request(String signed_request){
+		def encoded_sig = signed_request.split("\\.")[0]
+		def payload = signed_request.split("\\.")[1]
+		
+		def sig = base64_url_decode(encoded_sig)
+		def data = JSON.parse(base64_url_decode(payload))
+		
+		if(data.algorithm.toUpperCase() != 'HMAC-SHA256')
+			throw new Exception("Unknow algorithm. Expected HMAC-SHA256")
+		
+		//TODO: Verificar el encodeo
+		//check sig
+		/*def expected_sig = hash_hmac('sha256', payload, FB_SECRET_KEY, $raw = true)
+		
+		if(sig != expected_sig)
+			throw new Exception("Bad signed JSON signature!")
+			*/
+		return data
+	}
+	
+	def base64_url_decode(def input) {
+		def data = input.replaceAll("-","+").replaceAll("_","/")
+		def decodedBytes = data.decodeBase64()
+		return new String(decodedBytes)
+	}
+	
+	
+	
 	def afterInterceptor = { model ->
 		if(model.warrior){
 			model.warrior.refreshSTA()
@@ -27,14 +57,17 @@ class WarriorController {
 	}
 	
 	def create = {
-		def warriorqty = Warrior.findAllByOwner_id(123L).size()
+		def url_params = parse_signed_request(params.signed_request)
+		
+		def warriorqty = Warrior.findAllByOwner_id(url_params.user_id as Long).size()
 		if(warriorqty == 3)
 			redirect(controller:"main",action:"index")
 		[cities:City.list()]
 	}
 	
 	def save = {
-		def warrior = new Warrior(owner_id: 123L)
+		def url_params = parse_signed_request(params.signed_request)
+		def warrior = new Warrior(owner_id: url_params.user_id as Long)
 		warrior.initWarrior(params)
 		if(warrior.validate()){
 			warrior.save()

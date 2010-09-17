@@ -1,6 +1,8 @@
 package aristeiaonline
 
 import com.ao.Warrior
+
+import grails.converters.JSON;
 import groovyx.net.http.RESTClient;
 
 class MainController {
@@ -11,36 +13,46 @@ class MainController {
 	static final String FB_SECRET_KEY = "c5b463359f752c1070dcd15db30cdcf9"
 	static final String FB_APP_ID = "141786259185672"
 	
-	def ok = {
-		def client = new RESTClient()
-		def resp = client.get(uri:"https://graph.facebook.com/oauth/access_token?client_id=${FB_APP_ID}&redirect_uri=http://localhost:8080/main/ok&client_secret=${FB_SECRET_KEY}&code=${params.code.encodeAsURL()}")
-		print resp
+	
+	def parse_signed_request(String signed_request){
+		def encoded_sig = signed_request.split("\\.")[0]
+		def payload = signed_request.split("\\.")[1]
 		
-		render(view:"index",model:[warriorlist:Warrior.findAllByOwner_id(123L)])
+		def sig = base64_url_decode(encoded_sig)
+		def data = JSON.parse(base64_url_decode(payload))
+		
+		if(data.algorithm.toUpperCase() != 'HMAC-SHA256')
+			throw new Exception("Unknow algorithm. Expected HMAC-SHA256")
+		
+		//TODO: Verificar el encodeo
+		//check sig
+		/*def expected_sig = hash_hmac('sha256', payload, FB_SECRET_KEY, $raw = true)
+		
+		if(sig != expected_sig)
+			throw new Exception("Bad signed JSON signature!")
+			*/
+		println data
+		return data
+	}
+	
+	def base64_url_decode(def input) {
+		def data = input.replaceAll("-","+").replaceAll("_","/")
+		def decodedBytes = data.decodeBase64()
+		return new String(decodedBytes)
+	}
+	
+	def oauth_redirect = {
+		redirect(action:index)
+
 	}
 	
 	def index = {
-		
-		redirect(uri:"https://graph.facebook.com/oauth/authorize?client_id=${FB_APP_ID}&redirect_uri=http://localhost:8080/main/ok")
-		
-		
-		def cookie = request.getCookie("fbs_"+FB_APP_ID)
-		if(cookie){
-			def cookie_params = [:] 
-			cookie.split("&").each{
-				cookie_params[it.split("=")[0]] = it.split("=")[1] 
-			}
-			println cookie_params.uid
-			
+		def url_params = parse_signed_request(params.signed_request)
+		if(url_params.user_id && url_params.oauth_token){
+			return [logged:true,warriorlist:Warrior.findAllByOwner_id(url_params.user_id as Long)]
+		}else{
+			redirect(uri:"https://graph.facebook.com/oauth/authorize?client_id=${FB_APP_ID}&redirect_uri=http://apps.facebook.com/aristeia_online/main/oauth_redirect")
 		}
-			
-//		FacebookRestClient facebook = getAuthenticatedFacebookClient(request, response)
-//		if(facebook){
-//			if(getFacebookInfo(request, facebook)){
-//				[warriorlist:Warrior.findAllByOwner_id(request.getAttribute("uid") as Long)]
-//			}
-//		}
-		
-		[warriorlist:Warrior.findAllByOwner_id(123L)]
+		return [logged:false]
 	}
 }

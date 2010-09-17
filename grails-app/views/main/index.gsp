@@ -20,32 +20,15 @@
 	<div id="content">
 		<h3>Welcome to Aristeia Online</h3>
     	<div class="bigmsg">
-    	<img style="margin-bottom:20px;" src="/images/front.gif"/><br>
-    	You don't have any warrior. <g:link action="create" controller="warrior">Create a new warrior</g:link> to start playing!</div>
+    		<img style="margin-bottom:20px;" src="/images/front.gif"/><br>
+    		<g:if test="${logged}">
+    			You don't have any warrior. <g:link action="create" controller="warrior">Create a new warrior</g:link> to start playing!
+    		</g:if>
+    		<g:else>
+    			You are not logged in to Facebook. Please log in to start playing.
+    		</g:else>
+    	</div>
     </div>
     <iframe src="http://www.facebook.com/widgets/like.php?href=http://apps.facebook.com/aristeia_online"
 			scrolling="no" frameborder="0" style="margin-left:10px;margin-top:10px;border:none; width:450px; height:80px;"></iframe>
-	<div id="fb-root"></div>
-	<script src="http://connect.facebook.net/en_US/all.js"></script>
-	<script>
-	//alert("Empiezo");
-  	//FB.init({appId: '141786259185672', status: true, cookie: true, xfbml: true});
-  	//FB.Event.subscribe('auth.sessionChange', function(response) {
-    //	if (response.session) {
-	//		alert("si estaba logueado");
-    //  	// A user has logged in, and a new cookie has been saved
-    //	} else {
-	//		alert("no estaba logueado");
-	//		FB.login(function(response) {
-  	//			if (response.session) {
-    //				// user successfully logged in
-  	//			} else {
-    //				// user cancelled login
-  	//			}	
-	//		});
-
-      	// The user has logged out, and the cookie has been cleared
-    //	}
-  	//});
-	</script>
 </g:else>
