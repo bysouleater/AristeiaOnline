@@ -44,6 +44,27 @@
                         </tr>
                     
                         <tr class="prop">
+                            <td valign="top" class="name"><g:message code="map.weapons.label" default="Weapons" /></td>
+                            
+                            <td valign="top" class="value"><g:link controller="store" action="show" id="${mapInstance?.weapons?.id}">${mapInstance?.weapons?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="map.armors.label" default="Armors" /></td>
+                            
+                            <td valign="top" class="value"><g:link controller="store" action="show" id="${mapInstance?.armors?.id}">${mapInstance?.armors?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="map.consumables.label" default="Consumables" /></td>
+                            
+                            <td valign="top" class="value"><g:link controller="store" action="show" id="${mapInstance?.consumables?.id}">${mapInstance?.consumables?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
                             <td valign="top" class="name"><g:message code="map.city.label" default="City" /></td>
                             
                             <td valign="top" class="value"><g:formatBoolean boolean="${mapInstance?.city}" /></td>

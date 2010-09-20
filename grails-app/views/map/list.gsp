@@ -28,11 +28,11 @@
                         
                             <g:sortableColumn property="picture" title="${message(code: 'map.picture.label', default: 'Picture')}" />
                         
-                            <g:sortableColumn property="city" title="${message(code: 'map.city.label', default: 'City')}" />
+                            <th><g:message code="map.weapons.label" default="Weapons" /></th>
                         
-                            <g:sortableColumn property="posX" title="${message(code: 'map.posX.label', default: 'Pos X')}" />
+                            <th><g:message code="map.armors.label" default="Armors" /></th>
                         
-                            <g:sortableColumn property="posY" title="${message(code: 'map.posY.label', default: 'Pos Y')}" />
+                            <th><g:message code="map.consumables.label" default="Consumables" /></th>
                         
                         </tr>
                     </thead>
@@ -46,11 +46,11 @@
                         
                             <td>${fieldValue(bean: mapInstance, field: "picture")}</td>
                         
-                            <td><g:formatBoolean boolean="${mapInstance.city}" /></td>
+                            <td>${fieldValue(bean: mapInstance, field: "weapons")}</td>
                         
-                            <td>${fieldValue(bean: mapInstance, field: "posX")}</td>
+                            <td>${fieldValue(bean: mapInstance, field: "armors")}</td>
                         
-                            <td>${fieldValue(bean: mapInstance, field: "posY")}</td>
+                            <td>${fieldValue(bean: mapInstance, field: "consumables")}</td>
                         
                         </tr>
                     </g:each>

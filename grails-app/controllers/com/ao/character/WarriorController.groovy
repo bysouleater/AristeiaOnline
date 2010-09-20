@@ -195,17 +195,17 @@ class WarriorController {
 	
 	def weaponstore = {
 		def warrior = Warrior.get(params.id as Long)
-		render(view:"store", model:[storename:"Weapons",warrior:warrior])
+		render(view:"store", model:[store:warrior.actualLocation.weapons,warrior:warrior])
 	}
 	
 	def armorstore = {
 		def warrior = Warrior.get(params.id as Long)
-		render(view:"store", model:[storename:"Armors",warrior:warrior])
+		render(view:"store", model:[store:warrior.actualLocation.armors,warrior:warrior])
 	}
 	
 	def consumablestore = {
 		def warrior = Warrior.get(params.id as Long)
-		render(view:"store", model:[storename:"Consumables",warrior:warrior])
+		render(view:"store", model:[store:warrior.actualLocation.consumables,warrior:warrior])
 	}
 	
 	def transports = {
@@ -223,6 +223,22 @@ class WarriorController {
 		def map = Map.get(params.map as Long)
 		if(warrior.actualSTA >= 5){
 			warrior.actualSTA -= 5
+			
+			boolean encountered = false;
+			warrior.actualLocation.encounters.each{
+				if(encountered)
+					return
+					
+				def chance = new Random().nextInt(100)+1
+				if(chance <= (it.chance / 2)){
+					def je = new JournalEntry(type:JournalEntry.EXPLORATION_MONSTER_FOUND,encounter:it,won:true)
+					je.save()
+					warrior.addToJournal(je)
+					warrior.giveExp(it.totalExp())
+					warrior.gold += it.totalGold()
+					encountered = true
+				}
+			}
 			warrior.actualLocation = map
 			def je = new JournalEntry(type:JournalEntry.TEXT, text:"You decided to walk for a while. You are now in <b>${map.name}</b>.")
 			je.save()

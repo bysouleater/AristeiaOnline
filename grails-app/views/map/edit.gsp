@@ -51,6 +51,33 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                  <label for="weapons"><g:message code="map.weapons.label" default="Weapons" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: mapInstance, field: 'weapons', 'errors')}">
+                                    <g:select name="weapons.id" from="${com.ao.places.Store.list()}" optionKey="id" value="${mapInstance?.weapons?.id}" noSelection="['null': '']" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="armors"><g:message code="map.armors.label" default="Armors" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: mapInstance, field: 'armors', 'errors')}">
+                                    <g:select name="armors.id" from="${com.ao.places.Store.list()}" optionKey="id" value="${mapInstance?.armors?.id}" noSelection="['null': '']" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="consumables"><g:message code="map.consumables.label" default="Consumables" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: mapInstance, field: 'consumables', 'errors')}">
+                                    <g:select name="consumables.id" from="${com.ao.places.Store.list()}" optionKey="id" value="${mapInstance?.consumables?.id}" noSelection="['null': '']" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                   <label for="city"><g:message code="map.city.label" default="City" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: mapInstance, field: 'city', 'errors')}">

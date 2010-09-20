@@ -9,22 +9,22 @@
 				<g:form name="worldmap" method="get" controller="warrior" action="move" style="margin:0px;">
 					<input type="hidden" name="map" value=""/>
 					<input type="hidden" name="id" value="${warrior.id}"/>
-					<table class="worldmap">
+					<table cellpadding="0" class="worldmap">
 						<g:each in="${map}" status="i" var="row">
 							<tr>
 								<g:each in="${map[i]}" status="j" var="col">
 									<g:if test="${map[i][j]}">
 										<g:if test="${map[i][j].id == warrior.actualLocation.id}">
-											<td title="${map[i][j].name}" style="border:2px solid #FF0000;">&nbsp;</td>
+											<td style="background:url('${map[i][j].picture}');" title="${map[i][j].name}"><div style="border:2px solid #FF0000;width:46px;height:46px;"></div></td>
 										</g:if>
 										<g:elseif test="${warrior.actualLocation.posX == i && (warrior.actualLocation.posY == j+1 || warrior.actualLocation.posY == j-1)}">
-											<td title="${map[i][j].name}"><button onclick="javascript:goToMap(${map[i][j].id})">Go!</button></td>
+											<td style="background:url('${map[i][j].picture}');" title="${map[i][j].name}"><button onclick="javascript:goToMap(${map[i][j].id})">Go!</button></td>
 										</g:elseif>
 										<g:elseif test="${warrior.actualLocation.posY == j && (warrior.actualLocation.posX == i+1 || warrior.actualLocation.posX == i-1)}">
-											<td title="${map[i][j].name}"><button onclick="javascript:goToMap(${map[i][j].id})">Go!</button></td>
+											<td style="background:url('${map[i][j].picture}');" title="${map[i][j].name}"><button onclick="javascript:goToMap(${map[i][j].id})">Go!</button></td>
 										</g:elseif>
 										<g:else>
-											<td title="${map[i][j].name}">C</td>
+											<td style="background:url('${map[i][j].picture}');opacity:0.4;filter:alpha(opacity=40);" title="${map[i][j].name}">&nbsp;</td>
 										</g:else>
 									</g:if>
 									<g:else>

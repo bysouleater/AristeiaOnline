@@ -3,7 +3,6 @@ package com.ao.places
 
 import com.ao.StatsList 
 
-
 class City {
 
 	String name
