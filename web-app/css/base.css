@@ -203,3 +203,8 @@ hr{
 	height:50px;
 	background-color: blue;
 }
+.inputstat{
+	width:25px;
+	text-align:center;
+	border:0px;
+	}

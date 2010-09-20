@@ -1,6 +1,13 @@
-import com.ao.StatsList;
-
-import com.ao.*
+import com.ao.SkillsList 
+import com.ao.StatsList 
+import com.ao.character.Job 
+import com.ao.items.Armor 
+import com.ao.items.Weapon 
+import com.ao.monster.Encounter 
+import com.ao.monster.Monster 
+import com.ao.places.City 
+import com.ao.places.TrainingPlace 
+import com.ao.places.Map
 
 class BootStrap {
 
@@ -13,10 +20,10 @@ class BootStrap {
     	def cs4 = new StatsList(STR:5d,DEX:5d,CON:5d,AGI:8d)
     	cs1.save();cs2.save();cs3.save();cs4.save();
 		
-		def cm1 = new Map(name:"Cebrene city", 	city:true)
-		def cm2 = new Map(name:"Chalcedon city",city:true)
-		def cm3 = new Map(name:"Baris city", 	city:true)
-		def cm4 = new Map(name:"Mallia city", 	city:true)
+		def cm1 = new Map(name:"Cebrene city", 	city:true, posX:1, posY:3)
+		def cm2 = new Map(name:"Chalcedon city",city:true, posX:2, posY:5)
+		def cm3 = new Map(name:"Baris city", 	city:true, posX:5, posY:2)
+		def cm4 = new Map(name:"Mallia city", 	city:true, posX:3, posY:1)
 		cm1.save();cm2.save();cm3.save();cm4.save();
 		
 		new City(name:"Cebrene", 	stats:cs1, map:cm1).save()

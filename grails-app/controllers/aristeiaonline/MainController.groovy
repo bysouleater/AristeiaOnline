@@ -1,6 +1,6 @@
 package aristeiaonline
 
-import com.ao.Warrior
+import com.ao.character.Warrior;
 
 import grails.converters.JSON;
 import groovyx.net.http.RESTClient;
