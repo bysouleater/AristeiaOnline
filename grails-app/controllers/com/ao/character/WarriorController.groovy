@@ -9,6 +9,15 @@ class WarriorController {
 	
 	static final String FB_SECRET_KEY = "c5b463359f752c1070dcd15db30cdcf9"	
 	
+	def beforeInterceptor = [action:this.&checkSessionWarrior,except:['create','save']]
+
+	def checkSessionWarrior() {
+		if(!session.warrior_id) {
+			redirect(controller:"main", action:'index')
+			return false
+		}
+	}
+	
 	def scaffold = true
 	
 	def parse_signed_request(String signed_request){
@@ -48,7 +57,9 @@ class WarriorController {
 	}
 	
 	def index = { 
-		def w = Warrior.get(params.id as Long)
+		if(params.id)
+			session.warrior_id = params.id as Long
+		def w = Warrior.get(session.warrior_id)
 		def journal = JournalEntry.withCriteria {
 			warrior {
 				eq('id', w.id)
@@ -82,44 +93,46 @@ class WarriorController {
 	}
 	
 	def updateStat = {
-		def warrior = Warrior.get(params.id as Long)
-		warrior.updateStat(params.stat)
-		warrior.save()
-		redirect(controller:"warrior", action:"index", id:params.id)
+		def warrior = Warrior.get(session.warrior_id)
+		if(warrior.statPoints > 0){
+			warrior.updateStat(params.id)
+			warrior.save()
+		}
+		redirect(controller:"warrior", action:"index")
 	}
 	
 	def skills = {
-		def warrior = Warrior.get(params.id as Long)
+		def warrior = Warrior.get(session.warrior_id)
 		[warrior:warrior]
 	}
 	
-	def equip = {
-		def warrior = Warrior.get(params.id as Long)
+	def equipment = {
+		def warrior = Warrior.get(session.warrior_id)
 		[warrior:warrior]
 	}
 	
 	def inventory = {
-		def warrior = Warrior.get(params.id as Long)
+		def warrior = Warrior.get(session.warrior_id)
 		[warrior:warrior]
 	}
 	
 	def exploration = {
-		def warrior = Warrior.get(params.id as Long)
+		def warrior = Warrior.get(session.warrior_id)
 		[warrior:warrior]
 	}
 	
 	def insights = {
-		def warrior = Warrior.get(params.id as Long)
+		def warrior = Warrior.get(session.warrior_id)
 		[warrior:warrior]
 	}
 	
 	def training = {
-		def warrior = Warrior.get(params.id as Long)
+		def warrior = Warrior.get(session.warrior_id)
 		[warrior:warrior]
 	}
 	
 	def explore = {
-		def warrior = Warrior.get(params.id as Long)
+		def warrior = Warrior.get(session.warrior_id)
 		
 		if(warrior.actualSTA >= 5){
 			warrior.actualSTA -= 5
@@ -145,17 +158,17 @@ class WarriorController {
 			}
 		}
 		warrior.save()
-		redirect(controller:"warrior",action:"index", id:params.id)
+		redirect(controller:"warrior",action:"index")
 	}
 	
 	def quests = {
-		def warrior = Warrior.get(params.id as Long)
+		def warrior = Warrior.get(session.warrior_id)
 		[warrior:warrior]
 	}
 	
 	def train = {
-		def warrior = Warrior.get(params.id as Long)
-		def tp = TrainingPlace.get(params.tp as Long)
+		def warrior = Warrior.get(session.warrior_id)
+		def tp = TrainingPlace.get(params.id as Long)
 		if(warrior.actualLocation.trainingPlaces.contains(tp)){
 			if(warrior.actualSTA >= tp.STArequired){
 				warrior.actualSTA -= tp.STArequired
@@ -180,11 +193,11 @@ class WarriorController {
 				warrior.save()
 			}
 		}
-		redirect(controller:"warrior",action:"index", id:params.id)
+		redirect(controller:"warrior",action:"index")
 	}
 	
 	def worldmap = {
-		def warrior = Warrior.get(params.id as Long)
+		def warrior = Warrior.get(session.warrior_id)
 		def maps = Map.list()
 		Map[][] worldmap = new Map[7][7]
 		maps.each{
@@ -194,33 +207,34 @@ class WarriorController {
 	}
 	
 	def weaponstore = {
-		def warrior = Warrior.get(params.id as Long)
+		def warrior = Warrior.get(session.warrior_id)
 		render(view:"store", model:[store:warrior.actualLocation.weapons,warrior:warrior])
 	}
 	
 	def armorstore = {
-		def warrior = Warrior.get(params.id as Long)
+		def warrior = Warrior.get(session.warrior_id)
 		render(view:"store", model:[store:warrior.actualLocation.armors,warrior:warrior])
 	}
 	
 	def consumablestore = {
-		def warrior = Warrior.get(params.id as Long)
+		def warrior = Warrior.get(session.warrior_id)
 		render(view:"store", model:[store:warrior.actualLocation.consumables,warrior:warrior])
 	}
 	
 	def transports = {
-		def warrior = Warrior.get(params.id as Long)
+		def warrior = Warrior.get(session.warrior_id)
 		[warrior:warrior]
 	}
 	
 	def arena = {
-		def warrior = Warrior.get(params.id as Long)
+		def warrior = Warrior.get(session.warrior_id)
 		[warrior:warrior]
 	}
 	
 	def move = {
-		def warrior = Warrior.get(params.id as Long)
-		def map = Map.get(params.map as Long)
+		def warrior = Warrior.get(session.warrior_id)
+		//TODO: Revisar que el mapa este al lado.
+		def map = Map.get(params.id as Long)
 		if(warrior.actualSTA >= 5){
 			warrior.actualSTA -= 5
 			
@@ -246,6 +260,6 @@ class WarriorController {
 			warrior.save()
 		}
 		
-		redirect(controller:"warrior", action:"index", id:params.id)
+		redirect(controller:"warrior", action:"index")
 	}
 }

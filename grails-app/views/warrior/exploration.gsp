@@ -7,7 +7,7 @@
 				<tr>
 					<td>
 						<g:if test="${warrior.actualSTA >= 5}">
-							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='explore' id='${warrior.id}'/>">
+							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='explore'/>">
 								<img style="float:left;margin-right:10px;" width="32" height="32" src="/images/search.png"/>
 								<b>Search for items<br>and monsters</b> (5 STA)
 							</a>
@@ -21,7 +21,7 @@
 					</td>
 					<td>
 						<g:if test="${warrior.actualSTA >= 5}">
-							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='worldmap' id='${warrior.id}'/>">
+							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='worldmap'/>">
 								<img width="32" height="32" src="/images/compass.png"/>
 								<b>Move to other map</b> (5 STA)
 							</a>
@@ -40,31 +40,31 @@
 				<table style="margin:15px 0px 20px 20px;">
 					<tr>
 						<td>
-							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='weaponstore' id='${warrior.id}'/>">
+							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='weaponstore'/>">
 							<img width="32" height="32" src="/images/equip.png"/>
 							<b>Weapons Store</b></a>
 						</td>
 						<td>
-							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='armorstore' id='${warrior.id}'/>">
+							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='armorstore'/>">
 							<img width="32" height="32" src="/images/armors.png"/>
 							<b>Armors Store</b></a>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='consumablestore' id='${warrior.id}'/>">
+							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='consumablestore'/>">
 							<img width="32" height="32" src="/images/consumables.png"/>
 							<b>Consumables Store</b></a>
 						</td>
 						<td>
-							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='transports' id='${warrior.id}'/>">
+							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='transports'/>">
 							<img width="32" height="32" src="/images/consumables.png"/>
 							<b>Transports</b></a>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='arena' id='${warrior.id}'/>">
+							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='arena'/>">
 							<img width="32" height="32" src="/images/consumables.png"/>
 							<b>Arena</b></a>
 						</td>

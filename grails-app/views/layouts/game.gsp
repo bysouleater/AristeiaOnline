@@ -5,16 +5,16 @@
 	<g:warriorSheet warrior="${warrior}">
 		<td colspan="12" style="padding-top:5px;" align="center">
 			<table><tr>
-				<td><a class="buttonlink" href="<g:createLink controller='warrior' action='skills' id='${warrior.id}'/>">
+				<td><a class="buttonlink" href="<g:createLink controller='warrior' action='skills'/>">
 					<img width="15" height="15" src="/images/skills.jpg"/>
 					<b>Skills</b></a></td>					
-				<td><a class="buttonlink" href="<g:createLink controller='warrior' action='equip' id='${warrior.id}'/>">
+				<td><a class="buttonlink" href="<g:createLink controller='warrior' action='equipment'/>">
 					<img width="15" height="15" src="/images/equip.png"/>
 					<b>Equipment</b></a></td>
-				<td><a class="buttonlink" href="<g:createLink controller='warrior' action='inventory' id='${warrior.id}'/>">
+				<td><a class="buttonlink" href="<g:createLink controller='warrior' action='inventory'/>">
 					<img width="15" height="15" src="/images/inventory.png"/>
 					<b>Inventory</b></a></td>
-				<td><a class="buttonlink" href="<g:createLink controller='warrior' action='insights' id='${warrior.id}'/>">
+				<td><a class="buttonlink" href="<g:createLink controller='warrior' action='insights'/>">
 					<img width="15" height="15" src="/images/insights.png"/>
 					<b>Insights</b></a></td>
 			</tr></table>
@@ -25,10 +25,10 @@
 			<td width="150" valign="top">
 				<h4>Actions</h4>
 					<ul class="actionspro">
-						<li><a href="<g:createLink controller='warrior' action='index' id='${warrior.id}'/>">Journal</a></li>
-						<li><a href="<g:createLink controller='warrior' action='exploration' id='${warrior.id}'/>">Exploration</a></li>
-						<li><a href="<g:createLink controller='warrior' action='training' id='${warrior.id}'/>">Training</a></li>
-						<li><a href="<g:createLink controller='warrior' action='quests' id='${warrior.id}'/>">Quests</a></li>
+						<li><a href="<g:createLink controller='warrior' action='index'/>">Journal</a></li>
+						<li><a href="<g:createLink controller='warrior' action='exploration'/>">Exploration</a></li>
+						<li><a href="<g:createLink controller='warrior' action='training'/>">Training</a></li>
+						<li><a href="<g:createLink controller='warrior' action='quests'/>">Quests</a></li>
 					</ul>
 				</td>
 				<g:layoutBody />
