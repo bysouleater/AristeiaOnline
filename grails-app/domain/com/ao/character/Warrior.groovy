@@ -61,6 +61,8 @@ class Warrior {
 		name = params.name
 		gender = params.gender
 		origin = City.get(params.origin as Long)
+		if(!params.name || !params.gender || !origin)
+			return
 		job = Job.get(Job.NEWBIE);
 		level = 1
 		actualExp = 0

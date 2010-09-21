@@ -7,9 +7,8 @@ import com.ao.places.Map
 
 class WarriorController {
 	
-	static final String FB_SECRET_KEY = "c5b463359f752c1070dcd15db30cdcf9"	
-	
-	def beforeInterceptor = [action:this.&checkSessionWarrior,except:['create','save']]
+	def scaffold = true
+	def beforeInterceptor = [action:this.&checkSessionWarrior,except:['register','save']]
 
 	def checkSessionWarrior() {
 		if(!session.warrior_id) {
@@ -18,7 +17,13 @@ class WarriorController {
 		}
 	}
 	
-	def scaffold = true
+	def afterInterceptor = { model ->
+		if(model.warrior){
+			model.warrior.refreshSTA()
+			model.warrior.refreshHP()
+			model.warrior.save()
+		}
+	}
 	
 	def parse_signed_request(String signed_request){
 		def encoded_sig = signed_request.split("\\.")[0]
@@ -46,15 +51,7 @@ class WarriorController {
 		return new String(decodedBytes)
 	}
 	
-	
-	
-	def afterInterceptor = { model ->
-		if(model.warrior){
-			model.warrior.refreshSTA()
-			model.warrior.refreshHP()
-			model.warrior.save()
-		}
-	}
+	//Actions
 	
 	def index = { 
 		if(params.id)
@@ -71,25 +68,28 @@ class WarriorController {
 		[warrior:w,journal:journal]
 	}
 	
-	def create = {
+	def register = {
 //		def url_params = parse_signed_request(params.signed_request)
-		
 		def warriorqty = Warrior.findAllByOwner_id(123L).size()
 		if(warriorqty == 3)
 			redirect(controller:"main",action:"index")
-		[cities:City.list()]
+		[cities:City.list(), params:params]
 	}
 	
-	def save = {
-//		def url_params = parse_signed_request(params.signed_request)
-		def warrior = new Warrior(owner_id: 123L)
-		warrior.initWarrior(params)
-		if(warrior.validate()){
-			warrior.save()
-			redirect(controller:"main",action:"index")
-		}/*else{
-			redirect(controller:"warrior",action:"create", params:params)
-		}*/
+	def save = { WarriorRegistrationCommand wrc ->
+		if(wrc.hasErrors()){
+			render(view:"register",model:[wrc:wrc,cities:City.list()])
+		}else{
+//			def url_params = parse_signed_request(params.signed_request)
+			def warrior = new Warrior(owner_id: 123L)
+			warrior.initWarrior(wrc.properties)
+			if(warrior.validate()){
+				warrior.save()
+				redirect(controller:"main",action:"index")
+			}else{
+				render(view:"register", model:[wrc:warrior,cities:City.list()])
+			}
+		}
 	}
 	
 	def updateStat = {
@@ -261,5 +261,17 @@ class WarriorController {
 		}
 		
 		redirect(controller:"warrior", action:"index")
+	}
+}
+
+class WarriorRegistrationCommand{
+	String name
+	int origin
+	String gender
+	
+	static constraints = {
+		name(nullable:false,blank:false,maxSize:30)
+		gender(inList:["M","F"])
+		origin(inList:[1,2,3,4])
 	}
 }

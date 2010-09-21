@@ -12,7 +12,7 @@
 			<g:if test="${i+1 < warriorlist.size()}"><hr></g:if>
 		</g:each>
 		<g:if test="${warriorlist.size() < 3}">
-			<div style="text-align:right;margin-top:20px;">or <g:link action="create" controller="warrior"><b>Create a new warrior</b></g:link></div>
+			<div style="text-align:right;margin-top:20px;">or <g:link action="register" controller="warrior"><b>Create a new warrior</b></g:link></div>
 		</g:if>
   		</div>
 </g:if>
@@ -22,7 +22,7 @@
     	<div class="bigmsg">
     		<img style="margin-bottom:20px;" src="/images/front.gif"/><br>
     		<g:if test="${logged}">
-    			You don't have any warrior. <g:link action="create" controller="warrior">Create a new warrior</g:link> to start playing!
+    			You don't have any warrior. <g:link action="register" controller="warrior">Create a new warrior</g:link> to start playing!
     		</g:if>
     		<g:else>
     			You are not logged in to Facebook. Please log in to start playing.

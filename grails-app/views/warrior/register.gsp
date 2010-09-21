@@ -15,12 +15,30 @@
 										<table>
 											<tr>
 												<td style="padding-top:10px;" align="right" class="labeltxt">Name</td>
-												<td style="padding-top:10px;"><g:textField style="width:155px;" name="name" value=""/></td>
+												<td style="padding-top:10px;"><g:textField style="width:155px;" name="name" value="${wrc?.name}"/></td>
 											</tr>
+											<g:hasErrors bean="${wrc}" field="name">
+												<g:eachError bean="${wrc}" field="name">
+													<tr>
+														<td width="200" colspan="2" class="labelvalue" style="color:red;padding-top:5px;"><g:message error="${it}"/></td>
+													</tr>
+												</g:eachError>
+											</g:hasErrors>
 											<tr>
 												<td style="padding-top:10px;" align="right" class="labeltxt">Origin city</td>
-												<td style="padding-top:10px;"><g:select onclick="javascript:refresh();" style="width:155px;" name="origin" from="${cities}" noSelection="${[0:'Select origin city']}" optionKey="id" optionValue="name"/></td>
-											</tr>			
+												<td style="padding-top:10px;">
+													<g:select onclick="javascript:refresh();" style="width:155px;" name="origin" 
+														from="${cities}" noSelection="${[0:'Select origin city']}" optionKey="id" 
+														optionValue="name" value="${wrc?.origin}"/>
+												</td>
+											</tr>
+											<g:hasErrors bean="${wrc}" field="origin">
+												<g:eachError bean="${wrc}" field="origin">
+													<tr>
+														<td width="200" colspan="2" class="labelvalue" style="color:red;padding-top:5px;"><g:message error="${it}"/></td>
+													</tr>
+												</g:eachError>
+											</g:hasErrors>			
 											<tr>
 												<td style="padding-top:10px;" align="right" class="labeltxt">Gender</td>
 												<td style="padding-top:10px;" class="labelvalue" valign="middle">
@@ -30,6 +48,13 @@
 													<label id="label_genderF" for="genderF">Female</label>
 												</td>
 											</tr>
+											<g:hasErrors bean="${wrc}" field="gender">
+												<g:eachError bean="${wrc}" field="gender">
+													<tr>
+														<td width="200" colspan="2" class="labelvalue" style="color:red;padding-top:5px;"><g:message error="${it}"/></td>
+													</tr>
+												</g:eachError>
+											</g:hasErrors>
 											<tr>
 												<td style="padding-top:10px;" align="right" class="labeltxt" valign="top">Initial Stats</td>
 												<td style="padding-top:10px;" class="labelvalue" valign="top" align="center">
