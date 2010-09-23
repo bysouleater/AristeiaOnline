@@ -1,5 +1,7 @@
 package com.ao.character
 
+import com.ao.items.Item;
+import com.ao.items.ItemType;
 import com.ao.places.City 
 import com.ao.places.TrainingPlace 
 import grails.converters.JSON
@@ -261,6 +263,49 @@ class WarriorController {
 		}
 		
 		redirect(controller:"warrior", action:"index")
+	}
+	
+	def buysell = {
+		def referer = request.getHeader("Referer")
+		def warrior = Warrior.get(session.warrior_id)
+		if(params.axn == "buy"){
+			def item = ItemType.get(params.item_id as Long)
+			if(warrior.actualLocation.weapons?.items?.contains(item) ||
+				warrior.actualLocation.armors?.items?.contains(item) ||
+				warrior.actualLocation.consumables?.items?.contains(item)){
+				int qty = Math.max(Math.min(Integer.parseInt(params.item_qty),999),1)
+				if(warrior.gold >= item.price * qty){
+					warrior.gold -= item.price * qty
+					boolean alreadyHaveIt = false
+					
+					if(item.consumable){
+						warrior.inventory.each{
+							if(alreadyHaveIt)
+								return
+							if(it.type == item){
+								if(it.qty + qty > 1000){
+									qty = (it.qty + qty - 1000)
+									it.qty = 1000
+								}else{
+									it.qty += qty
+									alreadyHaveIt = true
+								}
+								it.save()
+							}
+						}
+					}
+					
+					if(!alreadyHaveIt){
+						def newitem = new Item(type:item, qty:qty)
+						newitem.save()
+						warrior.addToInventory(newitem)
+					}
+					warrior.save()
+				}
+			}
+		}
+		
+		redirect(url:referer)
 	}
 }
 

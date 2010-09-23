@@ -6,6 +6,8 @@ class Consumable extends ItemType{
 
 	StatsList stats
 	
+	boolean consumable = true
+	
     static constraints = {
 		stats(nullable:false)
     }

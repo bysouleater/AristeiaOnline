@@ -9,6 +9,7 @@ class Item {
 	double lootChance = 0
 	Long playerPrice = 0
 	int upgrade = 0
+	Date dateCreated
 
     static constraints = {
 		type(nullable:false)
