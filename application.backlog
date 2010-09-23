@@ -1,6 +1,6 @@
 MUST DO
-- Implement Buy
-- Implement Sell
+DONE - Implement Buy
+DONE - Implement Sell
 - Implement Fight
 - Check that destiny map is near origin map when moving
 - Add equipable to ItemType
