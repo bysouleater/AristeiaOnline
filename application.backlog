@@ -2,6 +2,7 @@ MUST DO
 DONE - Implement Buy
 DONE - Implement Sell
 - Implement Fight
+- Implement Encounter loot
 - Check that destiny map is near origin map when moving
 - Add equipable to ItemType
 - LastCity for resurrection

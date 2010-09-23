@@ -1,5 +1,6 @@
 package com.ao.character
 
+import com.ao.fight.Fight;
 import com.ao.items.Item;
 import com.ao.items.ItemType;
 import com.ao.places.City 
@@ -145,11 +146,15 @@ class WarriorController {
 					
 				def chance = new Random().nextInt(100)+1
 				if(chance <= it.chance){
-					def je = new JournalEntry(type:JournalEntry.EXPLORATION_MONSTER_FOUND,encounter:it,won:true)
+					def fight = new Fight(warrior:warrior,encounter:it)
+					if(fight.resolveFight()){
+						warrior.giveExp(it.totalExp())
+						warrior.gold += it.totalGold()
+					}
+					fight.save()
+					def je = new JournalEntry(type:JournalEntry.EXPLORATION_MONSTER_FOUND,encounter:it,won:fight.won)
 					je.save()
 					warrior.addToJournal(je)
-					warrior.giveExp(it.totalExp())
-					warrior.gold += it.totalGold()
 					encountered = true
 				}
 			}
@@ -335,42 +340,16 @@ class WarriorController {
 			del.delete()
 		}
 		
-		/*def item = ItemType.get(params.item_id as Long)
-		if(warrior.actualLocation.weapons?.items?.contains(item) ||
-			warrior.actualLocation.armors?.items?.contains(item) ||
-			warrior.actualLocation.consumables?.items?.contains(item)){
-			int qty = Math.max(Math.min(Integer.parseInt(params.item_qty),999),1)
-			if(warrior.gold >= item.price * qty){
-				warrior.gold -= item.price * qty
-				boolean alreadyHaveIt = false
-				
-				if(item.consumable){
-					warrior.inventory.each{
-						if(alreadyHaveIt)
-							return
-						if(it.type == item){
-							if(it.qty + qty > 1000){
-								qty = (it.qty + qty - 1000)
-								it.qty = 1000
-							}else{
-								it.qty += qty
-								alreadyHaveIt = true
-							}
-							it.save()
-						}
-					}
-				}
-				
-				if(!alreadyHaveIt){
-					def newitem = new Item(type:item, qty:qty)
-					newitem.save()
-					warrior.addToInventory(newitem)
-				}
-				warrior.save()
-			}
-		}*/
-		
 		redirect(url:referer)
+	}
+	
+	def fights = {
+		def fight = Fight.get(params.id as Long)
+		def warrior = Warrior.get(session.warrior_id)
+		if(fight.warrior == warrior)
+			return [warrior:warrior,fight:fight]
+		else
+			redirect(controller:"warrior", action:"index")
 	}
 }
 

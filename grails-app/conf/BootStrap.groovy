@@ -67,7 +67,7 @@ class BootStrap {
 			// Init Jobs
 			Job.initJobs()
 			
-			def wstats = new StatsList()
+			def wstats = new StatsList(HP:25,PAtk:5)
 			wstats.save()
 			def wolf = new Monster(name: "Wolf",stats: wstats, exp: 200L, gold: 50L)
 			wolf.save()
