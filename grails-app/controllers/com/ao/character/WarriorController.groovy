@@ -147,14 +147,16 @@ class WarriorController {
 				def chance = new Random().nextInt(100)+1
 				if(chance <= it.chance){
 					def fight = new Fight(warrior:warrior,encounter:it)
-					if(fight.resolveFight()){
-						warrior.giveExp(it.totalExp())
-						warrior.gold += it.totalGold()
-					}
+					fight.resolveFight()
 					fight.save()
 					def je = new JournalEntry(type:JournalEntry.EXPLORATION_MONSTER_FOUND,encounter:it,won:fight.won)
 					je.save()
 					warrior.addToJournal(je)
+					if(fight.won){
+						warrior.giveExp(it.totalExp())
+						warrior.gold += it.totalGold()
+					}
+					
 					encountered = true
 				}
 			}
