@@ -72,17 +72,36 @@ class BootStrap {
 			def wolf = new Monster(name: "Wolf",stats: wstats, exp: 200L, gold: 50L)
 			wolf.save()
 			
-			def wolfencounter = new Encounter(chance:75,description:"a Wolf")
+			def wstatsA = new StatsList(HP:25,PAtk:5)
+			wstatsA.save()
+			def wolfA = new Monster(name: "Wolf A",stats: wstats, exp: 200L, gold: 50L)
+			wolfA.save()
+			
+			def wstatsB = new StatsList(HP:25,PAtk:5)
+			wstatsB.save()
+			def wolfB = new Monster(name: "Wolf B",stats: wstats, exp: 200L, gold: 50L)
+			wolfB.save()
+			
+			def wolfencounter = new Encounter(chance:50,description:"a Wolf")
 			wolfencounter.addToMonsters(wolf)
 			wolfencounter.save()
 			
+			def wolfencounter2 = new Encounter(chance:50,description:"two Wolfs")
+			wolfencounter2.addToMonsters(wolfA)
+			wolfencounter2.addToMonsters(wolfB)
+			wolfencounter2.save()
+			
 			cm1.addToEncounters(wolfencounter)
+			cm1.addToEncounters(wolfencounter2)
 			cm1.save()
 			cm2.addToEncounters(wolfencounter)
+			cm2.addToEncounters(wolfencounter2)
 			cm2.save()
 			cm3.addToEncounters(wolfencounter)
+			cm3.addToEncounters(wolfencounter2)
 			cm3.save()
 			cm4.addToEncounters(wolfencounter)
+			cm4.addToEncounters(wolfencounter2)
 			cm4.save()
 			
 			def sk1 = new SkillsList(Aiming:1d)

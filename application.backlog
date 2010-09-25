@@ -1,7 +1,8 @@
 MUST DO
 DONE - Implement Buy
 DONE - Implement Sell
-- Implement Fight
+DONE - Implement Fight
+- Complete Skill bonuses
 - Implement Encounter loot
 - Check that destiny map is near origin map when moving
 - Add equipable to ItemType

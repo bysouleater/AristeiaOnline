@@ -1,8 +1,8 @@
 package com.ao.character
 
-import com.ao.fight.Fight;
-import com.ao.items.Item;
-import com.ao.items.ItemType;
+import com.ao.fight.Fight
+import com.ao.items.Item
+import com.ao.items.ItemType
 import com.ao.places.City 
 import com.ao.places.TrainingPlace 
 import grails.converters.JSON
@@ -148,8 +148,8 @@ class WarriorController {
 				if(chance <= it.chance){
 					def fight = new Fight(warrior:warrior,encounter:it)
 					fight.resolveFight()
-					fight.save()
-					def je = new JournalEntry(type:JournalEntry.EXPLORATION_MONSTER_FOUND,encounter:it,won:fight.won)
+					fight.save(flush:true)
+					def je = new JournalEntry(type:JournalEntry.EXPLORATION_MONSTER_FOUND,fight:fight)
 					je.save()
 					warrior.addToJournal(je)
 					if(fight.won){

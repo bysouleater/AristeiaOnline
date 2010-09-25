@@ -2,6 +2,7 @@ package com.ao.character
 
 import com.ao.monster.Encounter 
 import com.ao.character.Warrior
+import com.ao.fight.Fight
 
 class JournalEntry{
 	
@@ -12,13 +13,12 @@ class JournalEntry{
 	Date dateCreated
 	
 	int type
-	Encounter encounter
-	boolean won
+	Fight fight
 	
 	static belongsTo = [ warrior : Warrior]
 
     static constraints = {
 		text(nullable:true,blank:false,maxSize:1000)
-		encounter(nullable:true)
+		fight(nullable:true)
     }		
 }
