@@ -11,6 +11,7 @@
 						<li>- <i>${fe.text}</i></li>
 					</g:each>
 				</ul>
+				<div style="text-align:right;margin-top:20px;font-size:12px;"><a href="<g:createLink controller='warrior' action='index'/>"><b>Back to journal</b></a></div>
 			</div>
 		</td>
 	</body>

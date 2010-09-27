@@ -23,6 +23,16 @@ environments {
             url = "jdbc:hsqldb:mem:testDb"
         }
     }
+	stg{
+		dataSource{
+			pooled = false
+			driverClassName = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+			username = "sa"
+			password = "BySouleater123"
+			dbCreate = "update"
+			url = "jdbc:sqlserver://localhost:1433;databaseName=aristeia_online;"
+		}	
+	}
     production {
         dataSource {
             dbCreate = "update"

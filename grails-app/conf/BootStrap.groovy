@@ -3,8 +3,11 @@ import grails.util.Environment;
 import com.ao.SkillsList 
 import com.ao.StatsList 
 import com.ao.character.Job 
+import com.ao.character.Quest;
 import com.ao.items.Armor 
 import com.ao.items.Consumable
+import com.ao.items.Item;
+import com.ao.items.ItemType;
 import com.ao.items.Weapon 
 import com.ao.monster.Encounter 
 import com.ao.monster.Monster 
@@ -37,7 +40,7 @@ class BootStrap {
 			
 			def appleStats = new StatsList(HP:10)
 			appleStats.save()
-			def apple = new Consumable(name:"Apple",price:5,icon:"/images/apple.png",stats:appleStats)
+			def apple = new Consumable(name:"Apple",price:5,icon:"/images/apple.png",stats:appleStats,stackable:true)
 			apple.save()
 			
 			def wstore = new Store(name:"Weapons")
@@ -54,10 +57,19 @@ class BootStrap {
 			
 			
 			def cm1 = new Map(name:"Cebrene city", 	city:true, posX:1, posY:3, picture:"/images/worldmap/1_3.png", weapons:wstore, armors:astore, consumables:cstore)
+			def mappath1 = new Map(name:"Cebrene field 01", city:false, posX:0,posY:2, picture:"/images/worldmap/0_2.png")
+			def mappath2 = new Map(name:"Cebrene field 02", city:false, posX:0,posY:3, picture:"/images/worldmap/0_3.png")
+			def mappath3 = new Map(name:"Cebrene field 03", city:false, posX:0,posY:4, picture:"/images/worldmap/0_4.png")
+			def mappath4 = new Map(name:"Cebrene field 04", city:false, posX:1,posY:2, picture:"/images/worldmap/1_2.png")
+			def mappath5 = new Map(name:"Cebrene field 05", city:false, posX:1,posY:4, picture:"/images/worldmap/1_4.png")
+			def mappath6 = new Map(name:"Cebrene field 06", city:false, posX:2,posY:2, picture:"/images/worldmap/2_2.png")
+			def mappath7 = new Map(name:"Cebrene field 07", city:false, posX:2,posY:3, picture:"/images/worldmap/2_3.png")
+			def mappath8 = new Map(name:"Cebrene field 08", city:false, posX:2,posY:4, picture:"/images/worldmap/2_4.png")
 			def cm2 = new Map(name:"Chalcedon city",city:true, posX:2, posY:5, picture:"/images/worldmap/2_5.png", weapons:wstore, armors:astore, consumables:cstore)
 			def cm3 = new Map(name:"Baris city", 	city:true, posX:5, posY:2, picture:"/images/worldmap/5_2.png", weapons:wstore, armors:astore, consumables:cstore)
 			def cm4 = new Map(name:"Mallia city", 	city:true, posX:3, posY:1, picture:"/images/worldmap/3_1.png", weapons:wstore, armors:astore, consumables:cstore)
-			cm1.save();cm2.save();cm3.save();cm4.save();
+			cm1.save();cm2.save();cm3.save();cm4.save();mappath1.save();mappath2.save();mappath3.save();mappath4.save();
+			mappath5.save();mappath6.save();mappath7.save();mappath8.save();
 			
 			new City(name:"Cebrene", 	stats:cs1, map:cm1).save()
 			new City(name:"Chalcedon",	stats:cs2, map:cm2).save()
@@ -67,19 +79,25 @@ class BootStrap {
 			// Init Jobs
 			Job.initJobs()
 			
+			def wolfFang = new ItemType(name:"Wolf Fang",price:2,icon:"/images/fang.png",stackable:true)
+			wolfFang.save()
+			
 			def wstats = new StatsList(HP:25,PAtk:5)
 			wstats.save()
-			def wolf = new Monster(name: "Wolf",stats: wstats, exp: 200L, gold: 50L)
+			def wolf = new Monster(name: "Wolf",stats: wstats, exp: 200L, gold: 0L)
+			wolf.addToLoot(wolfFang)
 			wolf.save()
 			
 			def wstatsA = new StatsList(HP:25,PAtk:5)
 			wstatsA.save()
-			def wolfA = new Monster(name: "Wolf A",stats: wstats, exp: 200L, gold: 50L)
+			def wolfA = new Monster(name: "Wolf A",stats: wstats, exp: 200L, gold: 0L)
+			wolfA.addToLoot(wolfFang)
 			wolfA.save()
 			
 			def wstatsB = new StatsList(HP:25,PAtk:5)
 			wstatsB.save()
-			def wolfB = new Monster(name: "Wolf B",stats: wstats, exp: 200L, gold: 50L)
+			def wolfB = new Monster(name: "Wolf B",stats: wstats, exp: 200L, gold: 0L)
+			wolfB.addToLoot(wolfFang)
 			wolfB.save()
 			
 			def wolfencounter = new Encounter(chance:50,description:"a Wolf")
@@ -132,6 +150,25 @@ class BootStrap {
 			cm2.save()
 			cm3.save()
 			cm4.save()
+			
+			
+			def questWolfs = new Quest(title:"Killing Wolfs",description:"Help the citizens to get rid of the hungry wolfs in the streets.",
+				minLevel:1,maxLevel:5,exp:100,gold:100)
+			def wolfsNeeded = new Item(type:wolfFang,qty:5)
+			wolfsNeeded.save()
+			questWolfs.addToItemsNeeded(wolfsNeeded)
+			questWolfs.save()
+			
+			def barbarianQuest = new Quest(title:"Path to Barbarian",description:"Take this quest to become a Barbarian.",
+				minLevel:5,maxLevel:5,exp:0,gold:0,jobQuest:true,jobReward:Job.findByName("Barbarian"))
+			def barbarianItemsNeeded = new Item(type:wolfFang,qty:10)
+			barbarianItemsNeeded.save()
+			barbarianQuest.addToItemsNeeded(barbarianItemsNeeded)
+			def barbarianSkillsNeeded = new SkillsList(Endurance:10)
+			barbarianSkillsNeeded.save()
+			barbarianQuest.addToSkillsNeeded(barbarianSkillsNeeded)
+			
+			barbarianQuest.save()
 		}
 		
 		

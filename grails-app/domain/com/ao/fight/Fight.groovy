@@ -1,5 +1,6 @@
 package com.ao.fight
 
+import com.ao.character.JournalEntry;
 import com.ao.character.Warrior;
 import com.ao.monster.Encounter;
 
@@ -126,7 +127,10 @@ class Fight {
 		else{
 			won = false
 			warrior.actualHP = 1
-			//TODO: Return to lastCity
+			warrior.actualLocation = warrior.resurrectionMap
+			def je = new JournalEntry(type:JournalEntry.TEXT, text:"You died in combat. You resurrected in <b>${warrior.resurrectionMap.name}</b>.")
+			je.save()
+			warrior.addToJournal(je)
 		}
 		warrior.save()
 		return won

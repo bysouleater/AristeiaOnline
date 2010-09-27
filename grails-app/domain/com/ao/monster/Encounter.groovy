@@ -29,4 +29,14 @@ class Encounter {
 		}
 		return value
 	}
+	
+	def totalLoot(){
+		def loot = []
+		monsters.each{ monster ->
+			monster.loot.each{ item ->
+				loot.add item
+			}
+		}
+		return loot
+	}
 }

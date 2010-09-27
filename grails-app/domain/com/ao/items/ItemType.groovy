@@ -8,6 +8,8 @@ class ItemType {
 	String icon
 	
 	boolean consumable
+	boolean equipable
+	boolean stackable
 	
 //	static mapping = {
 //		tablePerHierarchy false

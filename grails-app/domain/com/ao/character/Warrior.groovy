@@ -29,6 +29,7 @@ class Warrior {
 	SkillsList skills
 	City origin
 	Map actualLocation
+	Map resurrectionMap
 	Equipment equip
 	
 	Long lastSTAModified
@@ -54,6 +55,7 @@ class Warrior {
 		stats(nullable:false)
 		origin(nullable:false)
 		actualLocation(nullable:false)
+		resurrectionMap(nullable:false)
 		equip(nullable:false)
     }
 	
@@ -69,6 +71,7 @@ class Warrior {
 		statPoints = 0
 		gold = 100
 		actualLocation = origin.map
+		resurrectionMap = origin.map
 		
 		SkillsList skills = new SkillsList()
 		skills.save()
@@ -142,7 +145,17 @@ class Warrior {
 		if(stat == "STR"){
 			val += (skills.Athletics / 10).intValue()
 			val += (skills.Climb / 10).intValue()
+		}else if(stat == "DEX"){
+			val += (skills.Aiming / 10).intValue()
+			val += (skills.Thievery / 10).intValue()
+		}else if(stat == "AGI"){
+			val += (skills.Escape_Artist / 10).intValue()
+			val += (skills.Stealth / 10).intValue()
+		}else if(stat == "CON"){
+			val += (skills.Endurance / 10).intValue()
+			val += (skills.Concentration / 10).intValue()
 		}
+		
 		return val + equip.equipStat(stat)
 	}
 	

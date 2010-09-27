@@ -155,6 +155,31 @@ class WarriorController {
 					if(fight.won){
 						warrior.giveExp(it.totalExp())
 						warrior.gold += it.totalGold()
+						it.totalLoot().each{ item ->
+							boolean alreadyHaveIt = false
+							
+							if(item.stackable){
+								warrior.inventory.each{
+									if(alreadyHaveIt)
+										return
+									if(it.type == item){
+										if(it.qty + 1 > 1000){
+											it.qty = 1000
+										}else{
+											it.qty += 1
+											alreadyHaveIt = true
+										}
+										it.save()
+									}
+								}
+							}
+							
+							if(!alreadyHaveIt){
+								def newitem = new Item(type:item, qty:1)
+								newitem.save()
+								warrior.addToInventory(newitem)
+							}
+						}						
 					}
 					
 					encountered = true
@@ -172,7 +197,8 @@ class WarriorController {
 	
 	def quests = {
 		def warrior = Warrior.get(session.warrior_id)
-		[warrior:warrior]
+		
+		[warrior:warrior,doing_quests:[],available_quests:Quest.list()]
 	}
 	
 	def train = {
@@ -242,33 +268,84 @@ class WarriorController {
 	
 	def move = {
 		def warrior = Warrior.get(session.warrior_id)
-		//TODO: Revisar que el mapa este al lado.
-		def map = Map.get(params.id as Long)
-		if(warrior.actualSTA >= 5){
-			warrior.actualSTA -= 5
+		def map = Map.get(params.move_map_id as Long)
+		
+		//Si el mapa esta al lado..
+		if( (warrior.actualLocation.posX == map.posX && 
+			(warrior.actualLocation.posY == map.posY+1 || 
+			 warrior.actualLocation.posY == map.posY-1)) ||
+		    (warrior.actualLocation.posY == map.posY && 
+			(warrior.actualLocation.posX == map.posX+1 || 
+			 warrior.actualLocation.posX == map.posX-1)) ){
 			
-			boolean encountered = false;
-			warrior.actualLocation.encounters.each{
-				if(encountered)
-					return
+			if(warrior.actualSTA >= 5){
+				warrior.actualSTA -= 5
+				boolean encountered = false
+				boolean killed = false
+				warrior.actualLocation.encounters.each{
+					if(encountered)
+						return
+					def chance = new Random().nextInt(100)+1
+					if(chance <= it.chance / 2){
+						def fight = new Fight(warrior:warrior,encounter:it)
+						fight.resolveFight()
+						fight.save(flush:true)
+						if(!fight.won)
+							killed = true
+						def je = new JournalEntry(type:JournalEntry.EXPLORATION_MONSTER_FOUND,fight:fight)
+						je.save()
+						warrior.addToJournal(je)
+						if(fight.won){
+							warrior.giveExp(it.totalExp())
+							warrior.gold += it.totalGold()
+							it.totalLoot().each{ item ->
+								boolean alreadyHaveIt = false
+								
+								if(item.stackable){
+									warrior.inventory.each{
+										if(alreadyHaveIt)
+											return
+										if(it.type == item){
+											if(it.qty + 1 > 1000){
+												it.qty = 1000
+											}else{
+												it.qty += 1
+												alreadyHaveIt = true
+											}
+											it.save()
+										}
+									}
+								}
+							
+								if(!alreadyHaveIt){
+									def newitem = new Item(type:item, qty:1)
+									newitem.save()
+									warrior.addToInventory(newitem)
+								}
+							}						
+						}
 					
-				def chance = new Random().nextInt(100)+1
-				if(chance <= (it.chance / 2)){
-					def je = new JournalEntry(type:JournalEntry.EXPLORATION_MONSTER_FOUND,encounter:it,won:true)
+						encountered = true
+					}
+				}
+				if(!encountered){
+					def je = new JournalEntry(type:JournalEntry.TEXT, text:"You explore the area but didn't find anything.")
 					je.save()
 					warrior.addToJournal(je)
-					warrior.giveExp(it.totalExp())
-					warrior.gold += it.totalGold()
-					encountered = true
 				}
+				
+				//Despues lo muevo si esta vivo
+				if(!killed){
+					warrior.actualLocation = map
+					if(map.isCity())
+						warrior.resurrectionMap = map
+					def je = new JournalEntry(type:JournalEntry.TEXT, text:"You decided to walk for a while. You are now in <b>${map.name}</b>.")
+					je.save()
+					warrior.addToJournal(je)
+				}
+				warrior.save()
 			}
-			warrior.actualLocation = map
-			def je = new JournalEntry(type:JournalEntry.TEXT, text:"You decided to walk for a while. You are now in <b>${map.name}</b>.")
-			je.save()
-			warrior.addToJournal(je)
-			warrior.save()
 		}
-		
 		redirect(controller:"warrior", action:"index")
 	}
 	
@@ -285,7 +362,7 @@ class WarriorController {
 				warrior.gold -= item.price * qty
 				boolean alreadyHaveIt = false
 				
-				if(item.consumable){
+				if(item.stackable){
 					warrior.inventory.each{
 						if(alreadyHaveIt)
 							return
