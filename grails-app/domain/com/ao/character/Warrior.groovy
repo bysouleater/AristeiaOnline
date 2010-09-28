@@ -9,6 +9,7 @@ import com.ao.places.City
 import org.joda.time.DateTime
 import com.ao.character.JournalEntry
 import com.ao.places.Map
+import com.ao.items.ItemType
 
 class Warrior {
 	
@@ -37,7 +38,7 @@ class Warrior {
 	Long lastHPModified
 	Long lastHPModifiedDelta
 	
-	static hasMany = [inventory:Item, journal:JournalEntry]
+	static hasMany = [inventory:Item, journal:JournalEntry, questsInProgress:Quest]
 	
 	static mapping = {
 		journal sort:"dateCreated", order: "desc"
@@ -284,5 +285,30 @@ class Warrior {
 		lastHPModified = now
 		lastHPModifiedDelta = dif % refresh_rate
 //		save()
+	}
+	
+	int qtyOfItem(ItemType i){
+		if(!inventory)
+			return 0
+		def qty = 0
+		inventory.each{
+			if(it.type.id == i.id && it.qty)
+				qty += it.qty // Si lo tiene repetido, le muestro la suma de todos los que tiene.
+		}
+		return qty
+	}
+	
+	void changeJob(Job newjob){
+		job = newjob
+		job.baseStats.all().each{key, val -> stats."$key" += val}
+		stats.save()
+		
+		refreshDerivedStats()
+		actualHP = maxHP()
+		actualSTA = maxSTA()
+		
+		def je = new JournalEntry(type:JournalEntry.TEXT, text:"Congrats! You have just changed into a <b>${job.name}</b>. A new path begins.")
+		je.save()
+		addToJournal(je)
 	}
 }

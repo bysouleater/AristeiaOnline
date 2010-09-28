@@ -198,7 +198,7 @@ class WarriorController {
 	def quests = {
 		def warrior = Warrior.get(session.warrior_id)
 		
-		[warrior:warrior,doing_quests:[],available_quests:Quest.list()]
+		[warrior:warrior,doing_quests:warrior.questsInProgress,available_quests:Quest.getAvailableQuests(warrior)]
 	}
 	
 	def train = {
@@ -429,6 +429,83 @@ class WarriorController {
 			return [warrior:warrior,fight:fight]
 		else
 			redirect(controller:"warrior", action:"index")
+	}
+	
+	def startQuest = {
+		def warrior = Warrior.get(session.warrior_id)
+		//TODO: Revisar que no la tenga
+		def quest = Quest.get(params.id)
+		if(quest){
+			warrior.addToQuestsInProgress(quest)	
+		}
+		
+		def referer = request.getHeader("Referer")
+		redirect(url:referer)
+	}
+	
+	def getReward = {
+		//TODO: Todas las validaciones de mierda
+		def warrior = Warrior.get(session.warrior_id)
+		def quest = Quest.get(params.id)
+		if(quest){
+			def skillsok = true
+			if(quest.skillsNeeded){
+				quest.skillsNeeded.all().each{
+					if(warrior.skills."$it.key" < it.value)
+						skillsok = false
+				}
+			}
+			
+			def itemsok = true
+			if(quest.itemsNeeded){
+				quest.itemsNeeded.each{
+					if(warrior.qtyOfItem(it.type) < it.qty)
+						itemsok = false
+				}
+			}
+			
+			if(skillsok && itemsok){
+				
+				//TODO: Sacarle los items
+				
+				warrior.gold += quest.gold
+				warrior.giveExp(quest.exp)
+				if(quest.jobQuest)
+					warrior.changeJob(quest.jobReward)
+				quest.itemsRewarded.each{ item ->
+					boolean alreadyHaveIt = false
+					def qty = item.qty
+					if(item.type.stackable){
+						warrior.inventory.each{
+							if(alreadyHaveIt)
+								return
+							if(it.type == item.type){
+								if(it.qty + qty > 1000){
+									qty = (it.qty + qty - 1000)
+									it.qty = 1000
+								}else{
+									it.qty += qty
+									alreadyHaveIt = true
+								}
+								it.save()
+							}
+						}
+					}
+					
+					if(!alreadyHaveIt){
+						def newitem = new Item(type:item.type, qty:qty)
+						newitem.save()
+						warrior.addToInventory(newitem)
+					}
+				}
+				
+				
+				//TODO: Sacar la quest
+			}
+			warrior.save()
+		}
+		
+		redirect(controller:"warrior", action:"index")
 	}
 }
 

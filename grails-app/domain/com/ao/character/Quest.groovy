@@ -27,4 +27,18 @@ class Quest {
 		jobReward(nullable:true)
 		skillsNeeded(nullable:true)
     }
+	
+	static def getAvailableQuests(Warrior warrior){
+		//TODO: Filtrar mejor
+		def all = list()
+		def quests = []
+		all.each{
+			if(warrior.level >= it.minLevel && warrior.level <= it.maxLevel){
+				if(!warrior.questsInProgress.contains(it))
+					quests.add(it)
+			}
+		}
+		
+		return quests
+	}
 }
