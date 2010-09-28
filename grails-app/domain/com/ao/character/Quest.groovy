@@ -33,6 +33,7 @@ class Quest {
 		def all = list()
 		def quests = []
 		all.each{
+			//TODO: Ver las no repetibles y de jobs
 			if(warrior.level >= it.minLevel && warrior.level <= it.maxLevel){
 				if(!warrior.questsInProgress.contains(it))
 					quests.add(it)

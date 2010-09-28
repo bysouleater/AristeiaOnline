@@ -397,7 +397,7 @@ class WarriorController {
 		
 		def found = false
 		def del = null
-		def item = warrior.inventory.each{
+		warrior.inventory.each{
 			if(found)
 				return
 			if(it.id == params.sell_item_id as Long){
@@ -465,8 +465,28 @@ class WarriorController {
 			}
 			
 			if(skillsok && itemsok){
-				
-				//TODO: Sacarle los items
+				quest.itemsNeeded.each{ itemquest ->
+					def del = []
+					int qty = itemquest.qty
+					warrior.inventory.each{
+						if(it.type == itemquest.type){
+							if(qty >= it.qty){
+								del.add(it)
+								qty -= it.qty 
+							}else{
+								it.qty -= qty;
+								it.save()
+							}
+							warrior.save()
+						}
+					}
+					if(del && del.size > 0){
+						del.each{
+							warrior.removeFromInventory(it)
+							it.delete()
+						}
+					}
+				}
 				
 				warrior.gold += quest.gold
 				warrior.giveExp(quest.exp)
@@ -499,8 +519,9 @@ class WarriorController {
 					}
 				}
 				
-				
-				//TODO: Sacar la quest
+				warrior.removeFromQuestsInProgress(quest)
+				warrior.addToQuestsDone(quest)
+				//TODO: Ver las repetibles
 			}
 			warrior.save()
 		}

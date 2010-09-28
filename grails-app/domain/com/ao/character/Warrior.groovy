@@ -38,7 +38,7 @@ class Warrior {
 	Long lastHPModified
 	Long lastHPModifiedDelta
 	
-	static hasMany = [inventory:Item, journal:JournalEntry, questsInProgress:Quest]
+	static hasMany = [inventory:Item, journal:JournalEntry, questsInProgress:Quest, questsDone:Quest]
 	
 	static mapping = {
 		journal sort:"dateCreated", order: "desc"
