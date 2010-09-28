@@ -15,8 +15,9 @@ class Quest {
 	Long gold
 	boolean jobQuest
 	Job jobReward
+	SkillsList skillsNeeded
 	
-	static hasMany = [itemsNeeded:Item, skillsNeeded:SkillsList, itemsRewarded:Item]
+	static hasMany = [itemsNeeded:Item, itemsRewarded:Item]
 
     static constraints = {
 		title(nullable:false,blank:false)
@@ -24,5 +25,6 @@ class Quest {
 		minLevel(min:1)
 		maxLevel(min:1)
 		jobReward(nullable:true)
+		skillsNeeded(nullable:true)
     }
 }

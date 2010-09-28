@@ -17,8 +17,26 @@
 						</g:if>
 					</g:each>
 				</ul>
-				<div class="paginator"><g:paginate total="${warrior.journal.size()}" action="index" controller="warrior" id="${warrior.id}" max="6" maxsteps="5" offset="0"/></div>
+				<div class="paginator"><g:paginate total="${warrior.journal.size()}" action="index" controller="warrior" id="${warrior.id}" max="10" maxsteps="5" offset="0"/></div>
 			</div>
 		</td>
+		<g:javascript library="jquery" plugin="jquery"/>
+		<div id="fb-root"></div>
+		<script>
+			window.fbAsyncInit = function() {
+			  FB.init({appId: 'your app id', status: true, cookie: true,
+			           xfbml: true});
+			};
+			(function() {
+			  var e = document.createElement('script'); e.async = true;
+			  e.src = document.location.protocol +
+			    '//connect.facebook.net/en_US/all.js';
+			  document.getElementById('fb-root').appendChild(e);
+			}());
+
+			$(document).ready(function() {
+				FB.Canvas.setSize();
+			});
+		</script>
 	</body>
 </html>

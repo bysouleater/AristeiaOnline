@@ -44,12 +44,29 @@
 									<hr style="border:1px dashed;">
 									<table width="100%" style="font-size:12px;">
 										<tr>
-											<td width="50%"><b>Items</b></td>
-											<td width="50%"><b>Skills</b></td>
+											<td width="50%"><b>Items needed</b></td>
+											<td width="50%"><b>Skills needed</b></td>
 										</tr>
 										<tr>
-											<td>0 / 10 Wolf Fang</td>
-											<td>0 / 10 Endurance</td>
+											<td valign="top">
+												<g:if test="${quest.itemsNeeded != null && quest.itemsNeeded.size() > 0}">
+													<g:each in="${quest.itemsNeeded}" status="ite" var="item">
+														<div style="height:34px;">
+															<div title="${item.type.name}" style="float:left;margin-right:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
+																<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.type.icon}"/>
+															</div>
+															0 / ${item.qty}
+														</div>
+													</g:each>
+												</g:if>
+											</td>
+											<td valign="top">
+												<g:if test="${quest.skillsNeeded != null}">
+													<g:each in="${quest.skillsNeeded.all()}" status="s" var="skill">
+														<g:if test="${skill.value > 0}">0 / ${skill.value.intValue()} ${skill.key}<br></g:if>
+													</g:each>
+												</g:if>
+											</td>
 										</tr>
 									</table>
 									<hr style="border:1px dashed;">
@@ -59,11 +76,21 @@
 											<td width="50%"><b>Items</b></td>
 										</tr>
 										<tr>
-											<td><b>EXP</b> 1230</td>
-											<td rowspan="2">bla</td>
-										</tr>
-										<tr>
-											<td><b>Gold</b> 1230</td>
+											<td style="line-height: 1.5em">
+												<g:if test="${quest.exp > 0}"><b>EXP</b> ${quest.exp}<br></g:if>
+												<g:if test="${quest.gold > 0}"><b>Gold</b> ${quest.gold}<br></g:if>
+												<g:if test="${quest.jobReward}"><b>Job</b> ${quest.jobReward?.name}</g:if>
+											</td>
+											<td>
+												<g:if test="${quest.itemsRewarded != null && quest.itemsRewarded.size() > 0}">
+													<g:each in="${quest.itemsRewarded}" status="ite" var="item">
+														<div title="${item.type.name}" style="float:left;margin-right:5px;margin-bottom:5px;background-image:url('/images/empty.png');width:32px;height:32px;">
+															<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.type.icon}"/>
+															<g:if test="${item.qty > 1}"><span style="top:-5px;font-size:10px;font-weight:bold;position:relative;">x${item.qty}</span></g:if>
+														</div>
+													</g:each>
+												</g:if>
+											</td>
 										</tr>
 									</table>	
 								</td>
@@ -71,15 +98,29 @@
 								<td valign="bottom" style="padding-bottom:5px;"><a href="javascript:hideDetails(${quest.id});">Hide Details</a><br><br><a href="#">Start Quest</a></td>
 							</tr>
 						</table>
+						<div id="fb-root"></div>
 						<script>
+							window.fbAsyncInit = function() {
+							  FB.init({appId: 'your app id', status: true, cookie: true,
+							           xfbml: true});
+							};
+							(function() {
+							  var e = document.createElement('script'); e.async = true;
+							  e.src = document.location.protocol +
+							    '//connect.facebook.net/en_US/all.js';
+							  document.getElementById('fb-root').appendChild(e);
+							}());
+						
 							function showDetails(quest_id){
 								document.getElementById("quest_"+quest_id+"_long").style.display = "block";
 								document.getElementById("quest_"+quest_id+"_short").style.display = "none";
+								FB.Canvas.setSize();
 							}
 
 							function hideDetails(quest_id){
 								document.getElementById("quest_"+quest_id+"_long").style.display = "none";
 								document.getElementById("quest_"+quest_id+"_short").style.display = "block";
+								FB.Canvas.setSize();
 							}
 						</script>
 					</g:each>

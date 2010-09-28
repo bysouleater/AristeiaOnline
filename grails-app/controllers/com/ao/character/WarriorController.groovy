@@ -64,7 +64,7 @@ class WarriorController {
 			warrior {
 				eq('id', w.id)
 			}
-			maxResults(params.max?Math.min(params.max as Integer,6):6)
+			maxResults(params.max?Math.min(params.max as Integer,10):10)
 			firstResult(params.offset?params.offset as Integer:0)
 			order("dateCreated", "desc")
 		}

@@ -157,17 +157,22 @@ class BootStrap {
 			def wolfsNeeded = new Item(type:wolfFang,qty:5)
 			wolfsNeeded.save()
 			questWolfs.addToItemsNeeded(wolfsNeeded)
+			def knifereward = new Item(type:knife, qty:1)
+			knifereward.save()
+			questWolfs.addToItemsRewarded(knifereward)
 			questWolfs.save()
 			
+			def barbarianSkillsNeeded = new SkillsList(Endurance:10)
+			barbarianSkillsNeeded.save()
 			def barbarianQuest = new Quest(title:"Path to Barbarian",description:"Take this quest to become a Barbarian.",
-				minLevel:5,maxLevel:5,exp:0,gold:0,jobQuest:true,jobReward:Job.findByName("Barbarian"))
+				minLevel:5,maxLevel:5,exp:0,gold:0,jobQuest:true,jobReward:Job.findByName("Barbarian"),skillsNeeded: barbarianSkillsNeeded)
 			def barbarianItemsNeeded = new Item(type:wolfFang,qty:10)
 			barbarianItemsNeeded.save()
 			barbarianQuest.addToItemsNeeded(barbarianItemsNeeded)
-			def barbarianSkillsNeeded = new SkillsList(Endurance:10)
-			barbarianSkillsNeeded.save()
-			barbarianQuest.addToSkillsNeeded(barbarianSkillsNeeded)
-			
+			barbarianQuest.addToItemsRewarded(knifereward)
+			def applereward = new Item(type:apple, qty:10)
+			applereward.save()
+			barbarianQuest.addToItemsRewarded(applereward)			
 			barbarianQuest.save()
 		}
 		
