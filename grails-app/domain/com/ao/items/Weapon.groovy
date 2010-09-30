@@ -14,6 +14,8 @@ class Weapon extends ItemType{
 	int type
 	int handsQty
 	StatsList stats
+	boolean equipable = true
+	boolean weapon = true
 
     static constraints = {
 		type(inList:[HEAVY,NORMAL,LIGHT,DISTANCE,DUAL,SPECIAL])
