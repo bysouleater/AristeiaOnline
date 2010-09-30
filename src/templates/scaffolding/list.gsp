@@ -40,7 +40,7 @@
                                 if (i == 0) { %>
                             <td><g:link action="show" id="\${${propertyName}.id}">\${fieldValue(bean: ${propertyName}, field: "${p.name}")}</g:link></td>
                         <%      } else {
-									if(p.isAssociation()){ %>
+									if(p.isAssociation() && $'propertyName'.$'p.name'.id){ %>
 										<td><g:link controller="${p.typePropertyName}" action="show" id="\${${propertyName}.${p.name}.id}">\${${propertyName}.${p.name}.id}</g:link></td>
 						<%			}else if (p.type == Boolean.class || p.type == boolean.class) { %>
                             <td><g:formatBoolean boolean="\${${propertyName}.${p.name}}" /></td>

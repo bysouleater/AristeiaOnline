@@ -58,6 +58,6 @@ class Quest {
 			}
 		}
 		
-		return quests
+		return available_quests
 	}
 }

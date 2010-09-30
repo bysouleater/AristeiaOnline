@@ -228,7 +228,24 @@ class WarriorController {
 	}
 	
 	def use = {
-		
+		def warrior = Warrior.get(session.warrior_id)
+		def item = Item.get(params.id)
+		if(warrior.inventory && warrior.inventory.contains(item)){
+			if(item.type.consumable){
+				if(item.type.stats.HP > 0){
+					warrior.actualHP = Math.min(warrior.actualHP + item.type.stats.HP, warrior.maxHP())
+				}
+				if(item.qty > 1){
+					item.qty--
+					item.save()
+				}else{
+					warrior.removeFromInventory(item)
+					item.delete()
+				}
+			}
+		}
+		warrior.save()
+		redirect(controller:"warrior", action:"inventory")
 	}
 	
 	def explore = {

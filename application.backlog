@@ -9,13 +9,18 @@ DONE - Add equipable to ItemType
 DONE - LastCity for resurrection
 DONE - Add confirm al move map
 DONE - Implement Quests (Jobs/Normals)
-- Implement Equip/Unequip/Use
+DONE - Implement Equip/Unequip/Use
 - Validations in registration
 - Admin validations
 - Facebook oAuth
 - Implement Report Bugs
+- Correct Admin "list"
+- Confirm to use/equip/unequip items
+- Check Job Max Level
 
 SHOULD DO
+- Item description
+- Item actions
 - Implement Transports [price, destination, time?]
 - Implement Dungeons
 - Find chance for Dungeons/TrainingPlaces with search. (FindList)
