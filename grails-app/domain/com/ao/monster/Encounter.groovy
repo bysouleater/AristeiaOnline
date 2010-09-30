@@ -1,17 +1,17 @@
 package com.ao.monster
 
-
+import com.ao.character.Warrior
 
 class Encounter {
 	
+	String description
+	int chance
+	
 	static hasMany = [monsters:Monster]
 	
-	int chance
-	String description
-
     static constraints = {
 		chance(minSize:1,maxSize:100)
-		description(nullable:false,blank:false,maxSize:200)
+		description(blank:false,maxSize:200)
     }
 	
 	Long totalExp(){
@@ -38,5 +38,9 @@ class Encounter {
 			}
 		}
 		return loot
+	}
+	
+	void checkEncounter(def warrior, def chance_mult){
+		
 	}
 }

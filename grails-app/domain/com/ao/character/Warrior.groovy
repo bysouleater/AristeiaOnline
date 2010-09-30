@@ -312,4 +312,12 @@ class Warrior {
 		je.save()
 		addToJournal(je)
 	}
+	
+	boolean canSpendSTA(def qty){
+		if(actualSTA >= qty){
+			actualSTA -= qty
+			return true
+		}
+		return false
+	}
 }
