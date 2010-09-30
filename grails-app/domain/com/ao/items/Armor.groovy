@@ -14,6 +14,8 @@ class Armor extends ItemType{
 	
 	int type
 	StatsList stats
+	boolean equipable = true
+	boolean armor = true
 
     static constraints = {
 		type(inList:[HEAD,SHOULDER,BODY,SHIELD,FOOT,ACCESORY])

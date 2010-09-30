@@ -10,6 +10,8 @@ class ItemType {
 	boolean consumable
 	boolean equipable
 	boolean stackable
+	boolean weapon
+	boolean armor
 	
 //	static mapping = {
 //		tablePerHierarchy false

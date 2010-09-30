@@ -1,6 +1,7 @@
 package com.ao.character
 
 import com.ao.fight.Fight
+import com.ao.items.Armor;
 import com.ao.items.Item
 import com.ao.items.ItemType
 import com.ao.places.City 
@@ -552,6 +553,73 @@ class WarriorController {
 		}
 		
 		redirect(controller:"warrior", action:"index")
+	}
+	
+	def unequip = {
+		def warrior = Warrior.get(session.warrior_id)
+		if(warrior.equip."$params.id"){
+			if(warrior.inventory.size() < Warrior.INVENTORY_MAX_QTY){
+				warrior.addToInventory(warrior.equip."$params.id")
+				warrior.equip."$params.id" = null
+				warrior.save()
+			}
+		}
+		def referer = request.getHeader("Referer")
+		redirect(url:referer)
+	}
+	
+	def equip = {
+		def warrior = Warrior.get(session.warrior_id)
+		def item = Item.get(params.id)
+		if(warrior.inventory && warrior.inventory.contains(item)){
+			if(item.type.isWeapon()){
+				def auxitem = warrior.equip.weapon
+				warrior.equip.weapon = item
+				warrior.removeFromInventory(item)
+				if(auxitem)
+					warrior.addToInventory(auxitem)
+			}else if(item.type.isArmor()){
+				def auxitem
+				def acc
+				switch(item.type.type){
+					case Armor.HEAD:
+						auxitem = warrior.equip.head;
+						warrior.equip.head = item
+						break;
+					case Armor.SHOULDER:
+						auxitem = warrior.equip.shoulder;
+						warrior.equip.shoulder = item
+						break;
+					case Armor.BODY:
+						auxitem = warrior.equip.body;
+						warrior.equip.body = item
+						break;
+					case Armor.SHIELD:
+						auxitem = warrior.equip.shield;
+						warrior.equip.shield = item
+						break;
+					case Armor.FOOT:
+						auxitem = warrior.equip.foot;
+						warrior.equip.foot = item
+						break;
+					case Armor.ACCESORY:
+						if(!warrior.equip.accesory1)
+							warrior.equip.accesory1 = item
+						else if(!warrior.equip.accesory2)
+							warrior.equip.accesory2 = item
+						else{
+							auxitem = warrior.equip.accesory1
+							warrior.equip.accesory1 = item
+						}
+						break
+				}
+				warrior.removeFromInventory(item)
+				if(auxitem)
+					warrior.addToInventory(auxitem)
+			}
+		}
+		warrior.save()
+		redirect(controller:"warrior", action:"equipment")
 	}
 }
 
