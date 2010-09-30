@@ -13,11 +13,16 @@ class Job {
 	static Long COMPETENT
 	static Long SPECIALIST
 	
+	static int NEWBIE_GENERATION = 0
+	static int FIRST_GENERATION = 1
+	static int SECOND_GENERATION = 2
+	
 	String name
 	StatsList baseStats
 	StatsList levelUpStats
 	int maxLevel
 	int maxSkillsValue
+	int generation
 
     static constraints = {
 		name(nullable:false,blank:false,maxSize:30,unique:true)
@@ -32,7 +37,8 @@ class Job {
 		newbie_base_stats.save()
 		newbie_levelup_stats.save()
 		def newbie = new Job(name:"Newbie", baseStats:newbie_base_stats, 
-			levelUpStats: newbie_levelup_stats, maxLevel: 5, maxSkillsValue: 20)
+			levelUpStats: newbie_levelup_stats, maxLevel: 5, maxSkillsValue: 20,
+			generation:NEWBIE_GENERATION)
 		newbie.save()
 		NEWBIE = newbie.id
 		
@@ -42,7 +48,8 @@ class Job {
 		barbarian_base_stats.save()
 		barbarian_levelup_stats.save()
 		def barbarian = new Job(name:"Barbarian", baseStats:barbarian_base_stats,
-			levelUpStats: barbarian_levelup_stats, maxLevel: 15, maxSkillsValue: 60)
+			levelUpStats: barbarian_levelup_stats, maxLevel: 15, maxSkillsValue: 60,
+			generation:FIRST_GENERATION)
 		barbarian.save()
 		BARBARIAN = barbarian.id
 		
@@ -52,7 +59,8 @@ class Job {
 		soldier_base_stats.save()
 		soldier_levelup_stats.save()
 		def soldier = new Job(name:"Soldier", baseStats:soldier_base_stats,
-			levelUpStats: soldier_levelup_stats, maxLevel: 15, maxSkillsValue: 60)
+			levelUpStats: soldier_levelup_stats, maxLevel: 15, maxSkillsValue: 60,
+			generation:FIRST_GENERATION)
 		soldier.save()
 		SOLDIER = soldier.id
 		
@@ -62,7 +70,8 @@ class Job {
 		adept_base_stats.save()
 		adept_levelup_stats.save()
 		def adept = new Job(name:"Adept", baseStats:adept_base_stats,
-			levelUpStats: adept_levelup_stats, maxLevel: 15, maxSkillsValue: 60)
+			levelUpStats: adept_levelup_stats, maxLevel: 15, maxSkillsValue: 60,
+			generation:FIRST_GENERATION)
 		adept.save()
 		ADEPT = adept.id
 		
@@ -72,7 +81,8 @@ class Job {
 		shooter_base_stats.save()
 		shooter_levelup_stats.save()
 		def shooter = new Job(name:"Shooter", baseStats:shooter_base_stats,
-			levelUpStats: shooter_levelup_stats, maxLevel: 15, maxSkillsValue: 60)
+			levelUpStats: shooter_levelup_stats, maxLevel: 15, maxSkillsValue: 60,
+			generation:FIRST_GENERATION)
 		shooter.save()
 		SHOOTER = shooter.id
 		
@@ -82,7 +92,8 @@ class Job {
 		competent_base_stats.save()
 		competent_levelup_stats.save()
 		def competent = new Job(name:"Competent", baseStats:competent_base_stats,
-			levelUpStats: competent_levelup_stats, maxLevel: 15, maxSkillsValue: 60)
+			levelUpStats: competent_levelup_stats, maxLevel: 15, maxSkillsValue: 60,
+			generation:FIRST_GENERATION)
 		competent.save()
 		COMPETENT = competent.id
 		
@@ -92,7 +103,8 @@ class Job {
 		specialist_base_stats.save()
 		specialist_levelup_stats.save()
 		def specialist = new Job(name:"Specialist", baseStats:specialist_base_stats,
-			levelUpStats: specialist_levelup_stats, maxLevel: 15, maxSkillsValue: 60)
+			levelUpStats: specialist_levelup_stats, maxLevel: 15, maxSkillsValue: 60,
+			generation:FIRST_GENERATION)
 		specialist.save()
 		SPECIALIST = specialist.id
 	}

@@ -227,10 +227,11 @@ class Warrior {
 	}
 	
 	void updateStat(def stat){
-		stats."$stat" += 1
-		statPoints--
-		refreshDerivedStats()
-//		save()
+		if(statPoints > 0 && stats.hasProperty(stat)){
+			stats."$stat" += 1
+			statPoints--
+			refreshDerivedStats()
+		}
 	}
 	
 	void giveExp(Long exp){

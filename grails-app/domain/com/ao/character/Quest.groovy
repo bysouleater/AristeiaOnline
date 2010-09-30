@@ -4,6 +4,7 @@ import com.ao.SkillsList
 import com.ao.items.Item
 import com.ao.monster.Monster
 import com.ao.character.Job
+import com.ao.places.Map
 
 class Quest {
 	
@@ -11,11 +12,12 @@ class Quest {
 	String description
 	int minLevel
 	int maxLevel
+	boolean repetible = false
 	Long exp
 	Long gold
-	boolean jobQuest
 	Job jobReward
 	SkillsList skillsNeeded
+	Map starting_location
 	
 	static hasMany = [itemsNeeded:Item, itemsRewarded:Item]
 
@@ -29,14 +31,30 @@ class Quest {
     }
 	
 	static def getAvailableQuests(Warrior warrior){
-		//TODO: Filtrar mejor
-		def all = list()
-		def quests = []
-		all.each{
-			//TODO: Ver las no repetibles y de jobs
-			if(warrior.level >= it.minLevel && warrior.level <= it.maxLevel){
-				if(!warrior.questsInProgress.contains(it))
-					quests.add(it)
+		def quests = Quest.withCriteria {
+			ge("maxLevel",warrior.level)
+			le("minLevel",warrior.level)
+			eq("starting_location",warrior.actualLocation)
+		}
+		
+		def available_quests = []
+		quests.each{
+			if(!warrior.questsInProgress.contains(it)){
+				if(it.repetible){
+					available_quests.add(it)
+				}else if(it.jobReward){
+					def otherJobQuest = false
+					warrior.questsInProgress.each{
+						if(it.jobReward)
+							otherJobQuest = true
+					}
+					if(!otherJobQuest){
+						if(warrior.job.generation < it.jobReward.generation)
+							available_quests.add(it)
+					}
+				}else if(!warrior.questsDone.contains(it)){
+					available_quests.add(it)
+				}
 			}
 		}
 		

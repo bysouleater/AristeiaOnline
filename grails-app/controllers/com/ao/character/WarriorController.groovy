@@ -17,6 +17,12 @@ class WarriorController {
 		if(!session.warrior_id) {
 			redirect(controller:"main", action:'index')
 			return false
+		}else{
+			def w = Warrior.get(session.warrior_id)
+			if(!w){
+				redirect(controller:"main",action:"index")
+				return false
+			}
 		}
 	}
 	
@@ -54,27 +60,14 @@ class WarriorController {
 		return new String(decodedBytes)
 	}
 	
-	//Actions
+	//PREVIOUS ACTIONS
 	
-	def index = { 
-		if(params.id)
-			session.warrior_id = params.id as Long
-		def w = Warrior.get(session.warrior_id)
-		def journal = JournalEntry.withCriteria {
-			warrior {
-				eq('id', w.id)
-			}
-			maxResults(params.max?Math.min(params.max as Integer,10):10)
-			firstResult(params.offset?params.offset as Integer:0)
-			order("dateCreated", "desc")
-		}
-		[warrior:w,journal:journal]
-	}
+	static def MAX_WARRIORS = 3
 	
 	def register = {
 //		def url_params = parse_signed_request(params.signed_request)
 		def warriorqty = Warrior.findAllByOwner_id(123L).size()
-		if(warriorqty == 3)
+		if(warriorqty == MAX_WARRIORS)
 			redirect(controller:"main",action:"index")
 		[cities:City.list(), params:params]
 	}
@@ -88,22 +81,17 @@ class WarriorController {
 			warrior.initWarrior(wrc.properties)
 			if(warrior.validate()){
 				warrior.save()
-				redirect(controller:"main",action:"index")
+				session.warrior_id = warrior.id
+				redirect(controller:"warrior",action:"index")
 			}else{
 				render(view:"register", model:[wrc:warrior,cities:City.list()])
 			}
 		}
 	}
 	
-	def updateStat = {
-		def warrior = Warrior.get(session.warrior_id)
-		if(warrior.statPoints > 0){
-			warrior.updateStat(params.id)
-			warrior.save()
-		}
-		redirect(controller:"warrior", action:"index")
-	}
+	//GUI ACTIONS
 	
+	//TOP LINKS
 	def skills = {
 		def warrior = Warrior.get(session.warrior_id)
 		[warrior:warrior]
@@ -119,12 +107,33 @@ class WarriorController {
 		[warrior:warrior]
 	}
 	
-	def exploration = {
+	def insights = {
 		def warrior = Warrior.get(session.warrior_id)
 		[warrior:warrior]
 	}
 	
-	def insights = {
+	//LEFT LINKS
+	
+	static def MAX_JOURNAL_ENTRIES_TO_SHOW = 10
+	
+	def index = {
+		if(params.id)
+			session.warrior_id = params.id as Long
+		def w = Warrior.get(session.warrior_id)
+		if(!w)
+			redirect(controller:"main",action:"index")
+		def journal = JournalEntry.withCriteria {
+			warrior {
+				eq('id', w.id)
+			}
+			maxResults(params.max?Math.min(params.max as Integer,MAX_JOURNAL_ENTRIES_TO_SHOW):MAX_JOURNAL_ENTRIES_TO_SHOW)
+			firstResult(params.offset?params.offset as Integer:0)
+			order("dateCreated", "desc")
+		}
+		return [warrior:w,journal:journal]
+	}
+	
+	def exploration = {
 		def warrior = Warrior.get(session.warrior_id)
 		[warrior:warrior]
 	}
@@ -132,6 +141,26 @@ class WarriorController {
 	def training = {
 		def warrior = Warrior.get(session.warrior_id)
 		[warrior:warrior]
+	}
+	
+	def quests = {
+		def warrior = Warrior.get(session.warrior_id)
+		[warrior:warrior, doing_quests:warrior.questsInProgress,
+			available_quests:Quest.getAvailableQuests(warrior)]
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	def updateStat = {
+		def warrior = Warrior.get(session.warrior_id)
+		warrior.updateStat(params.id)
+		warrior.save()
+		redirect(controller:"warrior", action:"index")
 	}
 	
 	def explore = {
@@ -195,11 +224,7 @@ class WarriorController {
 		redirect(controller:"warrior",action:"index")
 	}
 	
-	def quests = {
-		def warrior = Warrior.get(session.warrior_id)
-		
-		[warrior:warrior,doing_quests:warrior.questsInProgress,available_quests:Quest.getAvailableQuests(warrior)]
-	}
+	
 	
 	def train = {
 		def warrior = Warrior.get(session.warrior_id)
@@ -490,7 +515,7 @@ class WarriorController {
 				
 				warrior.gold += quest.gold
 				warrior.giveExp(quest.exp)
-				if(quest.jobQuest)
+				if(quest.jobReward)
 					warrior.changeJob(quest.jobReward)
 				quest.itemsRewarded.each{ item ->
 					boolean alreadyHaveIt = false

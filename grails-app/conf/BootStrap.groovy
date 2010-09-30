@@ -153,7 +153,7 @@ class BootStrap {
 			
 			
 			def questWolfs = new Quest(title:"Killing Wolfs",description:"Help the citizens to get rid of the hungry wolfs in the streets.",
-				minLevel:1,maxLevel:5,exp:100,gold:100)
+				repetible:true,minLevel:1,maxLevel:5,exp:100,gold:100,starting_location:cm1)
 			def wolfsNeeded = new Item(type:wolfFang,qty:5)
 			wolfsNeeded.save()
 			questWolfs.addToItemsNeeded(wolfsNeeded)
@@ -165,7 +165,7 @@ class BootStrap {
 			def barbarianSkillsNeeded = new SkillsList(Endurance:10)
 			barbarianSkillsNeeded.save()
 			def barbarianQuest = new Quest(title:"Path to Barbarian",description:"Take this quest to become a Barbarian.",
-				minLevel:5,maxLevel:5,exp:0,gold:0,jobQuest:true,jobReward:Job.findByName("Barbarian"),skillsNeeded: barbarianSkillsNeeded)
+				minLevel:5,maxLevel:5,exp:0,gold:0,starting_location:cm1,jobReward:Job.get(Job.BARBARIAN),skillsNeeded: barbarianSkillsNeeded)
 			def barbarianItemsNeeded = new Item(type:wolfFang,qty:10)
 			barbarianItemsNeeded.save()
 			barbarianQuest.addToItemsNeeded(barbarianItemsNeeded)
