@@ -10,6 +10,23 @@ DONE - LastCity for resurrection
 DONE - Add confirm al move map
 DONE - Implement Quests (Jobs/Normals)
 DONE - Implement Equip/Unequip/Use
+- Equipment: Show Item Stats
+- Inventory: Show Item Stats
+- Inventory: Consumables: Show description
+- Exploration: Confirm Search for items & monsters
+- Explore: Improve encounter chance
+- Explore: Implement Find Item
+- Journal: Show items looted in battle
+- Journal: Show items found
+DONE - Journal: Hide when gold not found
+- Journal: Ident to the right the text and to the left the timestamp
+- Check: There are some items that sometimes dont stack
+DONE - Store: When buying, show input borders
+DONE - Exploration: Hide Transport/Arena
+DONE - Main Menu: Hide Insights
+- Training: Change default icon
+- Training: Show max skill points gained
+DONE - Job: Show job picture
 - Validations in registration
 - Admin validations
 - Facebook oAuth
@@ -17,6 +34,8 @@ DONE - Implement Equip/Unequip/Use
 - Correct Admin "list"
 - Confirm to use/equip/unequip items
 - Check Job Max Level
+- Add twitter link
+- Resize in all pages
 
 SHOULD DO
 - Item description

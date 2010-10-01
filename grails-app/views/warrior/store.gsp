@@ -6,7 +6,7 @@
 		<td valign="top">
 			<div id="content">
 				<h4>${store.name} Store</h4>
-				<table width="100%" style="font-size:12px;margin:15px 0px 20px 20px;">
+				<table width="100%" style="font-size:12px;margin:0px 0px 20px 20px;">
 					<tr>
 						<td width="50%" style="padding-right:30px;"><h4>Buy</h4></td>
 						<td width="50%" style="padding-right:30px;"><h4>Sell</h4></td>
@@ -75,7 +75,9 @@
 			$("#buy_inputqty").attr("value",1);
 			if(!consumable){
 				$("#buy_inputqty").attr("readonly","readonly");
+				$("#buy_inputqty").css("border","0");
 			}else{
+				$("#buy_inputqty").css("border","");
 				myInterval = setInterval("refreshTotalBuy()",500);
 			}
 			$("#buy_dialog").dialog({title : "Buy " + item_name + "?"});
@@ -95,8 +97,10 @@
 			if(item_qty > 1){
 				$("#sell_inputqty").removeAttr("readonly");
 				myInterval = setInterval("refreshTotalSell("+item_qty+")",500);
+				$("#sell_inputqty").css("border","");
 			}else{
 				$("#sell_inputqty").attr("readonly","readonly");
+				$("#sell_inputqty").css("border","0");
 			}
 			$("#sell_dialog").dialog({title : "Sell " + item_name + "?"});
 			$("#sell_dialog").dialog("open");

@@ -7,8 +7,8 @@
 			<div id="content">
 				<h4>Skills</h4>
 				<table width="100%" style="margin:15px 0px 20px 20px;font-size:12px;">
-					<tr><td colspan="3" align="center" class="labeltxt">DEX Bonus</td>
-						<td colspan="3" align="center" class="labeltxt">AGI Bonus</td></tr>
+					<tr><td colspan="3" align="center" class="labeltxt">DEX Bonus +${((warrior.skills.Aiming + warrior.skills.Thievery) / 10).intValue()}</td>
+						<td colspan="3" align="center" class="labeltxt">AGI Bonus +${((warrior.skills.Escape_Artist + warrior.skills.Stealth) / 10).intValue()}</td></tr>
 					<tr>
 						<td class="labeltxt">Aiming</td><td class="statusbarvalue">${warrior.skills.Aiming}</td>
 						<td><div class="statusbar outside" style="width:100px;" title="${warrior.skills.Aiming} / ${warrior.job.maxSkillsValue}">
@@ -25,8 +25,8 @@
 						<td><div class="statusbar outside" style="width:100px;" title="${warrior.skills.Stealth} / ${warrior.job.maxSkillsValue}">
 							<div class="statusbar inside" style="width:${(warrior.skills.Stealth * 100 / warrior.job.maxSkillsValue).intValue()}px;background-color:#0000FF"></div></div></td>
 					</tr>
-					<tr><td colspan="3" align="center" class="labeltxt" style="padding-top:15px;">STR Bonus</td>
-						<td colspan="3" align="center" class="labeltxt" style="padding-top:15px;">CON Bonus</td></tr>
+					<tr><td colspan="3" align="center" class="labeltxt" style="padding-top:15px;">STR Bonus +${((warrior.skills.Athletics + warrior.skills.Climb) / 10).intValue()}</td>
+						<td colspan="3" align="center" class="labeltxt" style="padding-top:15px;">CON Bonus +${((warrior.skills.Endurance + warrior.skills.Concentration) / 10).intValue()}</td></tr>
 					<tr>
 						<td class="labeltxt">Athletics</td><td class="statusbarvalue">${warrior.skills.Athletics}</td>
 						<td><div class="statusbar outside" style="width:100px;" title="${warrior.skills.Athletics} / ${warrior.job.maxSkillsValue}">

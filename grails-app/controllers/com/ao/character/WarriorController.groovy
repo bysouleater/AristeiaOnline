@@ -32,7 +32,7 @@ class WarriorController {
 		if(model.warrior){
 			model.warrior.refreshSTA()
 			model.warrior.refreshHP()
-			model.warrior.save()
+			model.warrior.save(flush:true)
 		}
 	}
 	

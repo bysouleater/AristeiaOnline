@@ -14,9 +14,9 @@
 				<td><a class="buttonlink" href="<g:createLink controller='warrior' action='inventory'/>">
 					<img width="15" height="15" src="/images/inventory.png"/>
 					<b>Inventory</b></a></td>
-				<td><a class="buttonlink" href="<g:createLink controller='warrior' action='insights'/>">
+				<!--  <td><a class="buttonlink" href="<g:createLink controller='warrior' action='insights'/>">
 					<img width="15" height="15" src="/images/insights.png"/>
-					<b>Insights</b></a></td>
+					<b>Insights</b></a></td>-->
 			</tr></table>
 		</td>
 	</g:warriorSheet>

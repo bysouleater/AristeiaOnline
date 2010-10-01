@@ -57,16 +57,16 @@
 							<b>Consumables Store</b></a>
 						</td>
 						<td>
-							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='transports'/>">
+							<!--  <a class="buttonlink biglink" href="<g:createLink controller='warrior' action='transports'/>">
 							<img width="32" height="32" src="/images/consumables.png"/>
-							<b>Transports</b></a>
+							<b>Transports</b></a>-->
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='arena'/>">
+							<!-- <a class="buttonlink biglink" href="<g:createLink controller='warrior' action='arena'/>">
 							<img width="32" height="32" src="/images/consumables.png"/>
-							<b>Arena</b></a>
+							<b>Arena</b></a>-->
 						</td>
 						<td></td>
 					</tr>

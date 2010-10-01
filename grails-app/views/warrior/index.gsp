@@ -13,7 +13,8 @@
 						</g:if>
 						<g:if test="${je.type == 1}">
 							<li><label style="color:#555555"><g:dateFromNow date="${je.dateCreated}"/>.</label> <i>While exploring you encountered ${je.fight.encounter.description}. You <b><g:if test="${je.fight.won}">won</g:if><g:else>lost</g:else></b> the fight. <b><g:link controller="warrior" action="fights" id="${je.fight.id}">View fight details</g:link></b>. 
-							<br>Gained <b>${je.fight.encounter.totalExp()}</b> EXP. Found <b>${je.fight.encounter.totalGold()}</b> <img width="15" height="15" src="/images/coins.png"/>.</i></li>
+							<br>Gained <b>${je.fight.encounter.totalExp()}</b> EXP.  
+							<g:if test="${je.fight.encounter.totalGold() > 0}">Found <b>${je.fight.encounter.totalGold()}</b> <img width="15" height="15" src="/images/coins.png"/>.</g:if></i></li>
 						</g:if>
 					</g:each>
 				</ul>

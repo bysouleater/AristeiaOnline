@@ -23,11 +23,10 @@ class Job {
 	int maxLevel
 	int maxSkillsValue
 	int generation
+	String picture
 
     static constraints = {
-		name(nullable:false,blank:false,maxSize:30,unique:true)
-		baseStats(nullable:false)
-		levelUpStats(nullable:false)
+		name(blank:false,maxSize:30,unique:true)
     }
 	
 	static void initJobs(){
@@ -38,7 +37,7 @@ class Job {
 		newbie_levelup_stats.save()
 		def newbie = new Job(name:"Newbie", baseStats:newbie_base_stats, 
 			levelUpStats: newbie_levelup_stats, maxLevel: 5, maxSkillsValue: 20,
-			generation:NEWBIE_GENERATION)
+			generation:NEWBIE_GENERATION, picture:"/images/male_paladin.png")
 		newbie.save()
 		NEWBIE = newbie.id
 		
@@ -49,7 +48,7 @@ class Job {
 		barbarian_levelup_stats.save()
 		def barbarian = new Job(name:"Barbarian", baseStats:barbarian_base_stats,
 			levelUpStats: barbarian_levelup_stats, maxLevel: 15, maxSkillsValue: 60,
-			generation:FIRST_GENERATION)
+			generation:FIRST_GENERATION, picture:"/images/male_paladin.png")
 		barbarian.save()
 		BARBARIAN = barbarian.id
 		
@@ -60,7 +59,7 @@ class Job {
 		soldier_levelup_stats.save()
 		def soldier = new Job(name:"Soldier", baseStats:soldier_base_stats,
 			levelUpStats: soldier_levelup_stats, maxLevel: 15, maxSkillsValue: 60,
-			generation:FIRST_GENERATION)
+			generation:FIRST_GENERATION, picture:"/images/male_paladin.png")
 		soldier.save()
 		SOLDIER = soldier.id
 		
@@ -71,7 +70,7 @@ class Job {
 		adept_levelup_stats.save()
 		def adept = new Job(name:"Adept", baseStats:adept_base_stats,
 			levelUpStats: adept_levelup_stats, maxLevel: 15, maxSkillsValue: 60,
-			generation:FIRST_GENERATION)
+			generation:FIRST_GENERATION, picture:"/images/male_paladin.png")
 		adept.save()
 		ADEPT = adept.id
 		
@@ -82,7 +81,7 @@ class Job {
 		shooter_levelup_stats.save()
 		def shooter = new Job(name:"Shooter", baseStats:shooter_base_stats,
 			levelUpStats: shooter_levelup_stats, maxLevel: 15, maxSkillsValue: 60,
-			generation:FIRST_GENERATION)
+			generation:FIRST_GENERATION, picture:"/images/male_paladin.png")
 		shooter.save()
 		SHOOTER = shooter.id
 		
@@ -93,7 +92,7 @@ class Job {
 		competent_levelup_stats.save()
 		def competent = new Job(name:"Competent", baseStats:competent_base_stats,
 			levelUpStats: competent_levelup_stats, maxLevel: 15, maxSkillsValue: 60,
-			generation:FIRST_GENERATION)
+			generation:FIRST_GENERATION, picture:"/images/male_paladin.png")
 		competent.save()
 		COMPETENT = competent.id
 		
@@ -104,7 +103,7 @@ class Job {
 		specialist_levelup_stats.save()
 		def specialist = new Job(name:"Specialist", baseStats:specialist_base_stats,
 			levelUpStats: specialist_levelup_stats, maxLevel: 15, maxSkillsValue: 60,
-			generation:FIRST_GENERATION)
+			generation:FIRST_GENERATION, picture:"/images/male_paladin.png")
 		specialist.save()
 		SPECIALIST = specialist.id
 	}

@@ -1,7 +1,7 @@
 <table width="100%">
 	<tr>
 		<td width="120" height="120" valign="top">
-			<img src="/images/male_paladin.png"/>
+			<img src="${warrior.job.picture}"/>
 		</td>
 		<td width="130" valign="top">
 			<table width="100%" border="0">
