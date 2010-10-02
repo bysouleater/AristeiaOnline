@@ -22,4 +22,13 @@ class Weapon extends ItemType{
 		handsQty(minSize:1, maxSize:2)
 		stats(nullable:false)
     }
+	
+	def titleStats(){
+		def text = ""
+		stats.all().each{
+			if(it.value > 0)
+				text += " ${it.key}:${it.value} "
+		}
+		return text
+	}
 }

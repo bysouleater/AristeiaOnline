@@ -10,7 +10,7 @@
 					<tr>
 						<td class="labeltxt">Head </td>
 						<g:if test="${warrior.equip.head}">
-							<td width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.head.type.name} - Stats${warrior.equip.head.type.titleStats()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="<g:createLink controller="warrior" action="unequip" id="head"/>">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.head.type.icon}"/>
 								</a>
@@ -23,7 +23,7 @@
 						</g:else>
 						<td class="labeltxt">Shoulder </td>
 						<g:if test="${warrior.equip.shoulder}">
-							<td width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.shoulder.type.name} - Stats${warrior.equip.shoulder.type.titleStats()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="<g:createLink controller="warrior" action="unequip" id="shoulder"/>">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.shoulder.type.icon}"/>
 								</a>
@@ -38,7 +38,7 @@
 					<tr>
 						<td class="labeltxt">Shield </td>
 						<g:if test="${warrior.equip.shield}">
-							<td width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.shield.type.name} - Stats${warrior.equip.shield.type.titleStats()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="<g:createLink controller="warrior" action="unequip" id="shield"/>">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.shield.type.icon}"/>
 								</a>
@@ -51,7 +51,7 @@
 						</g:else>
 						<td class="labeltxt">Weapon </td>
 						<g:if test="${warrior.equip.weapon}">
-							<td width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.weapon.type.name} - Stats${warrior.equip.weapon.type.titleStats()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="<g:createLink controller="warrior" action="unequip" id="weapon"/>">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.weapon.type.icon}"/>
 								</a>
@@ -66,7 +66,7 @@
 					<tr>
 						<td class="labeltxt">Body </td>
 						<g:if test="${warrior.equip.body}">
-							<td width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.body.type.name} - Stats${warrior.equip.body.type.titleStats()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="<g:createLink controller="warrior" action="unequip" id="body"/>">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.body.type.icon}"/>
 								</a>
@@ -79,7 +79,7 @@
 						</g:else>
 						<td class="labeltxt">Foot </td>
 						<g:if test="${warrior.equip.foot}">
-							<td width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.foot.type.name} - Stats${warrior.equip.foot.type.titleStats()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="<g:createLink controller="warrior" action="unequip" id="foot"/>">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.foot.type.icon}"/>
 								</a>
@@ -94,7 +94,7 @@
 					<tr>
 						<td class="labeltxt">Accesory </td>
 						<g:if test="${warrior.equip.accesory1}">
-							<td width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.accesory1.type.name} - Stats${warrior.equip.accesory1.type.titleStats()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="<g:createLink controller="warrior" action="unequip" id="accesory1"/>">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.accesory1.type.icon}"/>
 								</a>
@@ -107,7 +107,7 @@
 						</g:else>
 						<td class="labeltxt">Accesory </td>
 						<g:if test="${warrior.equip.accesory2}">
-							<td width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.accesory2.type.name} - Stats${warrior.equip.accesory2.type.titleStats()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="<g:createLink controller="warrior" action="unequip" id="accesory2"/>">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.accesory2.type.icon}"/>
 								</a>

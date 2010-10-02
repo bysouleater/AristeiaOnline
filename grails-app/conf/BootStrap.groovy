@@ -40,7 +40,7 @@ class BootStrap {
 			
 			def appleStats = new StatsList(HP:10)
 			appleStats.save()
-			def apple = new Consumable(name:"Apple",price:5,icon:"/images/apple.png",stats:appleStats,stackable:true)
+			def apple = new Consumable(name:"Apple",price:5,icon:"/images/apple.png",stats:appleStats,stackable:true, description:"Recovers 10 HP")
 			apple.save()
 			
 			def wstore = new Store(name:"Weapons")

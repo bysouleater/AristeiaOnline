@@ -14,7 +14,7 @@
 					<tr>
 						<td style="padding-left:15px;" valign="top">
 							<g:each in="${store.items}" var="item" status="i">
-								<div title="${item.name} - Value:${item.price} coins" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
+								<div title="${item.name} - ${item.consumable?item.description:item.titleStats()} - Value:${item.price} coins" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
 									<a href="#" onclick="javascript:openBuy(${item.id},${item.price},'${item.name}','${item.icon}',${item.consumable});">
 										<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.icon}"/>
 									</a>
@@ -28,7 +28,7 @@
 						</td>
 						<td style="padding-right:15px;"  valign="top">
 							<g:each in="${warrior.inventory}" var="item" status="i">
-								<div title="${item.type.name} - Value:${(item.type.price / 2).intValue()} coins" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
+								<div title="${item.type.name} - ${item.type.consumable?item.type.description:item.type.titleStats()} - Value:${(item.type.price / 2).intValue()} coins" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
 									<a href="#" onclick="javascript:openSell(${item.id},${(item.type.price / 2).intValue()},'${item.type.name}','${item.type.icon}',${item.qty});">
 										<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.type.icon}"/>
 									</a>

@@ -21,4 +21,13 @@ class Armor extends ItemType{
 		type(inList:[HEAD,SHOULDER,BODY,SHIELD,FOOT,ACCESORY])
 		stats(nullable:false)
     }
+	
+	def titleStats(){
+		def text = ""
+		stats.all().each{
+			if(it.value > 0)
+				text += " ${it.key}:${it.value} "
+		}
+		return text
+	}
 }

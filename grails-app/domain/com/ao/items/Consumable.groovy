@@ -5,6 +5,7 @@ import com.ao.StatsList;
 class Consumable extends ItemType{
 
 	StatsList stats
+	String description
 	
 	boolean consumable = true
 	

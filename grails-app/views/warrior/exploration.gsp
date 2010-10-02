@@ -7,7 +7,7 @@
 				<tr>
 					<td>
 						<g:if test="${warrior.actualSTA >= 5}">
-							<a class="buttonlink biglink" href="<g:createLink controller='warrior' action='explore'/>">
+							<a class="buttonlink biglink" href="javascript:confirmExplore();" href="<g:createLink controller='warrior' action='explore'/>">
 								<img style="float:left;margin-right:10px;" width="32" height="32" src="/images/search.png"/>
 								<b>Search for items<br>and monsters</b> (5 STA)
 							</a>
@@ -35,6 +35,23 @@
 					</td>
 				</tr>
 			</table>
+			<g:javascript library="jquery" plugin="jquery"/>
+			<jqui:resources theme="aristeia"/>
+			<script>
+				$(document).ready(function() {
+				    $("#explore_dialog").dialog({ autoOpen:false, resizable:false, 
+					    buttons: { "Ok": function() { window.location.href="<g:createLink controller='warrior' action='explore'/>";},
+				    			   "Cancel": function() { $(this).dialog("close");} }
+				    });
+				});
+				
+				function confirmExplore(){
+					$("#explore_dialog").dialog("open");
+				}
+			</script>
+			<div style="display:none;" id="explore_dialog" title="Search for items and monsters?">
+				<p>Are you sure you want to search for items and monsters?</p>
+			</div>
 			<g:if test="${warrior.actualLocation.isCity()}">
 				<div style="font-size:14px;">City places</div>
 				<table style="margin:15px 0px 20px 20px;">
