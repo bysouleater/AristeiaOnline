@@ -31,10 +31,13 @@ class Encounter {
 	}
 	
 	def totalLoot(){
-		def loot = []
+		def loot = [:]
 		monsters.each{ monster ->
 			monster.loot.each{ item ->
-				loot.add item
+				if(loot[item])
+					loot[item]++
+				else
+					loot[item] = 1
 			}
 		}
 		return loot

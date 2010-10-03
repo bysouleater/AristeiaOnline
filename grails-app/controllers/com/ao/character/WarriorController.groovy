@@ -13,7 +13,7 @@ import com.ao.places.Map
 class WarriorController {
 	
 	def scaffold = true
-	def beforeInterceptor = [action:this.&checkSessionWarrior,except:['index','register','save']]
+	def beforeInterceptor = [action:this.&checkSessionWarrior,except:['index','register','save','list','create','show','edit']]
 
 	def checkSessionWarrior() {
 		if(!session.warrior_id) {
@@ -275,7 +275,8 @@ class WarriorController {
 					if(fight.won){
 						warrior.giveExp(it.totalExp())
 						warrior.gold += it.totalGold()
-						it.totalLoot().each{ item ->
+						
+						it.totalLoot().each{ item, lqty ->
 							boolean alreadyHaveIt = false
 							
 							if(item.stackable){
@@ -283,20 +284,21 @@ class WarriorController {
 									if(alreadyHaveIt)
 										return
 									if(it.type == item){
-										if(it.qty + 1 > 1000){
+										if(it.qty + lqty > 1000){
 											it.qty = 1000
+											lqty = it.qty + lqty -1000
 										}else{
-											it.qty += 1
+											it.qty += lqty
 											alreadyHaveIt = true
 										}
-										it.save()
+										it.save(flush:true)
 									}
 								}
 							}
 							
 							if(!alreadyHaveIt){
-								def newitem = new Item(type:item, qty:1)
-								newitem.save()
+								def newitem = new Item(type:item, qty:lqty)
+								newitem.save(flush:true)
 								warrior.addToInventory(newitem)
 							}
 						}						

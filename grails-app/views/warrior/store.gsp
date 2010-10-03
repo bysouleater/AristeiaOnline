@@ -14,11 +14,27 @@
 					<tr>
 						<td style="padding-left:15px;" valign="top">
 							<g:each in="${store.items}" var="item" status="i">
-								<div title="${item.name} - ${item.consumable?item.description:item.titleStats()} - Value:${item.price} coins" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
-									<a href="#" onclick="javascript:openBuy(${item.id},${item.price},'${item.name}','${item.icon}',${item.consumable});">
-										<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.icon}"/>
-									</a>
-								</div>
+								<g:if test="${item.consumable}">
+									<div title="${item.name} - ${item.description} - Value:${item.price} coins" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
+										<a href="#" onclick="javascript:openBuy(${item.id},${item.price},'${item.name}','${item.icon}',${item.consumable});">
+											<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.icon}"/>
+										</a>
+									</div>
+								</g:if>
+								<g:elseif test="${item.equipable}">
+									<div title="${item.name} - ${item.titleStats()} - Value:${item.price} coins" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
+										<a href="#" onclick="javascript:openBuy(${item.id},${item.price},'${item.name}','${item.icon}',${item.consumable});">
+											<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.icon}"/>
+										</a>
+									</div>
+								</g:elseif>
+								<g:else>
+									<div title="${item.name} - Value:${item.price} coins" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
+										<a href="#" onclick="javascript:openBuy(${item.id},${item.price},'${item.name}','${item.icon}',${item.consumable});">
+											<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.icon}"/>
+										</a>
+									</div>
+								</g:else>
 							</g:each>
 							<g:if test="${store.items.size() < 30}">
 								<g:each in="${store.items.size()+1..30}">
@@ -28,12 +44,30 @@
 						</td>
 						<td style="padding-right:15px;"  valign="top">
 							<g:each in="${warrior.inventory}" var="item" status="i">
-								<div title="${item.type.name} - ${item.type.consumable?item.type.description:item.type.titleStats()} - Value:${(item.type.price / 2).intValue()} coins" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
-									<a href="#" onclick="javascript:openSell(${item.id},${(item.type.price / 2).intValue()},'${item.type.name}','${item.type.icon}',${item.qty});">
-										<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.type.icon}"/>
-									</a>
-									<g:if test="${item.qty > 1}"><span style="top:-3px;font-size:10px;font-weight:bold;position:relative;">x${item.qty}</span></g:if>
-								</div>
+								<g:if test="${item.type.consumable}">
+									<div title="${item.type.name} - ${item.type.description} - Value:${(item.type.price / 2).intValue()} coins" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
+										<a href="#" onclick="javascript:openSell(${item.id},${(item.type.price / 2).intValue()},'${item.type.name}','${item.type.icon}',${item.qty});">
+											<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.type.icon}"/>
+										</a>
+										<g:if test="${item.qty > 1}"><span style="top:-3px;font-size:10px;font-weight:bold;position:relative;">x${item.qty}</span></g:if>
+									</div>
+								</g:if>
+								<g:elseif test="${item.type.equipable}">
+									<div title="${item.type.name} - ${item.type.titleStats()} - Value:${(item.type.price / 2).intValue()} coins" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
+										<a href="#" onclick="javascript:openSell(${item.id},${(item.type.price / 2).intValue()},'${item.type.name}','${item.type.icon}',${item.qty});">
+											<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.type.icon}"/>
+										</a>
+										<g:if test="${item.qty > 1}"><span style="top:-3px;font-size:10px;font-weight:bold;position:relative;">x${item.qty}</span></g:if>
+									</div>
+								</g:elseif>
+								<g:else>
+									<div title="${item.type.name} - Value:${(item.type.price / 2).intValue()} coins" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
+										<a href="#" onclick="javascript:openSell(${item.id},${(item.type.price / 2).intValue()},'${item.type.name}','${item.type.icon}',${item.qty});">
+											<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.type.icon}"/>
+										</a>
+										<g:if test="${item.qty > 1}"><span style="top:-3px;font-size:10px;font-weight:bold;position:relative;">x${item.qty}</span></g:if>
+									</div>
+								</g:else>								
 							</g:each>
 							<g:if test="${warrior.inventory.size() < 30}">
 								<g:each in="${warrior.inventory.size()+1..30}">

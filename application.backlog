@@ -14,19 +14,19 @@ DONE - Equipment: Show Item Stats
 DONE - Inventory: Show Item Stats
 DONE - Inventory: Consumables: Show description
 DONE - Exploration: Confirm Search for items & monsters
-- Explore: Improve encounter chance
-- Explore: Implement Find Item
-- Journal: Show items looted in battle
-- Journal: Show items found
+DONE - Journal: Show items looted in battle
 DONE - Journal: Hide when gold not found
-- Journal: Ident to the right the text and to the left the timestamp
-- Check: There are some items that sometimes dont stack
+DONE - Journal: Ident to the right the text and to the left the timestamp
+DONE - Check: There are some items that sometimes dont stack
 DONE - Store: When buying, show input borders
 DONE - Exploration: Hide Transport/Arena
 DONE - Main Menu: Hide Insights
+DONE - Job: Show job picture
+- Explore: Improve encounter chance
+- Explore: Implement Find Item
+- Journal: Show items found
 - Training: Change default icon
 - Training: Show max skill points gained
-DONE - Job: Show job picture
 - Validations in registration
 - Admin validations
 - Facebook oAuth

@@ -26,9 +26,7 @@
 						</g:elseif>
 						<g:else>
 							<div title="${item.type.name}" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
-								<a href="<g:createLink controller="warrior" action="${item.type.equipable?'equip':'use'}" id="${item.id}"/>">
-									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.type.icon}"/>
-								</a>
+								<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.type.icon}"/>
 								<g:if test="${item.qty > 1}"><span style="top:-5px;font-size:10px;font-weight:bold;position:relative;">x${item.qty}</span></g:if>
 							</div>
 						</g:else>
