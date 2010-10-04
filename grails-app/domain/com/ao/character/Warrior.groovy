@@ -320,4 +320,129 @@ class Warrior {
 		}
 		return false
 	}
+	
+	boolean canBuy(def price){
+		if(gold >= price){
+			gold -= price
+			return true
+		}
+		return false
+	}
+	
+	void unequipItem(def equiptype){
+		if(equip."$equiptype"){
+			if(inventory.size() < INVENTORY_MAX_QTY){
+				warrior.addToInventory(warrior.equip."$equiptype")
+				warrior.equip."$equiptype" = null
+				equip.save()
+			}
+		}
+	}
+	
+	void equipItem(def item){
+		if(item.type.isWeapon()){
+			def auxitem = equip.weapon
+			equip.weapon = item
+			removeFromInventory(item)
+			if(auxitem)
+				addToInventory(auxitem)
+		}else if(item.type.isArmor()){
+			def auxitem
+			def acc
+			switch(item.type.type){
+				case Armor.HEAD:
+					auxitem = equip.head;
+					equip.head = item
+					break;
+				case Armor.SHOULDER:
+					auxitem = equip.shoulder;
+					equip.shoulder = item
+					break;
+				case Armor.BODY:
+					auxitem = equip.body;
+					equip.body = item
+					break;
+				case Armor.SHIELD:
+					auxitem = equip.shield;
+					equip.shield = item
+					break;
+				case Armor.FOOT:
+					auxitem = equip.foot;
+					equip.foot = item
+					break;
+				case Armor.ACCESORY:
+					if(!equip.accesory1)
+						equip.accesory1 = item
+					else if(!equip.accesory2)
+						equip.accesory2 = item
+					else{
+						auxitem = equip.accesory1
+						equip.accesory1 = item
+					}
+					break
+			}
+			removeFromInventory(item)
+			if(auxitem)
+				addToInventory(auxitem)
+		}
+		equip.save()
+	}
+	
+	void useItem(def item){
+		if(item.type.consumable){
+			if(item.type.stats.HP > 0){
+				warrior.actualHP = Math.min(actualHP + item.type.stats.HP, maxHP())
+			}
+			if(item.qty > 1){
+				item.qty--
+				item.save()
+			}else{
+				removeFromInventory(item)
+				item.delete()
+			}
+		}
+	}
+	
+	void giveItem(def itemtype, def qty){
+		def someleft = qty
+		if(itemtype.stackable){
+			inventory.each{ inv_item ->
+				if(someleft == 0)
+					return
+				if(inv_item.type == itemtype){
+					if(inv_item.qty + someleft > 1000){
+						someleft = (inv_item.qty + someleft - 1000)
+						inv_item.qty = 1000
+					}else{
+						inv_item.qty += someleft
+						someleft = 0
+					}
+					inv_item.save()
+				}
+			}
+		}
+		
+		if(someleft > 0){
+			def newitem = new Item(type:itemtype, qty:someleft)
+			newitem.save()
+			addToInventory(newitem)
+		}
+	}
+	
+	def takeItem(def item, def qty){
+		if(item.qty - qty <= 0){
+			removeFromInventory(item)
+			return item.qty
+		}
+
+		item.qty -= qty
+		item.save()
+		return qty
+	}
+	
+	def giveSkill(def skill, def gained){
+		def previous_value = skills."$skill".round(1) 
+		skills."$skill" = Math.min((skills."$skill" + gained).round(1),job.maxSkillsValue)
+		return (skills."$skill" - previous_value).round(1)
+	}
 }

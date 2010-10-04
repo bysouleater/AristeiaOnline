@@ -22,18 +22,24 @@ DONE - Store: When buying, show input borders
 DONE - Exploration: Hide Transport/Arena
 DONE - Main Menu: Hide Insights
 DONE - Job: Show job picture
-- Explore: Improve encounter chance
-- Explore: Implement Find Item
-- Journal: Show items found
+DONE - Explore: Improve encounter chance
+DONE - Explore: Implement Find Item
+DONE - Journal: Show items found
+DONE - Warrior: Implement give item
+DONE - Warrior: Implement take item
+- Continue checking warrior controller
+- Exp: Check job max level
 - Training: Change default icon
 - Training: Show max skill points gained
+- Quests: Check that doesnt previously have it
+- Quests: Add journal entry when started and when finished.
 - Validations in registration
 - Admin validations
 - Facebook oAuth
 - Implement Report Bugs
 - Correct Admin "list"
 - Confirm to use/equip/unequip items
-- Check Job Max Level
+- Confirm to train
 - Add twitter link
 - Resize in all pages
 

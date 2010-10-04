@@ -42,8 +42,4 @@ class Encounter {
 		}
 		return loot
 	}
-	
-	void checkEncounter(def warrior, def chance_mult){
-		
-	}
 }

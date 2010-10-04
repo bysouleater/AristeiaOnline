@@ -1,5 +1,6 @@
 package com.ao.places
 
+import com.ao.items.Item;
 import com.ao.monster.Encounter
 import com.ao.places.TrainingPlace
 
@@ -15,7 +16,7 @@ class Map {
 	Store armors
 	Store consumables
 	
-	static hasMany = [encounters:Encounter,trainingPlaces:TrainingPlace]
+	static hasMany = [encounters:Encounter,items:Item,trainingPlaces:TrainingPlace]
 	
     static constraints = {
 		name(nullable:false,blank:false)
@@ -24,4 +25,13 @@ class Map {
 		armors(nullable:true)
 		consumables(nullable:true)
     }
+	
+	static def getWorldMap(){
+		def maps = list()
+		Map[][] worldmap = new Map[7][7]
+		maps.each{
+			worldmap[it.posX][it.posY] = it
+		}
+		return worldmap
+	}
 }

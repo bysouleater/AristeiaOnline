@@ -122,6 +122,11 @@ class BootStrap {
 			cm4.addToEncounters(wolfencounter2)
 			cm4.save()
 			
+			
+			def applefind = new Item(type:apple,chance:90)
+			applefind.save()
+			cm1.addToItems(applefind)
+			
 			def sk1 = new SkillsList(Aiming:1d)
 			sk1.save()
 			def tp1 = new TrainingPlace(name:"Chalcedon Shooting Camp", STArequired:5, skills:sk1)

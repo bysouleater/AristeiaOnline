@@ -14,7 +14,7 @@ class WarriorController {
 	
 	def scaffold = true
 	def beforeInterceptor = [action:this.&checkSessionWarrior,except:['index','register','save','list','create','show','edit']]
-
+	
 	def checkSessionWarrior() {
 		if(!session.warrior_id) {
 			redirect(controller:"main", action:'index')
@@ -49,10 +49,9 @@ class WarriorController {
 		//TODO: Verificar el encodeo
 		//check sig
 		/*def expected_sig = hash_hmac('sha256', payload, FB_SECRET_KEY, $raw = true)
-		
-		if(sig != expected_sig)
-			throw new Exception("Bad signed JSON signature!")
-			*/
+		 if(sig != expected_sig)
+		 throw new Exception("Bad signed JSON signature!")
+		 */
 		return data
 	}
 	
@@ -67,7 +66,7 @@ class WarriorController {
 	static def MAX_WARRIORS = 3
 	
 	def register = {
-//		def url_params = parse_signed_request(params.signed_request)
+		//		def url_params = parse_signed_request(params.signed_request)
 		def warriorqty = Warrior.findAllByOwner_id(123L).size()
 		if(warriorqty == MAX_WARRIORS)
 			redirect(controller:"main",action:"index")
@@ -78,7 +77,7 @@ class WarriorController {
 		if(wrc.hasErrors()){
 			render(view:"register",model:[wrc:wrc,cities:City.list()])
 		}else{
-//			def url_params = parse_signed_request(params.signed_request)
+			//			def url_params = parse_signed_request(params.signed_request)
 			def warrior = new Warrior(owner_id: 123L)
 			warrior.initWarrior(wrc.properties)
 			if(warrior.validate()){
@@ -157,18 +156,14 @@ class WarriorController {
 		def warrior = Warrior.get(session.warrior_id)
 		warrior.updateStat(params.id)
 		warrior.save()
-		redirect(controller:"warrior", action:"index")
+		def referer = request.getHeader("Referer")
+		redirect(url:referer)
 	}
 	
 	def unequip = {
 		def warrior = Warrior.get(session.warrior_id)
-		if(warrior.equip."$params.id"){
-			if(warrior.inventory.size() < Warrior.INVENTORY_MAX_QTY){
-				warrior.addToInventory(warrior.equip."$params.id")
-				warrior.equip."$params.id" = null
-				warrior.save()
-			}
-		}
+		warrior.unequipItem(params.id)
+		warrior.save()
 		def referer = request.getHeader("Referer")
 		redirect(url:referer)
 	}
@@ -176,53 +171,8 @@ class WarriorController {
 	def equip = {
 		def warrior = Warrior.get(session.warrior_id)
 		def item = Item.get(params.id)
-		if(warrior.inventory && warrior.inventory.contains(item)){
-			if(item.type.isWeapon()){
-				def auxitem = warrior.equip.weapon
-				warrior.equip.weapon = item
-				warrior.removeFromInventory(item)
-				if(auxitem)
-					warrior.addToInventory(auxitem)
-			}else if(item.type.isArmor()){
-				def auxitem
-				def acc
-				switch(item.type.type){
-					case Armor.HEAD:
-						auxitem = warrior.equip.head;
-						warrior.equip.head = item
-						break;
-					case Armor.SHOULDER:
-						auxitem = warrior.equip.shoulder;
-						warrior.equip.shoulder = item
-						break;
-					case Armor.BODY:
-						auxitem = warrior.equip.body;
-						warrior.equip.body = item
-						break;
-					case Armor.SHIELD:
-						auxitem = warrior.equip.shield;
-						warrior.equip.shield = item
-						break;
-					case Armor.FOOT:
-						auxitem = warrior.equip.foot;
-						warrior.equip.foot = item
-						break;
-					case Armor.ACCESORY:
-						if(!warrior.equip.accesory1)
-							warrior.equip.accesory1 = item
-						else if(!warrior.equip.accesory2)
-							warrior.equip.accesory2 = item
-						else{
-							auxitem = warrior.equip.accesory1
-							warrior.equip.accesory1 = item
-						}
-						break
-				}
-				warrior.removeFromInventory(item)
-				if(auxitem)
-					warrior.addToInventory(auxitem)
-			}
-		}
+		if(item && warrior.inventory && warrior.inventory.contains(item))
+			warrior.equipItem(item)
 		warrior.save()
 		redirect(controller:"warrior", action:"equipment")
 	}
@@ -230,88 +180,18 @@ class WarriorController {
 	def use = {
 		def warrior = Warrior.get(session.warrior_id)
 		def item = Item.get(params.id)
-		if(warrior.inventory && warrior.inventory.contains(item)){
-			if(item.type.consumable){
-				if(item.type.stats.HP > 0){
-					warrior.actualHP = Math.min(warrior.actualHP + item.type.stats.HP, warrior.maxHP())
-				}
-				if(item.qty > 1){
-					item.qty--
-					item.save()
-				}else{
-					warrior.removeFromInventory(item)
-					item.delete()
-				}
-			}
-		}
+		if(item && warrior.inventory && warrior.inventory.contains(item))
+			warrior.useItem(item)
 		warrior.save()
 		redirect(controller:"warrior", action:"inventory")
 	}
 	
 	def explore = {
 		def warrior = Warrior.get(session.warrior_id)
-		
-		/*La posta
 		if(warrior.canSpendSTA(5)){
-			Encounter.checkEncounter(warrior, 1)
-		}
-		*/
-		
-		if(warrior.actualSTA >= 5){
-			warrior.actualSTA -= 5
-			boolean encountered = false;
-			warrior.actualLocation.encounters.each{
-				if(encountered)
-					return
-					
-				def chance = new Random().nextInt(100)+1
-				if(chance <= it.chance){
-					def fight = new Fight(warrior:warrior,encounter:it)
-					fight.resolveFight()
-					fight.save(flush:true)
-					def je = new JournalEntry(type:JournalEntry.EXPLORATION_MONSTER_FOUND,fight:fight)
-					je.save()
-					warrior.addToJournal(je)
-					if(fight.won){
-						warrior.giveExp(it.totalExp())
-						warrior.gold += it.totalGold()
-						
-						it.totalLoot().each{ item, lqty ->
-							boolean alreadyHaveIt = false
-							
-							if(item.stackable){
-								warrior.inventory.each{
-									if(alreadyHaveIt)
-										return
-									if(it.type == item){
-										if(it.qty + lqty > 1000){
-											it.qty = 1000
-											lqty = it.qty + lqty -1000
-										}else{
-											it.qty += lqty
-											alreadyHaveIt = true
-										}
-										it.save(flush:true)
-									}
-								}
-							}
-							
-							if(!alreadyHaveIt){
-								def newitem = new Item(type:item, qty:lqty)
-								newitem.save(flush:true)
-								warrior.addToInventory(newitem)
-							}
-						}						
-					}
-					
-					encountered = true
-				}
-			}
-			if(!encountered){
-				def je = new JournalEntry(type:JournalEntry.TEXT, text:"You explore the area but didn't find anything.")
-				je.save()
-				warrior.addToJournal(je)
-			}
+			def killed = searchMonsters(warrior, 1)
+			if(!killed)
+				searchItems(warrior, 1)
 		}
 		warrior.save()
 		redirect(controller:"warrior",action:"index")
@@ -319,93 +199,35 @@ class WarriorController {
 	
 	def worldmap = {
 		def warrior = Warrior.get(session.warrior_id)
-		def maps = Map.list()
-		Map[][] worldmap = new Map[7][7]
-		maps.each{
-			worldmap[it.posX][it.posY] = it
-		} 
-		[warrior:warrior, map:worldmap]
+		[warrior:warrior, map:Map.getWorldMap()]
+	}
+	
+	boolean mapIsNear(def actualmap, def destinymap){
+		return 	(actualmap.posX == destinymap.posX && (actualmap.posY == destinymap.posY+1 || actualmap.posY == destinymap.posY-1)) ||
+				(actualmap.posY == destinymap.posY && (actualmap.posX == destinymap.posX+1 || actualmap.posX == destinymap.posX-1))
+	}
+	
+	void moveWarrior(def warrior, def destiny){
+		warrior.actualLocation = destiny
+		if(destiny.isCity())
+			warrior.resurrectionMap = destiny
+		def je = new JournalEntry(type:JournalEntry.TEXT, text:"You decided to walk for a while. You are now in <b>${destiny.name}</b>.")
+		je.save()
+		warrior.addToJournal(je)
 	}
 	
 	def move = {
 		def warrior = Warrior.get(session.warrior_id)
 		def map = Map.get(params.move_map_id as Long)
-		
-		//Si el mapa esta al lado..
-		if( (warrior.actualLocation.posX == map.posX &&
-			(warrior.actualLocation.posY == map.posY+1 ||
-			 warrior.actualLocation.posY == map.posY-1)) ||
-			(warrior.actualLocation.posY == map.posY &&
-			(warrior.actualLocation.posX == map.posX+1 ||
-			 warrior.actualLocation.posX == map.posX-1)) ){
-			
-			if(warrior.actualSTA >= 5){
-				warrior.actualSTA -= 5
-				boolean encountered = false
-				boolean killed = false
-				warrior.actualLocation.encounters.each{
-					if(encountered)
-						return
-					def chance = new Random().nextInt(100)+1
-					if(chance <= it.chance / 2){
-						def fight = new Fight(warrior:warrior,encounter:it)
-						fight.resolveFight()
-						fight.save(flush:true)
-						if(!fight.won)
-							killed = true
-						def je = new JournalEntry(type:JournalEntry.EXPLORATION_MONSTER_FOUND,fight:fight)
-						je.save()
-						warrior.addToJournal(je)
-						if(fight.won){
-							warrior.giveExp(it.totalExp())
-							warrior.gold += it.totalGold()
-							it.totalLoot().each{ item ->
-								boolean alreadyHaveIt = false
-								
-								if(item.stackable){
-									warrior.inventory.each{
-										if(alreadyHaveIt)
-											return
-										if(it.type == item){
-											if(it.qty + 1 > 1000){
-												it.qty = 1000
-											}else{
-												it.qty += 1
-												alreadyHaveIt = true
-											}
-											it.save()
-										}
-									}
-								}
-							
-								if(!alreadyHaveIt){
-									def newitem = new Item(type:item, qty:1)
-									newitem.save()
-									warrior.addToInventory(newitem)
-								}
-							}
-						}
-					
-						encountered = true
-					}
-				}
-				if(!encountered){
-					def je = new JournalEntry(type:JournalEntry.TEXT, text:"You explore the area but didn't find anything.")
-					je.save()
-					warrior.addToJournal(je)
-				}
-				
-				//Despues lo muevo si esta vivo
+		if(mapIsNear(warrior.actualLocation, map)){
+			if(warrior.canSpendSTA(5)){
+				def killed = searchMonsters(warrior, 0.5)
 				if(!killed){
-					warrior.actualLocation = map
-					if(map.isCity())
-						warrior.resurrectionMap = map
-					def je = new JournalEntry(type:JournalEntry.TEXT, text:"You decided to walk for a while. You are now in <b>${map.name}</b>.")
-					je.save()
-					warrior.addToJournal(je)
+					searchItems(warrior, 0.5)
+					moveWarrior(warrior, map)
 				}
-				warrior.save()
 			}
+			warrior.save()
 		}
 		redirect(controller:"warrior", action:"index")
 	}
@@ -435,76 +257,32 @@ class WarriorController {
 		[warrior:warrior]
 	}
 	
+	boolean isFromNearStore(def itemtype, def actualmap){
+		return actualmap.weapons?.items?.contains(item) || actualmap.armors?.items?.contains(item) || actualmap.consumables?.items?.contains(item)
+	}
+	
 	def buy = {
-		def referer = request.getHeader("Referer")
 		def warrior = Warrior.get(session.warrior_id)
-		
 		def item = ItemType.get(params.buy_item_id as Long)
-		if(warrior.actualLocation.weapons?.items?.contains(item) ||
-			warrior.actualLocation.armors?.items?.contains(item) ||
-			warrior.actualLocation.consumables?.items?.contains(item)){
-			int qty = Math.max(Math.min(Integer.parseInt(params.buy_item_qty),999),1)
-			if(warrior.gold >= item.price * qty){
-				warrior.gold -= item.price * qty
-				boolean alreadyHaveIt = false
-				
-				if(item.stackable){
-					warrior.inventory.each{
-						if(alreadyHaveIt)
-							return
-						if(it.type == item){
-							if(it.qty + qty > 1000){
-								qty = (it.qty + qty - 1000)
-								it.qty = 1000
-							}else{
-								it.qty += qty
-								alreadyHaveIt = true
-							}
-							it.save()
-						}
-					}
-				}
-				
-				if(!alreadyHaveIt){
-					def newitem = new Item(type:item, qty:qty)
-					newitem.save()
-					warrior.addToInventory(newitem)
-				}
-				warrior.save()
-			}
+		int qty = Math.max(Math.min(Integer.parseInt(params.buy_item_qty),999),1)
+		if(item && isFromNearStore(item, warrior.actualLocation)){
+			if(warrior.canBuy(item.price * qty))
+				warrior.giveItem(item, qty)
 		}
-		
+		warrior.save()
+		def referer = request.getHeader("Referer")
 		redirect(url:referer)
 	}
 	
 	def sell = {
-		def referer = request.getHeader("Referer")
 		def warrior = Warrior.get(session.warrior_id)
-		
-		def found = false
-		def del = null
-		warrior.inventory.each{
-			if(found)
-				return
-			if(it.id == params.sell_item_id as Long){
-				found = true
-				int qty = Math.max(Math.min(Integer.parseInt(params.sell_item_qty),999),1)
-				if(qty >= it.qty){
-					del = it
-					warrior.gold += (it.qty * (it.type.price / 2).intValue())
-				}else{
-					warrior.gold += (qty * (it.type.price / 2).intValue())
-					it.qty -= qty;
-					it.save()
-				}
-				warrior.save()
-			}
+		def item = Item.get(params.sell_item_id)
+		if(item && warrior.inventory.contains(item)){
+			def qtysold = warrior.takeItem(item, params.sell_item_qty)
+			warrior.gold += (qtysold * (item.type.price / 2).intValue())
+			warrior.save()
 		}
-		if(del){
-			warrior.removeFromInventory(del)
-			del.delete()
-		}
-		
+		def referer = request.getHeader("Referer")
 		redirect(url:referer)
 	}
 	
@@ -512,24 +290,9 @@ class WarriorController {
 		def warrior = Warrior.get(session.warrior_id)
 		def tp = TrainingPlace.get(params.id as Long)
 		if(warrior.actualLocation.trainingPlaces.contains(tp)){
-			if(warrior.actualSTA >= tp.STArequired){
-				warrior.actualSTA -= tp.STArequired
-				
-				def text = "You spent some time training in <b>${tp.name}</b>. <br>Gained "
-				boolean first = true
-				tp.skills.all().each{
-					if(it.value > 0){
-						double gained = (double)((double)(new Random().nextInt((10*it.value).intValue())+1) / 10)
-						if(!first)
-							text += " and "
-						else
-							first = false
-						text += "<b>${gained}</b> in <b>${it.key}</b>"
-						warrior.skills."$it.key" += gained
-					}
-				}
-				text += "."
-				def je = new JournalEntry(type:JournalEntry.TEXT, text:text)
+			if(warrior.canSpendSTA(tp.STArequired)){
+				def je = new JournalEntry(type:JournalEntry.TEXT, 
+					text:"You spent some time training in <b>${tp.name}</b>. <br>Gained ${trainSkill(warrior, tp)}.")
 				je.save()
 				warrior.addToJournal(je)
 				warrior.save()
@@ -538,12 +301,13 @@ class WarriorController {
 		redirect(controller:"warrior",action:"index")
 	}
 	
+	/*HASTA AK LLEGUE REVISANDO*/
 	def startQuest = {
 		def warrior = Warrior.get(session.warrior_id)
 		//TODO: Revisar que no la tenga
 		def quest = Quest.get(params.id)
 		if(quest){
-			warrior.addToQuestsInProgress(quest)	
+			warrior.addToQuestsInProgress(quest)
 		}
 		
 		def referer = request.getHeader("Referer")
@@ -559,7 +323,7 @@ class WarriorController {
 			if(quest.skillsNeeded){
 				quest.skillsNeeded.all().each{
 					if(warrior.skills."$it.key" < it.value)
-						skillsok = false
+					skillsok = false
 				}
 			}
 			
@@ -567,7 +331,7 @@ class WarriorController {
 			if(quest.itemsNeeded){
 				quest.itemsNeeded.each{
 					if(warrior.qtyOfItem(it.type) < it.qty)
-						itemsok = false
+					itemsok = false
 				}
 			}
 			
@@ -579,7 +343,7 @@ class WarriorController {
 						if(it.type == itemquest.type){
 							if(qty >= it.qty){
 								del.add(it)
-								qty -= it.qty 
+								qty -= it.qty
 							}else{
 								it.qty -= qty;
 								it.save()
@@ -598,14 +362,14 @@ class WarriorController {
 				warrior.gold += quest.gold
 				warrior.giveExp(quest.exp)
 				if(quest.jobReward)
-					warrior.changeJob(quest.jobReward)
+				warrior.changeJob(quest.jobReward)
 				quest.itemsRewarded.each{ item ->
 					boolean alreadyHaveIt = false
 					def qty = item.qty
 					if(item.type.stackable){
 						warrior.inventory.each{
 							if(alreadyHaveIt)
-								return
+							return
 							if(it.type == item.type){
 								if(it.qty + qty > 1000){
 									qty = (it.qty + qty - 1000)
@@ -640,9 +404,138 @@ class WarriorController {
 		def fight = Fight.get(params.id as Long)
 		def warrior = Warrior.get(session.warrior_id)
 		if(fight.warrior == warrior)
-			return [warrior:warrior,fight:fight]
+		return [warrior:warrior,fight:fight]
 		else
-			redirect(controller:"warrior", action:"index")
+		redirect(controller:"warrior", action:"index")
+	}
+	
+	def getOrderedChances(def posible, def chance_mult){
+		def ordered = [:]
+		def last_enc = 0
+		posible.each{
+			ordered[it] = [min:last_enc+1,max:last_enc+(it.chance * chance_mult).intValue()]
+			last_enc = last_enc+(it.chance * chance_mult).intValue()
+		}
+		return ordered
+	}
+	
+	boolean searchMonsters(def warrior, def chance_mult){
+		def encounters = getOrderedChances(warrior.actualLocation.encounters, chance_mult)
+		def chance = new Random().nextInt(100)+1
+		boolean encountered = false;
+		def killed
+		encounters.each{
+			if(encountered)
+				return
+			if(chance >= it.value.min && chance <= it.value.max){
+				encountered = true
+				def fight = new Fight(warrior:warrior,encounter:it.key)
+				fight.resolveFight()
+				fight.save(flush:true)
+				killed = !fight.won
+				
+				def je = new JournalEntry(type:JournalEntry.EXPLORATION_MONSTER_FOUND,fight:fight)
+				je.save()
+				warrior.addToJournal(je)
+				
+				if(fight.won){
+					warrior.giveExp(it.key.totalExp())
+					warrior.gold += it.key.totalGold()
+					
+					it.key.totalLoot().each{ item, lqty ->
+						boolean alreadyHaveIt = false
+						
+						if(item.stackable){
+							warrior.inventory.each{
+								if(alreadyHaveIt)
+									return
+								if(it.type == item){
+									if(it.qty + lqty > 1000){
+										it.qty = 1000
+										lqty = it.qty + lqty -1000
+									}else{
+										it.qty += lqty
+										alreadyHaveIt = true
+									}
+									it.save(flush:true)
+								}
+							}
+						}
+						
+						if(!alreadyHaveIt){
+							def newitem = new Item(type:item, qty:lqty)
+							newitem.save(flush:true)
+							warrior.addToInventory(newitem)
+						}
+					}
+				}
+			}
+		}
+		
+		if(!encountered){
+			def je = new JournalEntry(type:JournalEntry.TEXT, text:"You explore the area but didn't find anything.")
+			je.save()
+			warrior.addToJournal(je)
+		}
+		
+		return killed
+	}	
+	
+	void searchItems(def warrior, def chance_mult){
+		def items = getOrderedChances(warrior.actualLocation.items, chance_mult)
+		def chance = new Random().nextInt(100)+1
+		boolean found = false;
+		items.each{ item ->
+			if(found)
+				return
+			if(chance >= item.value.min && chance <= item.value.max){
+				found = true
+				
+				def je = new JournalEntry(type:JournalEntry.TEXT,text:"While searching you found <b>${item.key.qty}x ${item.key.type.name}</b>.")
+				je.save()
+				warrior.addToJournal(je)
+				
+				boolean alreadyHaveIt = false
+				
+				def lqty = item.key.qty
+				if(item.key.type.stackable){
+					warrior.inventory.each{
+						if(alreadyHaveIt)
+							return
+						if(it.type == item.key.type){
+							if(it.qty + lqty > 1000){
+								it.qty = 1000
+								lqty = it.qty + lqty -1000
+							}else{
+								it.qty += lqty
+								alreadyHaveIt = true
+							}
+							it.save(flush:true)
+						}
+					}
+				}
+				
+				if(!alreadyHaveIt){
+					def newitem = new Item(type:item.key.type, qty:lqty)
+					newitem.save(flush:true)
+					warrior.addToInventory(newitem)
+				}
+			}
+		}
+	}
+	
+	def trainSkill(def warrior, def tp){
+		def skillsgained = ""
+		def r = new Random()
+		tp.skills.all().each{ skill ->
+			if(skill.value > 0){
+				double gained = (r.nextDouble() * (skill.value - 0.1) + 0.1).round(1)
+				if(skillsgained != "")
+					skillsgained += " and "
+				skillsgained += "<b>${warrior.giveSkill(skill.key, gained)}</b> in <b>${skill.key}</b>"
+			}
+		}
+		return skillsgained
 	}
 }
 
