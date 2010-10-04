@@ -7,10 +7,9 @@
         <g:javascript library="application" />
     </head>
     <body>
-        <div class="logo">
-			<img src="${resource(dir:'images',file:'shield.png')}" width="20" height="20"/>
-			<div>Aristeia Online</div>
-		</div>
+        <!--<div class="logo">-->
+			<img style="margin-left:0.5em;" src="${resource(dir:'images',file:'logo_back.png')}"/>
+		<!--</div>-->
         <div class="clear"></div>
         <g:layoutBody />
     </body>
