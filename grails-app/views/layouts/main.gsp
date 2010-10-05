@@ -8,7 +8,7 @@
     </head>
     <body>
         <!--<div class="logo">-->
-			<img style="margin-left:0.5em;" src="${resource(dir:'images',file:'logo_back.png')}"/>
+			<img style="margin-left:0.5em;" src="${resource(dir:'images',file:'logo.png')}"/>
 		<!--</div>-->
         <div class="clear"></div>
         <g:layoutBody />

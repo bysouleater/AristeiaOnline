@@ -22,7 +22,7 @@ h3, h5, h4{
 	}
 h3, h4{
 	font-size:18px;
-	border-bottom:1px solid #CCCCCC;
+	border-bottom:1px solid #558033;
 	padding-bottom:0.17em;
 	margin-bottom:0.6em;
 	}
@@ -75,7 +75,7 @@ hr{
 	padding-left:3px;
 	}	
 #content {
-	border-color:#AAAAAA;
+	border-color:#558033;
 	border-style:solid none solid solid;
 	border-width:1px medium 1px 1px;
 	line-height:1.5em;
