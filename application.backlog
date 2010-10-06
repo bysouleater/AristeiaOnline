@@ -42,6 +42,8 @@ DONE - Warrior: Implement take item
 - Confirm to train
 - Add twitter link
 - Resize in all pages
+- Check optimistic lock when back to warrior list
+- Check top of confirms dialogs
 
 SHOULD DO
 - Item description
