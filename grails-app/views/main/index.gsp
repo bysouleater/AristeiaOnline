@@ -31,4 +31,5 @@
     </div>
     <iframe src="http://www.facebook.com/widgets/like.php?href=http://apps.facebook.com/aristeia_online"
 			scrolling="no" frameborder="0" style="margin-left:10px;margin-top:10px;border:none; width:450px; height:80px;"></iframe>
+			<a href="http://www.twitter.com/AristeiaOnline"><img src="http://twitter-badges.s3.amazonaws.com/follow_me-a.png" alt="Follow AristeiaOnline on Twitter"/></a>
 </g:else>
