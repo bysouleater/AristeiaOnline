@@ -1,6 +1,16 @@
 Monsters
 ========================================
 
+Snake{HP:30, PAtk:10, PDef:5, Eva:2, Acc:2}
+[two Snakes,three Snakes]
+
+
+
+
+
+
+
+
 Snake	[V.1.0]
 Wolf	[V.1.0]
 Boars (Javali) [V.1.0]-> Mini Boss: Calydonian Boar [V.1.0], Mini Boss: Erymanthian Boar [V.1.0]
