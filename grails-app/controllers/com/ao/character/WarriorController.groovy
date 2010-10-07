@@ -211,9 +211,7 @@ class WarriorController {
 		warrior.actualLocation = destiny
 		if(destiny.isCity())
 			warrior.resurrectionMap = destiny
-		def je = new JournalEntry(type:JournalEntry.TEXT, text:"You decided to walk for a while. You are now in <b>${destiny.name}</b>.")
-		je.save()
-		warrior.addToJournal(je)
+		newEntry(warrior, "You decided to walk for a while. You are now in <b>${destiny.name}</b>.", JournalEntry.TEXT)
 	}
 	
 	def move = {
@@ -286,127 +284,102 @@ class WarriorController {
 		redirect(url:referer)
 	}
 	
+	
+	
 	def train = {
 		def warrior = Warrior.get(session.warrior_id)
 		def tp = TrainingPlace.get(params.id as Long)
 		if(warrior.actualLocation.trainingPlaces.contains(tp)){
 			if(warrior.canSpendSTA(tp.STArequired)){
-				def je = new JournalEntry(type:JournalEntry.TEXT, 
-					text:"You spent some time training in <b>${tp.name}</b>. <br>Gained ${trainSkill(warrior, tp)}.")
-				je.save()
-				warrior.addToJournal(je)
-				warrior.save()
+				newEntry(warrior, "You spent some time training in <b>${tp.name}</b>. <br>Gained ${trainSkill(warrior, tp)}.",
+					JournalEntry.TEXT)
 			}
 		}
 		redirect(controller:"warrior",action:"index")
 	}
 	
-	/*HASTA AK LLEGUE REVISANDO*/
 	def startQuest = {
 		def warrior = Warrior.get(session.warrior_id)
-		//TODO: Revisar que no la tenga
 		def quest = Quest.get(params.id)
-		if(quest){
+		if(quest && !warrior.questsInProgress.contains(quest)){
 			warrior.addToQuestsInProgress(quest)
+			newEntry(warrior, "You started quest <b>${quest.title}</b>.", JournalEntry.TEXT)
 		}
-		
-		def referer = request.getHeader("Referer")
-		redirect(url:referer)
+		redirect(controller:"warrior",action:"index")
+	}
+	
+	boolean hasSkillsNeeded(def warrior, def quest){
+		def skillsok = true
+		if(quest.skillsNeeded){
+			quest.skillsNeeded.all().each{
+				if(warrior.skills."$it.key" < it.value)
+					skillsok = false
+			}
+		}
+		return skillsok
+	}
+	
+	boolean hasItemsNeeded(def warrior, def quest){
+		def itemsok = true
+		if(quest.itemsNeeded){
+			quest.itemsNeeded.each{
+				if(warrior.qtyOfItem(it.type) < it.qty)
+					itemsok = false
+			}
+		}
+		return itemsok
 	}
 	
 	def getReward = {
-		//TODO: Todas las validaciones de mierda
 		def warrior = Warrior.get(session.warrior_id)
 		def quest = Quest.get(params.id)
-		if(quest){
-			def skillsok = true
-			if(quest.skillsNeeded){
-				quest.skillsNeeded.all().each{
-					if(warrior.skills."$it.key" < it.value)
-					skillsok = false
-				}
-			}
-			
-			def itemsok = true
-			if(quest.itemsNeeded){
-				quest.itemsNeeded.each{
-					if(warrior.qtyOfItem(it.type) < it.qty)
-					itemsok = false
-				}
-			}
-			
-			if(skillsok && itemsok){
+		
+		if(quest && warrior.questsInProgress.contains(quest)){
+			if(hasSkillsNeeded(warrior, quest) && hasItemsNeeded(warrior, quest)){
 				quest.itemsNeeded.each{ itemquest ->
-					def del = []
-					int qty = itemquest.qty
-					warrior.inventory.each{
-						if(it.type == itemquest.type){
-							if(qty >= it.qty){
-								del.add(it)
-								qty -= it.qty
-							}else{
-								it.qty -= qty;
-								it.save()
-							}
-							warrior.save()
-						}
-					}
-					if(del && del.size > 0){
-						del.each{
-							warrior.removeFromInventory(it)
-							it.delete()
-						}
-					}
-				}
-				
-				warrior.gold += quest.gold
-				warrior.giveExp(quest.exp)
-				if(quest.jobReward)
-				warrior.changeJob(quest.jobReward)
-				quest.itemsRewarded.each{ item ->
-					boolean alreadyHaveIt = false
-					def qty = item.qty
-					if(item.type.stackable){
-						warrior.inventory.each{
-							if(alreadyHaveIt)
-							return
-							if(it.type == item.type){
-								if(it.qty + qty > 1000){
-									qty = (it.qty + qty - 1000)
-									it.qty = 1000
-								}else{
-									it.qty += qty
-									alreadyHaveIt = true
-								}
-								it.save()
-							}
-						}
+					warrior.takeItem(itemquest.type, itemquest.qty)
+					warrior.gold += quest.gold
+					warrior.giveExp(quest.exp)
+					
+					if(quest.jobReward)
+						warrior.changeJob(quest.jobReward)
+						
+					quest.itemsRewarded.each{ item ->
+						warrior.giveItem(item.type, item.qty)
 					}
 					
-					if(!alreadyHaveIt){
-						def newitem = new Item(type:item.type, qty:qty)
-						newitem.save()
-						warrior.addToInventory(newitem)
-					}
+					newEntry(warrior, "You completed quest <b>${quest.title}</b>.", JournalEntry.TEXT)
+					
+					warrior.removeFromQuestsInProgress(quest)
+					warrior.addToQuestsDone(quest)
 				}
-				
-				warrior.removeFromQuestsInProgress(quest)
-				warrior.addToQuestsDone(quest)
-				//TODO: Ver las repetibles
 			}
-			warrior.save()
 		}
-		
+		warrior.save(flush:true)
 		redirect(controller:"warrior", action:"index")
 	}
 	
 	def fights = {
-		def fight = Fight.get(params.id as Long)
 		def warrior = Warrior.get(session.warrior_id)
-		if(fight.warrior == warrior)
-		return [warrior:warrior,fight:fight]
+		def fight = Fight.get(params.id as Long)
+		if(fight && fight.warrior == warrior)
+			return [warrior:warrior,fight:fight]
 		else
-		redirect(controller:"warrior", action:"index")
+			redirect(controller:"warrior", action:"index")
+	}
+	
+	void newEntry(def warrior, def text, def type){
+		def je = new JournalEntry(type:type, text:text)
+		je.save(flush:true)
+		warrior.addToJournal(je)
+		warrior.save(flush:true)
+	}
+	
+	void newEntry(def warrior, def fight){
+		def je = new JournalEntry(type:JournalEntry.EXPLORATION_MONSTER_FOUND, fight:fight)
+		je.save(flush:true)
+		warrior.addToJournal(je)
+		warrior.save(flush:true)
 	}
 	
 	def getOrderedChances(def posible, def chance_mult){
@@ -422,60 +395,32 @@ class WarriorController {
 	boolean searchMonsters(def warrior, def chance_mult){
 		def encounters = getOrderedChances(warrior.actualLocation.encounters, chance_mult)
 		def chance = new Random().nextInt(100)+1
-		boolean encountered = false;
-		def killed
+		def encounter = null;
+		def killed = false
+		
 		encounters.each{
-			if(encountered)
-				return
-			if(chance >= it.value.min && chance <= it.value.max){
-				encountered = true
-				def fight = new Fight(warrior:warrior,encounter:it.key)
-				fight.resolveFight()
-				fight.save(flush:true)
-				killed = !fight.won
-				
-				def je = new JournalEntry(type:JournalEntry.EXPLORATION_MONSTER_FOUND,fight:fight)
-				je.save()
-				warrior.addToJournal(je)
-				
-				if(fight.won){
-					warrior.giveExp(it.key.totalExp())
-					warrior.gold += it.key.totalGold()
-					
-					it.key.totalLoot().each{ item, lqty ->
-						boolean alreadyHaveIt = false
-						
-						if(item.stackable){
-							warrior.inventory.each{
-								if(alreadyHaveIt)
-									return
-								if(it.type == item){
-									if(it.qty + lqty > 1000){
-										it.qty = 1000
-										lqty = it.qty + lqty -1000
-									}else{
-										it.qty += lqty
-										alreadyHaveIt = true
-									}
-									it.save(flush:true)
-								}
-							}
-						}
-						
-						if(!alreadyHaveIt){
-							def newitem = new Item(type:item, qty:lqty)
-							newitem.save(flush:true)
-							warrior.addToInventory(newitem)
-						}
-					}
-				}
-			}
+			if(chance >= it.value.min && chance <= it.value.max)
+				encounter = it.key
 		}
 		
-		if(!encountered){
-			def je = new JournalEntry(type:JournalEntry.TEXT, text:"You explore the area but didn't find anything.")
-			je.save()
-			warrior.addToJournal(je)
+		if(encounter){
+			def fight = new Fight(warrior:warrior,encounter:encounter)
+			fight.resolveFight()
+			fight.save(flush:true)
+			killed = !fight.won
+			
+			newEntry(warrior, fight)
+			
+			if(fight.won){
+				warrior.giveExp(encounter.totalExp())
+				warrior.gold += encounter.totalGold()
+				
+				encounter.totalLoot().each{ itemtype, lqty ->
+					warrior.giveItem(itemtype, lqty)
+				}
+			}
+		}else{
+			newEntry(warrior, "You explore the area but didn't find anything.", JournalEntry.TEXT)
 		}
 		
 		return killed
@@ -484,43 +429,16 @@ class WarriorController {
 	void searchItems(def warrior, def chance_mult){
 		def items = getOrderedChances(warrior.actualLocation.items, chance_mult)
 		def chance = new Random().nextInt(100)+1
-		boolean found = false;
-		items.each{ item ->
-			if(found)
-				return
-			if(chance >= item.value.min && chance <= item.value.max){
-				found = true
-				
-				def je = new JournalEntry(type:JournalEntry.TEXT,text:"While searching you found <b>${item.key.qty}x ${item.key.type.name}</b>.")
-				je.save()
-				warrior.addToJournal(je)
-				
-				boolean alreadyHaveIt = false
-				
-				def lqty = item.key.qty
-				if(item.key.type.stackable){
-					warrior.inventory.each{
-						if(alreadyHaveIt)
-							return
-						if(it.type == item.key.type){
-							if(it.qty + lqty > 1000){
-								it.qty = 1000
-								lqty = it.qty + lqty -1000
-							}else{
-								it.qty += lqty
-								alreadyHaveIt = true
-							}
-							it.save(flush:true)
-						}
-					}
-				}
-				
-				if(!alreadyHaveIt){
-					def newitem = new Item(type:item.key.type, qty:lqty)
-					newitem.save(flush:true)
-					warrior.addToInventory(newitem)
-				}
-			}
+		def itemfound = null
+		
+		items.each{
+			if(chance >= it.value.min && chance <= it.value.max)
+				itemfound = it.key
+		}
+		
+		if(itemfound){
+			newEntry(warrior, "While searching you found <b>${itemfound.qty}x ${itemfound.type.name}</b>.", JournalEntry.TEXT)
+			warrior.giveItem(itemfound.type, itemfound.qty)
 		}
 	}
 	

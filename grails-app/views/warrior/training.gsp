@@ -17,9 +17,9 @@
 									<br>
 									<b>Skills: </b><g:each in="${tp.skills.all()}" status="x" var="s">
 										<g:if test="${s.value > 0}">
-											${s.key} <img width="15" height="12" src="/images/up.png"/>
+											${s.key} (Max ${s.value})
 										</g:if>
-									</g:each> 
+									</g:each>
 								</a>
 							</g:if>
 							<g:else>
@@ -29,7 +29,7 @@
 									<br>
 									<b>Skills: </b><g:each in="${tp.skills.all()}" status="x" var="s">
 										<g:if test="${s.value > 0}">
-											${s.key} <img width="15" height="12" src="/images/up.png"/>
+											${s.key} (Max ${s.value})
 										</g:if>
 									</g:each> 
 								</span>

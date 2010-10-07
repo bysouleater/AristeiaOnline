@@ -27,25 +27,35 @@ DONE - Explore: Implement Find Item
 DONE - Journal: Show items found
 DONE - Warrior: Implement give item
 DONE - Warrior: Implement take item
-- Continue checking warrior controller
-- Exp: Check job max level
-- Training: Change default icon
-- Training: Show max skill points gained
-- Quests: Check that doesnt previously have it
-- Quests: Add journal entry when started and when finished.
+DONE - Continue checking warrior controller
+DONE - Exp: Check job max level
+DONE - Training: Show max skill points gained
+DONE - Quests: Check that doesnt previously have it
+DONE - Quests: Add journal entry when started and when finished.
+DONE - Correct Admin "list"
+- Confirm to use/equip/unequip items
+- Confirm to train
 - Validations in registration
 - Admin validations
 - Facebook oAuth
 - Implement Report Bugs
-- Correct Admin "list"
-- Confirm to use/equip/unequip items
-- Confirm to train
 - Add twitter link
 - Resize in all pages
 - Check optimistic lock when back to warrior list
 - Check top of confirms dialogs
+- Training: Change default icon
+- Items joblist
+- Flash message for "Cant equip this"
+- Just for Alpha version (Sell for real price)
+- Create Monsters
+- Create Weapons
+- Create Armors
+- Create Consumables
+- Create Job Quests
+- Create some other quests
 
 SHOULD DO
+- Comunicate better that no longer exp is gained when reached max job level
 - Item description
 - Item actions
 - Implement Transports [price, destination, time?]

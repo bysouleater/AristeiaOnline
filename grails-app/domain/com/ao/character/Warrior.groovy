@@ -235,15 +235,16 @@ class Warrior {
 	}
 	
 	void giveExp(Long exp){
-		actualExp += exp
-		while(actualExp >= nextLvlExp()){
-			levelUp()
-			def je = new JournalEntry(type:JournalEntry.TEXT, text:"<b>You reach the next level! You are now level ${level}. Congrats!</b>")
-			je.save()
-			addToJournal(je)
-			
+		if(level < job.maxLevel){
+			actualExp += exp
+			while(actualExp >= nextLvlExp()){
+				levelUp()
+				def je = new JournalEntry(type:JournalEntry.TEXT, text:"<b>You reach the next level! You are now level ${level}. Congrats!</b>")
+				je.save()
+				addToJournal(je)
+				
+			}
 		}
-//		save()
 	}
 	
 	int STARecoverAmount(){
@@ -429,7 +430,7 @@ class Warrior {
 		}
 	}
 	
-	def takeItem(def item, def qty){
+	def takeItem(Item item, def qty){
 		if(item.qty - qty <= 0){
 			removeFromInventory(item)
 			return item.qty
@@ -438,6 +439,30 @@ class Warrior {
 		item.qty -= qty
 		item.save()
 		return qty
+	}
+	
+	def takeItem(ItemType itemtype, def qty){
+		def left = qty
+		def del = []
+		inventory.each{ invitem ->
+			if(left == 0)
+				return
+			if(invitem.type == itemtype){
+				if(invitem.qty - left <= 0){
+					del.add(invitem)
+					left -= invitem.qty
+				}else{
+					invitem.qty -= left
+					invitem.save()
+					left = 0
+				}
+			}
+		}
+		if(del && del.size() > 0){
+			del.each{
+				removeFromInventory(it)
+			}
+		}
 	}
 	
 	def giveSkill(def skill, def gained){
