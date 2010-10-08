@@ -2,6 +2,7 @@ Monsters
 ========================================
 
 Snake{HP:30, PAtk:10, PDef:5, Eva:2, Acc:2}
+{Exp: 50, Loot:Snake tooth}
 [two Snakes,three Snakes]
 
 

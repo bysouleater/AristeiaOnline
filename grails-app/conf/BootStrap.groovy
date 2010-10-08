@@ -109,9 +109,9 @@ class BootStrap {
 			wolfencounter2.addToMonsters(wolfB)
 			wolfencounter2.save()
 			
-			cm1.addToEncounters(wolfencounter)
-			cm1.addToEncounters(wolfencounter2)
-			cm1.save()
+//			cm1.addToEncounters(wolfencounter)
+//			cm1.addToEncounters(wolfencounter2)
+//			cm1.save()
 			cm2.addToEncounters(wolfencounter)
 			cm2.addToEncounters(wolfencounter2)
 			cm2.save()
@@ -121,6 +121,39 @@ class BootStrap {
 			cm4.addToEncounters(wolfencounter)
 			cm4.addToEncounters(wolfencounter2)
 			cm4.save()
+			
+			
+			def snakeTooth = new ItemType(name:"Snake Tooth",price:2,icon:"/images/snaketooth.png",stackable:true)
+			snakeTooth.save()
+			def snakeAStats = new StatsList(HP:30,PAtk:10,PDef:5,Eva:2,Acc:2)
+			snakeAStats.save()
+			def snakeA = new Monster(name:"Snake A",stats:snakeAStats,exp:50,gold:0L)
+			snakeA.addToLoot(snakeTooth)
+			snakeA.save()
+			def snakeB = new Monster(name:"Snake B",stats:snakeAStats,exp:50,gold:0L)
+			snakeB.addToLoot(snakeTooth)
+			snakeB.save()
+			def snakeCStats = new StatsList(HP:40,PAtk:12,PDef:7,Eva:2,Acc:2)
+			snakeCStats.save()
+			def snakeC = new Monster(name:"Snake C",stats:snakeCStats,exp:60,gold:0L)
+			snakeC.addToLoot(snakeTooth)
+			snakeC.save()
+			
+			
+			def twoSnakeEncounter = new Encounter(chance:80, description:"two Snakes")
+			twoSnakeEncounter.addToMonsters(snakeA)
+			twoSnakeEncounter.addToMonsters(snakeB)
+			twoSnakeEncounter.save()
+			
+			def threeSnakeEncounter = new Encounter(chance:20, description:"three Snakes")
+			threeSnakeEncounter.addToMonsters(snakeA)
+			threeSnakeEncounter.addToMonsters(snakeB)
+			threeSnakeEncounter.addToMonsters(snakeC)
+			threeSnakeEncounter.save()
+			
+			cm1.addToEncounters(twoSnakeEncounter)
+			cm1.addToEncounters(threeSnakeEncounter)
+			cm1.save()
 			
 			
 			def applefind = new Item(type:apple,chance:90)
