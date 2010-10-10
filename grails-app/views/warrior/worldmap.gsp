@@ -31,11 +31,10 @@
 						</tr>
 					</g:each>
 				</table>
-				<g:javascript library="jquery" plugin="jquery"/>
 				<jqui:resources theme="aristeia"/>
 				<script>
 					$(document).ready(function() {
-					    $("#move_dialog").dialog({ autoOpen:false, resizable:false, 
+					    $("#move_dialog").dialog({ autoOpen:false, resizable:false, position:[220,150],
 						    buttons: { "Ok": function() { document.moveForm.submit();},
 					    			   "Cancel": function() { $(this).dialog("close");} }
 					    });

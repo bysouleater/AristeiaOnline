@@ -1,3 +1,5 @@
+import com.ao.items.Weapon;
+
 import grails.util.Environment;
 
 import com.ao.SkillsList 
@@ -21,6 +23,9 @@ class BootStrap {
     def init = { servletContext ->
 		
 		if(Environment.current == Environment.DEVELOPMENT){
+			// Init Jobs
+			Job.initJobs()
+			
 			// Init Cities
 	    	def cs1 = new StatsList(STR:8d,DEX:5d,CON:5d,AGI:5d)
 	    	def cs2 = new StatsList(STR:5d,DEX:8d,CON:5d,AGI:5d)
@@ -32,6 +37,13 @@ class BootStrap {
 			knifeStats.save()
 			def knife = new Weapon(name:"Knife", price:10, icon:"/images/knife.png", consumable:false, type:Weapon.LIGHT,handsQty:1,stats:knifeStats)
 			knife.save()
+			
+			def chrysaorStats = new StatsList(PAtk:200,STR:5,Acc:10)
+			chrysaorStats.save()
+			def chrysaor = new Weapon(name:"Chrysaor sword", price:1, icon:"images/knife.png", consumable:false, type:Weapon.NORMAL, handsQty:1, stats:chrysaorStats)
+			chrysaor.addToJobs(Job.get(Job.BARBARIAN))
+			chrysaor.save()
+			
 			
 			def shirtStats = new StatsList(PDef:5)
 			shirtStats.save()
@@ -45,6 +57,7 @@ class BootStrap {
 			
 			def wstore = new Store(name:"Weapons")
 			wstore.addToItems(knife)
+			wstore.addToItems(chrysaor)
 			wstore.save()
 			
 			def astore = new Store(name:"Armors")
@@ -76,8 +89,6 @@ class BootStrap {
 			new City(name:"Baris",		stats:cs3, map:cm3).save()
 			new City(name:"Mallia",		stats:cs4, map:cm4).save()
 			
-			// Init Jobs
-			Job.initJobs()
 			
 			def wolfFang = new ItemType(name:"Wolf Fang",price:2,icon:"/images/fang.png",stackable:true)
 			wolfFang.save()

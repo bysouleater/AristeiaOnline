@@ -10,7 +10,7 @@
 					<g:each in="${warrior.inventory}" var="item" status="i">
 						<g:if test="${item.type.equipable}">
 							<div title="${item.type.name} - Stats${item.type.titleStats()}" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
-								<a href="<g:createLink controller="warrior" action="${item.type.equipable?'equip':'use'}" id="${item.id}"/>">
+								<a href="javascript:confirmEquip(${item.id},'${item.type.name}','${item.type.icon}','${item.type.titleStats()}');">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.type.icon}"/>
 								</a>
 								<g:if test="${item.qty > 1}"><span style="top:-5px;font-size:10px;font-weight:bold;position:relative;">x${item.qty}</span></g:if>
@@ -18,7 +18,7 @@
 						</g:if>
 						<g:elseif test="${item.type.consumable}">
 							<div title="${item.type.name} - ${item.type.description}" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
-								<a href="<g:createLink controller="warrior" action="${item.type.equipable?'equip':'use'}" id="${item.id}"/>">
+								<a href="javascript:confirmUse(${item.id},'${item.type.name}','${item.type.icon}','${item.type.description}');">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.type.icon}"/>
 								</a>
 								<g:if test="${item.qty > 1}"><span style="top:-5px;font-size:10px;font-weight:bold;position:relative;">x${item.qty}</span></g:if>
@@ -41,6 +41,60 @@
 				</div>
 				<div class="clear"></div>
 			</div>
+			
+			<jqui:resources theme="aristeia"/>
+			<script>
+				$(document).ready(function() {
+				    $("#confirm_equip").dialog({ autoOpen:false, resizable:false, position:[220,150],
+					    buttons: { "Ok": function() { document.equipForm.submit();},
+				    			   "Cancel": function() { $(this).dialog("close");} }
+				    });
+				    $("#confirm_use").dialog({ autoOpen:false, resizable:false, position:[220,150],
+					    buttons: { "Ok": function() { document.useForm.submit();},
+				    			   "Cancel": function() { $(this).dialog("close");} }
+				    });
+				});
+				
+				function confirmEquip(item_id, item_name, item_pic, item_stats){
+					$("#equip_imgdiv").attr("title",item_name + " - Stats" + item_stats);
+					$("#equip_itempic").attr("src",item_pic);
+					$("#equip_item_id").attr("value",item_id);
+					$("#equip_itemname").html("<b>" + item_name + "</b><br><b>Stats</b> " + item_stats);
+					$("#confirm_equip").dialog({title : "Equip " + item_name + "?"});
+					$("#confirm_equip").dialog("open");
+				}
+
+				function confirmUse(item_id, item_name, item_pic, item_desc){
+					$("#use_imgdiv").attr("title",item_name + " - " + item_desc);
+					$("#use_itempic").attr("src",item_pic);
+					$("#use_item_id").attr("value",item_id);
+					$("#use_itemname").html("<b>" + item_name + "</b><br> " + item_desc);
+					$("#confirm_use").dialog({title : "Use " + item_name + "?"});
+					$("#confirm_use").dialog("open");
+				}
+			</script>
+			<g:form name="equipForm" method="get" controller="warrior" action="equip">
+				<g:hiddenField name="equip_item_id"/>
+				<div style="display:none;" id="confirm_equip" title="Equip">
+					<div style="line-height: 1.5em;">
+						<div id="equip_imgdiv" title="" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
+							<img id="equip_itempic" style="padding-left:2px;padding-top:2px;" width="28" height="28" src=""/>
+						</div>
+						<label id="equip_itemname"></label>
+					</div>
+				</div>
+			</g:form>
+			<g:form name="useForm" method="get" controller="warrior" action="use">
+				<g:hiddenField name="use_item_id"/>
+				<div style="display:none;" id="confirm_use" title="Use">
+					<div style="line-height: 1.5em;">
+						<div id="use_imgdiv" title="" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
+							<img id="use_itempic" style="padding-left:2px;padding-top:2px;" width="28" height="28" src=""/>
+						</div>
+						<label id="use_itemname"></label>
+					</div>
+				</div>
+			</g:form>
 		</td>
 	</body>
 </html>

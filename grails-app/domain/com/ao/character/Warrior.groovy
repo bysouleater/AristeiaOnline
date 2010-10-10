@@ -88,7 +88,7 @@ class Warrior {
 		def knife = new Item(type:Weapon.get(1L))
 		knife.save()
 		
-		def shirt = new Item(type:Armor.get(2L))
+		def shirt = new Item(type:Armor.get(3L))
 		shirt.save()
 		
 		def equip = new Equipment(weapon:knife,body:shirt)
@@ -333,11 +333,12 @@ class Warrior {
 	void unequipItem(def equiptype){
 		if(equip."$equiptype"){
 			if(inventory.size() < INVENTORY_MAX_QTY){
-				warrior.addToInventory(warrior.equip."$equiptype")
-				warrior.equip."$equiptype" = null
+				addToInventory(equip."$equiptype")
+				equip."$equiptype" = null
 				equip.save()
 			}
 		}
+		refreshDerivedStats()
 	}
 	
 	void equipItem(def item){
@@ -387,12 +388,13 @@ class Warrior {
 				addToInventory(auxitem)
 		}
 		equip.save()
+		refreshDerivedStats()
 	}
 	
 	void useItem(def item){
 		if(item.type.consumable){
 			if(item.type.stats.HP > 0){
-				warrior.actualHP = Math.min(actualHP + item.type.stats.HP, maxHP())
+				actualHP = Math.min(actualHP + item.type.stats.HP, maxHP())
 			}
 			if(item.qty > 1){
 				item.qty--

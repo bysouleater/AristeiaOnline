@@ -4,7 +4,7 @@
 	</head>
 	<body>
 		<td valign="top">
-			<div id="content">
+			<div id="content" style="min-height:160px;">
 				<h4>Journal</h4>
 				<table width="100%" style="font-size:12px;" border="0" cellspacing="0" cellpadding="0">
 					<g:each in="${journal}" status="i" var="je">
@@ -34,23 +34,5 @@
 				<div class="paginator"><g:paginate total="${warrior.journal.size()}" action="index" controller="warrior" id="${warrior.id}" max="10" maxsteps="5" offset="0"/></div>
 			</div>
 		</td>
-		<g:javascript library="jquery" plugin="jquery"/>
-		<div id="fb-root"></div>
-		<script>
-			window.fbAsyncInit = function() {
-			  FB.init({appId: 'your app id', status: true, cookie: true,
-			           xfbml: true});
-			};
-			(function() {
-			  var e = document.createElement('script'); e.async = true;
-			  e.src = document.location.protocol +
-			    '//connect.facebook.net/en_US/all.js';
-			  document.getElementById('fb-root').appendChild(e);
-			}());
-
-			$(document).ready(function() {
-				FB.Canvas.setSize();
-			});
-		</script>
 	</body>
 </html>

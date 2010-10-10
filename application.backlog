@@ -33,20 +33,21 @@ DONE - Training: Show max skill points gained
 DONE - Quests: Check that doesnt previously have it
 DONE - Quests: Add journal entry when started and when finished.
 DONE - Correct Admin "list"
-- Confirm to use/equip/unequip items
-- Confirm to train
-- Validations in registration
+DONE - Confirm to use/equip/unequip items
+DONE - Confirm to train
+DONE - Validations in registration
+DONE - Add twitter link
+DONE - Resize in all pages
+DONE - Check optimistic lock when back to warrior list
+DONE - Check top of confirms dialogs
+DONE - Just for Alpha version (Sell for real price)
+DONE - Items joblist
+- Flash message for "Cant equip this"
 - Admin validations
 - Facebook oAuth
 - Implement Report Bugs
-- Add twitter link
-- Resize in all pages
-- Check optimistic lock when back to warrior list
-- Check top of confirms dialogs
 - Training: Change default icon
-- Items joblist
-- Flash message for "Cant equip this"
-- Just for Alpha version (Sell for real price)
+- Items: default icon
 - Create Monsters
 - Create Weapons
 - Create Armors

@@ -16,6 +16,10 @@ class ItemType {
 //	static mapping = {
 //		tablePerHierarchy false
 //	}
+	
+	boolean canEquip(def warrior_job){
+		return false
+	}
 
     static constraints = {
 		name(nullable:false,blank:false,maxSize:50,unique:true)

@@ -20,7 +20,8 @@
 											<g:hasErrors bean="${wrc}" field="name">
 												<g:eachError bean="${wrc}" field="name">
 													<tr>
-														<td width="200" colspan="2" class="labelvalue" style="color:red;padding-top:5px;"><g:message error="${it}"/></td>
+														<td></td>
+														<td width="200" class="labelvalue" style="color:red;padding-top:5px;"><g:message error="${it}"/></td>
 													</tr>
 												</g:eachError>
 											</g:hasErrors>
@@ -35,7 +36,8 @@
 											<g:hasErrors bean="${wrc}" field="origin">
 												<g:eachError bean="${wrc}" field="origin">
 													<tr>
-														<td width="200" colspan="2" class="labelvalue" style="color:red;padding-top:5px;"><g:message error="${it}"/></td>
+														<td></td>
+														<td width="200" class="labelvalue" style="color:red;padding-top:5px;"><g:message error="${it}"/></td>
 													</tr>
 												</g:eachError>
 											</g:hasErrors>			

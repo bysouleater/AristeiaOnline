@@ -1,6 +1,7 @@
 package com.ao.items
 
 import com.ao.*
+import com.ao.character.Job;
 
 
 class Armor extends ItemType{
@@ -16,6 +17,19 @@ class Armor extends ItemType{
 	StatsList stats
 	boolean equipable = true
 	boolean armor = true
+	
+	static hasMany = [jobs:Job]
+	
+	boolean canEquip(def warrior_job){
+		if(!jobs || jobs.size() == 0)
+			return true
+		def canequip = false
+		jobs.each{
+			if(it.id == warrior_job.id)
+				canequip = true
+		}
+		return canequip
+	}
 
     static constraints = {
 		type(inList:[HEAD,SHOULDER,BODY,SHIELD,FOOT,ACCESORY])
@@ -26,7 +40,7 @@ class Armor extends ItemType{
 		def text = ""
 		stats.all().each{
 			if(it.value > 0)
-				text += " ${it.key}:${it.value} "
+				text += " ${it.key} ${it.value} "
 		}
 		return text
 	}

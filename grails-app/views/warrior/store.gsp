@@ -80,16 +80,15 @@
 				<div style="text-align:right;margin-top:20px;font-size:12px;"><a href="<g:createLink controller='warrior' action='exploration'/>"><b>Back to exploration</b></a></div>
 			</div>
 		</td>
-		<g:javascript library="jquery" plugin="jquery"/>
 		<jqui:resources theme="aristeia"/>
 		<script>
 		$(document).ready(function() {
-		    $("#buy_dialog").dialog({ autoOpen:false, resizable:false, 
+		    $("#buy_dialog").dialog({ autoOpen:false, resizable:false, position:[220,150],
 			    buttons: { "Ok": function() { document.buyForm.submit();},
 		    			   "Cancel": function() { clearInterval(myInterval); 
 	    			   $(this).dialog("close");} }
 		    });
-		    $("#sell_dialog").dialog({ autoOpen:false, resizable:false, 
+		    $("#sell_dialog").dialog({ autoOpen:false, resizable:false, position:[220,150],
 			    buttons: { "Ok": function() { document.sellForm.submit();},
 		    			   "Cancel": function() { clearInterval(myInterval); 
 	    			   $(this).dialog("close");} }

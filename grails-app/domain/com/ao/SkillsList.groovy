@@ -27,6 +27,15 @@ class SkillsList {
 		map["Concentration"] = Concentration
 		return map
 	}
+	
+	def titleStats(){
+		def text = ""
+		all().each{
+			if(it.value > 0)
+				text += " ${it.key} (Max ${it.value}) "
+		}
+		return text
+	}
 
     static constraints = {
     }

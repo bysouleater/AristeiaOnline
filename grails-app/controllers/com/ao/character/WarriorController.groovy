@@ -29,10 +29,11 @@ class WarriorController {
 	}
 	
 	def afterInterceptor = { model ->
-		if(model.warrior){
-			model.warrior.refreshSTA()
-			model.warrior.refreshHP()
-			model.warrior.save(flush:true)
+		if(session.warrior_id){
+			def warrior = Warrior.get(session.warrior_id)
+			warrior.refreshSTA()
+			warrior.refreshHP()
+			warrior.save(flush:true)
 		}
 	}
 	
@@ -81,7 +82,7 @@ class WarriorController {
 			def warrior = new Warrior(owner_id: 123L)
 			warrior.initWarrior(wrc.properties)
 			if(warrior.validate()){
-				warrior.save()
+				warrior.save(flush:true)
 				session.warrior_id = warrior.id
 				redirect(controller:"warrior",action:"index")
 			}else{
@@ -162,7 +163,7 @@ class WarriorController {
 	
 	def unequip = {
 		def warrior = Warrior.get(session.warrior_id)
-		warrior.unequipItem(params.id)
+		warrior.unequipItem(params.unequip_item_id)
 		warrior.save()
 		def referer = request.getHeader("Referer")
 		redirect(url:referer)
@@ -170,8 +171,8 @@ class WarriorController {
 	
 	def equip = {
 		def warrior = Warrior.get(session.warrior_id)
-		def item = Item.get(params.id)
-		if(item && warrior.inventory && warrior.inventory.contains(item))
+		def item = Item.get(params.equip_item_id)
+		if(item && warrior.inventory && warrior.inventory.contains(item) && item.type.canEquip(warrior.job))
 			warrior.equipItem(item)
 		warrior.save()
 		redirect(controller:"warrior", action:"equipment")
@@ -179,7 +180,7 @@ class WarriorController {
 	
 	def use = {
 		def warrior = Warrior.get(session.warrior_id)
-		def item = Item.get(params.id)
+		def item = Item.get(params.use_item_id)
 		if(item && warrior.inventory && warrior.inventory.contains(item))
 			warrior.useItem(item)
 		warrior.save()
@@ -256,7 +257,7 @@ class WarriorController {
 	}
 	
 	boolean isFromNearStore(def itemtype, def actualmap){
-		return actualmap.weapons?.items?.contains(item) || actualmap.armors?.items?.contains(item) || actualmap.consumables?.items?.contains(item)
+		return actualmap.weapons?.items?.contains(itemtype) || actualmap.armors?.items?.contains(itemtype) || actualmap.consumables?.items?.contains(itemtype)
 	}
 	
 	def buy = {
@@ -276,8 +277,10 @@ class WarriorController {
 		def warrior = Warrior.get(session.warrior_id)
 		def item = Item.get(params.sell_item_id)
 		if(item && warrior.inventory.contains(item)){
-			def qtysold = warrior.takeItem(item, params.sell_item_qty)
-			warrior.gold += (qtysold * (item.type.price / 2).intValue())
+			def qtysold = warrior.takeItem(item, params.sell_item_qty as int)
+			//For alpha version, sell is for real price
+			//warrior.gold += (qtysold * (item.type.price / 2).intValue())
+			warrior.gold += (qtysold * item.type.price)
 			warrior.save()
 		}
 		def referer = request.getHeader("Referer")
@@ -288,7 +291,7 @@ class WarriorController {
 	
 	def train = {
 		def warrior = Warrior.get(session.warrior_id)
-		def tp = TrainingPlace.get(params.id as Long)
+		def tp = TrainingPlace.get(params.training_place_id as Long)
 		if(warrior.actualLocation.trainingPlaces.contains(tp)){
 			if(warrior.canSpendSTA(tp.STArequired)){
 				newEntry(warrior, "You spent some time training in <b>${tp.name}</b>. <br>Gained ${trainSkill(warrior, tp)}.",

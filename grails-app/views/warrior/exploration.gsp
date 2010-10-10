@@ -35,11 +35,11 @@
 					</td>
 				</tr>
 			</table>
-			<g:javascript library="jquery" plugin="jquery"/>
+			
 			<jqui:resources theme="aristeia"/>
 			<script>
 				$(document).ready(function() {
-				    $("#explore_dialog").dialog({ autoOpen:false, resizable:false, 
+				    $("#explore_dialog").dialog({ autoOpen:false, resizable:false, position:[220,150],
 					    buttons: { "Ok": function() { window.location.href="<g:createLink controller='warrior' action='explore'/>";},
 				    			   "Cancel": function() { $(this).dialog("close");} }
 				    });
