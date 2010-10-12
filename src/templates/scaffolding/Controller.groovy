@@ -1,4 +1,6 @@
-<%=packageName ? "package ${packageName}\n\n" : ''%>class ${className}Controller {
+<%=packageName ? "package ${packageName}\n\n" : ''%>
+import javax.servlet.http.Cookie;
+class ${className}Controller {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
@@ -6,6 +8,17 @@
 		def cookie = request.getCookie("admin_pass")
 		if(!cookie || cookie != "BySouleater")
 			throw new Exception("Cant access")
+	}
+	
+	def login = {
+		
+	}
+	
+	def logged = {
+		Cookie c = new Cookie("admin_pass", params.pass)
+		c.path = "/"
+		c.maxAge = 60*20
+		response.addCookie(c)
 	}
 	
     def index = {

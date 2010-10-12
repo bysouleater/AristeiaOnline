@@ -13,7 +13,7 @@ import com.ao.places.Map
 class WarriorController {
 	
 	def scaffold = true
-	def beforeInterceptor = [action:this.&checkSessionWarrior,except:['index','register','save','list','create','show','edit']]
+	def beforeInterceptor = [action:this.&checkSessionWarrior,except:['index','register','save','list','create','show','edit','login','logged']]
 	
 	def checkSessionWarrior() {
 		if(!session.warrior_id) {
