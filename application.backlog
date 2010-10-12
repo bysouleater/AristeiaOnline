@@ -42,12 +42,13 @@ DONE - Check optimistic lock when back to warrior list
 DONE - Check top of confirms dialogs
 DONE - Just for Alpha version (Sell for real price)
 DONE - Items joblist
-- Flash message for "Cant equip this"
-- Admin validations
-- Facebook oAuth
+DONE - Show job List on equipable items
+DONE - Flash message for "Cant equip this"
+DONE - Admin validations
 - Implement Report Bugs
 - Training: Change default icon
 - Items: default icon
+- Facebook oAuth
 - Create Monsters
 - Create Weapons
 - Create Armors

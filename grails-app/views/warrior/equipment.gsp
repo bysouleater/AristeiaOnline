@@ -6,11 +6,12 @@
 		<td valign="top">
 			<div id="content">
 				<h4>Equipment</h4>
+				<g:if test="${flash.message}"><div class="flash">${flash.message}</div></g:if>
 				<table style="font-size:12px;margin:15px 0px 20px 20px;" cellpadding="0">
 					<tr>
 						<td class="labeltxt">Head </td>
 						<g:if test="${warrior.equip.head}">
-							<td title="${warrior.equip.head.type.name} - Stats${warrior.equip.head.type.titleStats()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.head.type.name} - Stats${warrior.equip.head.type.titleStats()} - Applicable Jobs ${warrior.equip.head.type.titleJobs()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="javascript:confirmUnequip('head','${warrior.equip.head.type.name}','${warrior.equip.head.type.icon}','${warrior.equip.head.type.titleStats()}');">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.head.type.icon}"/>
 								</a>
@@ -23,7 +24,7 @@
 						</g:else>
 						<td class="labeltxt">Shoulder </td>
 						<g:if test="${warrior.equip.shoulder}">
-							<td title="${warrior.equip.shoulder.type.name} - Stats${warrior.equip.shoulder.type.titleStats()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.shoulder.type.name} - Stats${warrior.equip.shoulder.type.titleStats()} - Applicable Jobs ${warrior.equip.shoulder.type.titleJobs()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="javascript:confirmUnequip('shoulder','${warrior.equip.shoulder.type.name}','${warrior.equip.shoulder.type.icon}','${warrior.equip.shoulder.type.titleStats()}');">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.shoulder.type.icon}"/>
 								</a>
@@ -38,7 +39,7 @@
 					<tr>
 						<td class="labeltxt">Shield </td>
 						<g:if test="${warrior.equip.shield}">
-							<td title="${warrior.equip.shield.type.name} - Stats${warrior.equip.shield.type.titleStats()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.shield.type.name} - Stats${warrior.equip.shield.type.titleStats()} - Applicable Jobs ${warrior.equip.shield.type.titleJobs()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="javascript:confirmUnequip('shield','${warrior.equip.shield.type.name}','${warrior.equip.shield.type.icon}','${warrior.equip.shield.type.titleStats()}');">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.shield.type.icon}"/>
 								</a>
@@ -51,7 +52,7 @@
 						</g:else>
 						<td class="labeltxt">Weapon </td>
 						<g:if test="${warrior.equip.weapon}">
-							<td title="${warrior.equip.weapon.type.name} - Stats${warrior.equip.weapon.type.titleStats()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.weapon.type.name} - Stats${warrior.equip.weapon.type.titleStats()} - Applicable Jobs ${warrior.equip.weapon.type.titleJobs()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="javascript:confirmUnequip('weapon','${warrior.equip.weapon.type.name}','${warrior.equip.weapon.type.icon}','${warrior.equip.weapon.type.titleStats()}');">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.weapon.type.icon}"/>
 								</a>
@@ -66,7 +67,7 @@
 					<tr>
 						<td class="labeltxt">Body </td>
 						<g:if test="${warrior.equip.body}">
-							<td title="${warrior.equip.body.type.name} - Stats${warrior.equip.body.type.titleStats()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.body.type.name} - Stats${warrior.equip.body.type.titleStats()}  - Applicable Jobs ${warrior.equip.body.type.titleJobs()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="javascript:confirmUnequip('body','${warrior.equip.body.type.name}','${warrior.equip.body.type.icon}','${warrior.equip.body.type.titleStats()}');">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.body.type.icon}"/>
 								</a>
@@ -79,7 +80,7 @@
 						</g:else>
 						<td class="labeltxt">Foot </td>
 						<g:if test="${warrior.equip.foot}">
-							<td title="${warrior.equip.foot.type.name} - Stats${warrior.equip.foot.type.titleStats()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.foot.type.name} - Stats${warrior.equip.foot.type.titleStats()} - Applicable Jobs ${warrior.equip.foot.type.titleJobs()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="javascript:confirmUnequip('foot','${warrior.equip.foot.type.name}','${warrior.equip.foot.type.icon}','${warrior.equip.foot.type.titleStats()}');">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.foot.type.icon}"/>
 								</a>
@@ -94,7 +95,7 @@
 					<tr>
 						<td class="labeltxt">Accesory </td>
 						<g:if test="${warrior.equip.accesory1}">
-							<td title="${warrior.equip.accesory1.type.name} - Stats${warrior.equip.accesory1.type.titleStats()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.accesory1.type.name} - Stats${warrior.equip.accesory1.type.titleStats()} - Applicable Jobs ${warrior.equip.accesory1.type.titleJobs()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="javascript:confirmUnequip('accesory1','${warrior.equip.accesory1.type.name}','${warrior.equip.accesory1.type.icon}','${warrior.equip.accesory1.type.titleStats()}');">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.accesory1.type.icon}"/>
 								</a>
@@ -107,7 +108,7 @@
 						</g:else>
 						<td class="labeltxt">Accesory </td>
 						<g:if test="${warrior.equip.accesory2}">
-							<td title="${warrior.equip.accesory2.type.name} - Stats${warrior.equip.accesory2.type.titleStats()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.accesory2.type.name} - Stats${warrior.equip.accesory2.type.titleStats()} - Applicable Jobs ${warrior.equip.accesory2.type.titleJobs()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="javascript:confirmUnequip('accesory2','${warrior.equip.accesory2.type.name}','${warrior.equip.accesory2.type.icon}','${warrior.equip.accesory2.type.titleStats()}');">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.accesory2.type.icon}"/>
 								</a>

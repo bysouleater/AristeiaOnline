@@ -9,8 +9,8 @@
 				<div style="width:440px;margin:30px 0px 20px 40px;">
 					<g:each in="${warrior.inventory}" var="item" status="i">
 						<g:if test="${item.type.equipable}">
-							<div title="${item.type.name} - Stats${item.type.titleStats()}" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
-								<a href="javascript:confirmEquip(${item.id},'${item.type.name}','${item.type.icon}','${item.type.titleStats()}');">
+							<div title="${item.type.name} - Stats${item.type.titleStats()} - Applicable Jobs ${item.type.titleJobs()}" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
+								<a href="javascript:confirmEquip(${item.id},'${item.type.name}','${item.type.icon}','${item.type.titleStats()}','${item.type.titleJobs()}');">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.type.icon}"/>
 								</a>
 								<g:if test="${item.qty > 1}"><span style="top:-5px;font-size:10px;font-weight:bold;position:relative;">x${item.qty}</span></g:if>
@@ -55,11 +55,11 @@
 				    });
 				});
 				
-				function confirmEquip(item_id, item_name, item_pic, item_stats){
-					$("#equip_imgdiv").attr("title",item_name + " - Stats" + item_stats);
+				function confirmEquip(item_id, item_name, item_pic, item_stats, item_jobs){
+					$("#equip_imgdiv").attr("title",item_name + " - Stats" + item_stats + " - Applicable Jobs " + item_jobs);
 					$("#equip_itempic").attr("src",item_pic);
 					$("#equip_item_id").attr("value",item_id);
-					$("#equip_itemname").html("<b>" + item_name + "</b><br><b>Stats</b> " + item_stats);
+					$("#equip_itemname").html("<b>" + item_name + "</b><br><b>Stats</b> " + item_stats + "<br><b>Applicable Jobs</b> " + item_jobs);
 					$("#confirm_equip").dialog({title : "Equip " + item_name + "?"});
 					$("#confirm_equip").dialog("open");
 				}

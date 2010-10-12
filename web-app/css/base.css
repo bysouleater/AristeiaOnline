@@ -207,3 +207,9 @@ hr{
 	text-align:center;
 	border:0px;
 	}
+.flash{
+	font-size:12px;
+	color:red;
+	background-color: #EEEEFF;
+	text-align: center;
+	}

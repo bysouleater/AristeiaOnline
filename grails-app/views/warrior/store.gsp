@@ -22,7 +22,7 @@
 									</div>
 								</g:if>
 								<g:elseif test="${item.equipable}">
-									<div title="${item.name} - ${item.titleStats()} - Value:${item.price} coins" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
+									<div title="${item.name} - Value:${item.price} coins - Stats${item.titleStats()} - Applicable Jobs ${item.titleJobs()}" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
 										<a href="#" onclick="javascript:openBuy(${item.id},${item.price},'${item.name}','${item.icon}',${item.consumable});">
 											<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.icon}"/>
 										</a>
@@ -53,7 +53,7 @@
 									</div>
 								</g:if>
 								<g:elseif test="${item.type.equipable}">
-									<div title="${item.type.name} - ${item.type.titleStats()} - Value:${(item.type.price / 2).intValue()} coins" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
+									<div title="${item.type.name} - Value:${(item.type.price / 2).intValue()} coins - Stats${item.type.titleStats()} - Applicable Jobs ${item.type.titleJobs()}" style="float:left;margin-right:10px;margin-bottom:10px;background-image:url('/images/empty.png');width:32px;height:32px;">
 										<a href="#" onclick="javascript:openSell(${item.id},${(item.type.price / 2).intValue()},'${item.type.name}','${item.type.icon}',${item.qty});">
 											<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.type.icon}"/>
 										</a>

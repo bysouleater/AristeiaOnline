@@ -24,8 +24,24 @@
   </head>
 
   <body>
-    <h1>Grails Runtime Exception</h1>
-    <h2>Error Details</h2>
+    <h1>Aristeia Runtime Exception</h1>
+    <h2>Error Details <a href="javascript:document.reportForm.submit();">Report Error</a></h2>
+
+	<g:form method="post" name="reportForm" controller="aoError" action="report">
+		<g:hiddenField name="error" value="${request.'javax.servlet.error.message'}"></g:hiddenField>
+		<g:hiddenField name="servlet" value="${request.'javax.servlet.error.servlet_name'}"></g:hiddenField>
+		<g:hiddenField name="uri" value="${request.'javax.servlet.error.request_uri'}"></g:hiddenField>
+		<g:hiddenField name="exception_message" value="${exception?.message}"></g:hiddenField>
+		<g:hiddenField name="caused_by" value="${exception?.cause?.message}"></g:hiddenField>
+		<g:hiddenField name="exception_class" value="${exception?.className}"></g:hiddenField>
+		<g:hiddenField name="at_line" value="${exception?.lineNumber}"></g:hiddenField>
+		
+		<g:each in="${exception?.stackTraceLines?}" var="l" status="i">
+			<g:hiddenField name="stack_trace${i}" value="${l}"></g:hiddenField>
+		</g:each>
+		
+		
+	</g:form>
 
   	<div class="message">
 		<strong>Error ${request.'javax.servlet.error.status_code'}:</strong> ${request.'javax.servlet.error.message'.encodeAsHTML()}<br/>

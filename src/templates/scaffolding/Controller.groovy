@@ -1,23 +1,33 @@
 <%=packageName ? "package ${packageName}\n\n" : ''%>class ${className}Controller {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+	
+	def auth(def request){
+		def cookie = request.getCookie("admin_pass")
+		if(!cookie || cookie != "BySouleater")
+			throw new Exception("Cant access")
+	}
+	
     def index = {
+		auth(request)
         redirect(action: "list", params: params)
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+		auth(request)
+		params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [${propertyName}List: ${className}.list(params), ${propertyName}Total: ${className}.count()]
     }
 
     def create = {
+		auth(request)
         def ${propertyName} = new ${className}()
         ${propertyName}.properties = params
         return [${propertyName}: ${propertyName}]
     }
 
     def save = {
+		auth(request)
         def ${propertyName} = new ${className}(params)
         if (${propertyName}.save(flush: true)) {
             flash.message = "\${message(code: 'default.created.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), ${propertyName}.id])}"
@@ -29,6 +39,7 @@
     }
 
     def show = {
+		auth(request)
         def ${propertyName} = ${className}.get(params.id)
         if (!${propertyName}) {
             flash.message = "\${message(code: 'default.not.found.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), params.id])}"
@@ -40,6 +51,7 @@
     }
 
     def edit = {
+		auth(request)
         def ${propertyName} = ${className}.get(params.id)
         if (!${propertyName}) {
             flash.message = "\${message(code: 'default.not.found.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), params.id])}"
@@ -51,6 +63,7 @@
     }
 
     def update = {
+		auth(request)
         def ${propertyName} = ${className}.get(params.id)
         if (${propertyName}) {
             if (params.version) {
@@ -78,6 +91,7 @@
     }
 
     def delete = {
+		auth(request)
         def ${propertyName} = ${className}.get(params.id)
         if (${propertyName}) {
             try {

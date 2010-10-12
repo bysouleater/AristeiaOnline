@@ -45,4 +45,16 @@ class Weapon extends ItemType{
 		}
 		return text
 	}
+	
+	def titleJobs(){
+		if(!jobs)
+			return "All"
+		def text = ""
+		jobs.each{
+			if(text.size() > 0)
+				text += ", "
+			text += "${it.name}"
+		}
+		return text
+	}
 }

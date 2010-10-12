@@ -174,6 +174,8 @@ class WarriorController {
 		def item = Item.get(params.equip_item_id)
 		if(item && warrior.inventory && warrior.inventory.contains(item) && item.type.canEquip(warrior.job))
 			warrior.equipItem(item)
+		else
+			flash.message = "Can't equip ${item.type.name}."
 		warrior.save()
 		redirect(controller:"warrior", action:"equipment")
 	}
