@@ -47,11 +47,10 @@ DONE - Flash message for "Cant equip this"
 DONE - Admin validations
 DONE - Implement Report Bugs
 DONE - Facebook oAuth
-- MySQL Connection
-- Everywhere: order items
-- Implement Library
 DONE - Training: Change default icon
-- Items: default icon
+DONE - Items: default icon
+DONE - MySQL Connection
+- Delete gold in monsters
 - Create Monsters
 - Create Weapons
 - Create Armors
@@ -60,6 +59,8 @@ DONE - Training: Change default icon
 - Create some other quests
 
 SHOULD DO
+- Implement Library
+- Everywhere: order items
 - Comunicate better that no longer exp is gained when reached max job level
 - Item description
 - Item actions

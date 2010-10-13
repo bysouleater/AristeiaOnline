@@ -40,7 +40,7 @@ class BootStrap {
 			
 			def chrysaorStats = new StatsList(PAtk:200,STR:5,Acc:10)
 			chrysaorStats.save()
-			def chrysaor = new Weapon(name:"Chrysaor sword", price:1, icon:"images/knife.png", consumable:false, type:Weapon.NORMAL, handsQty:1, stats:chrysaorStats)
+			def chrysaor = new Weapon(name:"Chrysaor sword", price:1, icon:"/images/no_icon.png", consumable:false, type:Weapon.NORMAL, handsQty:1, stats:chrysaorStats)
 			chrysaor.addToJobs(Job.get(Job.BARBARIAN))
 			chrysaor.save()
 			

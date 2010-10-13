@@ -1,11 +1,188 @@
 Monsters
 ========================================
 
-Snake{HP:30, PAtk:10, PDef:5, Eva:2, Acc:2}
-{Exp: 50, Loot:Snake tooth}
-[two Snakes,three Snakes]
+name: 'Snake', exp: 50, level: 1, color: grey,
+HP: 30, PAtk: 10, PDef: 5, Acc: 2, Eva: 2, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:['Snake tooth']
+
+name: 'Giant Scorpion', exp: 0, level: 2, color: blue,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Wolf', exp: 0, level: 3, color: blue,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Boar', exp: 0, level: 3, color: blue,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Lion', exp: 0, level: 3, color: blue,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Bull', exp: 0, level: 3, color: blue,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Bear', exp: 0, level: 4, color: red,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
 
 
+colors: grey=city, blue=1, red=2,yellow=3
+
+
+name: 'Minotaur', exp: 6200, level: 12, color: yellow, miniboss, map:0;1
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Medusa', exp: 5800, level: 12, color: yellow, miniboss, map:0;6
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Chiron', exp: 5500, level: 12, color: yellow, miniboss, map:4;4
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Chimaera', exp: 5500, level: 12, color: yellow, miniboss, map:6;0
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Parthenope', exp: 2000, level: 12/3, color: yellow, miniboss, map:5;5
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Ligea', exp: 2000, level: 12/3, color: yellow, miniboss, map:5;5
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Leucosia', exp: 2000, level: 12/3, color: yellow, miniboss, map:5;5
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+
+
+
+
+name: 'Calydonian Boar', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Erymanthian Boar', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+
+
+name: 'Nemean Lion', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+
+
+name: 'Echidna', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+
+
+name: 'Sphinx', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Harpys', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Gryphons', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Reptile', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+
+
+name: 'Cretan Bull', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+
+
+name: 'Cyclop', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Giant', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Hecatoncheires', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Briareus(Aegaeon)', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Cottus', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Gyges(Gyes)', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Sirens', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+
+
+name: 'Sea Nymph', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Triton', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Mermaid', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Merman', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+
+
+name: 'Centaur', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+
+
+name: 'Tree Nymph', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Satyr', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+name: 'Gorgon', exp: 0, level: 1,
+HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+loot:[]
+
+
+
+
+
+
+=============================================================================
 
 
 
