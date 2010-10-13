@@ -41,20 +41,15 @@ class MainController {
 		return new String(decodedBytes)
 	}
 	
-	def oauth_redirect = {
-		redirect(action:index)
-
-	}
-	
 	def index = {
-//		def url_params = parse_signed_request(params.signed_request)
-//		if(url_params.user_id && url_params.oauth_token){
-//			return [logged:true,warriorlist:Warrior.findAllByOwner_id(url_params.user_id as Long)]
-//		}else{
-//			//redirect(uri:"https://graph.facebook.com/oauth/authorize?client_id=${FB_APP_ID}&redirect_uri=http://apps.facebook.com/aristeia_online/main/oauth_redirect")
-//		}
-//		return [logged:false]
-		
-		return [logged:true,warriorlist:Warrior.findAllByOwner_id(123L)]
+		if(!session.fb_user_id){
+			def url_params = parse_signed_request(params.signed_request)
+			if(!url_params.user_id){
+				redirect(uri:"https://graph.facebook.com/oauth/authorize?client_id=${FB_APP_ID}&redirect_uri=http://apps.facebook.com/aristeia_online/")
+			}
+			session.fb_user_id = url_params.user_id
+			session.fb_access_token = url_params.oauth_token
+		}
+		return [warriorlist:Warrior.findAllByOwner_id(session.fb_user_id)]		
 	}
 }

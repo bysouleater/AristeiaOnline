@@ -46,9 +46,12 @@ DONE - Show job List on equipable items
 DONE - Flash message for "Cant equip this"
 DONE - Admin validations
 DONE - Implement Report Bugs
-- Training: Change default icon
+DONE - Facebook oAuth
+- MySQL Connection
+- Everywhere: order items
+- Implement Library
+DONE - Training: Change default icon
 - Items: default icon
-- Facebook oAuth
 - Create Monsters
 - Create Weapons
 - Create Armors
@@ -65,7 +68,6 @@ SHOULD DO
 - Find chance for Dungeons/TrainingPlaces with search. (FindList)
 - Moving inside dungeons same % of encounter chance
 - Help messages (Display Help) With flash scope.
-- Implement Library
 - Implement Insights [Encounter:won,lost,total,boss;Pvp:won,lost,total;Tournaments:won,played;Trophys]
 - Implement Tournaments [Trophy, Date, Users_Registered, Max_users, Loot, Exp 1st Place, Min_Level, Max_Level]
 - Implement Tournaments list in Arena (Register)

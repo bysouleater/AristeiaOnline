@@ -37,31 +37,6 @@ class WarriorController {
 		}
 	}
 	
-	def parse_signed_request(String signed_request){
-		def encoded_sig = signed_request.split("\\.")[0]
-		def payload = signed_request.split("\\.")[1]
-		
-		def sig = base64_url_decode(encoded_sig)
-		def data = JSON.parse(base64_url_decode(payload))
-		
-		if(data.algorithm.toUpperCase() != 'HMAC-SHA256')
-			throw new Exception("Unknow algorithm. Expected HMAC-SHA256")
-		
-		//TODO: Verificar el encodeo
-		//check sig
-		/*def expected_sig = hash_hmac('sha256', payload, FB_SECRET_KEY, $raw = true)
-		 if(sig != expected_sig)
-		 throw new Exception("Bad signed JSON signature!")
-		 */
-		return data
-	}
-	
-	def base64_url_decode(def input) {
-		def data = input.replaceAll("-","+").replaceAll("_","/")
-		def decodedBytes = data.decodeBase64()
-		return new String(decodedBytes)
-	}
-	
 	//PREVIOUS ACTIONS
 	
 	static def MAX_WARRIORS = 3
@@ -79,7 +54,7 @@ class WarriorController {
 			render(view:"register",model:[wrc:wrc,cities:City.list()])
 		}else{
 			//			def url_params = parse_signed_request(params.signed_request)
-			def warrior = new Warrior(owner_id: 123L)
+			def warrior = new Warrior(owner_id: session.fb_user_id)
 			warrior.initWarrior(wrc.properties)
 			if(warrior.validate()){
 				warrior.save(flush:true)
@@ -195,6 +170,11 @@ class WarriorController {
 			def killed = searchMonsters(warrior, 1)
 			if(!killed)
 				searchItems(warrior, 1)
+			else{
+				def je = new JournalEntry(type:JournalEntry.TEXT, text:"You died in combat. You resurrected in <b>${warrior.actualLocation.name}</b>.")
+				je.save()
+				warrior.addToJournal(je)
+			}
 		}
 		warrior.save()
 		redirect(controller:"warrior",action:"index")

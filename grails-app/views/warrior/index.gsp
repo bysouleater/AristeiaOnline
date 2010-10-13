@@ -17,7 +17,7 @@
 						<g:if test="${je.type == 1}">
 							<td valign="top" align="right" style="padding-left:10px;padding-top:5px;padding-bottom:5px;color:#555555;white-space:nowrap;line-height:1.5em;"><g:dateFromNow date="${je.dateCreated}"/></td>
 							<td valign="top" style="padding-right:5px;line-height:1.5em;padding-left:10px;padding-top:5px;padding-bottom:5px;">
-								<i>While exploring you encountered <b>${je.fight.encounter.description}</b>. You <b><g:if test="${je.fight.won}">won</g:if><g:else>lost</g:else></b> the fight.<br>
+								<i>While exploring you encountered <b>${je.fight.encounter.description}</b>. You <b><g:if test="${je.fight.won}">won</b> the fight.<br>
 								Gained <b>${je.fight.encounter.totalExp()} EXP</b>
 								Found <b><g:if test="${je.fight.encounter.totalLoot().size() > 0}">
 										<g:each in="${je.fight.encounter.totalLoot()}">
@@ -25,7 +25,8 @@
 										</g:each>
 									</g:if></b>
 								<g:if test="${je.fight.encounter.totalGold() > 0}"><b>${je.fight.encounter.totalGold()}</b> <img width="15" height="15" src="/images/coins.png"/></g:if>
-								<b><g:link controller="warrior" action="fights" id="${je.fight.id}"> View fight details</g:link></b></i>
+								</g:if>
+								<g:else>lost</b> the fight.<br></g:else><b><g:link controller="warrior" action="fights" id="${je.fight.id}"> View fight details</g:link></b></i>
 							</td>
 						</g:if>
 						</tr>

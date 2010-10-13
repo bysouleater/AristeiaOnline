@@ -128,9 +128,6 @@ class Fight {
 			won = false
 			warrior.actualHP = 1
 			warrior.actualLocation = warrior.resurrectionMap
-			def je = new JournalEntry(type:JournalEntry.TEXT, text:"You died in combat. You resurrected in <b>${warrior.resurrectionMap.name}</b>.")
-			je.save()
-			warrior.addToJournal(je)
 		}
 		warrior.save()
 		return won

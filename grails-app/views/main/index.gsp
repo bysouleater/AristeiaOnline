@@ -21,12 +21,7 @@
 		<h3>Welcome to Aristeia Online</h3>
     	<div class="bigmsg">
     		<img style="margin-bottom:20px;" src="/images/front.gif"/><br>
-    		<g:if test="${logged}">
-    			You don't have any warrior. <g:link action="register" controller="warrior">Create a new warrior</g:link> to start playing!
-    		</g:if>
-    		<g:else>
-    			You are not logged in to Facebook. Please log in to start playing.
-    		</g:else>
+    		You don't have any warrior. <g:link action="register" controller="warrior">Create a new warrior</g:link> to start playing!
     	</div>
-    </div>    
+    </div>
 </g:else>
