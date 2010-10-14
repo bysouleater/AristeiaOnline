@@ -41,7 +41,7 @@ environments {
 			username = "root"
 			password = "BySouleater"
 			dbCreate = "update"
-			url = "jdbc:mysql://localhost:3306/test"
+			url = "jdbc:mysql://localhost:3306/aristeiaonline"
 		}
 		hibernate {
 			cache.use_second_level_cache=true

@@ -7,11 +7,8 @@ import groovyx.net.http.RESTClient;
 
 class MainController {
 	
-	static final String FB_APP_URL = "http://apps.facebook.com/aristeia_online/"
-	static final String FB_APP_ADD_URL = "http://www.facebook.com/add.php?api_key="
-	static final String FB_API_KEY = "41f82a404dc9b0bbb4579a993c51ae4d"
-	static final String FB_SECRET_KEY = "c5b463359f752c1070dcd15db30cdcf9"
-	static final String FB_APP_ID = "141786259185672"
+	static final String FB_SECRET_KEY = "236efa3a85bf560f2cfc123a2debee30"
+	static final String FB_APP_ID = "165864820091012"
 	
 	
 	def parse_signed_request(String signed_request){
@@ -45,7 +42,7 @@ class MainController {
 		if(!session.fb_user_id){
 			def url_params = parse_signed_request(params.signed_request)
 			if(!url_params.user_id){
-				redirect(uri:"https://graph.facebook.com/oauth/authorize?client_id=${FB_APP_ID}&redirect_uri=http://apps.facebook.com/aristeia_online/")
+				redirect(uri:"https://graph.facebook.com/oauth/authorize?client_id=${FB_APP_ID}&redirect_uri=http://apps.facebook.com/aristeia_onlinealpha/")
 			}
 			session.fb_user_id = url_params.user_id
 			session.fb_access_token = url_params.oauth_token
