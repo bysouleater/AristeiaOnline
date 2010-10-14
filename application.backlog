@@ -50,6 +50,8 @@ DONE - Facebook oAuth
 DONE - Training: Change default icon
 DONE - Items: default icon
 DONE - MySQL Connection
+- For Alpha: Max chars = 10
+- In City: HP & STA Refresh Rate is half
 - Delete gold in monsters
 - Create Monsters
 - Create Weapons

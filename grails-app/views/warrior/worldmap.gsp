@@ -25,7 +25,7 @@
 									</g:else>
 								</g:if>
 								<g:else>
-									<td></td>
+									<td style="background:url('/images/worldmap/${i}_${j}.png');opacity:0.4;filter:alpha(opacity=40);">&nbsp;</td>
 								</g:else>							
 							</g:each>
 						</tr>

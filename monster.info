@@ -1,13 +1,91 @@
+=============================================================================
 Monsters
-========================================
+=============================================================================
 
-name: 'Snake', exp: 50, level: 1, color: grey,
-HP: 30, PAtk: 10, PDef: 5, Acc: 2, Eva: 2, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:['Snake tooth']
+- 	name: 'Snake', exp: 50, level: 1, color: grey,
+	HP: 30, PAtk: 10, PDef: 5, Acc: 2, Eva: 2, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+	loot:['Snake tooth']
 
-name: 'Giant Scorpion', exp: 0, level: 2, color: blue,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+- 	name: 'Big Snake', exp: 70, level: 2, color: grey,
+	HP: 40, PAtk: 12, PDef: 7, Acc: 2, Eva: 2, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+	loot:['Snake tooth']
+
+-	name: 'Giant Scorpion', exp: 70, level: 2, color: blue,
+	HP: 40, PAtk: 12, PDef: 7, Acc: 2, Eva: 2, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+	loot:['Scorpion tail']
+
+-	name: 'Bull', exp: 150, level: 3, color: blue,
+	HP: 80, PAtk: 20, PDef: 12, Acc: 4, Eva: 2, ARate: 0, CRate: 0, Luck: 0, Init: 2,
+	loot:['Bull horns']
+
+-	name: 'Cretan Bull', exp: 300, level: 5,
+	HP: 150, PAtk: 35, PDef: 20, Acc: 5, Eva: 4, ARate: 1, CRate: 1, Luck: 0, Init: 3,
+	loot:['Bull horns','Cretan Horn (Equipable head)']
+	
+-	name: 'Minotaur', exp: 3000, level: 10, color: yellow, miniboss, map:0;1
+	HP: 600, PAtk: 50, PDef: 30, Acc: 10, Eva: 4, ARate: 1, CRate: 2, Luck: 0, Init: 4,
+	loot:['Minotaur Axe']
+	
+-	name: 'Medusa', exp: 2800, level: 10, color: yellow, miniboss, map:0;6
+	HP: 500, PAtk: 38, PDef: 25, Acc: 10, Eva: 5, ARate: 2, CRate: 2, Luck: 0, Init: 3,
+	loot:['Strong Stone Shield']
+
+-	name: 'Tree Nymph', exp: 140, level: 3,
+	HP: 75, PAtk: 16, PDef: 10, Acc: 5, Eva: 4, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+	loot:['Green Veil (Equipable Shoulder)']
+
+-	name: 'Satyr', exp: 400, level: 6,
+	HP: 130, PAtk: 30, PDef: 18, Acc: 7, Eva: 5, ARate: 3, CRate: 0, Luck: 0, Init: 0,
+	loot:[]
+
+-	name: 'Gorgon', exp: 300, level: 5,
+	HP: 150, PAtk: 28, PDef: 24, Acc: 5, Eva: 3, ARate: 1, CRate: 0, Luck: 0, Init: 1,
+	loot:[]
+
+-	name: 'Chimaera', exp: 3000, level: 10, color: yellow, miniboss, map:6;0
+	HP: 700, PAtk: 35, PDef: 20, Acc: 8, Eva: 4, ARate: 3, CRate: 0, Luck: 0, Init: 5,
+	loot:['Chimaera claws (Equipable foot)']
+	
+-	name: 'Lion', exp: 150, level: 3, color: blue,
+	HP: 100, PAtk: 20, PDef: 12, Acc: 4, Eva: 2, ARate: 0, CRate: 0, Luck: 0, Init: 2,
+	loot:['Lion mane']
+
+-	name: 'Nemean Lion', exp: 300, level: 5,
+	HP: 170, PAtk: 35, PDef: 20, Acc: 5, Eva: 4, ARate: 1, CRate: 1, Luck: 0, Init: 3,
+	loot:['Lion mane','Nemean Claw (Equipable foot)']
+	
+-	name: 'Parthenope', exp: 1500, level: 8, color: yellow, miniboss, map:5;5
+	HP: 280, PAtk: 35, PDef: 20, Acc: 5, Eva: 6, ARate: 3, CRate: 1, Luck: 0, Init: 1,
+	loot:[]
+
+-	name: 'Ligea', exp: 1500, level: 8, color: yellow, miniboss, map:5;5
+	HP: 280, PAtk: 20, PDef: 35, Acc: 6, Eva: 5, ARate: 2, CRate: 2, Luck: 0, Init: 2,
+	loot:[]
+
+-	name: 'Leucosia', exp: 1500, level: 8, color: yellow, miniboss, map:5;5
+	HP: 280, PAtk: 30, PDef: 30, Acc: 5, Eva: 6, ARate: 1, CRate: 3, Luck: 0, Init: 3,
+	loot:[]
+
+-	name: 'Sirens', exp: 0, level: 4,
+	HP: 100, PAtk: 19, PDef: 14, Acc: 3, Eva: 2, ARate: 3, CRate: 0, Luck: 0, Init: 2,
+	loot:['Siren wings']
+	
+-	name: 'Sea Nymph', exp: 0, level: 3,
+	HP: 75, PAtk: 16, PDef: 10, Acc: 5, Eva: 4, ARate: 0, CRate: 0, Luck: 0, Init: 0,
+	loot:['Crystal Veil (Equipable Shoulder)']
+
+-	name: 'Triton', exp: 320, level: 5,
+	HP: 150, PAtk: 35, PDef: 20, Acc: 5, Eva: 4, ARate: 1, CRate: 1, Luck: 0, Init: 3,
+	loot:['Spear (Equipable weapon)']
+
+-	name: 'Mermaid', exp: 290, level: 5,
+	HP: 140, PAtk: 28, PDef: 20, Acc: 5, Eva: 4, ARate: 2, CRate: 0, Luck: 0, Init: 0,
+	loot:[]
+
+-	name: 'Merman', exp: 300, level: 5,
+	HP: 130, PAtk: 30, PDef: 20, Acc: 4, Eva: 5, ARate: 0, CRate: 2, Luck: 0, Init: 0,
+	loot:[]
+
 
 name: 'Wolf', exp: 0, level: 3, color: blue,
 HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
@@ -17,53 +95,13 @@ name: 'Boar', exp: 0, level: 3, color: blue,
 HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
 loot:[]
 
-name: 'Lion', exp: 0, level: 3, color: blue,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-name: 'Bull', exp: 0, level: 3, color: blue,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
 name: 'Bear', exp: 0, level: 4, color: red,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-
-colors: grey=city, blue=1, red=2,yellow=3
-
-
-name: 'Minotaur', exp: 6200, level: 12, color: yellow, miniboss, map:0;1
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-name: 'Medusa', exp: 5800, level: 12, color: yellow, miniboss, map:0;6
 HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
 loot:[]
 
 name: 'Chiron', exp: 5500, level: 12, color: yellow, miniboss, map:4;4
 HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
 loot:[]
-
-name: 'Chimaera', exp: 5500, level: 12, color: yellow, miniboss, map:6;0
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-name: 'Parthenope', exp: 2000, level: 12/3, color: yellow, miniboss, map:5;5
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-name: 'Ligea', exp: 2000, level: 12/3, color: yellow, miniboss, map:5;5
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-name: 'Leucosia', exp: 2000, level: 12/3, color: yellow, miniboss, map:5;5
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-
-
-
 
 name: 'Calydonian Boar', exp: 0, level: 1,
 HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
@@ -73,19 +111,9 @@ name: 'Erymanthian Boar', exp: 0, level: 1,
 HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
 loot:[]
 
-
-
-name: 'Nemean Lion', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-
-
 name: 'Echidna', exp: 0, level: 1,
 HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
 loot:[]
-
-
 
 name: 'Sphinx', exp: 0, level: 1,
 HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
@@ -102,14 +130,6 @@ loot:[]
 name: 'Reptile', exp: 0, level: 1,
 HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
 loot:[]
-
-
-
-name: 'Cretan Bull', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-
 
 name: 'Cyclop', exp: 0, level: 1,
 HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
@@ -135,57 +155,181 @@ name: 'Gyges(Gyes)', exp: 0, level: 1,
 HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
 loot:[]
 
-name: 'Sirens', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-
-
-name: 'Sea Nymph', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-name: 'Triton', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-name: 'Mermaid', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-name: 'Merman', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-
-
 name: 'Centaur', exp: 0, level: 1,
 HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
 loot:[]
 
-
-
-name: 'Tree Nymph', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-name: 'Satyr', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-name: 'Gorgon', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
-
-
-
-
-
-
+=============================================================================
+Encounters
 =============================================================================
 
+MAP: 0,0 [-]
+MAP: 0,1 'Cretan Labyrinth' [
+	{Minotaur + Cretan Bull + Cretan Bull + Bull + Bull + Bull = 5%},
+	{Cretan Bull + Bull + Bull = 35%},
+	{Cretan Bull + Cretan Bull + Bull + Bull = 30%},
+	{Cretan Bull + Cretan Bull + Cretan Bull = 25%}
+]
+MAP: 0,2 'Cretan Mountain Zone 01' [
+	{Bull + Bull = 40%}
+	{Bull + Bull + Bull = 20%},
+	{Cretan Bull + Bull = 20%},
+	{Cretan Bull + Cretan Bull = 10%}
+]
+MAP: 0,3 [
+]
+MAP: 0,4 [
+]
+MAP: 0,5 'Cistene Fields 01' [
+	{Tree Nymph + Tree Nymph = 40%},
+	{Tree Nymph + Tree Nymph + Gorgon = 20%},
+	{Tree Nymph + Tree Nymph + Satyr = 20%},
+	{Gorgon + Gorgon = 10%},
+	{Satyr + Satyr = 10%}
+]
+MAP: 0,6 'Cistene Swamp' [
+	{Medusa + Gorgon + Gorgon + Gorgon + Gorgon = 5%},
+	{Gorgon + Gorgon + Gorgon = 15%},
+	{Satyr + Satyr + Satyr = 15%},
+	{Gorgon + Gorgon = 30%},
+	{Satyr + Satyr = 30%}
+]
+MAP: 1,0 [-]
+MAP: 1,1 'Cretan Mountain Zone 02' [
+	{Bull + Bull = 40%}
+	{Bull + Bull + Bull = 20%},
+	{Cretan Bull + Bull = 20%},
+	{Cretan Bull + Cretan Bull = 10%}
+]
+MAP: 1,2 'Cebrene Fields 04' [
+	{Bull = 45%},
+	{Bull + Bull = 25%},
+	{Bull + Bull + Bull = 15%}
+]
+MAP: 1,3 'Cebrene City' [
+	{Snake + Snake = 60%},
+	{Big Snake = 25%}
+	{Snake + Big Snake = 10%}
+	{Snake + Snake + Big Snake = 5%}
+]
+MAP: 1,4 [
+]
+MAP: 1,5 [
+]
+MAP: 1,6 'Cistene Fields 02' [
+	{Tree Nymph + Tree Nymph = 40%},
+	{Tree Nymph + Tree Nymph + Gorgon = 20%},
+	{Tree Nymph + Tree Nymph + Satyr = 20%},
+	{Gorgon + Gorgon = 10%},
+	{Satyr + Satyr = 10%}
+]
+MAP: 2,0 [-]
+MAP: 2,1 [
+]
+MAP: 2,2 [
+]
+MAP: 2,3 [
+]
+MAP: 2,4 [
+]
+MAP: 2,5 'Chalcedon City' [
+	{Snake + Snake = 60%},
+	{Big Snake = 25%}
+	{Snake + Big Snake = 10%}
+	{Snake + Snake + Big Snake = 5%}
+]
+MAP: 2,6 [
+]
+MAP: 3,0 [-]
+MAP: 3,1 'Mallia City' [
+	{Snake + Snake = 60%},
+	{Giant Scorpion = 25%}
+	{Snake + Giant Scorpion = 10%}
+	{Snake + Snake + Giant Scorpion = 5%}
+]
+MAP: 3,2 [
+]
+MAP: 3,3 [
+]
+MAP: 3,4 [
+]
+MAP: 3,5 [
+	{Sea Nymph = 45%}
+	{Sea Nymph + Sea Nymph = 25%}
+	{Sea Nymph + Sea Nymph + Sea Nymph = 15%}
+]
+MAP: 3,6 [
+]
+MAP: 4,0 [
+]
+MAP: 4,1 [
+]
+MAP: 4,2 [
+]
+MAP: 4,3 [
+]
+MAP: 4,4 [
+]
+MAP: 4,5 [
+	{Siren + Siren = 40%}
+	{Siren + Siren + Triton = 40%}
+	{Triton + Triton = 10%}
+]
+MAP: 4,6 [-]
+MAP: 5,0 'Lycia Fields 01' [
+	{Lion + Lion = 40%}
+	{Lion + Lion + Lion = 20%}
+	{Nemean lion + Lion = 20%}
+	{Nemean lion + Nemean lion = 10%}
+]
+MAP: 5,1 [
+]
+MAP: 5,2 'Baris City' [
+	{Snake + Snake = 60%},
+	{Giant Scorpion = 25%}
+	{Snake + Giant Scorpion = 10%}
+	{Snake + Snake + Giant Scorpion = 5%}
+]
+MAP: 5,3 [
+	{Sea Nymph = 45%}
+	{Sea Nymph + Sea Nymph = 25%}
+	{Sea Nymph + Sea Nymph + Sea Nymph = 15%}
+]
+MAP: 5,4 [
+	{Siren + Siren = 40%}
+	{Siren + Siren + Merman = 20%}
+	{Siren + Siren + Mermaid = 20%}
+	{Merman + Mermaid = 10%}
+]
+MAP: 5,5 [
+	{Parthenope + Ligea + Leucosia = 5%},
+	{Siren + Siren + Siren = 35%}
+	{Triton + Triton = 30%}
+	{Mermaid + Merman + Mermaid = 25%}	
+]
+MAP: 5,6 [-]
+MAP: 6,0 'Lycia Way' [
+	{Chimaera + Nemean lion + Nemean lion + Lion + Big Snake = 5%},
+	{Nemean lion + Lion + Lion + Big Snake = 35%}
+	{Nemean lion + Nemean lion + Lion + Lion + Big Snake = 30%}
+	{Nemean lion + Nemean lion + Nemean lion = 25%}
+]
+MAP: 6,1 'Lycia Fields 02' [
+	{Lion + Lion = 40%}
+	{Lion + Lion + Lion = 20%}
+	{Nemean lion + Lion = 20%}
+	{Nemean lion + Nemean lion = 10%}
+]
+MAP: 6,2 [
+]
+MAP: 6,3 [
+]
+MAP: 6,4 [-]
+MAP: 6,5 [-]
+MAP: 6,6 [-]
 
 
+=================================================================
 
 
 
