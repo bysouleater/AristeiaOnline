@@ -11,7 +11,7 @@
 					<g:each in="${warrior.actualLocation.trainingPlaces}" status="i" var="tp">
 						<div style="margin:15px 0px 20px 20px;">
 							<g:if test="${warrior.actualSTA >= tp.STArequired}">
-								<a style="width:400px;" class="buttonlink biglink" href="javascript:confirmTrain(${tp.id},'${tp.name}','/images/grails_logo.png','${tp.skills.titleStats()}');">
+								<a style="width:400px;" class="buttonlink biglink" href="javascript:confirmTrain(${tp.id},'${tp.name}','/images/default_tp.png','${tp.skills.titleStats()}');">
 									<img height="30" width="130" style="float:left;margin-right:10px;" src="/images/default_tp.png"/>
 									<b>${tp.name}</b> (${tp.STArequired} STA)
 									<br><b>Skills </b>${tp.skills.titleStats()}
