@@ -52,7 +52,7 @@ DONE - Items: default icon
 DONE - MySQL Connection
 DONE - For Alpha: Max chars = 10
 DONE - In City: HP & STA Refresh Rate is half
-- Check fight entry order
+- Fights: Order Entrys by id
 - WarriorSheet: Refresh Rate is not half
 - Delete gold in monsters
 - Create Monsters
