@@ -129,7 +129,7 @@ class Fight {
 			warrior.actualHP = 1
 			warrior.actualLocation = warrior.resurrectionMap
 		}
-		warrior.save()
+		warrior.save(flush:true)
 		return won
 	}
 }

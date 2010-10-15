@@ -36,7 +36,7 @@ environments {
 		
 //		MySQL
 		dataSource {
-			pooled = true
+			pooled = false
 			driverClassName = "com.mysql.jdbc.Driver"
 			username = "root"
 			password = "BySouleater"

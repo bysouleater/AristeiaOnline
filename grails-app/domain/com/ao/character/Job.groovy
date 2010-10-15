@@ -6,12 +6,12 @@ import com.ao.StatsList
 class Job {
 	
 	static Long NEWBIE = 1
-	static Long BARBARIAN
-	static Long SOLDIER
-	static Long ADEPT
-	static Long SHOOTER
-	static Long COMPETENT
-	static Long SPECIALIST
+	static Long BARBARIAN = 2
+	static Long SOLDIER = 3
+	static Long ADEPT = 4
+	static Long SHOOTER = 5
+	static Long COMPETENT = 6
+	static Long SPECIALIST = 7
 	
 	static int NEWBIE_GENERATION = 0
 	static int FIRST_GENERATION = 1

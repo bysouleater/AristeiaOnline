@@ -131,7 +131,7 @@ class WarriorController {
 	def updateStat = {
 		def warrior = Warrior.get(session.warrior_id)
 		warrior.updateStat(params.id)
-		warrior.save()
+		warrior.save(flush:true)
 		def referer = request.getHeader("Referer")
 		redirect(url:referer)
 	}
@@ -139,7 +139,7 @@ class WarriorController {
 	def unequip = {
 		def warrior = Warrior.get(session.warrior_id)
 		warrior.unequipItem(params.unequip_item_id)
-		warrior.save()
+		warrior.save(flush:true)
 		def referer = request.getHeader("Referer")
 		redirect(url:referer)
 	}
@@ -151,7 +151,7 @@ class WarriorController {
 			warrior.equipItem(item)
 		else
 			flash.message = "Can't equip ${item.type.name}."
-		warrior.save()
+		warrior.save(flush:true)
 		redirect(controller:"warrior", action:"equipment")
 	}
 	
@@ -160,23 +160,26 @@ class WarriorController {
 		def item = Item.get(params.use_item_id)
 		if(item && warrior.inventory && warrior.inventory.contains(item))
 			warrior.useItem(item)
-		warrior.save()
+		warrior.save(flush:true)
 		redirect(controller:"warrior", action:"inventory")
 	}
 	
 	def explore = {
 		def warrior = Warrior.get(session.warrior_id)
+		warrior.refreshSTA()
+		warrior.refreshHP()
+		warrior.save(flush:true)
 		if(warrior.canSpendSTA(5)){
 			def killed = searchMonsters(warrior, 1)
 			if(!killed)
 				searchItems(warrior, 1)
 			else{
 				def je = new JournalEntry(type:JournalEntry.TEXT, text:"You died in combat. You resurrected in <b>${warrior.actualLocation.name}</b>.")
-				je.save()
+				je.save(flush:true)
 				warrior.addToJournal(je)
 			}
 		}
-		warrior.save()
+		warrior.save(flush:true)
 		redirect(controller:"warrior",action:"index")
 	}
 	
@@ -208,7 +211,7 @@ class WarriorController {
 					moveWarrior(warrior, map)
 				}
 			}
-			warrior.save()
+			warrior.save(flush:true)
 		}
 		redirect(controller:"warrior", action:"index")
 	}
@@ -250,7 +253,7 @@ class WarriorController {
 			if(warrior.canBuy(item.price * qty))
 				warrior.giveItem(item, qty)
 		}
-		warrior.save()
+		warrior.save(flush:true)
 		def referer = request.getHeader("Referer")
 		redirect(url:referer)
 	}
@@ -263,7 +266,7 @@ class WarriorController {
 			//For alpha version, sell is for real price
 			//warrior.gold += (qtysold * (item.type.price / 2).intValue())
 			warrior.gold += (qtysold * item.type.price)
-			warrior.save()
+			warrior.save(flush:true)
 		}
 		def referer = request.getHeader("Referer")
 		redirect(url:referer)

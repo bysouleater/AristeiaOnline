@@ -6,19 +6,19 @@
 		<td width="130" valign="top">
 			<table width="100%" border="0">
 				<tr>
-					<td width="25" align="left" class="labeltxt"><span title="${warrior.HPRecoverAmount()} every ${100-warrior.completeDerivedStat("CON") + 20} segs">HP</span></td>
-					<td align="left" class="labelvalue"><span title="${warrior.HPRecoverAmount()} every ${100-warrior.completeDerivedStat("CON") + 20} segs">${warrior.actualHP} / ${warrior.maxHP()}</span></td>
+					<td width="25" align="left" class="labeltxt"><span title="${warrior.HPRecoverAmount()} every ${((100-warrior.completeDerivedStat("CON") + 20) / (warrior.actualLocation.city?2:1)).intValue()} segs">HP</span></td>
+					<td align="left" class="labelvalue"><span title="${warrior.HPRecoverAmount()} every ${((100-warrior.completeDerivedStat("CON") + 20) / (warrior.actualLocation.city?2:1)).intValue()} segs">${warrior.actualHP} / ${warrior.maxHP()}</span></td>
 				</tr>
 				<tr><td colspan="2" align="left">
-					<div class="statusbar outside" title="${warrior.HPRecoverAmount()} every ${100-warrior.completeDerivedStat("CON") + 20} segs">
+					<div class="statusbar outside" title="${warrior.HPRecoverAmount()} every ${((100-warrior.completeDerivedStat("CON") + 20) / (warrior.actualLocation.city?2:1)).intValue()} segs">
 						<div class="statusbar inside" style="width:${((warrior.actualHP * 100 / warrior.maxHP()) * 1.25).intValue()}px;background-color:#FF0000"></div></div>
 				</td></tr>
 				<tr>
-					<td width="25" align="left" class="labeltxt"><span title="${warrior.STARecoverAmount()} every ${100-warrior.completeDerivedStat("AGI") + 20} segs">STA</span></td>
-					<td align="left" class="labelvalue"><span title="${warrior.STARecoverAmount()} every ${100-warrior.completeDerivedStat("AGI") + 20} segs">${warrior.actualSTA} / ${warrior.maxSTA()}</span></td>
+					<td width="25" align="left" class="labeltxt"><span title="${warrior.STARecoverAmount()} every ${((100-warrior.completeDerivedStat("AGI") + 20) / (warrior.actualLocation.city?2:1)).intValue()} segs">STA</span></td>
+					<td align="left" class="labelvalue"><span title="${warrior.STARecoverAmount()} every ${((100-warrior.completeDerivedStat("AGI") + 20) / (warrior.actualLocation.city?2:1)).intValue()} segs">${warrior.actualSTA} / ${warrior.maxSTA()}</span></td>
 				</tr>
 				<tr><td colspan="2" align="left">
-					<div class="statusbar outside" title="${warrior.STARecoverAmount()} every ${100-warrior.completeDerivedStat("AGI") + 20} segs">
+					<div class="statusbar outside" title="${warrior.STARecoverAmount()} every ${((100-warrior.completeDerivedStat("AGI") + 20) / (warrior.actualLocation.city?2:1)).intValue()} segs">
 						<div class="statusbar inside" style="width:${((warrior.actualSTA * 100 / warrior.maxSTA()) * 1.25).intValue()}px;background-color:#FFE303"></div></div>
 				</td></tr>
 				<tr>

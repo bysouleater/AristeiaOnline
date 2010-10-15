@@ -27,10 +27,10 @@ class BootStrap {
 			Job.initJobs()
 			
 			// Init Cities
-	    	def cs1 = new StatsList(STR:8d,DEX:5d,CON:5d,AGI:5d)
-	    	def cs2 = new StatsList(STR:5d,DEX:8d,CON:5d,AGI:5d)
-	    	def cs3 = new StatsList(STR:5d,DEX:5d,CON:8d,AGI:5d)
-	    	def cs4 = new StatsList(STR:5d,DEX:5d,CON:5d,AGI:8d)
+	    	def cs1 = new StatsList(STR:8d,DEX:5d,CON:5d,AGI:5d)//1
+	    	def cs2 = new StatsList(STR:5d,DEX:8d,CON:5d,AGI:5d)//23
+	    	def cs3 = new StatsList(STR:5d,DEX:5d,CON:8d,AGI:5d)//24
+	    	def cs4 = new StatsList(STR:5d,DEX:5d,CON:5d,AGI:8d)//25
 	    	cs1.save();cs2.save();cs3.save();cs4.save();
 			
 			def knifeStats = new StatsList(PAtk:5)

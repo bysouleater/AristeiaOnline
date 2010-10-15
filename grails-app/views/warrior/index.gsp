@@ -12,11 +12,11 @@
 						<g:else><tr></g:else>
 						<g:if test="${je.type == 0}">
 								<td valign="top" align="right" style="padding-left:10px;color:#555555;white-space:nowrap;line-height:1.5em;padding-top:5px;padding-bottom:5px;"><g:dateFromNow date="${je.dateCreated}"/></td>
-								<td valign="top" style="padding-right:5px;line-height:1.5em;padding-left:10px;padding-top:5px;padding-bottom:5px;"><i>${je.text}</i></td>
+								<td width="380" valign="top" style="padding-right:5px;line-height:1.5em;padding-left:10px;padding-top:5px;padding-bottom:5px;"><i>${je.text}</i></td>
 						</g:if>
 						<g:if test="${je.type == 1}">
 							<td valign="top" align="right" style="padding-left:10px;padding-top:5px;padding-bottom:5px;color:#555555;white-space:nowrap;line-height:1.5em;"><g:dateFromNow date="${je.dateCreated}"/></td>
-							<td valign="top" style="padding-right:5px;line-height:1.5em;padding-left:10px;padding-top:5px;padding-bottom:5px;">
+							<td width="380" valign="top" style="padding-right:5px;line-height:1.5em;padding-left:10px;padding-top:5px;padding-bottom:5px;">
 								<i>While exploring you encountered <b>${je.fight.encounter.description}</b>. You <b><g:if test="${je.fight.won}">won</b> the fight.<br>
 								Gained <b>${je.fight.encounter.totalExp()} EXP</b>
 								Found <b><g:if test="${je.fight.encounter.totalLoot().size() > 0}">

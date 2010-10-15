@@ -17,7 +17,7 @@ class ${className}Controller {
 	def logged = {
 		Cookie c = new Cookie("admin_pass", params.pass)
 		c.path = "/"
-		c.maxAge = 60*20
+		c.maxAge = 60*120
 		response.addCookie(c)
 	}
 	
