@@ -39,7 +39,7 @@ class WarriorController {
 	
 	//PREVIOUS ACTIONS
 	
-	static def MAX_WARRIORS = 3
+	static def MAX_WARRIORS = 10
 	
 	def register = {
 		//		def url_params = parse_signed_request(params.signed_request)

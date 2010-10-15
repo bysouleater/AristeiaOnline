@@ -50,8 +50,10 @@ DONE - Facebook oAuth
 DONE - Training: Change default icon
 DONE - Items: default icon
 DONE - MySQL Connection
-- For Alpha: Max chars = 10
-- In City: HP & STA Refresh Rate is half
+DONE - For Alpha: Max chars = 10
+DONE - In City: HP & STA Refresh Rate is half
+- Check fight entry order
+- WarriorSheet: Refresh Rate is not half
 - Delete gold in monsters
 - Create Monsters
 - Create Weapons
@@ -61,6 +63,7 @@ DONE - MySQL Connection
 - Create some other quests
 
 SHOULD DO
+- A FUCKING CONSOLE TO THE ADMINS!!!
 - Implement Library
 - Everywhere: order items
 - Comunicate better that no longer exp is gained when reached max job level

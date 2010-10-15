@@ -5,7 +5,7 @@ import com.ao.StatsList
 
 class Job {
 	
-	static Long NEWBIE
+	static Long NEWBIE = 1
 	static Long BARBARIAN
 	static Long SOLDIER
 	static Long ADEPT

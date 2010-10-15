@@ -259,6 +259,8 @@ class Warrior {
 		Long now = new DateTime().getMillis()
 		Long dif = now - lastSTAModified + lastSTAModifiedDelta  
 		int refresh_rate = (100-completeBaseStat("AGI") + 20) * 1000
+		if(actualLocation.city)
+			refresh_rate = Math.max((refresh_rate / 2).intValue(), 1)
 		int sta = (dif - (dif % refresh_rate)) / refresh_rate
 		if(sta < 1)
 			return
@@ -276,6 +278,8 @@ class Warrior {
 		Long now = new DateTime().getMillis()
 		Long dif = now - lastHPModified + lastHPModifiedDelta
 		int refresh_rate = (100-completeBaseStat("CON") + 20) * 1000
+		if(actualLocation.city)
+			refresh_rate = Math.max((refresh_rate / 2).intValue(), 1)
 		int hp = (dif - (dif % refresh_rate)) / refresh_rate
 		if(hp < 1)
 			return
