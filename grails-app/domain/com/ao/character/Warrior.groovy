@@ -38,6 +38,8 @@ class Warrior {
 	Long lastHPModified
 	Long lastHPModifiedDelta
 	
+	List inventory
+	List questsInProgress
 	static hasMany = [inventory:Item, journal:JournalEntry, questsInProgress:Quest, questsDone:Quest]
 	
 	static mapping = {

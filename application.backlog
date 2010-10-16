@@ -53,9 +53,10 @@ DONE - MySQL Connection
 DONE - For Alpha: Max chars = 10
 DONE - In City: HP & STA Refresh Rate is half
 DONE - WarriorSheet: Refresh Rate is not half
-- Fights: Order Entrys by id
-- ItemQty: fix position
-- Chrome: fix create Warrior, dont show stats when selecting city
+DONE - Fight Entry: Fix Order
+DONE - Inventory: Fix Order
+DONE - ItemQty: fix position
+DONE - Chrome: fix create Warrior, dont show stats when selecting city
 - Report a Bug, write something.
 - Delete gold in monsters
 - Create Monsters

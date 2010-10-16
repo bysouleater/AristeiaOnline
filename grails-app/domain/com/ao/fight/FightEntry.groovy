@@ -1,6 +1,6 @@
 package com.ao.fight
 
-class FightEntry {
+class FightEntry{
 
 	String text
 	Date dateCreated

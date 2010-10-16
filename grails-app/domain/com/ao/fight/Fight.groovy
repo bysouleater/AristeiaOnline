@@ -10,6 +10,7 @@ class Fight {
 	Encounter encounter
 	boolean won
 	
+	List details
 	static hasMany = [details:FightEntry]
 	
 	static def ATK_RATE = 4

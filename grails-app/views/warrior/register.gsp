@@ -28,7 +28,7 @@
 											<tr>
 												<td style="padding-top:10px;" align="right" class="labeltxt">Origin city</td>
 												<td style="padding-top:10px;">
-													<g:select onclick="javascript:refresh();" style="width:155px;" name="origin" 
+													<g:select onchange="javascript:refresh();" style="width:155px;" name="origin" 
 														from="${cities}" noSelection="${[0:'Select origin city']}" optionKey="id" 
 														optionValue="name" value="${wrc?.origin}"/>
 												</td>
