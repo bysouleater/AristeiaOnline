@@ -55,4 +55,12 @@ class MainController {
 		}		
 		return [warriorlist:warrior_list]		
 	}
+	
+	def top100 = {
+		def wlist = Warrior.withCriteria {
+			maxResults(100)
+			order("level", "desc")
+		}
+		return [warriors:wlist]
+	}
 }

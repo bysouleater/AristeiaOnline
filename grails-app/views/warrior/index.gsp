@@ -20,8 +20,9 @@
 								<i>While exploring you encountered <b>${je.fight.encounter.description}</b>. You <b><g:if test="${je.fight.won}">won</b> the fight.<br>
 								Gained <b>${je.fight.encounter.totalExp()} EXP</b>
 								Found <b><g:if test="${je.fight.encounter.totalLoot().size() > 0}">
-										<g:each in="${je.fight.encounter.totalLoot()}">
-											${it.value}x ${it.key.name} 
+										<g:each in="${je.fight.encounter.totalLoot()}" var="loot" status="l">
+											<g:if test="${l > 0}">, </g:if>
+											${loot.value}x ${loot.key.name} 
 										</g:each>
 									</g:if></b>
 								<g:if test="${je.fight.encounter.totalGold() > 0}"><b>${je.fight.encounter.totalGold()}</b> <img width="15" height="15" src="/images/coins.png"/></g:if>

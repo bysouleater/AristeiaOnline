@@ -66,11 +66,11 @@ Monsters
 	HP: 280, PAtk: 30, PDef: 30, Acc: 5, Eva: 6, ARate: 1, CRate: 3, Luck: 0, Init: 3,
 	loot:[]
 
--	name: 'Sirens', exp: 0, level: 4,
+-	name: 'Sirens', exp: 220, level: 4,
 	HP: 100, PAtk: 19, PDef: 14, Acc: 3, Eva: 2, ARate: 3, CRate: 0, Luck: 0, Init: 2,
 	loot:['Siren wings']
 	
--	name: 'Sea Nymph', exp: 0, level: 3,
+-	name: 'Sea Nymph', exp: 150, level: 3,
 	HP: 75, PAtk: 16, PDef: 10, Acc: 5, Eva: 4, ARate: 0, CRate: 0, Luck: 0, Init: 0,
 	loot:['Crystal Veil (Equipable Shoulder)']
 
@@ -290,6 +290,7 @@ MAP: 5,2 'Baris City' [
 	{Snake + Giant Scorpion = 10%}
 	{Snake + Snake + Giant Scorpion = 5%}
 ]
+--HASTA AK LLEGUE
 MAP: 5,3 [
 	{Sea Nymph = 45%}
 	{Sea Nymph + Sea Nymph = 25%}

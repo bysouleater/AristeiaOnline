@@ -34,6 +34,10 @@
 				<g:layoutBody />
 			</tr>
 		</table>
-		<div style="text-align:right;margin-top:20px;"><g:link style="text-decoration:none;" action="index" controller="main"><b>Back to warriors list</b></g:link></div>			
+		<div style="text-align:right;margin-top:20px;">
+			<g:link style="text-decoration:none;" action="index" controller="aoBug" style="margin-right:10px;"><b>Report a Bug</b></g:link> &bull; 
+			<g:link style="text-decoration:none;" action="top100" controller="main" style="margin-right:10px;margin-left:10px;"><b>TOP 100 Warriors</b></g:link> &bull; 
+			<g:link style="text-decoration:none;" action="index" controller="main" style="margin-left:10px;"><b>Back to warriors list</b></g:link>
+		</div>			
 	</div>
 </g:applyLayout>
