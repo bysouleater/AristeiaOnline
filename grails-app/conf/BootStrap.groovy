@@ -223,6 +223,24 @@ class BootStrap {
 			applereward.save()
 			barbarianQuest.addToItemsRewarded(applereward)			
 			barbarianQuest.save()
+			
+			
+			def thsStats = new StatsList(PAtk:5)
+			thsStats.save()
+			def ths = new Weapon(name:"Two Hand Sword", price:10, icon:"/images/knife.png", consumable:false, type:Weapon.HEAVY,handsQty:2,stats:thsStats)
+			ths.save()
+			
+			wstore.addToItems(ths)
+			wstore.save()
+			
+			def shieldStats = new StatsList(PDef:3)
+			shieldStats.save()
+			def shield = new Armor(name:"Round Shield", price:10, icon:"/images/no_icon.png", consumable:false, type:Armor.SHIELD,stats:shieldStats)
+			shield.save()
+			
+			astore.addToItems(shield)
+			astore.save()
+			
 		}
 		
 		

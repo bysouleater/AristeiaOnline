@@ -46,13 +46,21 @@
 							</td>
 							<td width="200">${warrior.equip.shield.type.name}</td>
 						</g:if>
+						<g:elseif test="${warrior.equip.weapon && warrior.equip.weapon.type.handsQty > 1}">
+							<td title="${warrior.equip.weapon.type.name} (2H) - Stats${warrior.equip.weapon.type.titleStats()} - Applicable Jobs ${warrior.equip.weapon.type.titleJobs()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+								<a href="javascript:confirmUnequip('weapon','${warrior.equip.weapon.type.name}','${warrior.equip.weapon.type.icon}','${warrior.equip.weapon.type.titleStats()}');">
+									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.weapon.type.icon}"/>
+								</a>
+							</td>
+							<td width="200">${warrior.equip.weapon.type.name}</td>
+						</g:elseif>
 						<g:else>
 							<td><img width="32" height="32" src="/images/empty.png"/></td>
 							<td width="200">&nbsp;</td>
 						</g:else>
 						<td class="labeltxt">Weapon </td>
 						<g:if test="${warrior.equip.weapon}">
-							<td title="${warrior.equip.weapon.type.name} - Stats${warrior.equip.weapon.type.titleStats()} - Applicable Jobs ${warrior.equip.weapon.type.titleJobs()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
+							<td title="${warrior.equip.weapon.type.name} ${warrior.equip.weapon.type.handsQty > 1?'(2H)':''} - Stats${warrior.equip.weapon.type.titleStats()} - Applicable Jobs ${warrior.equip.weapon.type.titleJobs()}" width="32" height="32" align="center" valign="middle" style="background:url('/images/empty.png');">
 								<a href="javascript:confirmUnequip('weapon','${warrior.equip.weapon.type.name}','${warrior.equip.weapon.type.icon}','${warrior.equip.weapon.type.titleStats()}');">
 									<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${warrior.equip.weapon.type.icon}"/>
 								</a>

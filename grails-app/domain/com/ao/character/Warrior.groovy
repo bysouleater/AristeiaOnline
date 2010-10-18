@@ -349,11 +349,25 @@ class Warrior {
 	
 	void equipItem(def item){
 		if(item.type.isWeapon()){
-			def auxitem = equip.weapon
-			equip.weapon = item
-			removeFromInventory(item)
-			if(auxitem)
-				addToInventory(auxitem)
+			if(item.type.handsQty > 1){
+				def auxweapon = equip.weapon
+				def auxshield = equip.shield
+				if(inventory.size() < INVENTORY_MAX_QTY-1){
+					equip.weapon = item
+					removeFromInventory(item)
+					if(auxweapon)
+						addToInventory(auxweapon)
+					if(auxshield){
+						unequipItem("shield")
+					}
+				}
+			}else{
+				def auxitem = equip.weapon
+				equip.weapon = item
+				removeFromInventory(item)
+				if(auxitem)
+					addToInventory(auxitem)
+			}
 		}else if(item.type.isArmor()){
 			def auxitem
 			def acc
@@ -373,6 +387,11 @@ class Warrior {
 				case Armor.SHIELD:
 					auxitem = equip.shield;
 					equip.shield = item
+					if(equip.weapon && equip.weapon.type.handsQty > 1){
+						addToInventory(equip.weapon)
+						equip.weapon = null
+						equip.save()
+					}
 					break;
 				case Armor.FOOT:
 					auxitem = equip.foot;

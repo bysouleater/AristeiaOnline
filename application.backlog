@@ -59,6 +59,8 @@ DONE - ItemQty: fix position
 DONE - Chrome: fix create Warrior, dont show stats when selecting city
 DONE - Report a Bug, write something.
 DONE - Top 100 warriors
+DONE - Store items order
+DONE - Two hand weapon implementation
 - Delete gold in monsters
 - Create Monsters
 - Create Weapons

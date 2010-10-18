@@ -19,8 +19,8 @@
 										<g:if test="${i % 5 == 0}"></tr><tr></g:if>
 										<td width="42" height="45" align="left" valign="top">
 											<g:if test="${item.equipable}">
-												<div title="${item.name} - Value:${item.price} coins - Stats${item.titleStats()} - Applicable Jobs ${item.titleJobs()}" style="background-image:url('/images/empty.png');width:32px;height:32px;">
-													<a href="#" onclick="javascript:openBuy(${item.id},${item.price},'${item.name}','${item.icon}',${item.consumable});">
+												<div title="${item.name} ${item.isWeapon() && item.handsQty > 1?'(2H)':''} - Value:${item.price} coins - Stats${item.titleStats()} - Applicable Jobs ${item.titleJobs()}" style="background-image:url('/images/empty.png');width:32px;height:32px;">
+													<a href="#" onclick="javascript:openBuy(${item.id},${item.price},'${item.name}  ${item.isWeapon() && item.handsQty > 1?'(2H)':''}','${item.icon}',${item.consumable});">
 														<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.icon}"/>
 													</a>
 												</div>
@@ -61,8 +61,8 @@
 										<g:if test="${i % 5 == 0}"></tr><tr></g:if>
 										<td width="42" height="45" align="left" valign="top">
 											<g:if test="${item.type.equipable}">
-												<div title="${item.type.name} - Value:${(item.type.price / 2).intValue()} coins - Stats${item.type.titleStats()} - Applicable Jobs ${item.type.titleJobs()}" style="background-image:url('/images/empty.png');width:32px;height:32px;">
-													<a href="#" onclick="javascript:openSell(${item.id},${(item.type.price / 2).intValue()},'${item.type.name}','${item.type.icon}',${item.qty});">
+												<div title="${item.type.name} ${item.type.isWeapon() && item.type.handsQty > 1?'(2H)':''} - Value:${(item.type.price / 2).intValue()} coins - Stats${item.type.titleStats()} - Applicable Jobs ${item.type.titleJobs()}" style="background-image:url('/images/empty.png');width:32px;height:32px;">
+													<a href="#" onclick="javascript:openSell(${item.id},${(item.type.price / 2).intValue()},'${item.type.name} ${item.type.isWeapon() && item.type.handsQty > 1?'(2H)':''}','${item.type.icon}',${item.qty});">
 														<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.type.icon}"/>
 													</a>
 												</div>

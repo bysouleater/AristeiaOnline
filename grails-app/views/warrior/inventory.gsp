@@ -12,8 +12,8 @@
 							<g:if test="${i % 10 == 0}"></tr><tr></g:if>
 							<td width="42" height="45" align="left" valign="top">
 								<g:if test="${item.type.equipable}">
-									<div title="${item.type.name} - Stats${item.type.titleStats()} - Applicable Jobs ${item.type.titleJobs()}" style="background-image:url('/images/empty.png');width:32px;height:32px;">
-										<a href="javascript:confirmEquip(${item.id},'${item.type.name}','${item.type.icon}','${item.type.titleStats()}','${item.type.titleJobs()}');">
+									<div title="${item.type.name} ${item.type.isWeapon() && item.type.handsQty > 1?'(2H)':''} - Stats${item.type.titleStats()} - Applicable Jobs ${item.type.titleJobs()}" style="background-image:url('/images/empty.png');width:32px;height:32px;">
+										<a href="javascript:confirmEquip(${item.id},'${item.type.name} ${item.type.isWeapon() && item.type.handsQty > 1?'(2H)':''}','${item.type.icon}','${item.type.titleStats()}','${item.type.titleJobs()}');">
 											<img style="padding-left:2px;padding-top:2px;" width="28" height="28" src="${item.type.icon}"/>
 										</a>
 									</div>
