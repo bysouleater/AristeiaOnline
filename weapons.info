@@ -1,0 +1,48 @@
+Tienen que haber 8 weapons por tipo hasta lvl 15 para cambiar 1 cada 2 levels.
+
+1 2 y 3 son para los Newbies
+
+
+HEAVY WEAPONS (+4)
+=============
+1) Long Sword 		PAtk 7			(All)[Baris City]
+2) Zweihander		PAtk 11			(All)
+3) Brandish Sword	PAtk 15			(All)
+4) Old Knights Sword	PAtk 19			(Barbarian)
+5) Improved Long Sword	PAtk 23			(Barbarian)
+6) Bastard Sword	PAtk 27			(Barbarian)
+7) Broadsword 		PAtk 31			(Barbarian)
+8) Knights Sword	PAtk 35	CON 1		(Barbarian)
+
+NORMAL WEAPONS (+3)
+==============
+1) Squire's sword 	PAtk 6			(All)[Cebrene City]
+2) Short Sword 		PAtk 9			(All)
+3) Butcher's Sword 	PAtk 12			(All)
+4) Saber 		PAtk 15			(Soldier)
+5) Rusted Bronze Sword 	PAtk 18			(Soldier)
+6) Bronze Sword		PAtk 21			(Soldier)
+7) Falchion 		PAtk 24			(Soldier)
+8) Crimson Sword	PAtk 27	STR 1		(Soldier)
+
+LIGHT WEAPONS (+2)
+=============
+1) Dagger		PAtk 5			(All)[Mallia City]
+2) Bone Dagger		PAtk 7			(All)
+3) Knife		PAtk 9			(All)
+4) Dirk			PAtk 11 ARate 1		(Adept)
+5) Skeleton Dagger	PAtk 13	ARate 1		(Adept)
+6) Shinning Knife	PAtk 15 ARate 1		(Adept)
+7) Sword Breaker	PAtk 17 ARate 2		(Adept)
+8) Assassin Knife	PAtk 19	ARate 2 AGI 1	(Adept)
+
+DISTANCE WEAPONS (+3)
+================
+1) Short Bow		PAtk 6			(All)[Chalcedon City]
+2) Bow			PAtk 9  Eva 1		(All)
+3) Long Bow		PAtk 12 Eva 1		(All)
+4) Composite Bow	PAtk 15	Eva 1		(Shooter)
+5) Hunting Bow		PAtk 18	Eva 2		(Shooter)
+6) Great Bow		PAtk 21	Eva 2		(Shooter)
+7) Crossbow		PAtk 24	Eva 3		(Shooter)
+8) Great Composite Bow	PAtk 27	Eva 3 DEX 1	(Shooter)

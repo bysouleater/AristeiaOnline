@@ -1,0 +1,39 @@
+HEAD
+====
+Hat		PDef 1	(All)
+Cap		PDef 2	(Clothes)
+Circlet		PDef 4	(Light Armor)
+Helm		PDef 6	(Heavy Armor)
+
+SHOULDER
+========
+Robe		PDef 1	(All)
+Muffler		PDef 2	(Clothes)
+Manteau		PDef 4	(Light Armor)
+Spaulders	PDef 6	(Heavy Armor)
+
+BODY
+====
+Cotton Shirt	PDef 2	(All)
+Adventure Suit	PDef 4	(All)
+Mantle		PDef 5	(Clothes)
+Padded Armor	PDef 6	(Light Armor)
+Chainmail	PDef 8	(Heavy Armor)
+Full Plate	PDef 10	(Heavy Armor)
+
+SHIELD
+======
+Guard		PDef 1	(All)
+Buckler		PDef 2	(Light Armor)
+Shield		PDef 4	(Heavy Armor)
+Stone Buckler	PDef 6	(Heavy Armor)
+
+FOOT
+====
+Sandals		PDef 1	(All)
+Shoes 		PDef 2	(Clothes)
+Boots		PDef 4	(Light Armor)
+Heavy Boots	PDef 6	(Heavy Armor)
+
+ACCESORY
+========

@@ -68,11 +68,18 @@ DONE - Two hand weapon implementation
 - Create Consumables
 - Create Job Quests
 - Create some other quests
+- Worldmap: Middle Path which connects cities monsters should be easier
+- Cities: Initial Equipment
+- Monster Loot: Should Have Chance 
+
+v.0.2
+=====
+- Armor: HEAVY, NORMAL, CLOTHES
+- Search Again in Journal (Flash message)
 
 SHOULD DO
 - A FUCKING CONSOLE TO THE ADMINS!!!
 - Implement Library
-- Everywhere: order items
 - Comunicate better that no longer exp is gained when reached max job level
 - Item description
 - Item actions
