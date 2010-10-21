@@ -2,371 +2,352 @@
 Monsters
 =============================================================================
 
-- 	name: 'Snake', exp: 50, level: 1, color: grey,
-	HP: 30, PAtk: 10, PDef: 5, Acc: 2, Eva: 2, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-	loot:['Snake tooth']
+Snake		Exp 50		Level 1		HP 30 PAtk 10 PDef 5 Acc 2 Eva 2 ARate 0 CRate 0 Luck 0 Init 0
+	Loot	Snake tooth		80%
 
-- 	name: 'Big Snake', exp: 70, level: 2, color: grey,
-	HP: 40, PAtk: 12, PDef: 7, Acc: 2, Eva: 2, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-	loot:['Snake tooth']
+Big Snake 	Exp 70 		Level 2		HP 40 PAtk 12 PDef 7 Acc 2 Eva 2 ARate 0 CRate 0 Luck 0 Init 0
+	Loot	Big Snake tooth		80%
 
--	name: 'Giant Scorpion', exp: 70, level: 2, color: blue,
-	HP: 40, PAtk: 12, PDef: 7, Acc: 2, Eva: 2, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-	loot:['Scorpion tail']
+Giant Scorpion 	Exp 70 		Level 2		HP 40 PAtk 12 PDef 7 Acc 2 Eva 2 ARate 0 CRate 0 Luck 0 Init 0
+	Loot	Scorpion tail		80%
 
--	name: 'Bull', exp: 150, level: 3, color: blue,
-	HP: 80, PAtk: 20, PDef: 12, Acc: 4, Eva: 2, ARate: 0, CRate: 0, Luck: 0, Init: 2,
-	loot:['Bull horns']
+Bull 		Exp 150 	Level 3		HP 80 PAtk 20 PDef 12 Acc 4 Eva 2 ARate 0 CRate 0 Luck 0 Init 2
+	Loot	Bull horns		80%
 
--	name: 'Cretan Bull', exp: 300, level: 5,
-	HP: 150, PAtk: 35, PDef: 20, Acc: 5, Eva: 4, ARate: 1, CRate: 1, Luck: 0, Init: 3,
-	loot:['Bull horns','Cretan Horn (Equipable head)']
+Cretan Bull 	Exp 300 	Level 5		HP 150 PAtk 35 PDef 20 Acc 5 Eva 4 ARate 1 CRate 1 Luck 0 Init 3
+	Loot	Bull horns		80%
+		Cretan Horn (Equipable head)	
 	
--	name: 'Minotaur', exp: 3000, level: 10, color: yellow, miniboss, map:0;1
-	HP: 600, PAtk: 50, PDef: 30, Acc: 10, Eva: 4, ARate: 1, CRate: 2, Luck: 0, Init: 4,
-	loot:['Minotaur Axe']
+Minotaur 	Exp 3000 	Level 10	HP 600 PAtk 50 PDef 30 Acc 10 Eva 4 ARate 1 CRate 2 Luck 0 Init 4	MiniBoss
+	Loot	Minotaur Axe
 	
--	name: 'Medusa', exp: 2800, level: 10, color: yellow, miniboss, map:0;6
-	HP: 500, PAtk: 38, PDef: 25, Acc: 10, Eva: 5, ARate: 2, CRate: 2, Luck: 0, Init: 3,
-	loot:['Strong Stone Shield']
+Medusa 		Exp 2800 	Level 10 	HP 500 PAtk 38 PDef 25 Acc 10 Eva 5 ARate 2 CRate 2 Luck 0 Init 3	MiniBoss
+	Loot	Strong Stone Shield
 
--	name: 'Tree Nymph', exp: 140, level: 3,
-	HP: 75, PAtk: 16, PDef: 10, Acc: 5, Eva: 4, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-	loot:['Green Veil (Equipable Shoulder)']
+Tree Nymph 	Exp 140 	Level 3		HP 75 PAtk 16 PDef 10 Acc 5 Eva 4 ARate 0 CRate 0 Luck 0 Init 0
+	Loot	Green Veil (Equipable Shoulder)
 
--	name: 'Satyr', exp: 400, level: 6,
-	HP: 130, PAtk: 30, PDef: 18, Acc: 7, Eva: 5, ARate: 3, CRate: 0, Luck: 0, Init: 0,
-	loot:[]
+Satyr 		Exp 400 	Level 6		HP 130 PAtk 30 PDef 18 Acc 7 Eva 5 ARate 3 CRate 0 Luck 0 Init 0
+	Loot	
 
--	name: 'Gorgon', exp: 300, level: 5,
-	HP: 150, PAtk: 28, PDef: 24, Acc: 5, Eva: 3, ARate: 1, CRate: 0, Luck: 0, Init: 1,
-	loot:[]
+Gorgon 		Exp 300 	Level 5		HP 150 PAtk 28 PDef 24 Acc 5 Eva 3 ARate 1 CRate 0 Luck 0 Init 1
+	Loot	
 
--	name: 'Chimaera', exp: 3000, level: 10, color: yellow, miniboss, map:6;0
-	HP: 700, PAtk: 35, PDef: 20, Acc: 8, Eva: 4, ARate: 3, CRate: 0, Luck: 0, Init: 5,
-	loot:['Chimaera claws (Equipable foot)']
+Chimaera 	Exp 3000 	Level 10	HP 700 PAtk 35 PDef 20 Acc 8 Eva 4 ARate 3 CRate 0 Luck 0 Init 5	MiniBoss
+	Loot	Chimaera claws (Equipable foot)
 	
--	name: 'Lion', exp: 150, level: 3, color: blue,
-	HP: 100, PAtk: 20, PDef: 12, Acc: 4, Eva: 2, ARate: 0, CRate: 0, Luck: 0, Init: 2,
-	loot:['Lion mane']
+Lion 		Exp 150 	Level 3		HP 100 PAtk 20 PDef 12 Acc 4 Eva 2 ARate 0 CRate 0 Luck 0 Init 2
+	Loot	Lion mane
 
--	name: 'Nemean Lion', exp: 300, level: 5,
-	HP: 170, PAtk: 35, PDef: 20, Acc: 5, Eva: 4, ARate: 1, CRate: 1, Luck: 0, Init: 3,
-	loot:['Lion mane','Nemean Claw (Equipable foot)']
+Nemean Lion 	Exp 300 	Level 5		HP 170 PAtk 35 PDef 20 Acc 5 Eva 4 ARate 1 CRate 1 Luck 0 Init 3
+	Loot	Lion mane
+		Nemean Claw (Equipable foot)
 	
--	name: 'Parthenope', exp: 1500, level: 8, color: yellow, miniboss, map:5;5
-	HP: 280, PAtk: 35, PDef: 20, Acc: 5, Eva: 6, ARate: 3, CRate: 1, Luck: 0, Init: 1,
-	loot:[]
+Parthenope 	Exp 1500 	Level 8		HP 280 PAtk 35 PDef 20 Acc 5 Eva 6 ARate 3 CRate 1 Luck 0 Init 1	MiniBoss
+	Loot	
 
--	name: 'Ligea', exp: 1500, level: 8, color: yellow, miniboss, map:5;5
-	HP: 280, PAtk: 20, PDef: 35, Acc: 6, Eva: 5, ARate: 2, CRate: 2, Luck: 0, Init: 2,
-	loot:[]
+Ligea 		Exp 1500 	Level 8		HP 280 PAtk 20 PDef 35 Acc 6 Eva 5 ARate 2 CRate 2 Luck 0 Init 2	MiniBoss
+	Loot	
 
--	name: 'Leucosia', exp: 1500, level: 8, color: yellow, miniboss, map:5;5
-	HP: 280, PAtk: 30, PDef: 30, Acc: 5, Eva: 6, ARate: 1, CRate: 3, Luck: 0, Init: 3,
-	loot:[]
+Leucosia 	Exp 1500 	Level 8		HP 280 PAtk 30 PDef 30 Acc 5 Eva 6 ARate 1 CRate 3 Luck 0 Init 3	MiniBoss
+	Loot	
 
--	name: 'Sirens', exp: 220, level: 4,
-	HP: 100, PAtk: 19, PDef: 14, Acc: 3, Eva: 2, ARate: 3, CRate: 0, Luck: 0, Init: 2,
-	loot:['Siren wings']
+Sirens 		Exp 220 	Level 4		HP 100 PAtk 19 PDef 14 Acc 3 Eva 2 ARate 3 CRate 0 Luck 0 Init 2
+	Loot	Siren wings
 	
--	name: 'Sea Nymph', exp: 150, level: 3,
-	HP: 75, PAtk: 16, PDef: 10, Acc: 5, Eva: 4, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-	loot:['Crystal Veil (Equipable Shoulder)']
+Sea Nymph 	Exp 150 	Level 3		HP 75 PAtk 16 PDef 10 Acc 5 Eva 4 ARate 0 CRate 0 Luck 0 Init 0
+	Loot	Crystal Veil (Equipable Shoulder)
 
--	name: 'Triton', exp: 320, level: 5,
-	HP: 150, PAtk: 35, PDef: 20, Acc: 5, Eva: 4, ARate: 1, CRate: 1, Luck: 0, Init: 3,
-	loot:['Spear (Equipable weapon)']
+Triton 		Exp 320 	Level 5		HP 150 PAtk 35 PDef 20 Acc 5 Eva 4 ARate 1 CRate 1 Luck 0 Init 3
+	Loot	Spear (Equipable weapon)
+	
+Mermaid 	Exp 290 	Level 5		HP 140 PAtk 28 PDef 20 Acc 5 Eva 4 ARate 2 CRate 0 Luck 0 Init 0
+	Loot	
 
--	name: 'Mermaid', exp: 290, level: 5,
-	HP: 140, PAtk: 28, PDef: 20, Acc: 5, Eva: 4, ARate: 2, CRate: 0, Luck: 0, Init: 0,
-	loot:[]
-
--	name: 'Merman', exp: 300, level: 5,
-	HP: 130, PAtk: 30, PDef: 20, Acc: 4, Eva: 5, ARate: 0, CRate: 2, Luck: 0, Init: 0,
-	loot:[]
+Merman 		Exp 300 	Level 5		HP 130 PAtk 30 PDef 20 Acc 4 Eva 5 ARate 0 CRate 2 Luck 0 Init 0
+	Loot	
 
 
-name: 'Wolf', exp: 0, level: 3, color: blue,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Wolf Exp 0 Level 3 color blue
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Boar', exp: 0, level: 3, color: blue,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Boar Exp 0 Level 3 color blue
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Bear', exp: 0, level: 4, color: red,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Bear Exp 0 Level 4 color red
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Chiron', exp: 5500, level: 12, color: yellow, miniboss, map:4;4
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Chiron Exp 5500 Level 12 color yellow miniboss map4;4
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Calydonian Boar', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Calydonian Boar Exp 0 Level 1
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Erymanthian Boar', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Erymanthian Boar Exp 0 Level 1
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Echidna', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Echidna Exp 0 Level 1
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Sphinx', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Sphinx Exp 0 Level 1
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Harpys', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Harpys Exp 0 Level 1
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Gryphons', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Gryphons Exp 0 Level 1
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Reptile', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Reptile Exp 0 Level 1
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Cyclop', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Cyclop Exp 0 Level 1
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Giant', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Giant Exp 0 Level 1
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Hecatoncheires', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Hecatoncheires Exp 0 Level 1
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Briareus(Aegaeon)', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Briareus(Aegaeon) Exp 0 Level 1
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Cottus', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Cottus Exp 0 Level 1
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Gyges(Gyes)', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Gyges(Gyes) Exp 0 Level 1
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
-name: 'Centaur', exp: 0, level: 1,
-HP: 0, PAtk: 0, PDef: 0, Acc: 0, Eva: 0, ARate: 0, CRate: 0, Luck: 0, Init: 0,
-loot:[]
+name Centaur Exp 0 Level 1
+HP 0 PAtk 0 PDef 0 Acc 0 Eva 0 ARate 0 CRate 0 Luck 0 Init 0
+Loot	
 
 =============================================================================
 Encounters
 =============================================================================
 
-MAP: 0,0 [-]
-MAP: 0,1 'Cretan Labyrinth' [
-	{Minotaur + Cretan Bull + Cretan Bull + Bull + Bull + Bull = 5%},
-	{Cretan Bull + Bull + Bull = 35%},
-	{Cretan Bull + Cretan Bull + Bull + Bull = 30%},
+MAP 00 -
+MAP 01 Cretan Labyrinth 
+	{Minotaur + Cretan Bull + Cretan Bull + Bull + Bull + Bull = 5%}
+	{Cretan Bull + Bull + Bull = 35%}
+	{Cretan Bull + Cretan Bull + Bull + Bull = 30%}
 	{Cretan Bull + Cretan Bull + Cretan Bull = 25%}
-]
-MAP: 0,2 'Cretan Mountain Zone 01' [
+
+MAP 02 Cretan Mountain Zone 01 
 	{Bull + Bull = 40%}
-	{Bull + Bull + Bull = 20%},
-	{Cretan Bull + Bull = 20%},
+	{Bull + Bull + Bull = 20%}
+	{Cretan Bull + Bull = 20%}
 	{Cretan Bull + Cretan Bull = 10%}
-]
-MAP: 0,3 [
-]
-MAP: 0,4 [
-]
-MAP: 0,5 'Cistene Fields 01' [
-	{Tree Nymph + Tree Nymph = 40%},
-	{Tree Nymph + Tree Nymph + Gorgon = 20%},
-	{Tree Nymph + Tree Nymph + Satyr = 20%},
-	{Gorgon + Gorgon = 10%},
+
+MAP 03 
+
+MAP 04 
+
+MAP 05 Cistene Fields 01 
+	{Tree Nymph + Tree Nymph = 40%}
+	{Tree Nymph + Tree Nymph + Gorgon = 20%}
+	{Tree Nymph + Tree Nymph + Satyr = 20%}
+	{Gorgon + Gorgon = 10%}
 	{Satyr + Satyr = 10%}
-]
-MAP: 0,6 'Cistene Swamp' [
-	{Medusa + Gorgon + Gorgon + Gorgon + Gorgon = 5%},
-	{Gorgon + Gorgon + Gorgon = 15%},
-	{Satyr + Satyr + Satyr = 15%},
-	{Gorgon + Gorgon = 30%},
+
+MAP 06 Cistene Swamp 
+	{Medusa + Gorgon + Gorgon + Gorgon + Gorgon = 5%}
+	{Gorgon + Gorgon + Gorgon = 15%}
+	{Satyr + Satyr + Satyr = 15%}
+	{Gorgon + Gorgon = 30%}
 	{Satyr + Satyr = 30%}
-]
-MAP: 1,0 [-]
-MAP: 1,1 'Cretan Mountain Zone 02' [
+
+MAP 10 -
+MAP 11 Cretan Mountain Zone 02 
 	{Bull + Bull = 40%}
-	{Bull + Bull + Bull = 20%},
-	{Cretan Bull + Bull = 20%},
+	{Bull + Bull + Bull = 20%}
+	{Cretan Bull + Bull = 20%}
 	{Cretan Bull + Cretan Bull = 10%}
-]
-MAP: 1,2 'Cebrene Fields 04' [
-	{Bull = 45%},
-	{Bull + Bull = 25%},
+
+MAP 12 Cebrene Fields 04 
+	{Bull = 45%}
+	{Bull + Bull = 25%}
 	{Bull + Bull + Bull = 15%}
-]
-MAP: 1,3 'Cebrene City' [
-	{Snake + Snake = 60%},
+
+MAP 13 Cebrene City 
+	{Snake + Snake = 60%}
 	{Big Snake = 25%}
 	{Snake + Big Snake = 10%}
 	{Snake + Snake + Big Snake = 5%}
-]
-MAP: 1,4 [
-]
-MAP: 1,5 [
-]
-MAP: 1,6 'Cistene Fields 02' [
-	{Tree Nymph + Tree Nymph = 40%},
-	{Tree Nymph + Tree Nymph + Gorgon = 20%},
-	{Tree Nymph + Tree Nymph + Satyr = 20%},
-	{Gorgon + Gorgon = 10%},
+
+MAP 14 
+
+MAP 15 
+
+MAP 16 Cistene Fields 02 
+	{Tree Nymph + Tree Nymph = 40%}
+	{Tree Nymph + Tree Nymph + Gorgon = 20%}
+	{Tree Nymph + Tree Nymph + Satyr = 20%}
+	{Gorgon + Gorgon = 10%}
 	{Satyr + Satyr = 10%}
-]
-MAP: 2,0 [-]
-MAP: 2,1 [
-]
-MAP: 2,2 [
-]
-MAP: 2,3 [
-]
-MAP: 2,4 [
-]
-MAP: 2,5 'Chalcedon City' [
-	{Snake + Snake = 60%},
+
+MAP 20 -
+MAP 21 
+
+MAP 22 
+
+MAP 23 
+
+MAP 24 
+
+MAP 25 Chalcedon City 
+	{Snake + Snake = 60%}
 	{Big Snake = 25%}
 	{Snake + Big Snake = 10%}
 	{Snake + Snake + Big Snake = 5%}
-]
-MAP: 2,6 [
-]
-MAP: 3,0 [-]
-MAP: 3,1 'Mallia City' [
-	{Snake + Snake = 60%},
+
+MAP 26 
+
+MAP 30 -
+MAP 31 Mallia City 
+	{Snake + Snake = 60%}
 	{Giant Scorpion = 25%}
 	{Snake + Giant Scorpion = 10%}
 	{Snake + Snake + Giant Scorpion = 5%}
-]
-MAP: 3,2 [
-]
-MAP: 3,3 [
-]
-MAP: 3,4 [
-]
-MAP: 3,5 [
+
+MAP 32 
+
+MAP 33 
+
+MAP 34 
+
+MAP 35 
 	{Sea Nymph = 45%}
 	{Sea Nymph + Sea Nymph = 25%}
 	{Sea Nymph + Sea Nymph + Sea Nymph = 15%}
-]
-MAP: 3,6 [
-]
-MAP: 4,0 [
-]
-MAP: 4,1 [
-]
-MAP: 4,2 [
-]
-MAP: 4,3 [
-]
-MAP: 4,4 [
-]
-MAP: 4,5 [
+
+MAP 36 
+
+MAP 40 
+
+MAP 41 
+
+MAP 42 
+
+MAP 43 
+
+MAP 44 
+
+MAP 45 
 	{Siren + Siren = 40%}
 	{Siren + Siren + Triton = 40%}
 	{Triton + Triton = 10%}
-]
-MAP: 4,6 [-]
-MAP: 5,0 'Lycia Fields 01' [
+
+MAP 46 -
+MAP 50 Lycia Fields 01 
 	{Lion + Lion = 40%}
 	{Lion + Lion + Lion = 20%}
 	{Nemean lion + Lion = 20%}
 	{Nemean lion + Nemean lion = 10%}
-]
-MAP: 5,1 [
-]
-MAP: 5,2 'Baris City' [
-	{Snake + Snake = 60%},
+
+MAP 51 
+
+MAP 52 Baris City 
+	{Snake + Snake = 60%}
 	{Giant Scorpion = 25%}
 	{Snake + Giant Scorpion = 10%}
 	{Snake + Snake + Giant Scorpion = 5%}
-]
+
 --HASTA AK LLEGUE
-MAP: 5,3 [
+MAP 53 
 	{Sea Nymph = 45%}
 	{Sea Nymph + Sea Nymph = 25%}
 	{Sea Nymph + Sea Nymph + Sea Nymph = 15%}
-]
-MAP: 5,4 [
+
+MAP 54 
 	{Siren + Siren = 40%}
 	{Siren + Siren + Merman = 20%}
 	{Siren + Siren + Mermaid = 20%}
 	{Merman + Mermaid = 10%}
-]
-MAP: 5,5 [
-	{Parthenope + Ligea + Leucosia = 5%},
+
+MAP 55 
+	{Parthenope + Ligea + Leucosia = 5%}
 	{Siren + Siren + Siren = 35%}
 	{Triton + Triton = 30%}
 	{Mermaid + Merman + Mermaid = 25%}	
-]
-MAP: 5,6 [-]
-MAP: 6,0 'Lycia Way' [
-	{Chimaera + Nemean lion + Nemean lion + Lion + Big Snake = 5%},
+
+MAP 56 -
+MAP 60 Lycia Way 
+	{Chimaera + Nemean lion + Nemean lion + Lion + Big Snake = 5%}
 	{Nemean lion + Lion + Lion + Big Snake = 35%}
 	{Nemean lion + Nemean lion + Lion + Lion + Big Snake = 30%}
 	{Nemean lion + Nemean lion + Nemean lion = 25%}
-]
-MAP: 6,1 'Lycia Fields 02' [
+
+MAP 61 Lycia Fields 02 
 	{Lion + Lion = 40%}
 	{Lion + Lion + Lion = 20%}
 	{Nemean lion + Lion = 20%}
 	{Nemean lion + Nemean lion = 10%}
-]
-MAP: 6,2 [
-]
-MAP: 6,3 [
-]
-MAP: 6,4 [-]
-MAP: 6,5 [-]
-MAP: 6,6 [-]
+
+MAP 62 
+
+MAP 63 
+
+MAP 64 -
+MAP 65 -
+MAP 66 -
 
 
 =================================================================
 
 
 
-Snake	[V.1.0]
-Wolf	[V.1.0]
-Boars (Javali) [V.1.0]-> Mini Boss: Calydonian Boar [V.1.0], Mini Boss: Erymanthian Boar [V.1.0]
-Lions [V.1.0] -> Mini Boss: Nemean lion [V.1.0], Mini Boss: Chimaera [V.1.0]
+Snake	V.1.0
+Wolf	V.1.0
+Boars (Javali) V.1.0-> Mini Boss Calydonian Boar V.1.0 Mini Boss Erymanthian Boar V.1.0
+Lions V.1.0 -> Mini Boss Nemean lion V.1.0 Mini Boss Chimaera V.1.0
 
-Boss: Echidna "Mother of All Monsters"
+Boss Echidna "Mother of All Monsters"
 
-Boss: Teumessian fox [In Greek mythology, the Teumessian fox[1] or Cadmean vixen, was a gigantic fox that was destined never to be caught. The fox was one of the children of Echidna. It was said that it had been sent by the gods (perhaps Dionysus) to prey upon the children of Thebes as a punishment for some national crime. Creon, the then Regent of Thebes, set Amphitryon  the impossible task of destroying this beast. He discovered an apparently perfect solution to the problem by fetching the magical dog Laelaps, who was destined to catch everything it chased. Zeus, faced with an inevitable contradiction in fate due to their mutually excluding abilities, turned the two beasts into stone. The pair were cast into the stars, and will remain there forever more.]
+Boss Teumessian fox In Greek mythology the Teumessian fox1 or Cadmean vixen was a gigantic fox that was destined never to be caught. The fox was one of the children of Echidna. It was said that it had been sent by the gods (perhaps Dionysus) to prey upon the children of Thebes as a punishment for some national crime. Creon the then Regent of Thebes set Amphitryon  the impossible task of destroying this beast. He discovered an apparently perfect solution to the problem by fetching the magical dog Laelaps who was destined to catch everything it chased. Zeus faced with an inevitable contradiction in fate due to their mutually excluding abilities turned the two beasts into stone. The pair were cast into the stars and will remain there forever more.
 
 
 Desert
 ------
-Snake [V.1.0]
-Giant Scorpions [V.1.0]
-Sphinx [V.1.0]
+Snake V.1.0
+Giant Scorpions V.1.0
+Sphinx V.1.0
 
 Mountains
 ----------
-Harpys	[V.1.0]
-Gryphons [V.1.0]
-Reptiles [V.1.0] -> Boss: Typhoeus (Dragon) (Mount Etna)
+Harpys	V.1.0
+Gryphons V.1.0
+Reptiles V.1.0 -> Boss Typhoeus (Dragon) (Mount Etna)
 
 Cretan Labyrinth
 -----------------
-Bull	[V.1.0]
-Cretan Bull [V.1.0] -> Mini Boss: Minotaur [V.1.0]
+Bull	V.1.0
+Cretan Bull V.1.0 -> Mini Boss Minotaur V.1.0
 
 Algun lado flashero Antes de Tartarus
 -------------------------------------
-Cyclops	[V.1.0]
-Giants	[V.1.0]
-Hecatoncheires (""""Golems""""") [V.1.0] -> Mini Boss: Briareus(Aegaeon) [V.1.0], Mini Boss: Cottus [V.1.0], Mini Boss: Gyges(Gyes) [V.1.0]
-Sirens [V.1.0] -> Mini Boss: Parthenope [V.1.0], Mini Boss: Ligea [V.1.0], Mini Boss: Leucosia [V.1.0]
+Cyclops	V.1.0
+Giants	V.1.0
+Hecatoncheires (""""Golems""""") V.1.0 -> Mini Boss Briareus(Aegaeon) V.1.0 Mini Boss Cottus V.1.0 Mini Boss Gyges(Gyes) V.1.0
+Sirens V.1.0 -> Mini Boss Parthenope V.1.0 Mini Boss Ligea V.1.0 Mini Boss Leucosia V.1.0
 
 Tartarus
 --------
@@ -377,23 +358,23 @@ Underworld
 ----------
 Skeleton
 Spectre
-Hellhounds -> Boss: Cerberus (Gates of Underworld)
-Boss: Rhadamanthus (Judge of the Underworld)
+Hellhounds -> Boss Cerberus (Gates of Underworld)
+Boss Rhadamanthus (Judge of the Underworld)
 
 Water
 ------
-Sea Nymphs [V.1.0]
-Tritons	[V.1.0]
-Mermaid o Mermans (Mujer/Hombre) [V.1.0]
-Boss: Hydra
+Sea Nymphs V.1.0
+Tritons	V.1.0
+Mermaid o Mermans (Mujer/Hombre) V.1.0
+Boss Hydra
 
 Woods
 ------
-Bear	[V.1.0]
-Centaur [V.1.0] -> Mini Boss: Chiron	[V.1.0]
-Tree Nymphs (Woods) (A.K.A. Dryads) [V.1.0]->
-Satyr [V.1.0]
-Gorgons  [V.1.0]-> Mini Boss: Medusa (North) [V.1.0]
+Bear	V.1.0
+Centaur V.1.0 -> Mini Boss Chiron	V.1.0
+Tree Nymphs (Woods) (A.K.A. Dryads) V.1.0->
+Satyr V.1.0
+Gorgons  V.1.0-> Mini Boss Medusa (North) V.1.0
 
 
 Items

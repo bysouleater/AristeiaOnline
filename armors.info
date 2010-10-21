@@ -1,39 +1,44 @@
 HEAD
 ====
-Hat		PDef 1	(All)
-Cap		PDef 2	(Clothes)
-Circlet		PDef 4	(Light Armor)
-Helm		PDef 6	(Heavy Armor)
+0) Newbie Cap		PDef 1		(Newbie)[All Cities]	(Clothes)	$2
+1) Hat			PDef 2		(All)			(Clothes)	$125
+2) Cap			PDef 3		(All)			(Clothes)	$250
+3) Circlet		PDef 4		(Adept/Barbarian)	(Light Armor)	$375
+4) Helm			PDef 6		(Soldier)		(Heavy Armor)	$625
 
 SHOULDER
 ========
-Robe		PDef 1	(All)
-Muffler		PDef 2	(Clothes)
-Manteau		PDef 4	(Light Armor)
-Spaulders	PDef 6	(Heavy Armor)
+0) Newbie Robe		PDef 1		(Newbie)[All Cities]	(Clothes)	$2
+1) Robe			PDef 2		(All)			(Clothes)	$125
+2) Muffler		PDef 3		(All)			(Clothes)	$250
+3) Manteau		PDef 4		(Adept/Barbarian)	(Light Armor)	$375
+4) Spaulders		PDef 6		(Soldier)		(Heavy Armor)	$625
 
 BODY
 ====
-Cotton Shirt	PDef 2	(All)
-Adventure Suit	PDef 4	(All)
-Mantle		PDef 5	(Clothes)
-Padded Armor	PDef 6	(Light Armor)
-Chainmail	PDef 8	(Heavy Armor)
-Full Plate	PDef 10	(Heavy Armor)
+0) Newbie Shirt		PDef 1		(Newbie)[All Cities]	(Clothes)	$2
+1) Cotton Shirt		PDef 2		(All)			(Clothes)	$125
+2) Adventure Suit	PDef 4		(All)			(Clothes)	$375
+3) Mantle		PDef 5		(Shooter)		(Clothes)	$500
+4) Padded Armor		PDef 6		(Adept/Barbarian)	(Light Armor)	$625
+5) Chainmail		PDef 8		(Barbarian/Soldier)	(Heavy Armor)	$875
+6) Full Plate		PDef 10		(Soldier)		(Heavy Armor)	$1125
 
 SHIELD
 ======
-Guard		PDef 1	(All)
-Buckler		PDef 2	(Light Armor)
-Shield		PDef 4	(Heavy Armor)
-Stone Buckler	PDef 6	(Heavy Armor)
+0) Newbie Shield	PDef 1		(Newbie)[All Cities]	(Clothes)	$2
+1) Guard		PDef 2		(All)			(Clothes)	$125
+2) Buckler		PDef 3		(Adept)			(Light Armor)	$250
+3) Shield		PDef 4		(Soldier)		(Heavy Armor)	$375
+4) Stone Buckler	PDef 6		(Soldier)		(Heavy Armor)	$625
 
 FOOT
 ====
-Sandals		PDef 1	(All)
-Shoes 		PDef 2	(Clothes)
-Boots		PDef 4	(Light Armor)
-Heavy Boots	PDef 6	(Heavy Armor)
+0) Newbie Shoes		PDef 1		(Newbie)[All Cities]	(Clothes)	$2
+1) Sandals		PDef 2		(All)			(Clothes)	$125
+2) Shoes 		PDef 3		(All)			(Clothes)	$250
+3) Boots		PDef 4		(Adept/Barbarian)	(Light Armor)	$375
+4) Heavy Boots		PDef 6		(Soldier)		(Heavy Armor)	$625
 
 ACCESORY
 ========

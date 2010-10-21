@@ -61,9 +61,10 @@ DONE - Report a Bug, write something.
 DONE - Top 100 warriors
 DONE - Store items order
 DONE - Two hand weapon implementation
+DONE - Create Weapons
+- Chance Soldier for Barbarian
 - Delete gold in monsters
 - Create Monsters
-DONE - Create Weapons
 - Create Armors
 - Create Consumables
 - Create Job Quests
@@ -72,6 +73,7 @@ DONE - Create Weapons
 - Cities: Initial Equipment
 - Monster Loot: Should Have Chance 
 - Warrior: Implement Banneable
+- Change Job: Unequip all items that cant be equiped
 
 v.0.2
 =====
