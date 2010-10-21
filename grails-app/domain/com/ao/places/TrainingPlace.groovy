@@ -15,4 +15,8 @@ class TrainingPlace {
 		skills(nullable:false)
 		STArequired(nullable:false)
     }
+	
+	public String toString() {
+		return name
+	}
 }

@@ -17,4 +17,8 @@ class Monster {
 		name(nullable:false,blank:false,unique:true,maxSize:30)
 		stats(nullable:false)
     }
+	
+	public String toString() {
+		return name
+	}
 }

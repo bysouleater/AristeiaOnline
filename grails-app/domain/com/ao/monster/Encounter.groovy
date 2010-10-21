@@ -42,4 +42,8 @@ class Encounter {
 		}
 		return loot
 	}
+	
+	public String toString() {
+		return "${chance}% - ${description}"
+	}
 }

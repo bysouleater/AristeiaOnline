@@ -26,4 +26,8 @@ class ItemType {
 		icon(nullable:true)
 		price(minSize:0)
     }
+	
+	public String toString() {
+		return "Others: ${name}"
+	}
 }

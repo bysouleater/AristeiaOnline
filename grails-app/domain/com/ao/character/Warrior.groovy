@@ -87,16 +87,16 @@ class Warrior {
 		stats.save()
 		this.stats = stats
 		
-		def knife = new Item(type:Weapon.get(1L))
-		knife.save()
-		
-		def shirt = new Item(type:Armor.get(3L))
-		shirt.save()
-		
-		def equip = new Equipment(weapon:knife,body:shirt)
+		def equip = new Equipment()
 		equip.save()
 		this.equip = equip
 		
+		origin.initial_equip.each{
+			def equipitem = new Item(type:it)
+			equipitem.save()
+			equipItem(equipitem)
+		}
+				
 		refreshDerivedStats()
 		actualHP = maxHP()
 		actualSTA = maxSTA()

@@ -56,4 +56,8 @@ class Armor extends ItemType{
 		}
 		return text
 	}
+	
+	public String toString() {
+		return "Armor: ${name}"
+	}
 }

@@ -12,4 +12,8 @@ class Store {
 
     static constraints = {
     }
+	
+	public String toString() {
+		return name
+	}
 }

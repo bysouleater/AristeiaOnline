@@ -60,4 +60,8 @@ class Quest {
 		
 		return available_quests
 	}
+	
+	public String toString() {
+		return title
+	}
 }

@@ -57,4 +57,8 @@ class Weapon extends ItemType{
 		}
 		return text
 	}
+	
+	public String toString() {
+		return "Weapon: ${name}"
+	}
 }

@@ -108,4 +108,7 @@ class Job {
 		SPECIALIST = specialist.id
 	}
 	
+	public String toString() {
+		return name
+	}
 }

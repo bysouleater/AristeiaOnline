@@ -34,4 +34,8 @@ class Map {
 		}
 		return worldmap
 	}
+	
+	public String toString() {
+		return name
+	}
 }

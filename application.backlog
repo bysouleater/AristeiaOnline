@@ -63,7 +63,7 @@ DONE - Store items order
 DONE - Two hand weapon implementation
 - Delete gold in monsters
 - Create Monsters
-- Create Weapons
+DONE - Create Weapons
 - Create Armors
 - Create Consumables
 - Create Job Quests
@@ -71,6 +71,7 @@ DONE - Two hand weapon implementation
 - Worldmap: Middle Path which connects cities monsters should be easier
 - Cities: Initial Equipment
 - Monster Loot: Should Have Chance 
+- Warrior: Implement Banneable
 
 v.0.2
 =====

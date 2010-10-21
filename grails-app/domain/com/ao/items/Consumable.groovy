@@ -12,4 +12,8 @@ class Consumable extends ItemType{
     static constraints = {
 		stats(nullable:false)
     }
+	
+	public String toString() {
+		return "Consumable: ${name}"
+	}
 }
