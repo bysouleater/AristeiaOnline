@@ -39,11 +39,15 @@ class WarriorController {
 	
 	//PREVIOUS ACTIONS
 	
-	static def MAX_WARRIORS = 10
+	static def MAX_WARRIORS = 3
 	
 	def register = {
 		//		def url_params = parse_signed_request(params.signed_request)
-		def warriorqty = Warrior.findAllByOwner_id(123L).size()
+		def warriorqty = 0
+		Warrior.findAllByOwner_id(123L).each{
+			if(it.status == "A" || it.status == "B")
+				warriorqty++
+		}
 		if(warriorqty == MAX_WARRIORS)
 			redirect(controller:"main",action:"index")
 		[cities:City.list(), params:params]
@@ -64,6 +68,17 @@ class WarriorController {
 				render(view:"register", model:[wrc:warrior,cities:City.list()])
 			}
 		}
+	}
+	
+	def deleteWarrior = {
+		if(params.warrior_id){
+			def warrior = Warrior.get(params.warrior_id)
+			if(warrior != null && warrior.owner_id == session.fb_user_id as Long){
+				warrior.status = "D"
+				warrior.save(flush:true)
+			}
+		}
+		redirect(controller:"main", action:"index")
 	}
 	
 	//GUI ACTIONS
@@ -97,7 +112,7 @@ class WarriorController {
 		if(params.id)
 			session.warrior_id = params.id as Long
 		def w = Warrior.get(session.warrior_id)
-		if(!w)
+		if(!w || w.status == "B" || w.status == "D")
 			redirect(controller:"main",action:"index")
 		def journal = JournalEntry.withCriteria {
 			warrior {
