@@ -24,6 +24,7 @@ class Warrior {
 	int actualSTA
 	int statPoints
 	Long gold
+	String status
 	
 	Job job
 	StatsList stats
@@ -60,9 +61,11 @@ class Warrior {
 		actualLocation(nullable:false)
 		resurrectionMap(nullable:false)
 		equip(nullable:false)
+		status(nullable:false,inList:["A","B","D"]) //Active - Banned - Deleted
     }
 	
 	void initWarrior(def params){
+		status = "A"
 		name = params.name
 		gender = params.gender
 		origin = City.get(params.origin as Long)
@@ -236,9 +239,16 @@ class Warrior {
 		}
 	}
 	
-	void giveExp(Long exp){
+	def giveExp(Long exp){
+		def realexp
+		def maxExp = lvlExp(job.maxLevel-1)
 		if(level < job.maxLevel){
-			actualExp += exp
+			if(actualExp + exp > maxExp){
+				realexp = maxExp - actualExp
+				actualExp = maxExp
+			}else{
+				actualExp += exp
+			}
 			while(actualExp >= nextLvlExp()){
 				levelUp()
 				def je = new JournalEntry(type:JournalEntry.TEXT, text:"<b>You reach the next level! You are now level ${level}. Congrats!</b>")
@@ -246,7 +256,10 @@ class Warrior {
 				addToJournal(je)
 				
 			}
+		}else{
+			return 0
 		}
+		return realexp
 	}
 	
 	int STARecoverAmount(){
@@ -437,7 +450,7 @@ class Warrior {
 			inventory.each{ inv_item ->
 				if(someleft == 0)
 					return
-				if(inv_item.type == itemtype){
+				if(inv_item.type.id == itemtype.id){
 					if(inv_item.qty + someleft > 1000){
 						someleft = (inv_item.qty + someleft - 1000)
 						inv_item.qty = 1000
@@ -445,16 +458,17 @@ class Warrior {
 						inv_item.qty += someleft
 						someleft = 0
 					}
-					inv_item.save()
+					inv_item.save(flush:true)
 				}
 			}
 		}
 		
 		if(someleft > 0){
 			def newitem = new Item(type:itemtype, qty:someleft)
-			newitem.save()
+			newitem.save(flush:true)
 			addToInventory(newitem)
 		}
+		save(flush:true)
 	}
 	
 	def takeItem(Item item, def qty){
@@ -480,7 +494,7 @@ class Warrior {
 					left -= invitem.qty
 				}else{
 					invitem.qty -= left
-					invitem.save()
+					invitem.save(flush:true)
 					left = 0
 				}
 			}

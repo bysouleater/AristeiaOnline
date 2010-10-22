@@ -92,23 +92,25 @@ class BootStrap {
 			
 			def wolfFang = new ItemType(name:"Wolf Fang",price:2,icon:"/images/fang.png",stackable:true)
 			wolfFang.save()
+			def wolfFangChance = new Item(type:wolfFang,chance:50)
+			wolfFangChance.save()
 			
 			def wstats = new StatsList(HP:25,PAtk:5)
 			wstats.save()
 			def wolf = new Monster(name: "Wolf",stats: wstats, exp: 200L, gold: 0L)
-			wolf.addToLoot(wolfFang)
+			wolf.addToLoot(wolfFangChance)
 			wolf.save()
 			
 			def wstatsA = new StatsList(HP:25,PAtk:5)
 			wstatsA.save()
 			def wolfA = new Monster(name: "Wolf A",stats: wstats, exp: 200L, gold: 0L)
-			wolfA.addToLoot(wolfFang)
+			wolfA.addToLoot(wolfFangChance)
 			wolfA.save()
 			
 			def wstatsB = new StatsList(HP:25,PAtk:5)
 			wstatsB.save()
 			def wolfB = new Monster(name: "Wolf B",stats: wstats, exp: 200L, gold: 0L)
-			wolfB.addToLoot(wolfFang)
+			wolfB.addToLoot(wolfFangChance)
 			wolfB.save()
 			
 			def wolfencounter = new Encounter(chance:50,description:"a Wolf")
@@ -136,18 +138,20 @@ class BootStrap {
 			
 			def snakeTooth = new ItemType(name:"Snake Tooth",price:2,icon:"/images/snaketooth.png",stackable:true)
 			snakeTooth.save()
+			def snakeToothChance = new Item(type:snakeTooth, chance:80)
+			snakeToothChance.save()
 			def snakeAStats = new StatsList(HP:30,PAtk:10,PDef:5,Eva:2,Acc:2)
 			snakeAStats.save()
 			def snakeA = new Monster(name:"Snake A",stats:snakeAStats,exp:50,gold:0L)
-			snakeA.addToLoot(snakeTooth)
+			snakeA.addToLoot(snakeToothChance)
 			snakeA.save()
 			def snakeB = new Monster(name:"Snake B",stats:snakeAStats,exp:50,gold:0L)
-			snakeB.addToLoot(snakeTooth)
+			snakeB.addToLoot(snakeToothChance)
 			snakeB.save()
 			def snakeCStats = new StatsList(HP:40,PAtk:12,PDef:7,Eva:2,Acc:2)
 			snakeCStats.save()
 			def snakeC = new Monster(name:"Snake C",stats:snakeCStats,exp:60,gold:0L)
-			snakeC.addToLoot(snakeTooth)
+			snakeC.addToLoot(snakeToothChance)
 			snakeC.save()
 			
 			

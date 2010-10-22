@@ -62,18 +62,20 @@ DONE - Top 100 warriors
 DONE - Store items order
 DONE - Two hand weapon implementation
 DONE - Create Weapons
+DONE - Monster Loot: Should Have Chance
+DONE - Delete gold in monsters
+DONE - Cities: Initial Equipment
 - Chance Soldier for Barbarian
-- Delete gold in monsters
 - Create Monsters
 - Create Armors
 - Create Consumables
 - Create Job Quests
 - Create some other quests
 - Worldmap: Middle Path which connects cities monsters should be easier
-- Cities: Initial Equipment
-- Monster Loot: Should Have Chance 
 - Warrior: Implement Banneable
 - Change Job: Unequip all items that cant be equiped
+- Give Item: check space available
+- Warrior: Implement Deletion and Bann
 
 v.0.2
 =====

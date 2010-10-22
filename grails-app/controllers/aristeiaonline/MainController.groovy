@@ -47,11 +47,16 @@ class MainController {
 			session.fb_user_id = url_params.user_id
 			session.fb_access_token = url_params.oauth_token
 		}
-		def warrior_list = Warrior.findAllByOwner_id(session.fb_user_id)
-		warrior_list.each{
-			it.refreshSTA()
-			it.refreshHP()
-			it.save(flush:true)
+		def warrior_list = []
+		Warrior.findAllByOwner_id(session.fb_user_id).each{ w ->
+			if(w.status == "A"){
+				w.refreshSTA()
+				w.refreshHP()
+				w.save(flush:true)
+				warrior_list.add(w)
+			}else if(w.status == "B"){
+				warrior_list.add(w)
+			}
 		}		
 		return [warriorlist:warrior_list]		
 	}

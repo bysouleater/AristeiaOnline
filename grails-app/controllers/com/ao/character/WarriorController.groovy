@@ -363,8 +363,13 @@ class WarriorController {
 		warrior.save(flush:true)
 	}
 	
-	void newEntry(def warrior, def fight){
-		def je = new JournalEntry(type:JournalEntry.EXPLORATION_MONSTER_FOUND, fight:fight)
+	void newEntry(def warrior, def fight, def expgained, def itemsgained){
+		def je = new JournalEntry(type:JournalEntry.EXPLORATION_MONSTER_FOUND, fight:fight, exp: expgained)
+		itemsgained.each{
+			def item = new Item(type:it.key,qty:it.value)
+			item.save(flush:true)
+			je.addToItemsGained(item)
+		}
 		je.save(flush:true)
 		warrior.addToJournal(je)
 		warrior.save(flush:true)
@@ -397,15 +402,20 @@ class WarriorController {
 			fight.save(flush:true)
 			killed = !fight.won
 			
-			newEntry(warrior, fight)
-			
 			if(fight.won){
-				warrior.giveExp(encounter.totalExp())
-				warrior.gold += encounter.totalGold()
-				
-				encounter.totalLoot().each{ itemtype, lqty ->
-					warrior.giveItem(itemtype, lqty)
+				def expgained = warrior.giveExp(encounter.totalExp())
+				def itemsgained = [:]
+				encounter.totalLoot().each{ item ->
+					def itemchance = new Random().nextInt(100)+1
+					if(itemchance <= item.chance){
+						warrior.giveItem(item.type, item.qty)
+						if(itemsgained[item.type])
+							itemsgained[item.type] += item.qty 
+						else
+							itemsgained[item.type] = item.qty
+					}
 				}
+				newEntry(warrior, fight, expgained, itemsgained)
 			}
 		}else{
 			newEntry(warrior, "You explore the area but didn't find anything.", JournalEntry.TEXT)

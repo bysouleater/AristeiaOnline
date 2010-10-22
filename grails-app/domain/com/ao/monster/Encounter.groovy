@@ -22,22 +22,11 @@ class Encounter {
 		return value
 	}
 	
-	Long totalGold(){
-		Long value = 0
-		monsters.each{
-			value += it.gold
-		}
-		return value
-	}
-	
 	def totalLoot(){
-		def loot = [:]
+		def loot = []
 		monsters.each{ monster ->
 			monster.loot.each{ item ->
-				if(loot[item])
-					loot[item]++
-				else
-					loot[item] = 1
+				loot.add(item)
 			}
 		}
 		return loot

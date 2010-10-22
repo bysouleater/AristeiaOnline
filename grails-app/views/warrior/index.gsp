@@ -18,14 +18,13 @@
 							<td valign="top" align="right" style="padding-left:10px;padding-top:5px;padding-bottom:5px;color:#555555;line-height:1.5em;"><g:dateFromNow date="${je.dateCreated}"/></td>
 							<td width="380" valign="top" style="padding-right:5px;line-height:1.5em;padding-left:10px;padding-top:5px;padding-bottom:5px;">
 								<i>While exploring you encountered <b>${je.fight.encounter.description}</b>. You <b><g:if test="${je.fight.won}">won</b> the fight.<br>
-								Gained <b>${je.fight.encounter.totalExp()} EXP</b>
-								Found <b><g:if test="${je.fight.encounter.totalLoot().size() > 0}">
-										<g:each in="${je.fight.encounter.totalLoot()}" var="loot" status="l">
+								Gained <b>${je.exp} EXP</b>
+								Found <b><g:if test="${je.itemsGained.size() > 0}">
+										<g:each in="${je.itemsGained}" var="loot" status="l">
 											<g:if test="${l > 0}">, </g:if>
-											${loot.value}x ${loot.key.name} 
+											${loot.qty}x ${loot.type.name} 
 										</g:each>
 									</g:if></b>
-								<g:if test="${je.fight.encounter.totalGold() > 0}"><b>${je.fight.encounter.totalGold()}</b> <img width="15" height="15" src="/images/coins.png"/></g:if>
 								</g:if>
 								<g:else>lost</b> the fight.<br></g:else><b><g:link controller="warrior" action="fights" id="${je.fight.id}"> View fight details</g:link></b></i>
 							</td>
