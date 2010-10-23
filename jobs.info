@@ -1,0 +1,23 @@
+======================================
+Jobs
+======================================
+
+Newbie			MaxLevel 5		MaxSkills 20		Generation 0
+	Base	HP 50	STA 20
+	LvlUp	HP 25	STA 5
+
+Barbarian		MaxLevel 15		MaxSkills 60		Generation 1
+	Base	HP 250	STA 80	STR 5	CON 3	DEX 2	AGI 1
+	LvlUp	HP 50	STA 15	STR 2	CON 1
+
+Soldier			MaxLevel 15		MaxSkills 60		Generation 1
+	Base 	HP 400	STA 50	CON 5	STR 3	AGI 2	DEX 1
+	LvlUp	HP 75	STA 10	CON 2	STR 1
+
+Adept			MaxLevel 15		MaxSkills 60		Generation 1
+	Base 	HP 100	STA 30	AGI 5	DEX 3	STR 2	CON 1
+	LvlUp	HP 25	STA 8	AGI 2	DEX 1
+
+Shooter			MaxLevel 15		MaxSkills 60		Generation 1
+	Base 	HP 100	STA 30	DEX 5	AGI 3	STR 2	CON 1
+	LvlUp	HP 25	STA 8	DEX 2	AGI 1
