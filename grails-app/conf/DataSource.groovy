@@ -38,10 +38,10 @@ environments {
 		dataSource {
 			pooled = false
 			driverClassName = "com.mysql.jdbc.Driver"
-			username = "root"
-			password = "BySouleater"
+			username = "aows1"
+			password = "aows1"
 			dbCreate = "update"
-			url = "jdbc:mysql://localhost:3306/aristeiaonline"
+			url = "jdbc:mysql://localhost:3306/aristeia"
 		}
 		hibernate {
 			cache.use_second_level_cache=true
