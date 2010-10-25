@@ -3,13 +3,13 @@ Stores
 =============================================================================
 
 Cebrene	Weapons
-	Items 	Squire's sword
-		Short Sword
-		Butcher's Sword
-		Saber
-		Rusted Bronze Sword
-		Bronze Sword
-		Falchion
+	Items 	Rusted Long Sword
+		Long Sword
+		Brandish Sword
+		Old Knights Sword
+		Improved Long Sword
+		Bastard Sword
+		Broadsword
 
 Chalcedon Weapons
 	Items 	Short Bow
@@ -21,13 +21,13 @@ Chalcedon Weapons
 		Crossbow
 
 Baris Weapons
-	Items 	Rusted Long Sword
-		Long Sword
-		Brandish Sword
-		Old Knights Sword
-		Improved Long Sword
-		Bastard Sword
-		Broadsword
+	Items 	Squire's sword
+		Short Sword
+		Butcher's Sword
+		Saber
+		Rusted Bronze Sword
+		Bronze Sword
+		Falchion
 
 Mallia Weapons
 	Items 	Knife
@@ -39,6 +39,32 @@ Mallia Weapons
 		Sword Breaker
 
 Cebrene	Armors
+	Items 	Hat
+		Cap
+		Circlet
+		Robe
+		Muffler
+		Manteau
+		Cotton Shirt
+		Adventure Suit
+		Padded Armor
+		Chainmail
+		Sandals
+		Shoes
+		Boots
+
+Chalcedon Armors
+	Items 	Hat
+		Cap
+		Robe
+		Muffler
+		Cotton Shirt
+		Adventure Suit
+		Mantle
+		Sandals
+		Shoes
+
+Baris Armors
 	Items 	Hat
 		Cap
 		Circlet
@@ -61,33 +87,6 @@ Cebrene	Armors
 		Boots
 		Heavy Boots
 
-Chalcedon Armors
-	Items 	Hat
-		Cap
-		Robe
-		Muffler
-		Cotton Shirt
-		Adventure Suit
-		Mantle
-		Sandals
-		Shoes
-
-Baris Armors
-	Items 	Hat
-		Cap
-		Circlet
-		Robe
-		Muffler
-		Manteau
-		Cotton Shirt
-		Adventure Suit
-		Padded Armor
-		Guard
-		Buckler
-		Sandals
-		Shoes
-		Boots
-
 Mallia Armors
 	Items 	Hat
 		Cap
@@ -98,7 +97,6 @@ Mallia Armors
 		Cotton Shirt
 		Adventure Suit
 		Padded Armor
-		Chainmail
 		Guard
 		Buckler
 		Sandals

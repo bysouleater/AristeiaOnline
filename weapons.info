@@ -9,7 +9,7 @@ Tienen que haber 8 weapons por tipo hasta lvl 15 para cambiar 1 cada 2 levels.
 
 HEAVY WEAPONS (+4)
 =============
-0) Newbie Long Sword	PAtk 4			(Newbie)[Baris City]		$2		2H
+0) Newbie Long Sword	PAtk 4			(Newbie)[Cebrene City]		$2		2H
 1) Rusted Long Sword	PAtk 7			(All)				$130		2H
 2) Long Sword		PAtk 11			(All)				$200		2H
 3) Brandish Sword	PAtk 15			(All)				$325		2H
@@ -21,7 +21,7 @@ HEAVY WEAPONS (+4)
 
 NORMAL WEAPONS (+3)
 ==============
-0) Newbie Sword		PAtk 3			(Newbie)[Cebrene City]		$2
+0) Newbie Sword		PAtk 3			(Newbie)[Baris City]		$2
 1) Squire Sword 	PAtk 6			(All)				$120
 2) Short Sword 		PAtk 9			(All)				$180
 3) Butcher Sword 	PAtk 12			(All)				$255

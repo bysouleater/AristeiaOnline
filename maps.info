@@ -11,7 +11,7 @@ MAP 0,6 Cistene Swamp
 MAP 1,0 -
 MAP 1,1 Cretan Mountain Zone 02 
 MAP 1,2 Cebrene Fields 04 
-MAP 1,3 Cebrene City 			City
+MAP 1,3 Cebrene City 			City	Cebrene Weapons Shop	Cebrene Armors Shop	Cebrene Consumables Shop
 MAP 1,4 
 MAP 1,5 
 MAP 1,6 Cistene Fields 02 
@@ -20,10 +20,10 @@ MAP 2,1
 MAP 2,2 
 MAP 2,3 
 MAP 2,4 
-MAP 2,5 Chalcedon City 			City
+MAP 2,5 Chalcedon City 			City	Chalcedon Weapons Shop	Chalcedon Armors Shop	Chalcedon Consumables Shop
 MAP 2,6 
 MAP 3,0 -
-MAP 3,1 Mallia City 			City
+MAP 3,1 Mallia City 			City	Mallia Weapons Shop	Mallia Armors Shop	Mallia Consumables Shop
 MAP 3,2 
 MAP 3,3 
 MAP 3,4 
@@ -38,7 +38,7 @@ MAP 4,5
 MAP 4,6 -
 MAP 5,0 Lycia Fields 01 
 MAP 5,1 
-MAP 5,2 Baris City 			City
+MAP 5,2 Baris City 			City	Baris Weapons Shop	Baris Armors Shop	Baris Consumables Shop
 MAP 5,3 
 MAP 5,4 
 MAP 5,5 
