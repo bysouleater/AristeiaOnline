@@ -1,0 +1,39 @@
+=============================================================================
+Cities
+=============================================================================
+
+Cebrene		Map Cebrene City
+	STR 8	DEX 5	CON 5	AGI 5
+	Initial Equip 	Newbie Sword
+			Newbie Cap
+			Newbie Robe
+			Newbie Shirt
+			Newbie Shield
+			Newbie Shoes
+
+Chalcedon 	Map Chalcedon City
+	STR 5	DEX 8	CON 5	AGI 5
+	Initial Equip 	Newbie Bow
+			Newbie Cap
+			Newbie Robe
+			Newbie Shirt
+			Newbie Shoes
+
+Baris 		Map Baris City
+	STR 5	DEX 5	CON 8	AGI 5
+	Initial Equip 	Newbie Long Sword
+			Newbie Cap
+			Newbie Robe
+			Newbie Shirt
+			Newbie Shoes
+
+Mallia 		Map Mallia City
+	STR 5	DEX 5	CON 5	AGI 8
+	Initial Equip 	Newbie Knife
+			Newbie Cap
+			Newbie Robe
+			Newbie Shirt
+			Newbie Shield
+			Newbie Shoes
+
+

@@ -1,0 +1,169 @@
+=============================================================================
+Encounters
+=============================================================================
+
+MAP 00 -
+MAP 01 Cretan Labyrinth 
+	{Minotaur + Cretan Bull + Cretan Bull + Bull + Bull + Bull = 5%}
+	{Cretan Bull + Bull + Bull = 35%}
+	{Cretan Bull + Cretan Bull + Bull + Bull = 30%}
+	{Cretan Bull + Cretan Bull + Cretan Bull = 25%}
+
+MAP 02 Cretan Mountain Zone 01 
+	{Bull + Bull = 40%}
+	{Bull + Bull + Bull = 20%}
+	{Cretan Bull + Bull = 20%}
+	{Cretan Bull + Cretan Bull = 10%}
+
+MAP 03 
+
+MAP 04 
+
+MAP 05 Cistene Fields 01 
+	{Tree Nymph + Tree Nymph = 40%}
+	{Tree Nymph + Tree Nymph + Gorgon = 20%}
+	{Tree Nymph + Tree Nymph + Satyr = 20%}
+	{Gorgon + Gorgon = 10%}
+	{Satyr + Satyr = 10%}
+
+MAP 06 Cistene Swamp 
+	{Medusa + Gorgon + Gorgon + Gorgon + Gorgon = 5%}
+	{Gorgon + Gorgon + Gorgon = 15%}
+	{Satyr + Satyr + Satyr = 15%}
+	{Gorgon + Gorgon = 30%}
+	{Satyr + Satyr = 30%}
+
+MAP 10 -
+MAP 11 Cretan Mountain Zone 02 
+	{Bull + Bull = 40%}
+	{Bull + Bull + Bull = 20%}
+	{Cretan Bull + Bull = 20%}
+	{Cretan Bull + Cretan Bull = 10%}
+
+MAP 12 Cebrene Fields 04 
+	{Bull = 45%}
+	{Bull + Bull = 25%}
+	{Bull + Bull + Bull = 15%}
+
+MAP 13 Cebrene City 
+	{Snake + Snake = 60%}
+	{Big Snake = 25%}
+	{Snake + Big Snake = 10%}
+	{Snake + Snake + Big Snake = 5%}
+
+MAP 14 
+
+MAP 15 
+
+MAP 16 Cistene Fields 02 
+	{Tree Nymph + Tree Nymph = 40%}
+	{Tree Nymph + Tree Nymph + Gorgon = 20%}
+	{Tree Nymph + Tree Nymph + Satyr = 20%}
+	{Gorgon + Gorgon = 10%}
+	{Satyr + Satyr = 10%}
+
+MAP 20 -
+MAP 21 
+
+MAP 22 
+
+MAP 23 
+
+MAP 24 
+
+MAP 25 Chalcedon City 
+	{Snake + Snake = 60%}
+	{Big Snake = 25%}
+	{Snake + Big Snake = 10%}
+	{Snake + Snake + Big Snake = 5%}
+
+MAP 26 
+
+MAP 30 -
+MAP 31 Mallia City 
+	{Snake + Snake = 60%}
+	{Giant Scorpion = 25%}
+	{Snake + Giant Scorpion = 10%}
+	{Snake + Snake + Giant Scorpion = 5%}
+
+MAP 32 
+
+MAP 33 
+
+MAP 34 
+
+MAP 35 
+	{Sea Nymph = 45%}
+	{Sea Nymph + Sea Nymph = 25%}
+	{Sea Nymph + Sea Nymph + Sea Nymph = 15%}
+
+MAP 36 
+
+MAP 40 
+
+MAP 41 
+
+MAP 42 
+
+MAP 43 
+
+MAP 44 
+
+MAP 45 
+	{Siren + Siren = 40%}
+	{Siren + Siren + Triton = 40%}
+	{Triton + Triton = 10%}
+
+MAP 46 -
+MAP 50 Lycia Fields 01 
+	{Lion + Lion = 40%}
+	{Lion + Lion + Lion = 20%}
+	{Nemean lion + Lion = 20%}
+	{Nemean lion + Nemean lion = 10%}
+
+MAP 51 
+
+MAP 52 Baris City 
+	{Snake + Snake = 60%}
+	{Giant Scorpion = 25%}
+	{Snake + Giant Scorpion = 10%}
+	{Snake + Snake + Giant Scorpion = 5%}
+
+--HASTA AK LLEGUE
+MAP 53 
+	{Sea Nymph = 45%}
+	{Sea Nymph + Sea Nymph = 25%}
+	{Sea Nymph + Sea Nymph + Sea Nymph = 15%}
+
+MAP 54 
+	{Siren + Siren = 40%}
+	{Siren + Siren + Merman = 20%}
+	{Siren + Siren + Mermaid = 20%}
+	{Merman + Mermaid = 10%}
+
+MAP 55 
+	{Parthenope + Ligea + Leucosia = 5%}
+	{Siren + Siren + Siren = 35%}
+	{Triton + Triton = 30%}
+	{Mermaid + Merman + Mermaid = 25%}	
+
+MAP 56 -
+MAP 60 Lycia Way 
+	{Chimaera + Nemean lion + Nemean lion + Lion + Big Snake = 5%}
+	{Nemean lion + Lion + Lion + Big Snake = 35%}
+	{Nemean lion + Nemean lion + Lion + Lion + Big Snake = 30%}
+	{Nemean lion + Nemean lion + Nemean lion = 25%}
+
+MAP 61 Lycia Fields 02 
+	{Lion + Lion = 40%}
+	{Lion + Lion + Lion = 20%}
+	{Nemean lion + Lion = 20%}
+	{Nemean lion + Nemean lion = 10%}
+
+MAP 62 
+
+MAP 63 
+
+MAP 64 -
+MAP 65 -
+MAP 66 -

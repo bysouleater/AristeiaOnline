@@ -1,3 +1,7 @@
+=============================================================================
+Weapons
+=============================================================================
+
 Tienen que haber 8 weapons por tipo hasta lvl 15 para cambiar 1 cada 2 levels.
 
 1 2 y 3 son para los Newbies
@@ -5,48 +9,48 @@ Tienen que haber 8 weapons por tipo hasta lvl 15 para cambiar 1 cada 2 levels.
 
 HEAVY WEAPONS (+4)
 =============
-DONE 0) Newbie Long Sword	PAtk 3			(Newbie)[Baris City]		$2		2H
-DONE 1) Rusted Long Sword	PAtk 7			(All)				$130		2H
-DONE 2) Long Sword		PAtk 11			(All)				$200		2H
-DONE 3) Brandish Sword		PAtk 15			(All)				$325		2H
-DONE 4) Old Knights Sword	PAtk 19			(Barbarian)			$585		2H
-DONE 5) Improved Long Sword	PAtk 23			(Barbarian)			$1050		2H
-DONE 6) Bastard Sword		PAtk 27			(Barbarian)			$1890		2H
-DONE 7) Broadsword 		PAtk 31			(Barbarian)			$2500		2H
-8) Knights Sword		PAtk 35	CON 1		(Barbarian)			$3400		2H	<- Cambiar por STR
+0) Newbie Long Sword	PAtk 4			(Newbie)[Baris City]		$2		2H
+1) Rusted Long Sword	PAtk 7			(All)				$130		2H
+2) Long Sword		PAtk 11			(All)				$200		2H
+3) Brandish Sword	PAtk 15			(All)				$325		2H
+4) Old Knights Sword	PAtk 19			(Barbarian)			$585		2H
+5) Improved Long Sword	PAtk 23			(Barbarian)			$1050		2H
+6) Bastard Sword	PAtk 27			(Barbarian)			$1890		2H
+7) Broadsword 		PAtk 31			(Barbarian)			$2500		2H
+8) Knights Sword	PAtk 35	STR 1		(Barbarian)			$3400		2H
 
 NORMAL WEAPONS (+3)
 ==============
-DONE 0) Newbie Sword		PAtk 3			(Newbie)[Cebrene City]		$2
-DONE 1) Squire's sword 		PAtk 6			(All)				$120
-DONE 2) Short Sword 		PAtk 9			(All)				$180
-DONE 3) Butcher's Sword 	PAtk 12			(All)				$255
-DONE 4) Saber 			PAtk 15			(Soldier)			$410
-DONE 5) Rusted Bronze Sword 	PAtk 18			(Soldier)			$655
-DONE 6) Bronze Sword		PAtk 21			(Soldier)			$1050
-DONE 7) Falchion 		PAtk 24			(Soldier)			$1680
-8) Crimson Sword		PAtk 27	STR 1		(Soldier)			$2700	<- Cambiar por CON
+0) Newbie Sword		PAtk 3			(Newbie)[Cebrene City]		$2
+1) Squire Sword 	PAtk 6			(All)				$120
+2) Short Sword 		PAtk 9			(All)				$180
+3) Butcher Sword 	PAtk 12			(All)				$255
+4) Saber 		PAtk 15			(Soldier)			$410
+5) Rusted Bronze Sword 	PAtk 18			(Soldier)			$655
+6) Bronze Sword		PAtk 21			(Soldier)			$1050
+7) Falchion 		PAtk 24			(Soldier)			$1680
+8) Crimson Sword	PAtk 27	CON 1		(Soldier)			$2700
 
 LIGHT WEAPONS (+2)
 =============
-DONE 0) Newbie Knife		PAtk 3			(Newbie)[Mallia City]		$2
-DONE 1) Knife			PAtk 5			(All)				$120
-DONE 2) Dagger			PAtk 7			(All)				$180
-DONE 3) Bone Dagger		PAtk 9			(All)				$255
-DONE 4) Dirk			PAtk 11 ARate 1		(Adept)				$410
-DONE 5) Skeleton Dagger		PAtk 13	ARate 1		(Adept)				$655
-DONE 6) Shinning Knife		PAtk 15 ARate 1		(Adept)				$1050
-DONE 7) Sword Breaker		PAtk 17 ARate 2		(Adept)				$1680
-DONE 8) Assassin Knife		PAtk 19	ARate 2 AGI 1	(Adept)				$2700
+0) Newbie Knife		PAtk 3			(Newbie)[Mallia City]		$2
+1) Knife		PAtk 5			(All)				$120
+2) Dagger		PAtk 7			(All)				$180
+3) Bone Dagger		PAtk 9			(All)				$255
+4) Dirk			PAtk 11 ARate 1		(Adept)				$410
+5) Skeleton Dagger	PAtk 13	ARate 1		(Adept)				$655
+6) Shinning Knife	PAtk 15 ARate 1		(Adept)				$1050
+7) Sword Breaker	PAtk 17 ARate 2		(Adept)				$1680
+8) Assassin Knife	PAtk 19	ARate 2 AGI 1	(Adept)				$2700
 
 DISTANCE WEAPONS (+3)
 ================
-DONE 0) Newbie Bow		PAtk 3			(Newbie)[Chalcedon City]	$2		2H
-DONE 1) Short Bow		PAtk 6			(All)				$130		2H
-DONE 2) Bow			PAtk 9  Eva 1		(All)				$200		2H
-DONE 3) Long Bow		PAtk 12 Eva 1		(All)				$325		2H
-DONE 4) Composite Bow		PAtk 15	Eva 1		(Shooter)			$585		2H
-DONE 5) Hunting Bow		PAtk 18	Eva 2		(Shooter)			$1050		2H
-DONE 6) Great Bow		PAtk 21	Eva 2		(Shooter)			$1890		2H
-DONE 7) Crossbow		PAtk 24	Eva 3		(Shooter)			$2500		2H
-DONE 8) Great Composite Bow	PAtk 27	Eva 3 DEX 1	(Shooter)			$3400		2H
+0) Newbie Bow		PAtk 3			(Newbie)[Chalcedon City]	$2		2H
+1) Short Bow		PAtk 6			(All)				$130		2H
+2) Bow			PAtk 9  Eva 1		(All)				$200		2H
+3) Long Bow		PAtk 12 Eva 1		(All)				$325		2H
+4) Composite Bow	PAtk 15	Eva 1		(Shooter)			$585		2H
+5) Hunting Bow		PAtk 18	Eva 2		(Shooter)			$1050		2H
+6) Great Bow		PAtk 21	Eva 2		(Shooter)			$1890		2H
+7) Crossbow		PAtk 24	Eva 3		(Shooter)			$2500		2H
+8) Great Composite Bow	PAtk 27	Eva 3 DEX 1	(Shooter)			$3400		2H
