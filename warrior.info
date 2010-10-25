@@ -1,0 +1,65 @@
+=============================================================================
+Base Difficulty
+=============================================================================
+
+BARBARIAN
+=========
+
+Newbie Lvl 1		HP 50	STR 8	CON 5	DEX 5	AGI 5
+			PAtk 13(9+4)	PDef 10(6+4)
+			Acc 3(6/2)	Eva 3(6/2)
+			ARate 1(6/5)	CRate 1(6/5)
+			Init 0(6/10)	Luck 0(6/10)
+
+Newbie Lvl 2		HP 75	STR 8	CON 5	DEX 5	AGI 5
+			PAtk 14(10+4)	PDef 11(7+4)
+			Acc 3(7/2)	Eva 3(7/2)
+			ARate 1(7/5)	CRate 1(7/5)
+			Init 0(7/10)	Luck 0(7/10)
+
+Newbie Lvl 3		HP 100 	STR 8	CON 5	DEX 5	AGI 5
+			PAtk 18(11+7)	PDef 12(8+4)
+			Acc 4(8/2)	Eva 4(8/2)
+			ARate 1(8/5)	CRate 1(8/5)
+			Init 0(8/10)	Luck 0(8/10)
+
+Newbie Lvl 4		HP 125 	STR 8	CON 5	DEX 5	AGI 5
+			PAtk 19(12+7)	PDef 13(9+4)
+			Acc 4(9/2)	Eva 4(9/2)
+			ARate 1(9/5)	CRate 1(9/5)
+			Init 0(9/10)	Luck 0(9/10)
+
+Newbie Lvl 5		HP 150 	STR 8	CON 5	DEX 5	AGI 5
+			PAtk 24(13+11)	PDef 14(10+4)
+			Acc 5(10/2)	Eva 5(10/2)
+			ARate 2(10/5)	CRate 2(10/5)
+			Init 1(10/10)	Luck 1(10/10)
+
+SOLDIER
+=======
+
+Newbie Lvl 1		HP 50	STR 5	CON 8	DEX 5	AGI 5
+			PAtk 9(6+3)	PDef 14(9+5)
+			Acc 3		Eva 3	
+			ARate 1		CRate 1
+			Init 0		Luck 0
+
+
+SHOOTER
+=======
+
+Newbie Lvl 1		HP 50	STR 5	CON 5	DEX 8	AGI 5
+			PAtk 9(6+3)	PDef 10(6+4)
+			Acc 4		Eva 3	
+			ARate 1		CRate 1
+			Init 0		Luck 0
+
+
+ADEPT
+=====
+
+Newbie Lvl 1		HP 50	STR 5	CON 5	DEX 5	AGI 8
+			PAtk 9(6+3)	PDef 11(6+5)
+			Acc 3		Eva 4	
+			ARate 1		CRate 1
+			Init 0		Luck 0

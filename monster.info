@@ -2,70 +2,98 @@
 Monsters
 =============================================================================
 
+[A,B]
 Snake		Exp 50		Level 1		HP 30 PAtk 10 PDef 5 Acc 2 Eva 2 ARate 0 CRate 0 Luck 0 Init 0
-	Loot	Snake tooth		80%
+	Loot	Snake Tooth			80%	$10
 
+[]
 Big Snake 	Exp 70 		Level 2		HP 40 PAtk 12 PDef 7 Acc 2 Eva 2 ARate 0 CRate 0 Luck 0 Init 0
-	Loot	Big Snake tooth		80%
+	Loot	Big Snake Tooth			75%	$16
 
+[]
 Giant Scorpion 	Exp 70 		Level 2		HP 40 PAtk 12 PDef 7 Acc 2 Eva 2 ARate 0 CRate 0 Luck 0 Init 0
-	Loot	Scorpion tail		80%
+	Loot	Scorpion Tail			75%	$16
 
+[A,B,C]
 Bull 		Exp 150 	Level 3		HP 80 PAtk 20 PDef 12 Acc 4 Eva 2 ARate 0 CRate 0 Luck 0 Init 2
-	Loot	Bull horns		80%
+	Loot	Bull Horns			70%	$30
 
+[A,B,C]
 Cretan Bull 	Exp 300 	Level 5		HP 150 PAtk 35 PDef 20 Acc 5 Eva 4 ARate 1 CRate 1 Luck 0 Init 3
-	Loot	Bull horns		80%
+	Loot	Cretan Bull Horns		60%	$50
 		Cretan Horn (Equipable head)	
 	
+[]
 Minotaur 	Exp 3000 	Level 10	HP 600 PAtk 50 PDef 30 Acc 10 Eva 4 ARate 1 CRate 2 Luck 0 Init 4	MiniBoss
-	Loot	Minotaur Axe
-	
+	Loot	Minotaur Horns			80%	$100
+		Minotaur Axe
+
+[]	
 Medusa 		Exp 2800 	Level 10 	HP 500 PAtk 38 PDef 25 Acc 10 Eva 5 ARate 2 CRate 2 Luck 0 Init 3	MiniBoss
-	Loot	Strong Stone Shield
+	Loot	Dead Snake			80%	$100
+		Strong Stone Shield
 
+[A,B]
 Tree Nymph 	Exp 140 	Level 3		HP 75 PAtk 16 PDef 10 Acc 5 Eva 4 ARate 0 CRate 0 Luck 0 Init 0
-	Loot	Green Veil (Equipable Shoulder)
+	Loot	Sharp Leaf			70%	$30
+		Green Veil (Equipable Shoulder)
 
-Satyr 		Exp 400 	Level 6		HP 130 PAtk 30 PDef 18 Acc 7 Eva 5 ARate 3 CRate 0 Luck 0 Init 0
-	Loot	
+[A,B,C]
+Satyr 		Exp 400 	Level 6		HP 130 PAtk 30 PDef 18 Acc 7 Eva 5 ARate 5 CRate 0 Luck 0 Init 0
+	Loot	Horse Hoofs			70%	$60
 
+[A,B,C,D]
 Gorgon 		Exp 300 	Level 5		HP 150 PAtk 28 PDef 24 Acc 5 Eva 3 ARate 1 CRate 0 Luck 0 Init 1
-	Loot	
+	Loot	Dead Small Snake		60%	$50
 
-Chimaera 	Exp 3000 	Level 10	HP 700 PAtk 35 PDef 20 Acc 8 Eva 4 ARate 3 CRate 0 Luck 0 Init 5	MiniBoss
-	Loot	Chimaera claws (Equipable foot)
-	
+[]
+Chimaera 	Exp 3000 	Level 10	HP 700 PAtk 35 PDef 20 Acc 8 Eva 4 ARate 5 CRate 0 Luck 0 Init 5	MiniBoss
+	Loot	Big Snake Tooth			80%	$16
+		Lion Mane			80%	$30
+		Chimaera claws (Equipable foot)
+
+[A,B,C]	
 Lion 		Exp 150 	Level 3		HP 100 PAtk 20 PDef 12 Acc 4 Eva 2 ARate 0 CRate 0 Luck 0 Init 2
-	Loot	Lion mane
+	Loot	Lion Mane			70%	$30
 
+[A,B,C]
 Nemean Lion 	Exp 300 	Level 5		HP 170 PAtk 35 PDef 20 Acc 5 Eva 4 ARate 1 CRate 1 Luck 0 Init 3
-	Loot	Lion mane
+	Loot	Nemean Lion Mane		60%	$50
 		Nemean Claw (Equipable foot)
-	
-Parthenope 	Exp 1500 	Level 8		HP 280 PAtk 35 PDef 20 Acc 5 Eva 6 ARate 3 CRate 1 Luck 0 Init 1	MiniBoss
-	Loot	
 
+[]	
+Parthenope 	Exp 1500 	Level 8		HP 280 PAtk 35 PDef 20 Acc 5 Eva 6 ARate 5 CRate 1 Luck 0 Init 1	MiniBoss
+	Loot	Siren Wings			80%	$70
+
+[]
 Ligea 		Exp 1500 	Level 8		HP 280 PAtk 20 PDef 35 Acc 6 Eva 5 ARate 2 CRate 2 Luck 0 Init 2	MiniBoss
-	Loot	
+	Loot	Siren Wings			80%	$70
 
+[]
 Leucosia 	Exp 1500 	Level 8		HP 280 PAtk 30 PDef 30 Acc 5 Eva 6 ARate 1 CRate 3 Luck 0 Init 3	MiniBoss
-	Loot	
+	Loot	Siren Wings			80%	$70
 
-Sirens 		Exp 220 	Level 4		HP 100 PAtk 19 PDef 14 Acc 3 Eva 2 ARate 3 CRate 0 Luck 0 Init 2
-	Loot	Siren wings
+[A,B,C]
+Siren 		Exp 220 	Level 4		HP 100 PAtk 19 PDef 14 Acc 3 Eva 2 ARate 5 CRate 0 Luck 0 Init 2
+	Loot	Small Siren Wings		65%	$40
 	
+[A,B,C]
 Sea Nymph 	Exp 150 	Level 3		HP 75 PAtk 16 PDef 10 Acc 5 Eva 4 ARate 0 CRate 0 Luck 0 Init 0
-	Loot	Crystal Veil (Equipable Shoulder)
+	Loot	Fin				70%	$30
+		Crystal Veil (Equipable Shoulder)
 
+[A,B]
 Triton 		Exp 320 	Level 5		HP 150 PAtk 35 PDef 20 Acc 5 Eva 4 ARate 1 CRate 1 Luck 0 Init 3
-	Loot	Spear (Equipable weapon)
-	
-Mermaid 	Exp 290 	Level 5		HP 140 PAtk 28 PDef 20 Acc 5 Eva 4 ARate 2 CRate 0 Luck 0 Init 0
-	Loot	
+	Loot	Broken Spear			60%	$50
+		Spear (Equipable weapon)
 
+[A,B]	
+Mermaid 	Exp 290 	Level 5		HP 140 PAtk 28 PDef 20 Acc 5 Eva 4 ARate 2 CRate 0 Luck 0 Init 0
+	Loot	Broken Trident			60%	$50
+
+[]
 Merman 		Exp 300 	Level 5		HP 130 PAtk 30 PDef 20 Acc 4 Eva 5 ARate 0 CRate 2 Luck 0 Init 0
-	Loot	
+	Loot	Broken Trident			60%	$50
 
 
 name Wolf Exp 0 Level 3 color blue

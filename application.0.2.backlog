@@ -1,0 +1,40 @@
+Aristeia-Online v.0.2
+=====================
+
+DONE - Create Beta Weapons
+DONE - Create Beta Armors
+DONE - Create Beta Jobs (Newbie, Barbarian, Soldier, Adept, Shooter)
+DONE - Create Beta Cities (Cebrene, Chalcedon, Baris, Mallia)
+DONE - Create Beta Maps
+DONE - Create Beta Stores
+- Create Beta Training Places
+- Create Beta Monsters
+- Create Beta Encounters
+- Create Beta Consumables
+- Create Beta Job Quests
+- Create some other Beta Quests
+DONE - Chance Soldier for Barbarian
+- Change Job: Unequip all items that cant be equiped
+- Give Item: check space available
+- Main Controller: session expired msg
+- Search Again in Journal (Flash message)
+- Worldmap: Middle Path which connects cities monsters should be easier
+
+
+SHOULD DO
+- A FUCKING CONSOLE TO THE ADMINS!!!
+- Implement Library
+- Comunicate better that no longer exp is gained when reached max job level
+- Item description
+- Item actions
+- Implement Transports [price, destination, time?]
+- Implement Dungeons
+- Find chance for Dungeons/TrainingPlaces with search. (FindList)
+- Moving inside dungeons same % of encounter chance
+- Help messages (Display Help) With flash scope.
+- Implement Insights [Encounter:won,lost,total,boss;Pvp:won,lost,total;Tournaments:won,played;Trophys]
+- Implement Tournaments [Trophy, Date, Users_Registered, Max_users, Loot, Exp 1st Place, Min_Level, Max_Level]
+- Implement Tournaments list in Arena (Register)
+- Implement Refinements
+- How to go out from a dungeon
+- Implement Bank

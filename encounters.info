@@ -3,13 +3,13 @@ Encounters
 =============================================================================
 
 MAP 00 -
-MAP 01 Cretan Labyrinth 
+DONE MAP 01 Cretan Labyrinth 
 	{Minotaur + Cretan Bull + Cretan Bull + Bull + Bull + Bull = 5%}
 	{Cretan Bull + Bull + Bull = 35%}
 	{Cretan Bull + Cretan Bull + Bull + Bull = 30%}
 	{Cretan Bull + Cretan Bull + Cretan Bull = 25%}
 
-MAP 02 Cretan Mountain Zone 01 
+DONE MAP 02 Cretan Mountain Zone 01 
 	{Bull + Bull = 40%}
 	{Bull + Bull + Bull = 20%}
 	{Cretan Bull + Bull = 20%}
@@ -19,14 +19,14 @@ MAP 03
 
 MAP 04 
 
-MAP 05 Cistene Fields 01 
+DONE MAP 05 Cistene Fields 01 
 	{Tree Nymph + Tree Nymph = 40%}
 	{Tree Nymph + Tree Nymph + Gorgon = 20%}
 	{Tree Nymph + Tree Nymph + Satyr = 20%}
 	{Gorgon + Gorgon = 10%}
 	{Satyr + Satyr = 10%}
 
-MAP 06 Cistene Swamp 
+DONE MAP 06 Cistene Swamp 
 	{Medusa + Gorgon + Gorgon + Gorgon + Gorgon = 5%}
 	{Gorgon + Gorgon + Gorgon = 15%}
 	{Satyr + Satyr + Satyr = 15%}
@@ -34,7 +34,7 @@ MAP 06 Cistene Swamp
 	{Satyr + Satyr = 30%}
 
 MAP 10 -
-MAP 11 Cretan Mountain Zone 02 
+DONE MAP 11 Cretan Mountain Zone 02 
 	{Bull + Bull = 40%}
 	{Bull + Bull + Bull = 20%}
 	{Cretan Bull + Bull = 20%}
@@ -55,7 +55,7 @@ MAP 14
 
 MAP 15 
 
-MAP 16 Cistene Fields 02 
+DONE MAP 16 Cistene Fields 02 
 	{Tree Nymph + Tree Nymph = 40%}
 	{Tree Nymph + Tree Nymph + Gorgon = 20%}
 	{Tree Nymph + Tree Nymph + Satyr = 20%}
@@ -99,7 +99,7 @@ MAP 35
 
 MAP 36 
 
-MAP 40 
+MAP 40 Lycia Gold Mine
 
 MAP 41 
 
@@ -162,7 +162,7 @@ MAP 61 Lycia Fields 02
 
 MAP 62 
 
-MAP 63 
+MAP 63 Baris Falls
 
 MAP 64 -
 MAP 65 -
