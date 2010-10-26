@@ -431,6 +431,8 @@ class WarriorController {
 					}
 				}
 				newEntry(warrior, fight, expgained, itemsgained)
+			}else{
+				newEntry(warrior, fight, 0, [:])
 			}
 		}else{
 			newEntry(warrior, "You explore the area but didn't find anything.", JournalEntry.TEXT)
