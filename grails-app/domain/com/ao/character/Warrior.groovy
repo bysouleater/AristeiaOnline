@@ -247,6 +247,7 @@ class Warrior {
 				realexp = maxExp - actualExp
 				actualExp = maxExp
 			}else{
+				realexp = exp
 				actualExp += exp
 			}
 			while(actualExp >= nextLvlExp()){
