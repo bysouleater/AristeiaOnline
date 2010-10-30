@@ -38,6 +38,8 @@ class Warrior {
 	Long lastSTAModifiedDelta
 	Long lastHPModified
 	Long lastHPModifiedDelta
+	Long lastHPRecovered
+	Long lastSTARecovered
 	
 	List inventory
 	List questsInProgress
@@ -107,6 +109,8 @@ class Warrior {
 		lastSTAModifiedDelta = 0 
 		lastHPModified = new DateTime().getMillis()
 		lastHPModifiedDelta = 0
+		lastHPRecovered = new DateTime().getMillis()
+		lastSTARecovered = new DateTime().getMillis()
 		
 		def je = new JournalEntry(type:JournalEntry.TEXT, text:"<b>A new warrior was born under the name of ${name}. Good luck warrior! Try to do your best!</b>")
 		je.save()
@@ -269,6 +273,42 @@ class Warrior {
 	
 	int HPRecoverAmount(){
 		return 5 * maxHP() / 100
+	}
+	
+	boolean canRecoverHP(){
+		Long now = new DateTime().getMillis()
+		Long dif = now - lastHPRecovered
+		return dif > (60 * 5 * 1000) // 5 Mins
+	}
+	
+	def HPtimeLeft(){
+		Long now = new DateTime().getMillis()
+		Long dif = now - lastHPRecovered
+		def left = (60 * 5 * 1000) - dif
+		if((left/1000).intValue() > 60){
+			return "${(left/10/60).intValue()/100} minutes left"
+		}else{
+			return "${(left/1000).intValue()} seconds left"
+		}
+	}
+	
+	boolean canRecoverSTA(){
+		Long now = new DateTime().getMillis()
+		Long dif = now - lastSTARecovered
+		return dif > (60 * 60 * 6 * 1000) // 6 Hours
+	}
+	
+	def STAtimeLeft(){
+		Long now = new DateTime().getMillis()
+		Long dif = now - lastSTARecovered
+		def left = (60 * 60 * 6 * 1000) - dif
+		if((left/1000).intValue() > (60*60)){
+			return "${(left/10/60/60).intValue()/100} hours left"
+		}else if((left/1000).intValue() > 60){
+			return "${(left/10/60).intValue()/100} minutes left"
+		}else{
+			return "${(left/1000).intValue()} seconds left"
+		}
 	}
 	
 	void refreshSTA(){

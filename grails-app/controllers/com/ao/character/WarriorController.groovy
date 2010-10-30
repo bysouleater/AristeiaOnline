@@ -1,5 +1,7 @@
 package com.ao.character
 
+import org.joda.time.DateTime;
+
 import com.ao.fight.Fight
 import com.ao.items.Armor;
 import com.ao.items.Item
@@ -244,6 +246,49 @@ class WarriorController {
 	def consumablestore = {
 		def warrior = Warrior.get(session.warrior_id)
 		render(view:"store", model:[store:warrior.actualLocation.consumables,warrior:warrior])
+	}
+	
+	def temple = {
+		def warrior = Warrior.get(session.warrior_id)
+		[warrior:warrior]
+	}
+	
+	def templeHP = {
+		def warrior = Warrior.get(session.warrior_id)
+		if(warrior.canRecoverHP() && warrior.gold >= 50){
+			warrior.gold -= 50
+			def realhp
+			if(warrior.actualHP + (warrior.maxHP()/2).intValue() > warrior.maxHP()){
+				realhp = warrior.maxHP() - warrior.actualHP
+				warrior.actualHP = warrior.maxHP()
+			}else{
+				realhp = (warrior.maxHP()/2).intValue()
+				warrior.actualHP += (warrior.maxHP()/2).intValue()
+			}
+			warrior.lastHPRecovered = new DateTime().getMillis()
+			newEntry(warrior, "In the silence of the temple you recovered ${realhp} HP praying.", JournalEntry.TEXT)
+			warrior.save(flush:true)
+		}
+		redirect(controller:"warrior", action:"index")
+	}
+	
+	def templeSTA = {
+		def warrior = Warrior.get(session.warrior_id)
+		if(warrior.canRecoverSTA() && warrior.gold >= 100){
+			warrior.gold -= 100
+			def realsta
+			if(warrior.actualSTA + (warrior.maxSTA()/2).intValue() > warrior.maxSTA()){
+				realsta = warrior.maxSTA() - warrior.actualSTA
+				warrior.actualSTA = warrior.maxSTA()
+			}else{
+				realsta = (warrior.maxSTA()/2).intValue()
+				warrior.actualSTA += (warrior.maxSTA()/2).intValue()
+			}
+			warrior.lastSTARecovered = new DateTime().getMillis()
+			newEntry(warrior, "In the silence of the temple you recovered ${realsta} STA praying.", JournalEntry.TEXT)
+			warrior.save(flush:true)
+		}
+		redirect(controller:"warrior", action:"index")
 	}
 	
 	def transports = {

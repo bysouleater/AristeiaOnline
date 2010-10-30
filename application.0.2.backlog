@@ -7,7 +7,7 @@ DONE - Create Beta Jobs (Newbie, Barbarian, Soldier, Adept, Shooter)
 DONE - Create Beta Cities (Cebrene, Chalcedon, Baris, Mallia)
 DONE - Create Beta Maps
 DONE - Create Beta Stores
-- Create Beta Training Places
+DONE - Create Beta Training Places
 - Create Beta Monsters
 - Create Beta Encounters
 - Create Beta Consumables
@@ -19,6 +19,15 @@ DONE - Chance Soldier for Barbarian
 - Main Controller: session expired msg
 - Search Again in Journal (Flash message)
 - Worldmap: Middle Path which connects cities monsters should be easier
+- Implement Credits
+- Implement Facebook Page Link
+- Addsense horizontal Bottom
+- Addsense mini-box left-bottom
+- Top Warriors( top 100 server, top 10 friends, top 10 by origin, top 10 by job, top 10 Clan, top 10 killers)
+- Check before search always if it was killed if HP = 1, cant search.
+- Return scrolls: return to resuCity
+DONE - Temple in cities: heal for money.
+- Temple in cities: full recovery for 1fbcoin
 
 
 SHOULD DO
