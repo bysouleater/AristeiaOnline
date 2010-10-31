@@ -213,3 +213,20 @@ hr{
 	background-color: #EEEEFF;
 	text-align: center;
 	}
+.message {
+	background:url("../images/skin/information.png") no-repeat scroll 8px 50% #F3F8FC;
+	border:1px solid #B2D1FF;
+	color:#006DBA;
+	margin:10px 0 5px;
+	font-size:12px;
+	padding:0px 0px 0px 30px;
+}
+.message_error {
+	background:url("../images/skin/exclamation.png") no-repeat scroll 8px 5px #FFF3F3;
+	line-height:16px;
+	padding:5px 0px 5px 30px;
+	border:1px solid red;
+	color:#CC0000;
+	margin:10px 0 5px;
+	font-size:12px;
+}

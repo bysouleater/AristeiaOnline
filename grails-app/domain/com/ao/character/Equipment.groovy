@@ -25,12 +25,6 @@ class Equipment {
 		weapon(nullable:true)
     }
 	
-	void equip(Item item){
-		if(item.type instanceof Weapon){
-			weapon = item
-		}
-	}
-	
 	/**
 	* Stat bonus redondeado del equip
 	*/

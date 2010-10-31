@@ -6,7 +6,8 @@
 		<td valign="top">
 			<div id="content" style="min-height:160px;">
 				<h4>Journal</h4>
-				<table width="100%" style="font-size:12px;" border="0" cellspacing="0" cellpadding="0">
+				<g:if test="${flash.search_again}"><div class="message">Want to <a style="color:#006DBA;text-decoration: underline;" href="<g:createLink controller='warrior' action='explore'/>">search again</a>?</div></g:if>
+				<table width="100%" style="font-size:12px;" border="0" cellspacing="0" cellpadding="0">				
 					<g:each in="${journal}" status="i" var="je">
 						<g:if test="${i % 2 == 0}"><tr bgcolor="#EEEEFF"></g:if>
 						<g:else><tr></g:else>

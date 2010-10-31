@@ -40,12 +40,16 @@ class MainController {
 	
 	def index = {
 		if(!session.fb_user_id){
-			def url_params = parse_signed_request(params.signed_request)
-			if(!url_params.user_id){
-				redirect(uri:"https://graph.facebook.com/oauth/authorize?client_id=${FB_APP_ID}&redirect_uri=http://apps.facebook.com/aristeia_onlinealpha/")
+			if(params.signed_request){
+				def url_params = parse_signed_request(params.signed_request)
+				if(!url_params.user_id){
+					redirect(uri:"https://graph.facebook.com/oauth/authorize?client_id=${FB_APP_ID}&redirect_uri=http://apps.facebook.com/aristeia_onlinealpha/")
+				}
+				session.fb_user_id = url_params.user_id
+				session.fb_access_token = url_params.oauth_token
+			}else{
+				redirect(action:sessionExpired)
 			}
-			session.fb_user_id = url_params.user_id
-			session.fb_access_token = url_params.oauth_token
 		}
 		def warrior_list = []
 		Warrior.findAllByOwner_id(session.fb_user_id).each{ w ->
@@ -59,6 +63,10 @@ class MainController {
 			}
 		}		
 		return [warriorlist:warrior_list]		
+	}
+	
+	def sessionExpired = {
+		
 	}
 	
 	def top100 = {

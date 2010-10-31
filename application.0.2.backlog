@@ -14,10 +14,8 @@ DONE - Create Beta Training Places
 - Create Beta Job Quests
 - Create some other Beta Quests
 DONE - Chance Soldier for Barbarian
-- Change Job: Unequip all items that cant be equiped
-- Give Item: check space available
-- Main Controller: session expired msg
-- Search Again in Journal (Flash message)
+DONE - Main Controller: session expired msg
+DONE - Search Again in Journal (Flash message)
 - Worldmap: Middle Path which connects cities monsters should be easier
 - Implement Credits
 - Implement Facebook Page Link
@@ -47,3 +45,6 @@ SHOULD DO
 - Implement Refinements
 - How to go out from a dungeon
 - Implement Bank
+- Change Job: Unequip all items that cant be equiped (CANT YET IMPLEMENT)
+- Implement Discard item window or Fight Details window
+- Give Item: check space available

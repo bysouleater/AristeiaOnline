@@ -188,9 +188,11 @@ class WarriorController {
 		warrior.save(flush:true)
 		if(warrior.canSpendSTA(5)){
 			def killed = searchMonsters(warrior, 1)
-			if(!killed)
+			if(!killed){
 				searchItems(warrior, 1)
-			else{
+				if(warrior.actualSTA >= 5)
+					flash.search_again = true
+			}else{
 				def je = new JournalEntry(type:JournalEntry.TEXT, text:"You died in combat. You resurrected in <b>${warrior.actualLocation.name}</b>.")
 				je.save(flush:true)
 				warrior.addToJournal(je)

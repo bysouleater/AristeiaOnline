@@ -6,7 +6,7 @@
 		<td valign="top">
 			<div id="content">
 				<h4>Equipment</h4>
-				<g:if test="${flash.message}"><div class="flash">${flash.message}</div></g:if>
+				<g:if test="${flash.message}"><div class="message_error">${flash.message}</div></g:if>
 				<table style="font-size:12px;margin:15px 0px 20px 20px;" cellpadding="0">
 					<tr>
 						<td class="labeltxt">Head </td>
