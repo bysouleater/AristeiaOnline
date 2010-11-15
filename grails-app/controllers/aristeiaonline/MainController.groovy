@@ -61,8 +61,54 @@ class MainController {
 			}else if(w.status == "B"){
 				warrior_list.add(w)
 			}
-		}		
-		return [warriorlist:warrior_list]		
+		}
+		
+		def client = new RESTClient("https://graph.facebook.com")
+		def resp
+		try{
+			resp = client.get(path: '/me/friends', query: [access_token:session.fb_access_token])
+		}catch(e){
+			println e.response.data
+		}
+		
+		def friendsPlaying = 0
+		def friends = []
+		
+		resp.data.data.each{
+			def found = Warrior.findAllByOwner_idAndStatus(it.id,"A")
+			if(found){
+				friendsPlaying++
+				def bestWarrior = found[0]
+				found.each{ warrior ->
+					if(warrior.level > bestWarrior.level)
+						bestWarrior = warrior
+				}
+				friends.add(bestWarrior)
+			}
+		}
+		
+		friends = friends.sort({it.level}).reverse()
+		def subfriends
+		if(friends.size() > 9)
+			subfriends = friends[0..8]
+		else
+			subfriends = friends
+		
+		def found = Warrior.findAllByOwner_idAndStatus(session.fb_user_id,"A")
+		if(found){
+			def bestWarrior = found[0]
+			found.each{ warrior ->
+				if(warrior.level > bestWarrior.level)
+					bestWarrior = warrior
+			}
+			subfriends.add(bestWarrior)
+			subfriends = subfriends.sort({it.level}).reverse()
+		}else{
+			if(friends.size() > 9)
+				subfriends.add(friends[9])
+		}
+				
+		return [warriorlist:warrior_list, friends:subfriends, friendsqty:friendsPlaying, me:session.fb_user_id]		
 	}
 	
 	def sessionExpired = {

@@ -6,6 +6,7 @@ import com.ao.SkillsList
 import com.ao.StatsList 
 import com.ao.character.Job 
 import com.ao.character.Quest;
+import com.ao.character.Warrior;
 import com.ao.items.Armor 
 import com.ao.items.Consumable
 import com.ao.items.Item;
@@ -245,6 +246,35 @@ class BootStrap {
 			astore.addToItems(shield)
 			astore.save()
 			
+			
+			def warrior1 = new Warrior(owner_id: 501777856)
+			warrior1.initWarrior([name:"Guerrero 1", gender:"M", origin:1])
+			if(warrior1.validate())
+				warrior1.save(flush:true)
+			def warrior2 = new Warrior(owner_id: 507858364)
+			warrior2.initWarrior([name:"Guerrero 2", gender:"M", origin:1])
+			if(warrior2.validate())
+				warrior2.save(flush:true)
+			def warrior3 = new Warrior(owner_id: 507963940)
+			warrior3.initWarrior([name:"Guerrero 3", gender:"M", origin:1])
+			if(warrior3.validate())
+				warrior3.save(flush:true)
+			def warrior4 = new Warrior(owner_id: 507963940)
+			warrior4.initWarrior([name:"Guerrero 4", gender:"M", origin:1])
+			if(warrior4.validate())
+				warrior4.save(flush:true)
+				
+				
+			warrior2.level=2
+			warrior2.save(flush:true)
+			warrior3.level=3
+			warrior3.save(flush:true)
+			warrior4.level=4
+			warrior4.save(flush:true)
+			
+//			501777856
+//			507858364
+//			507963940
 		}
 		
 		

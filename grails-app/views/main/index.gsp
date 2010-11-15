@@ -25,6 +25,29 @@
 		<g:if test="${warriorlist.size() < 3}">
 			<div style="text-align:right;margin-top:20px;">or <g:link action="register" controller="warrior"><b>Create a new warrior</b></g:link></div>
 		</g:if>
+		
+		<div style="float:left;width:200px;">
+    			<h4 style="text-align:left;">Top 10 Friends Warriors</h4>
+    			<table width="200" border="0" cellpadding="0" cellspacing="0" style="font-size:12px">
+    				<g:each in="${friends}" var="friend" status="c">
+    					<g:if test="${friend.owner_id == me as Long}"><tr bgcolor="#FFFFCC"></g:if>
+    					<g:elseif test="${c % 2 == 0}"><tr bgcolor="#eeeeff"></g:elseif><g:else><tr></g:else>
+    						<td width="42" height="42" align="center" valign="middle">
+    							<fb:profile-pic uid="${friend.owner_id}" width="32" height="32" linked="true"  />
+    						</td>
+    						<td height="42" align="left" valign="middle">
+    							<b>${friend.name}</b><br>
+								${friend.job.name} Lvl ${friend.level}	
+    						</td>
+    					</tr>
+					</g:each>
+				</table>
+				<div style="font-size:12px;margin-top:5px;text-align:left;">Total Friends Playing: ${friendsqty}</div>
+    		</div>
+    		<div style="clear:both;"></div>
+		
+		
+		
   		</div>
   		<jqui:resources theme="aristeia"/>
   		<script>
@@ -51,9 +74,29 @@
 <g:else>
 	<div id="content">
 		<h3>Welcome to Aristeia Online</h3>
-    	<div class="bigmsg">
-    		<img style="margin-bottom:20px;" src="/images/front.gif"/><br>
+    	<div class="bigmsg" style="float:left;width:500px;">
+    		<div><img style="margin-bottom:20px;" src="/images/front.gif"/><br>
     		You don't have any warrior. <g:link action="register" controller="warrior">Create a new warrior</g:link> to start playing!
+    		</div>
     	</div>
+    	<div style="float:left;width:200px;">
+    			<h4 style="text-align:left;">Top 10 Friends Warriors</h4>
+    			<table width="200" border="0" cellpadding="0" cellspacing="0" style="font-size:12px">
+    				<g:each in="${friends}" var="friend" status="c">
+    					<g:if test="${friends.owner_id == me}"><tr bgcolor="#FFFFCC"></g:if>
+    					<g:elseif test="${c % 2 == 0}"><tr bgcolor="#eeeeff"></g:elseif><g:else><tr></g:else>
+    						<td width="42" height="42" align="center" valign="middle">
+    							<fb:profile-pic uid="${friend.owner_id}" width="32" height="32" linked="true"  />
+    						</td>
+    						<td height="42" align="left" valign="middle">
+    							<b>${friend.name}</b><br>
+								${friend.job.name} Lvl ${friend.level}	
+    						</td>
+    					</tr>
+					</g:each>
+				</table>
+				<div style="font-size:12px;margin-top:5px;text-align:left;">Total Friends Playing: ${friendsqty}</div>
+    		</div>
+    		<div style="clear:both;"></div>
     </div>
 </g:else>
