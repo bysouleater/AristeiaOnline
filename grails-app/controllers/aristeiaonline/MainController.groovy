@@ -38,19 +38,32 @@ class MainController {
 		return new String(decodedBytes)
 	}
 	
+	def auth = {
+		// Redirect to allow app
+	}
+	
 	def index = {
-		if(!session.fb_user_id){
-			if(params.signed_request){
-				def url_params = parse_signed_request(params.signed_request)
-				if(!url_params.user_id){
-					redirect(uri:"https://graph.facebook.com/oauth/authorize?client_id=${FB_APP_ID}&redirect_uri=http://apps.facebook.com/aristeia_onlinealpha/")
-				}
-				session.fb_user_id = url_params.user_id
-				session.fb_access_token = url_params.oauth_token
-			}else{
-				redirect(action:sessionExpired)
+		if(params.signed_request){
+			def url_params = parse_signed_request(params.signed_request)
+			if(!url_params.user_id){
+				redirect(action:auth)
 			}
+			session.fb_user_id = url_params.user_id
+			session.fb_access_token = url_params.oauth_token
+		}else{
+			redirect(action:illegalAccess)
 		}
+		redirect(action:warriorList)
+	}
+	
+	def illegalAccess = {
+		// Param signed_request is null
+	}
+	
+	def warriorList = {
+		if(!session.fb_user_id)
+			redirect(action:sessionExpired)
+		
 		def warrior_list = []
 		Warrior.findAllByOwner_id(session.fb_user_id).each{ w ->
 			if(w.status == "A"){
@@ -71,44 +84,14 @@ class MainController {
 			println e.response.data
 		}
 		
-		def friendsPlaying = 0
-		def friends = []
-		
-		resp.data.data.each{
-			def found = Warrior.findAllByOwner_idAndStatus(it.id,"A")
-			if(found){
-				friendsPlaying++
-				def bestWarrior = found[0]
-				found.each{ warrior ->
-					if(warrior.level > bestWarrior.level)
-						bestWarrior = warrior
-				}
-				friends.add(bestWarrior)
-			}
+		def criteria = Warrior.createCriteria()
+		def friendWarriors = criteria {
+			eq("status","A")
+			'in'("owner_id",resp.data.data.collect{it.id as Long})
+			order("level", "desc")
 		}
 		
-		friends = friends.sort({it.level}).reverse()
-		def subfriends
-		if(friends.size() > 9)
-			subfriends = friends[0..8]
-		else
-			subfriends = friends
-		
-		def found = Warrior.findAllByOwner_idAndStatus(session.fb_user_id,"A")
-		if(found){
-			def bestWarrior = found[0]
-			found.each{ warrior ->
-				if(warrior.level > bestWarrior.level)
-					bestWarrior = warrior
-			}
-			subfriends.add(bestWarrior)
-			subfriends = subfriends.sort({it.level}).reverse()
-		}else{
-			if(friends.size() > 9)
-				subfriends.add(friends[9])
-		}
-				
-		return [warriorlist:warrior_list, friends:subfriends, friendsqty:friendsPlaying, me:session.fb_user_id]		
+		return [warriorlist:warrior_list, top10fwar:friendWarriors.size()>10?friendWarriors[0..9]:friendWarriors, totalfwar:friendWarriors.size()]		
 	}
 	
 	def sessionExpired = {
