@@ -80,7 +80,7 @@ class WarriorController {
 				warrior.save(flush:true)
 			}
 		}
-		redirect(controller:"main", action:"index")
+		redirect(controller:"main", action:"warriorList")
 	}
 	
 	//GUI ACTIONS
