@@ -105,4 +105,8 @@ class MainController {
 		}
 		return [warriors:wlist]
 	}
+	
+	def inviteFriends = {
+		
+	}
 }

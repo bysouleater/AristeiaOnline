@@ -59,7 +59,7 @@
 				</table>
 				<g:if test="${top10fwar.size() > 0}">
 					<div style="font-size:14px;margin-top:5px;text-align:right;">Total Friend Warriors <b>${totalfwar}</b></div>
-					<div style="font-size:14px;margin-top:5px;text-align:right;"><a href="#">Invite more friends</a></div>
+					<div style="font-size:14px;margin-top:5px;text-align:right;"><g:link action="inviteFriends" controller="main">Invite more friends</g:link></div>
 				</g:if>
 			</td>
 		</tr>
@@ -83,9 +83,7 @@
 </script>
 <g:form name="deleteForm" method="get" controller="warrior" action="deleteWarrior">
 	<g:hiddenField name="warrior_id"/>
- 		<div style="display:none;" id="delete_dialog" title="Are you sure you want to delete warrior">
+	<div style="display:none;" id="delete_dialog" title="Are you sure you want to delete warrior">
 		<p>Are you sure you want to delete warrior <label id="wname"></label>?</p>
 	</div>
 </g:form>
-
-
