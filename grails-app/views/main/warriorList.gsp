@@ -4,6 +4,7 @@
 			<td width="500" valign="top" style="padding-right:10px;">
 				<g:if test="${warriorlist}">
 					<h3>My Warriors</h3>
+					<g:if test="${flash.message}"><div class="message">${flash.message}</div></g:if>
 					<g:each in="${warriorlist}" status="i" var="warrior">
    						<h5><b>${warrior.name}</b> - <label style="font-size:12px;">${warrior.job.name} Lvl ${warrior.level}</label> 
 						<a style="float:right;margin-left:20px;" href="javascript:confirmDelete(${warrior.id},'${warrior.name}');">x</a>
@@ -30,8 +31,9 @@
 				</g:if>
 				<g:else>
 					<h3>Welcome to Aristeia Online</h3>
+					<g:if test="${flash.message}"><div class="message">${flash.message}</div></g:if>
 					<div style="text-align:center;">
-						<img style="margin-bottom:20px;" src="/images/front.gif"/><br>
+						<img style="margin-bottom:20px;" src="/images/chapter1.png"/><br>
     					You don't have any warrior. <g:link action="register" controller="warrior">Create a new warrior</g:link> to start playing!
     				</div>
 				</g:else>

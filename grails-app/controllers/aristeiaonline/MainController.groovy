@@ -1,7 +1,6 @@
 package aristeiaonline
 
-import com.ao.character.Warrior;
-
+import com.ao.character.Warrior
 import grails.converters.JSON;
 import groovyx.net.http.RESTClient;
 
@@ -10,6 +9,7 @@ class MainController {
 	static final String FB_SECRET_KEY = "236efa3a85bf560f2cfc123a2debee30"
 	static final String FB_APP_ID = "165864820091012"
 	
+	def friendsService
 	
 	def parse_signed_request(String signed_request){
 		def encoded_sig = signed_request.split("\\.")[0]
@@ -76,18 +76,11 @@ class MainController {
 			}
 		}
 		
-		def client = new RESTClient("https://graph.facebook.com")
-		def resp
-		try{
-			resp = client.get(path: '/me/friends', query: [access_token:session.fb_access_token])
-		}catch(e){
-			println e.response.data
-		}
-		
+		def friends_id = friendsService.getFriends(session.fb_access_token)
 		def criteria = Warrior.createCriteria()
 		def friendWarriors = criteria {
 			eq("status","A")
-			'in'("owner_id",resp.data.data.collect{it.id as Long})
+			'in'("owner_id",friends_id)
 			order("level", "desc")
 		}
 		
@@ -107,6 +100,18 @@ class MainController {
 	}
 	
 	def inviteFriends = {
-		
+		def friends_id = friendsService.getFriends(session.fb_access_token)
+		def criteria = Warrior.createCriteria()
+		def friendWarriors = criteria {
+			eq("status","A")
+			'in'("owner_id",friends_id)
+			order("level", "desc")
+		}
+		[exclude_list:friendWarriors*.owner_id]
+	}
+	
+	def invitationSent = {
+		flash.message = "Thanks for inviting friends."
+		redirect(action:warriorList)
 	}
 }
