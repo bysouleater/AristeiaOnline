@@ -1,7 +1,7 @@
 <table width="100%">
 	<tr>
-		<td width="120" height="120" valign="top">
-			<img src="${warrior.job.picture}"/>
+		<td width="120" height="140" valign="top">
+			<img src="/images/jobs/${warrior.gender}/${warrior.job.name}.png"/>
 		</td>
 		<td width="130" valign="top">
 			<table width="100%" border="0">
@@ -36,7 +36,7 @@
 			</table>
 		</td>
 		<td valign="top">
-			<table width="100%" border="0" style="font-size:12px;">
+			<table width="100%" height="100%" border="0" style="font-size:12px;">
 				<tr>
 					<td class="labeltxt">STR</td>
 					<td align="right" class="labelvalue">${warrior.baseStat("STR").intValue()}</td>

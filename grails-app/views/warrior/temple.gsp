@@ -13,14 +13,14 @@
 						<a style="width:400px;" class="buttonlink biglink" href="javascript:confirmHealHP();">
 							<img height="30" width="130" style="float:left;margin-right:10px;" src="/images/default_tp.png"/>
 							<b>Recover half HP</b> (Once every 5 minutes)
-							<br><img width="15" height="15" src="/images/coins.png"/> 50
+							<br><img width="15" height="15" src="/images/coins.png"/> 5
 						</a>
 					</g:if>
 					<g:else>
 						<span style="width:400px;" class="buttonlink biglink disabled">
 							<img height="30" width="130" style="float:left;margin-right:10px;" src="/images/default_tp.png"/>
 							<b>Recover half HP</b> (${warrior.HPtimeLeft()})
-							<br><img width="15" height="15" src="/images/coins.png"/> 50
+							<br><img width="15" height="15" src="/images/coins.png"/> 5
 						</span>
 					</g:else>
 				</div>
@@ -29,14 +29,14 @@
 						<a style="width:400px;" class="buttonlink biglink" href="javascript:confirmHealSTA();">
 							<img height="30" width="130" style="float:left;margin-right:10px;" src="/images/default_tp.png"/>
 							<b>Recover half STA</b> (Once every 6 hours)
-							<br><img width="15" height="15" src="/images/coins.png"/> 100
+							<br><img width="15" height="15" src="/images/coins.png"/> 10
 						</a>
 					</g:if>
 					<g:else>
 						<span style="width:400px;" class="buttonlink biglink disabled">
 							<img height="30" width="130" style="float:left;margin-right:10px;" src="/images/default_tp.png"/>
 							<b>Recover half STA</b> (${warrior.STAtimeLeft()})
-							<br><img width="15" height="15" src="/images/coins.png"/> 100
+							<br><img width="15" height="15" src="/images/coins.png"/> 10
 						</span>
 					</g:else>
 				</div>

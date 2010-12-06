@@ -7,7 +7,7 @@
 					<g:if test="${flash.message}"><div class="message">${flash.message}</div></g:if>
 					<g:each in="${warriorlist}" status="i" var="warrior">
    						<h5><b>${warrior.name}</b> - <label style="font-size:12px;">${warrior.job.name} Lvl ${warrior.level}</label> 
-						<a style="float:right;margin-left:20px;" href="javascript:confirmDelete(${warrior.id},'${warrior.name}');">x</a>
+						<label style="float:right;font-size:12px;margin-left:20px;"><a title="Delete ${warrior.name}" href="javascript:confirmDelete(${warrior.id},'${warrior.name}');"><b>x</b></a></label>
 						<label style="float:right;font-size:12px;"><b>Origin</b> ${warrior.origin.name}</label>						
 						</h5>
 						<g:warriorSmallSheet warrior="${warrior}">

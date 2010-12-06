@@ -257,8 +257,8 @@ class WarriorController {
 	
 	def templeHP = {
 		def warrior = Warrior.get(session.warrior_id)
-		if(warrior.canRecoverHP() && warrior.gold >= 50){
-			warrior.gold -= 50
+		if(warrior.canRecoverHP() && warrior.gold >= 5){
+			warrior.gold -= 5
 			def realhp
 			if(warrior.actualHP + (warrior.maxHP()/2).intValue() > warrior.maxHP()){
 				realhp = warrior.maxHP() - warrior.actualHP
@@ -276,8 +276,8 @@ class WarriorController {
 	
 	def templeSTA = {
 		def warrior = Warrior.get(session.warrior_id)
-		if(warrior.canRecoverSTA() && warrior.gold >= 100){
-			warrior.gold -= 100
+		if(warrior.canRecoverSTA() && warrior.gold >= 10){
+			warrior.gold -= 10
 			def realsta
 			if(warrior.actualSTA + (warrior.maxSTA()/2).intValue() > warrior.maxSTA()){
 				realsta = warrior.maxSTA() - warrior.actualSTA
