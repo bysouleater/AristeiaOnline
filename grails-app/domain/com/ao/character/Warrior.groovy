@@ -99,6 +99,7 @@ class Warrior {
 		origin.initial_equip.each{
 			def equipitem = new Item(type:it)
 			equipitem.save()
+			addToInventory(equipitem)
 			equipItem(equipitem)
 		}
 				
@@ -392,63 +393,42 @@ class Warrior {
 	
 	void unequipItem(def equiptype){
 		if(equip."$equiptype"){
-			if(inventory.size() < INVENTORY_MAX_QTY){
-				addToInventory(equip."$equiptype")
-				equip."$equiptype" = null
-				equip.save()
-			}
+			equip."$equiptype".equiped = false
+			equip."$equiptype".save()
+			equip."$equiptype" = null
+			equip.save()
 		}
 		refreshDerivedStats()
 	}
 	
 	void equipItem(def item){
 		if(item.type.isWeapon()){
-			if(item.type.handsQty > 1){
-				def auxweapon = equip.weapon
-				def auxshield = equip.shield
-				if(inventory.size() < INVENTORY_MAX_QTY-1){
-					equip.weapon = item
-					removeFromInventory(item)
-					if(auxweapon)
-						addToInventory(auxweapon)
-					if(auxshield){
-						unequipItem("shield")
-					}
-				}
-			}else{
-				def auxitem = equip.weapon
-				equip.weapon = item
-				removeFromInventory(item)
-				if(auxitem)
-					addToInventory(auxitem)
-			}
+			unequipItem("weapon")
+			equip.weapon = item
+			if(item.type.handsQty > 1)
+				unequipItem("shield")
 		}else if(item.type.isArmor()){
-			def auxitem
-			def acc
 			switch(item.type.type){
 				case Armor.HEAD:
-					auxitem = equip.head;
+					unequipItem("head")
 					equip.head = item
 					break;
 				case Armor.SHOULDER:
-					auxitem = equip.shoulder;
+					unequipItem("shoulder")
 					equip.shoulder = item
 					break;
 				case Armor.BODY:
-					auxitem = equip.body;
+					unequipItem("body")
 					equip.body = item
 					break;
 				case Armor.SHIELD:
-					auxitem = equip.shield;
+					unequipItem("shield")
 					equip.shield = item
-					if(equip.weapon && equip.weapon.type.handsQty > 1){
-						addToInventory(equip.weapon)
-						equip.weapon = null
-						equip.save()
-					}
+					if(equip.weapon && equip.weapon.type.handsQty > 1)
+						unequipItem("weapon")
 					break;
 				case Armor.FOOT:
-					auxitem = equip.foot;
+					unequipItem("foot")
 					equip.foot = item
 					break;
 				case Armor.ACCESORY:
@@ -457,15 +437,14 @@ class Warrior {
 					else if(!equip.accesory2)
 						equip.accesory2 = item
 					else{
-						auxitem = equip.accesory1
+						unequipItem("accesory1")
 						equip.accesory1 = item
 					}
 					break
 			}
-			removeFromInventory(item)
-			if(auxitem)
-				addToInventory(auxitem)
 		}
+		item.equiped = true
+		item.save()
 		equip.save()
 		refreshDerivedStats()
 	}

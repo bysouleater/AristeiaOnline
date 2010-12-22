@@ -89,9 +89,9 @@
 									</td>
 									<td width="200" align="center" valign="middle">
 										<label class="labeltxt2"><i style="color:#777777;">Your warrior</i> <b>Picture</b></label>
-										<div id="malepic"><img src="/images/jobs/M/Newbie.png"/></div>
-										<div id="femalepic" style="display:none;"><img src="/images/jobs/F/Newbie.png"/></div>
-									
+										<div style="margin:5px;" id="malepic"><img style="border-style: dashed;border-width: 1px;" src="/images/jobs/M/Newbie.png"/></div>
+										<div style="margin:5px;" id="femalepic" style="display:none;"><img style="border-style: dashed;border-width: 1px;" src="/images/jobs/F/Newbie.png"/></div>
+										<label class="labeltxt2"><i style="color:#777777;">You will start as a</i> <b>Newbie</b></label>
 									</td>
 								</tr>
 							</table>	

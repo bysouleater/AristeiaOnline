@@ -5,28 +5,28 @@
 				<g:if test="${warriorlist}">
 					<h3>My Warriors</h3>
 					<g:if test="${flash.message}"><div class="message">${flash.message}</div></g:if>
+					
 					<g:each in="${warriorlist}" status="i" var="warrior">
-   						<h5><b>${warrior.name}</b> - <label style="font-size:12px;">${warrior.job.name} Lvl ${warrior.level}</label> 
-						<label style="float:right;font-size:12px;margin-left:20px;"><a title="Delete ${warrior.name}" href="javascript:confirmDelete(${warrior.id},'${warrior.name}');"><b>x</b></a></label>
-						<label style="float:right;font-size:12px;"><b>Origin</b> ${warrior.origin.name}</label>						
+   						<h5 style="margin-bottom:5px;"><b style="margin-left:2px;">${warrior.name}</b> - <label style="font-size:12px;">${warrior.job.name} Lvl ${warrior.level}</label> 
+						<label style="float:right;font-size:12px;margin-left:20px;margin-right:12px;margin-top:2px;"><a title="Delete ${warrior.name}" href="javascript:confirmDelete(${warrior.id},'${warrior.name}');"><b>x</b></a></label>
+						<label style="float:right;font-size:12px;margin-top:2px;"><b>Origin</b> ${warrior.origin.name}</label>						
 						</h5>
 						<g:warriorSmallSheet warrior="${warrior}">
-   							<g:if test="${warrior.status == 'A'}">
-								<td colspan="10" style="padding-top:35px;" align="center">
+   							<td colspan="2" align="right">
+   								<g:if test="${warrior.status == 'A'}">
 									<a href="<g:createLink controller='warrior' action='index' id='${warrior.id}' />"><button class="buttonlindo" style="width:225px;" type="button">Play with ${warrior.name}</button></a>
-								</td>
-							</g:if>
-							<g:elseif test="${warrior.status == 'B'}">
-								<td colspan="10" style="padding-top:35px;" align="center">
+								</g:if>
+								<g:elseif test="${warrior.status == 'B'}">
 									<button class="buttonlindo" type="button" style="background-color:#BBBBBB;width:225px;">${warrior.name} was Banned</button>
-								</td>
-								<td></td>
-							</g:elseif>
+								</g:elseif>
+							</td>
 						</g:warriorSmallSheet>
 						<g:if test="${i+1 < warriorlist.size()}"><hr></g:if>
 					</g:each>
+					<hr>
 					<g:if test="${warriorlist.size() < 3}">
-						<div style="text-align:right;margin-top:20px;font-size:14px;">or <g:link action="register" controller="warrior"><b>Create a new warrior</b></g:link></div>
+						<div style="text-align:right;margin-top:20px;font-size:14px;">Want to try something different? 
+						<g:link action="register" controller="warrior"><b>Create another warrior</b></g:link></div>
 					</g:if>
 				</g:if>
 				<g:else>
@@ -34,7 +34,9 @@
 					<g:if test="${flash.message}"><div class="message">${flash.message}</div></g:if>
 					<div style="text-align:center;">
 						<img style="margin-bottom:20px;" src="/images/chapter1.png"/><br>
-    					You don't have any warrior. <g:link action="register" controller="warrior">Create a new warrior</g:link> to start playing!
+    					<b>What?!</b> You don't have any warrior?...<br><br> 
+    					<a href="<g:createLink controller='warrior' action='register'/>"><button class="buttonlindo" style="width:225px;" type="button">Create a new warrior</button></a>
+    					<!-- <br>and start playing! -->
     				</div>
 				</g:else>
 			</td>
@@ -55,7 +57,7 @@
 					</g:if>
 					<g:else>
 						<tr>
-							<td style="font-size:14px;"><b>Woah!</b> Your friends aren't playing? Why don't you <a href="">invite some friends</a> to see what they got?</td>
+							<td style="font-size:14px;"><b>Woah!</b> Your friends aren't playing? Why don't you <a href="">invite some friends</a> to play with you?</td>
 						</tr>
 					</g:else>
 				</table>

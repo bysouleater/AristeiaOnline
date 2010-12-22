@@ -1,9 +1,9 @@
 <g:applyLayout name="main">
 <div id="content">
-	<h3>${warrior.name} - ${warrior.job.name} Lvl ${warrior.level} 
+	<h3>${warrior.name} <label style="font-size:14px;">- ${warrior.job.name} Lvl ${warrior.level}</label> 
 	<label style="float:right;font-size:12px;"><b>Origin</b> ${warrior.origin.name}</label></h3>
 	<g:warriorSheet warrior="${warrior}">
-		<td colspan="12" style="padding-top:5px;" align="right" valign="bottom">
+		<td colspan="2" align="right" valign="bottom">
 			<table border="0"><tr>
 				<td><a class="buttonlink" href="<g:createLink controller='warrior' action='skills'/>">
 					<img width="15" height="15" src="/images/skills.jpg"/>
@@ -36,7 +36,7 @@
 		</table>
 		<div style="text-align:right;margin-top:20px;">
 			<g:link style="text-decoration:none;" action="index" controller="aoBug" style="margin-right:10px;"><b>Report a Bug</b></g:link> &bull; 
-			<g:link style="text-decoration:none;" action="top100" controller="main" style="margin-right:10px;margin-left:10px;"><b>TOP 100 Warriors</b></g:link> &bull; 
+			<g:link style="text-decoration:none;" action="top10" controller="main" style="margin-right:10px;margin-left:10px;"><b>TOP 10 Warriors</b></g:link> &bull; 
 			<g:link style="text-decoration:none;" action="warriorList" controller="main" style="margin-left:10px;"><b>Back to warriors list</b></g:link>
 		</div>			
 	</div>

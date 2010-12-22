@@ -91,12 +91,19 @@ class MainController {
 		
 	}
 	
-	def top100 = {
+	def top10 = {
 		def wlist = Warrior.withCriteria {
-			maxResults(100)
+			maxResults(10)
 			order("level", "desc")
 		}
-		return [warriors:wlist]
+		def friends_id = friendsService.getFriends(session.fb_access_token)
+		def criteria = Warrior.createCriteria()
+		def friendWarriors = criteria {
+			eq("status","A")
+			'in'("owner_id",friends_id)
+			order("level", "desc")
+		}
+		return [top10war:wlist,top10fwar:friendWarriors.size()>10?friendWarriors[0..9]:friendWarriors]
 	}
 	
 	def inviteFriends = {

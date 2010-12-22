@@ -15,7 +15,7 @@
 	</table>
 	</g:form>
 	<div style="text-align:right;margin-top:20px;">
-		<g:link style="text-decoration:none;" action="index" controller="main"><b>Back to warriors list</b></g:link>
+		<g:link style="text-decoration:none;" action="warriorList" controller="main"><b>Back to warriors list</b></g:link>
 	</div>	
 </div>
 </g:applyLayout>
