@@ -12,8 +12,8 @@ class Maps {
 	static def init = {
 		println "Creando Mapas"
 		
-		[1..6].each{ x ->
-			[1..6].each{ y ->
+		for(int x = 0; x < 7; x++){
+			for(int y = 0; y < 7; y++){
 				def map
 				if(x == 2 && y == 5){
 					map = new Map(name:"Chalcedon city",city:true, posX:2, posY:5, picture:"/images/worldmap/2_5.png")
@@ -30,8 +30,13 @@ class Maps {
 				}else{
 					map = new Map(name:"Aristeia Field ${x}${y}", city:false, posX:x,posY:y, picture:"/images/worldmap/${x}_${y}.png")
 				}
-				map.save(flush:true)
+				println "${x}-${y}"
+				assertSave {map.save(flush:true)}
 			}
 		}
+	}
+	
+	static def assertSave(def clos){
+		assert clos() != null
 	}
 }
