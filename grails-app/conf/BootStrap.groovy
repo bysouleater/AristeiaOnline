@@ -28,33 +28,9 @@ class BootStrap {
 			DevelopmentEnvironment.init()
 						
 			// Init Cities
-			def cs1 = new StatsList(STR:8d,DEX:5d,CON:5d,AGI:5d)//1
-			def cs2 = new StatsList(STR:5d,DEX:8d,CON:5d,AGI:5d)//23
-			def cs3 = new StatsList(STR:5d,DEX:5d,CON:8d,AGI:5d)//24
-			def cs4 = new StatsList(STR:5d,DEX:5d,CON:5d,AGI:8d)//25
-			cs1.save();cs2.save();cs3.save();cs4.save();
-			
-			def knifeStats = new StatsList(PAtk:5)
-			knifeStats.save()
-			def knife = new Weapon(name:"Knife", price:10, icon:"/images/knife.png", consumable:false, type:Weapon.LIGHT,handsQty:1,stats:knifeStats)
-			knife.save()
-			
-			def chrysaorStats = new StatsList(PAtk:200,STR:5,Acc:10)
-			chrysaorStats.save()
-			def chrysaor = new Weapon(name:"Chrysaor sword", price:1, icon:"/images/no_icon.png", consumable:false, type:Weapon.NORMAL, handsQty:1, stats:chrysaorStats)
-			chrysaor.addToJobs(Job.get(Job.BARBARIAN))
-			chrysaor.save()
 			
 			
-			def shirtStats = new StatsList(PDef:5)
-			shirtStats.save()
-			def shirt = new Armor(name:"Cotton Shirt", price:10, icon:"/images/shirt.png", consumable:false, type:Armor.BODY,stats:shirtStats)
-			shirt.save()
-			
-			def appleStats = new StatsList(HP:10)
-			appleStats.save()
-			def apple = new Consumable(name:"Apple",price:5,icon:"/images/apple.png",stats:appleStats,stackable:true, description:"Recovers 10 HP")
-			apple.save()
+			/*
 			
 			def wstore = new Store(name:"Weapons")
 			wstore.addToItems(knife)
@@ -274,7 +250,7 @@ class BootStrap {
 			
 //			501777856
 //			507858364
-//			507963940
+//			507963940*/
 		}
 		
 		

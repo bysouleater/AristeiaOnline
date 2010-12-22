@@ -7,7 +7,7 @@ class Jobs {
 	
 	static def init = {
 		println "Creando Jobs"
-		println "\tNEWBIE"
+//		println "\tNEWBIE"
 		def newbie_base_stats = new StatsList(HP:50,STA:20)
 		def newbie_levelup_stats = new StatsList(HP:25,STA:5)
 		newbie_base_stats.save()
@@ -17,7 +17,7 @@ class Jobs {
 			generation:Job.NEWBIE_GENERATION)
 		newbie.save()
 		
-		println "\tBARBARIAN"
+//		println "\tBARBARIAN"
 		def barbarian_base_stats = new StatsList(HP:400,STA:50,CON:5,STR:3,DEX:2,AGI:1)
 		def barbarian_levelup_stats = new StatsList(HP:75,STA:10,CON:2,STR:1,DEX:0,AGI:0)
 		barbarian_base_stats.save()
@@ -27,7 +27,7 @@ class Jobs {
 			generation:Job.FIRST_GENERATION)
 		barbarian.save()
 		
-		println "\tSOLDIER"
+//		println "\tSOLDIER"
 		def soldier_base_stats = new StatsList(HP:250,STA:80,STR:5,CON:3,AGI:2,DEX:1)
 		def soldier_levelup_stats = new StatsList(HP:50,STA:15,STR:2,CON:1,AGI:0,DEX:0)
 		soldier_base_stats.save()
@@ -37,7 +37,7 @@ class Jobs {
 			generation:Job.FIRST_GENERATION)
 		soldier.save()
 		
-		println "\tADEPT"
+//		println "\tADEPT"
 		def adept_base_stats = new StatsList(HP:100,STA:30,AGI:5,DEX:3,STR:2,CON:1)
 		def adept_levelup_stats = new StatsList(HP:25,STA:8,AGI:2,DEX:1,STR:0,CON:0)
 		adept_base_stats.save()
@@ -47,7 +47,7 @@ class Jobs {
 			generation:Job.FIRST_GENERATION)
 		adept.save()
 		
-		println "\tSHOOTER"
+//		println "\tSHOOTER"
 		def shooter_base_stats = new StatsList(HP:100,STA:30,DEX:5,AGI:3,STR:2,CON:1)
 		def shooter_levelup_stats = new StatsList(HP:25,STA:8,DEX:2,AGI:1,STR:0,CON:0)
 		shooter_base_stats.save()
@@ -57,7 +57,7 @@ class Jobs {
 			generation:Job.FIRST_GENERATION)
 		shooter.save()
 		
-		println "\tCOMPETENT"
+//		println "\tCOMPETENT"
 		def competent_base_stats = new StatsList(HP:250,STA:20,DEX:5,CON:3,AGI:2,STR:1)
 		def competent_levelup_stats = new StatsList(HP:50,STA:5,DEX:2,CON:1,AGI:0,STR:0)
 		competent_base_stats.save()
@@ -67,7 +67,7 @@ class Jobs {
 			generation:Job.FIRST_GENERATION)
 		competent.save()
 		
-		println "\tSPECIALIST"
+//		println "\tSPECIALIST"
 		def specialist_base_stats = new StatsList(HP:150,STA:20,DEX:5,STR:3,CON:2,AGI:1)
 		def specialist_levelup_stats = new StatsList(HP:30,STA:5,DEX:2,STR:1,CON:0,AGI:0)
 		specialist_base_stats.save()
@@ -76,7 +76,5 @@ class Jobs {
 			levelUpStats: specialist_levelup_stats, maxLevel: 15, maxSkillsValue: 60,
 			generation:Job.FIRST_GENERATION)
 		specialist.save()
-		
-		println "Jobs Creados"
 	}
 }
