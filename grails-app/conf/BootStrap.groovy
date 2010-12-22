@@ -1,12 +1,12 @@
 import com.ao.items.Weapon;
 
 import grails.util.Environment;
-
 import com.ao.SkillsList
 import com.ao.StatsList
 import com.ao.character.Job
 import com.ao.character.Quest;
 import com.ao.character.Warrior;
+import com.ao.environments.dev.DevelopmentEnvironment;
 import com.ao.items.Armor
 import com.ao.items.Consumable
 import com.ao.items.Item;
@@ -24,9 +24,9 @@ class BootStrap {
 	def init = { servletContext ->
 		
 		if(Environment.current == Environment.DEVELOPMENT){
-			// Init Jobs
-			Job.initJobs()
 			
+			DevelopmentEnvironment.init()
+						
 			// Init Cities
 			def cs1 = new StatsList(STR:8d,DEX:5d,CON:5d,AGI:5d)//1
 			def cs2 = new StatsList(STR:5d,DEX:8d,CON:5d,AGI:5d)//23
