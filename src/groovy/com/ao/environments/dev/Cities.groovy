@@ -13,20 +13,26 @@ class Cities {
 	static def init = {
 		println "Creando Cities"
 		
-		def cs1 = new StatsList(STR:8d,DEX:5d,CON:5d,AGI:5d)//1
-		def cs2 = new StatsList(STR:5d,DEX:8d,CON:5d,AGI:5d)//23
-		def cs3 = new StatsList(STR:5d,DEX:5d,CON:8d,AGI:5d)//24
-		def cs4 = new StatsList(STR:5d,DEX:5d,CON:5d,AGI:8d)//25
-		cs1.save(flush:true);cs2.save(flush:true);cs3.save(flush:true);cs4.save(flush:true);
+		def cebrene_stats = new StatsList(STR:8d,DEX:5d,CON:5d,AGI:5d)
+		assertSave cebrene_stats
+		def chalcedon_stats = new StatsList(STR:5d,DEX:8d,CON:5d,AGI:5d)
+		assertSave chalcedon_stats
+		def baris_stats = new StatsList(STR:5d,DEX:5d,CON:8d,AGI:5d)
+		assertSave baris_stats
+		def mallia_stats = new StatsList(STR:5d,DEX:5d,CON:5d,AGI:8d)
+		assertSave mallia_stats
 		
-		cebrene_city = new City(name:"Cebrene", stats:cs1, map:Maps.cebrene_map)
+		cebrene_city = new City(name:"Cebrene", stats:cebrene_stats, map:Maps.cebrene_map)
 		assert cebrene_city.save() != null
-		chalcedon_city = new City(name:"Chalcedon", stats:cs2, map:Maps.chalcedon_map)
+		chalcedon_city = new City(name:"Chalcedon", stats:chalcedon_stats, map:Maps.chalcedon_map)
 		chalcedon_city.save()
-		baris_city = new City(name:"Baris", stats:cs3, map:Maps.baris_map)
+		baris_city = new City(name:"Baris", stats:baris_stats, map:Maps.baris_map)
 		baris_city.save()
-		mallia_city = new City(name:"Mallia", stats:cs4, map:Maps.mallia_map)
+		mallia_city = new City(name:"Mallia", stats:mallia_stats, map:Maps.mallia_map)
 		mallia_city.save()
 	}
-
+	
+	static def assertSave(def domain){
+		assert domain.save() != null
+	}
 }

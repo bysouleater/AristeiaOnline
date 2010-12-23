@@ -31,12 +31,12 @@ class Maps {
 					map = new Map(name:"Aristeia Field ${x}${y}", city:false, posX:x,posY:y, picture:"/images/worldmap/${x}_${y}.png")
 				}
 				println "${x}-${y}"
-				assertSave {map.save(flush:true)}
+				assertSave map
 			}
 		}
 	}
 	
-	static def assertSave(def clos){
-		assert clos() != null
+	static def assertSave(def domain){
+		assert domain.save() != null
 	}
 }
