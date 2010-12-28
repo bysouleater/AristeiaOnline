@@ -1,6 +1,7 @@
 package com.ao.environments.dev
 
 import com.ao.StatsList;
+import com.ao.items.Armor;
 import com.ao.items.Weapon;
 
 class Items {
@@ -9,49 +10,60 @@ class Items {
 		
 		println "Creando Items"
 		
+		createWeapons()
+		createArmors()
+		
+	}
+	
+	static def createWeapons(){
 		createHeavyWeapons()
-		
-		
-		/*
-		
-		
-		def knifeStats = new StatsList(PAtk:5)
-		knifeStats.save()
-		def knife = new Weapon(name:"Knife", price:10, icon:"/images/knife.png", consumable:false, type:Weapon.LIGHT,handsQty:1,stats:knifeStats)
-		knife.save()
-		
-		def chrysaorStats = new StatsList(PAtk:200,STR:5,Acc:10)
-		chrysaorStats.save()
-		def chrysaor = new Weapon(name:"Chrysaor sword", price:1, icon:"/images/no_icon.png", consumable:false, type:Weapon.NORMAL, handsQty:1, stats:chrysaorStats)
-		chrysaor.addToJobs(Job.get(Job.BARBARIAN))
-		chrysaor.save()
-		
-		
-		def shirtStats = new StatsList(PDef:5)
-		shirtStats.save()
-		def shirt = new Armor(name:"Cotton Shirt", price:10, icon:"/images/shirt.png", consumable:false, type:Armor.BODY,stats:shirtStats)
-		shirt.save()
-		
-		def appleStats = new StatsList(HP:10)
-		appleStats.save()
-		def apple = new Consumable(name:"Apple",price:5,icon:"/images/apple.png",stats:appleStats,stackable:true, description:"Recovers 10 HP")
-		apple.save()*/
+	}
+	
+	static def createArmors(){
+		createHeadArmors()
 	}
 	
 	static def createHeavyWeapons() {
-		def newbie_long_sword_stats = new StatsList(PAtk:4)
-		newbie_long_sword_stats.save()
-		def newbie_long_sword = new Weapon(name:"Newbie Long Sword", price:2, icon:"/images/sword.png", consumable:false, type:Weapon.HEAVY, handsQty:2, stats:newbie_long_sword_stats)
-		newbie_long_sword.addToJobs(Jobs.newbie_job)
-		newbie_long_sword.save()
-		
+		def newbie_long_sword = createWeapon("Newbie Long Sword",2,"/images/sword.png",Weapon.HEAVY, 2, [PAtk:4], [Jobs.newbie_job])
 		Cities.cebrene_city.addToInitial_equip(newbie_long_sword)
-		Cities.cebrene_city.save()
+		assertSave Cities.cebrene_city
 		
-		def rusted_long_sword_stats = new StatsList(PAtk:7)
-		rusted_long_sword_stats.save()
-		def rusted_long_sword = new Weapon(name:"Rusted Long Sword", price:130, icon:"/images/sword.png", consumable:false, type:Weapon.HEAVY, handsQty:2, stats:rusted_long_sword_stats)
-		rusted_long_sword.save()
+		createWeapon("Rusted Long Sword",130,"/images/sword.png",Weapon.HEAVY,2,[PAtk:7],null)
 	}
-
+	
+	static def createHeadArmors() {
+		def newbie_cap = createArmor("Newbie Cap", 2, "/images/no_icon.png", Armor.HEAD, [PDef:1], [Jobs.newbie_job])
+		Cities.cebrene_city.addToInitial_equip(newbie_cap)
+		assertSave Cities.cebrene_city
+	}
+	
+	static def createWeapon(def name, def price, def icon, def type, def handsQty, def stats, def jobs){
+		def weapon_stats = new StatsList(stats)
+		assertSave weapon_stats
+		def weapon = new Weapon(name:name, price:price, icon:icon, type:type, handsQty:handsQty, stats:weapon_stats)
+		if(jobs){
+			jobs.each{
+				weapon.addToJobs(it)
+			}
+		}
+		assertSave weapon
+		return weapon
+	}	
+	
+	static def createArmor(def name, def price, def icon, def type, def stats, def jobs){
+		def armor_stats = new StatsList(stats)
+		assertSave armor_stats
+		def armor = new Armor(name:name, price:price, icon:icon, type:type, stats:armor_stats)
+		if(jobs){
+			jobs.each{
+				armor.addToJobs(it)
+			}
+		}
+		assertSave armor
+		return armor
+	}
+	
+	static def assertSave(def domain){
+		assert domain.save() != null
+	}
 }

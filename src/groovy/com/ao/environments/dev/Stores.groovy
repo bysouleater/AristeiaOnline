@@ -10,7 +10,9 @@ class Stores {
 		
 		def cebrene_weapons = new Store(name:"Cebrene Weapons")
 		cebrene_weapons.addToItems(Weapon.findByName("Rusted Long Sword"))
-		cebrene_weapons.save()
+		assertSave cebrene_weapons
+		Maps.cebrene_map.weapons = cebrene_weapons
+		assertSave Maps.cebrene_map
 //		
 //		def astore = new Store(name:"Armors")
 //		astore.addToItems(shirt)
@@ -19,5 +21,9 @@ class Stores {
 //		def cstore = new Store(name:"Consumables")
 //		cstore.addToItems(apple)
 //		cstore.save()
+	}
+	
+	static def assertSave(def domain){
+		assert domain.save() != null
 	}
 }

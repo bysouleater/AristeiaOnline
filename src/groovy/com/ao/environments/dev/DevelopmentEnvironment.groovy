@@ -8,6 +8,8 @@ class DevelopmentEnvironment {
 		Cities.init()
 		Items.init()
 		Stores.init()
+		Monsters.init()
+		TrainingPlaces.init()
 	}
 
 }
