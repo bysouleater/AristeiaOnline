@@ -77,11 +77,14 @@ class MainController {
 		}
 		
 		def friends_id = friendsService.getFriends(session.fb_access_token)
-		def criteria = Warrior.createCriteria()
-		def friendWarriors = criteria {
-			eq("status","A")
-			'in'("owner_id",friends_id)
-			order("level", "desc")
+		def friendWarriors = []
+		if(friends_id && friends_id.size() > 0){
+			def criteria = Warrior.createCriteria()
+			friendWarriors = criteria {
+				eq("status","A")
+				'in'("owner_id",friends_id)
+				order("level", "desc")
+			}
 		}
 		
 		return [warriorlist:warrior_list, top10fwar:friendWarriors.size()>10?friendWarriors[0..9]:friendWarriors, totalfwar:friendWarriors.size()]		
@@ -97,22 +100,28 @@ class MainController {
 			order("level", "desc")
 		}
 		def friends_id = friendsService.getFriends(session.fb_access_token)
-		def criteria = Warrior.createCriteria()
-		def friendWarriors = criteria {
-			eq("status","A")
-			'in'("owner_id",friends_id)
-			order("level", "desc")
+		def friendWarriors = []
+		if(friends_id && friends_id.size() > 0){
+			def criteria = Warrior.createCriteria()
+			friendWarriors = criteria {
+				eq("status","A")
+				'in'("owner_id",friends_id)
+				order("level", "desc")
+			}
 		}
 		return [top10war:wlist,top10fwar:friendWarriors.size()>10?friendWarriors[0..9]:friendWarriors]
 	}
 	
 	def inviteFriends = {
 		def friends_id = friendsService.getFriends(session.fb_access_token)
-		def criteria = Warrior.createCriteria()
-		def friendWarriors = criteria {
-			eq("status","A")
-			'in'("owner_id",friends_id)
-			order("level", "desc")
+		def friendWarriors = []
+		if(friends_id && friends_id.size() > 0){
+			def criteria = Warrior.createCriteria()
+			friendWarriors = criteria {
+				eq("status","A")
+				'in'("owner_id",friends_id)
+				order("level", "desc")
+			}
 		}
 		[exclude_list:friendWarriors*.owner_id]
 	}

@@ -21,6 +21,9 @@ class Items {
 	
 	static def createArmors(){
 		createHeadArmors()
+		createShoulderArmors()
+		createBodyArmors()
+		createFootArmors()
 	}
 	
 	static def createHeavyWeapons() {
@@ -34,6 +37,24 @@ class Items {
 	static def createHeadArmors() {
 		def newbie_cap = createArmor("Newbie Cap", 2, "/images/no_icon.png", Armor.HEAD, [PDef:1], [Jobs.newbie_job])
 		Cities.cebrene_city.addToInitial_equip(newbie_cap)
+		assertSave Cities.cebrene_city
+	}
+	
+	static def createShoulderArmors(){
+		def newbie_robe = createArmor("Newbie Robe", 2, "/images/no_icon.png", Armor.SHOULDER, [PDef:1], [Jobs.newbie_job])
+		Cities.cebrene_city.addToInitial_equip(newbie_robe)
+		assertSave Cities.cebrene_city
+	}
+	
+	static def createBodyArmors(){
+		def newbie_shirt = createArmor("Newbie Shirt", 2, "/images/no_icon.png", Armor.BODY, [PDef:1], [Jobs.newbie_job])
+		Cities.cebrene_city.addToInitial_equip(newbie_shirt)
+		assertSave Cities.cebrene_city
+	}
+	
+	static def createFootArmors(){
+		def newbie_shoes = createArmor("Newbie Shoes", 2, "/images/no_icon.png", Armor.FOOT, [PDef:1], [Jobs.newbie_job])
+		Cities.cebrene_city.addToInitial_equip(newbie_shoes)
 		assertSave Cities.cebrene_city
 	}
 	
