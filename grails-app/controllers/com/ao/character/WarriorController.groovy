@@ -187,19 +187,51 @@ class WarriorController {
 		warrior.refreshHP()
 		warrior.save(flush:true)
 		if(warrior.canSpendSTA(5)){
-			def killed = searchMonsters(warrior, 1)
-			if(!killed){
-				searchItems(warrior, 1)
-				if(warrior.actualSTA >= 5)
-					flash.search_again = true
-			}else{
-				def je = new JournalEntry(type:JournalEntry.TEXT, text:"You died in combat. You resurrected in <b>${warrior.actualLocation.name}</b>.")
-				je.save(flush:true)
-				warrior.addToJournal(je)
+			def encounter = getEncounter(warrior.actualLocation, 1)
+			def fight
+			def expgained = 0
+			def itemsgained = [:]
+			if(encounter){
+				fight = new Fight(warrior:warrior,encounter:encounter)
+				fight.resolveFight()
+				fight.save(flush:true)
 			}
+			
+			if(fight?.won){
+				expgained = warrior.giveExp(encounter.totalExp())
+				encounter.totalLoot().each{ item ->
+					def itemchance = new Random().nextInt(100)+1
+					if(itemchance <= item.chance){
+//						warrior.giveItem(item.type, item.qty)
+						if(itemsgained[item.type])
+							itemsgained[item.type] += item.qty
+						else
+							itemsgained[item.type] = item.qty
+					}
+				}
+				newEntry(warrior, fight, expgained, itemsgained)
+			}else{
+				newEntry(warrior, fight, 0, [:])
+			}
+			
+			
+			
+			warrior.save(flush:true)
+			render(view:"searchResults",model:[encounter:encounter])
+			
+			
+//			def killed = searchMonsters(warrior, 1)
+//			if(!killed){
+//				searchItems(warrior, 1)
+//				if(warrior.actualSTA >= 5)
+//					flash.search_again = true
+//			}else{
+//				def je = new JournalEntry(type:JournalEntry.TEXT, text:"You died in combat. You resurrected in <b>${warrior.actualLocation.name}</b>.")
+//				je.save(flush:true)
+//				warrior.addToJournal(je)
+//			}
 		}
-		warrior.save(flush:true)
-		redirect(controller:"warrior",action:"index")
+			
 	}
 	
 	def worldmap = {
@@ -445,6 +477,19 @@ class WarriorController {
 			last_enc = last_enc+(it.chance * chance_mult).intValue()
 		}
 		return ordered
+	}
+	
+	def getEncounter(def map, def chance_mult){
+		def encounters = getOrderedChances(map.encounters, chance_mult)
+		def chance = new Random().nextInt(100)+1
+		def encounter = null;
+		
+		encounters.each{
+			if(chance >= it.value.min && chance <= it.value.max)
+				encounter = it.key
+		}
+		
+		return encounter
 	}
 	
 	boolean searchMonsters(def warrior, def chance_mult){
