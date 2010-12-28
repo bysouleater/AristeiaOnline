@@ -30,7 +30,6 @@ class Maps {
 				}else{
 					map = new Map(name:"Aristeia Field ${x}${y}", city:false, posX:x,posY:y, picture:"/images/worldmap/${x}_${y}.png")
 				}
-				println "${x}-${y}"
 				assertSave map
 			}
 		}

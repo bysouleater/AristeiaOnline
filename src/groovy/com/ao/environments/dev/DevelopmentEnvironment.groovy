@@ -7,6 +7,7 @@ class DevelopmentEnvironment {
 		Maps.init()
 		Cities.init()
 		Items.init()
+		Stores.init()
 	}
 
 }

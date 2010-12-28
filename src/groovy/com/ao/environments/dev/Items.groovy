@@ -9,15 +9,8 @@ class Items {
 		
 		println "Creando Items"
 		
+		createHeavyWeapons()
 		
-		
-		def newbie_long_sword_stats = new StatsList(PAtk:4)
-		newbie_long_sword_stats.save()
-		def newbie_long_sword = new Weapon(name:"Newbie Long Sword", price:2, icon:"/images/sword.png", consumable:false, type:Weapon.HEAVY, handsQty:2, stats:newbie_long_sword_stats)
-		newbie_long_sword.save()
-		
-		Cities.cebrene_city.addToInitial_equip(newbie_long_sword)
-		Cities.cebrene_city.save()
 		
 		/*
 		
@@ -43,6 +36,22 @@ class Items {
 		appleStats.save()
 		def apple = new Consumable(name:"Apple",price:5,icon:"/images/apple.png",stats:appleStats,stackable:true, description:"Recovers 10 HP")
 		apple.save()*/
+	}
+	
+	static def createHeavyWeapons() {
+		def newbie_long_sword_stats = new StatsList(PAtk:4)
+		newbie_long_sword_stats.save()
+		def newbie_long_sword = new Weapon(name:"Newbie Long Sword", price:2, icon:"/images/sword.png", consumable:false, type:Weapon.HEAVY, handsQty:2, stats:newbie_long_sword_stats)
+		newbie_long_sword.addToJobs(Jobs.newbie_job)
+		newbie_long_sword.save()
+		
+		Cities.cebrene_city.addToInitial_equip(newbie_long_sword)
+		Cities.cebrene_city.save()
+		
+		def rusted_long_sword_stats = new StatsList(PAtk:7)
+		rusted_long_sword_stats.save()
+		def rusted_long_sword = new Weapon(name:"Rusted Long Sword", price:130, icon:"/images/sword.png", consumable:false, type:Weapon.HEAVY, handsQty:2, stats:rusted_long_sword_stats)
+		rusted_long_sword.save()
 	}
 
 }
