@@ -8,45 +8,24 @@ class Fight {
 	
 	Warrior warrior
 	Encounter encounter
-	boolean won
 	
-	List details
-	static hasMany = [details:FightEntry]
+	int hits = 0
+	int hitsMissed = 0
+	int criticalHits = 0
+	
+	int damageTaken = 0
+	int damageDone = 0
+	double averageDamagePerHit = 0
+	
+	boolean won
 	
 	static def ATK_RATE = 4
 	static def CRIT_MULTIP = 1.5
 	
-	static mapping = {
-		details sort:"dateCreated"
-	}
-
-    static constraints = {
+	static constraints = {
     }
 
-	void addEntry(def text){
-		def fe = new FightEntry(text:text)
-		fe.save(flush:true)
-		addToDetails(fe)
-		save(flush:true)
-	}
-
-	void killedEntry(def killer, def killed){
-		addEntry("${killer} killed ${killed}.")
-	}
-
-	void hittedEntry(def hitter, def victim, def damage){
-		addEntry("${hitter} hitted ${victim} for ${damage}.")
-	}
-
-	void criticHittedEntry(def hitter, def victim, def damage){
-		addEntry("${hitter} hitted critically ${victim} for ${damage}.")
-	}
-
-	void missedEntry(def hitter){
-		addEntry("${hitter}'s attack missed.")
-	}
-
-	int tryToHit(def hitter, def victim){
+	int tryToHit(def hitter, def victim, boolean warrior){
 		def r = new Random()
 		def rAtk = r.nextInt(21)
 		def rDef = r.nextInt(21)
@@ -55,15 +34,27 @@ class Fight {
 		if(rAtk >= 20 - (hitter.stats.CRate / 10).intValue()){
 			def rDam = r.nextInt(11)-5
 			def damage = Math.max(((hitter.stats.PAtk + rDam) * CRIT_MULTIP).intValue() - victim.stats.PDef,1)
-			criticHittedEntry(hitter.name, victim.name, damage)
+			if(warrior){
+				criticalHits++
+				damageDone += damage
+			}else{
+				damageTaken += damage
+			}
 			return damage
 		}else if(rAtk + hitter.stats.Acc >= rDef + victim.stats.Eva){
 			def rDam = r.nextInt(11)-5
 			def damage = Math.max(hitter.stats.PAtk + rDam - victim.stats.PDef,1)
-			hittedEntry(hitter.name, victim.name, damage)
+			if(warrior){
+				hits++
+				damageDone += damage
+			}else{
+				damageTaken += damage
+			}
 			return damage
 		}else{
-			missedEntry(hitter.name)
+			if(warrior)
+				hitsMissed++
+				
 			return 0
 		}
 	}
@@ -77,17 +68,17 @@ class Fight {
 		
 		//Golpe inicial
 		if(warrior_first){
-			monsterLife -= tryToHit(warrior, monster)
+			monsterLife -= tryToHit(warrior, monster, true)
 			warrior_rate -= ATK_RATE
 			if(monsterLife <= 0){
-				killedEntry(warrior.name, monster.name)
+//				killedEntry(warrior.name, monster.name)
 				return
 			}
 		}else{
-			warrior.actualHP -= tryToHit(monster, warrior)
+			warrior.actualHP -= tryToHit(monster, warrior, false)
 			monster_rate -= ATK_RATE
 			if(warrior.actualHP <= 0){
-				killedEntry(monster.name, warrior.name)
+//				killedEntry(monster.name, warrior.name)
 				return
 			}
 		}
@@ -95,18 +86,18 @@ class Fight {
 		//Continuacion de la pelea contemplado el Attack Rate
 		while(warrior.actualHP > 0 && monsterLife > 0){
 			if(warrior_rate >= monster_rate){
-				monsterLife -= tryToHit(warrior, monster)
+				monsterLife -= tryToHit(warrior, monster, true)
 				warrior_rate -= ATK_RATE
 				if(monsterLife <= 0){
-					killedEntry(warrior.name, monster.name)
+//					killedEntry(warrior.name, monster.name)
 				}else if(monster_rate < 0){
 					monster_rate = monster.stats.ARate
 				}
 			}else{
-				warrior.actualHP -= tryToHit(monster, warrior)
+				warrior.actualHP -= tryToHit(monster, warrior, false)
 				monster_rate -= ATK_RATE
 				if(warrior.actualHP <= 0){
-					killedEntry(monster.name, warrior.name)
+//					killedEntry(monster.name, warrior.name)
 				}else if(warrior_rate < 0){
 					warrior_rate = warrior.stats.ARate
 				}
@@ -114,7 +105,7 @@ class Fight {
 		}
 	}
 	
-	boolean resolveFight(){
+	void resolveFight(){
 		def alive = true
 		encounter.monsters.each{
 			if(!alive)
@@ -130,7 +121,8 @@ class Fight {
 			warrior.actualHP = 1
 			warrior.actualLocation = warrior.resurrectionMap
 		}
+		if(hits + criticalHits > 0)
+			averageDamagePerHit = ((double)damageDone / (double)(hits + criticalHits)).round(1)
 		warrior.save(flush:true)
-		return won
 	}
 }

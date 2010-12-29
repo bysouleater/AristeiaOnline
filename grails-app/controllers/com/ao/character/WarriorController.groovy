@@ -217,7 +217,12 @@ class WarriorController {
 			
 			
 			warrior.save(flush:true)
-			render(view:"searchResults",model:[encounter:encounter])
+			session.explore_results = true
+			session.encounter = encounter
+			session.fight = fight
+			session.expgained = expgained
+			session.itemsgained = itemsgained
+			redirect(controller:"warrior",action:"searchResults")
 			
 			
 //			def killed = searchMonsters(warrior, 1)
@@ -232,6 +237,12 @@ class WarriorController {
 //			}
 		}
 			
+	}
+	
+	def searchResults = {
+		if(!session.explore_results)
+			redirect(controller:"warrior", action:"index")
+		return [encounter:session.encounter, fight: session.fight, expgained:session.expgained, itemsgained:session.itemsgained]		
 	}
 	
 	def worldmap = {
