@@ -13,7 +13,9 @@ title="<g:if test="${item.type.equipable}">${item.type.name} ${item.type.isWeapo
 				</g:if>
 			</td>
 			<td style="font-size:12px;padding-left:3px;" width="100" valign="middle"><g:if test="${item}">${item.type.name}</g:if></td>
-			<td style="font-size:8px;" width="30" align="left"><g:if test="${item && item.equiped}">EQUPD</g:if><g:if test="${item && item.qty > 1}">x${item.qty}</g:if></td>
+			
+			<g:if test="${item && item.equiped}"><td style="font-size:8px;" width="30" align="left">EQUPD</td></g:if>
+			<g:else><td style="font-size:9px;" width="30" align="left"><g:if test="${item && item.qty > 1}">x${item.qty}</g:if></td></g:else>
 		</tr>
 	</table>
 </td>

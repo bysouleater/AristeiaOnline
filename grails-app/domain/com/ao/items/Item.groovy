@@ -19,4 +19,8 @@ class Item {
 		playerPrice(minSize:0)
 		upgrade(minSize:0,maxSize:10)
     }
+	
+	static mapping = {
+		type lazy: false
+	}
 }
