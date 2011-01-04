@@ -44,7 +44,6 @@ class WarriorController {
 	static def MAX_WARRIORS = 3
 	
 	def register = {
-		//		def url_params = parse_signed_request(params.signed_request)
 		def warriorqty = 0
 		Warrior.findAllByOwner_id(123L).each{
 			if(it.status == "A" || it.status == "B")
@@ -59,11 +58,10 @@ class WarriorController {
 		if(wrc.hasErrors()){
 			render(view:"register",model:[wrc:wrc,cities:City.list()])
 		}else{
-			//			def url_params = parse_signed_request(params.signed_request)
 			def warrior = new Warrior(owner_id: session.fb_user_id)
 			warrior.initWarrior(wrc.properties)
 			if(warrior.validate()){
-				warrior.save(flush:true)
+				warrior.save()
 				session.warrior_id = warrior.id
 				redirect(controller:"warrior",action:"index")
 			}else{
@@ -77,7 +75,7 @@ class WarriorController {
 			def warrior = Warrior.get(params.warrior_id)
 			if(warrior != null && warrior.owner_id == session.fb_user_id as Long){
 				warrior.status = "D"
-				warrior.save(flush:true)
+				warrior.save()
 			}
 		}
 		redirect(controller:"main", action:"warriorList")
@@ -148,7 +146,7 @@ class WarriorController {
 	def updateStat = {
 		def warrior = Warrior.get(session.warrior_id)
 		warrior.updateStat(params.id)
-		warrior.save(flush:true)
+		warrior.save()
 		def referer = request.getHeader("Referer")
 		redirect(url:referer)
 	}
@@ -156,7 +154,7 @@ class WarriorController {
 	def unequip = {
 		def warrior = Warrior.get(session.warrior_id)
 		warrior.unequipItem(params.unequip_item_id)
-		warrior.save(flush:true)
+		warrior.save()
 		def referer = request.getHeader("Referer")
 		redirect(url:referer)
 	}
@@ -168,7 +166,7 @@ class WarriorController {
 			warrior.equipItem(item)
 		else
 			flash.message = "Can't equip ${item.type.name}."
-		warrior.save(flush:true)
+		warrior.save()
 		redirect(controller:"warrior", action:"equipment")
 	}
 	
@@ -177,7 +175,7 @@ class WarriorController {
 		def item = Item.get(params.use_item_id)
 		if(item && warrior.inventory && warrior.inventory.contains(item))
 			warrior.useItem(item)
-		warrior.save(flush:true)
+		warrior.save()
 		redirect(controller:"warrior", action:"inventory")
 	}
 	
@@ -185,20 +183,23 @@ class WarriorController {
 		def warrior = Warrior.get(session.warrior_id)
 		warrior.refreshSTA()
 		warrior.refreshHP()
-//		warrior.save(flush:true)
+		warrior.save()
 		if(warrior.canSpendSTA(5)){
 			def encounter = getEncounter(warrior.actualLocation, 1)
 			def fight
 			def expgained = 0
 			def itemsgained = [:]
+			def leveled_up
 			if(encounter){
 				fight = new Fight(warrior:warrior,encounter:encounter)
 				fight.resolveFight()
-				fight.save(flush:true)
+				fight.save()
 			}
 			
 			if(fight?.won){
+				def wlevel = warrior.level
 				expgained = warrior.giveExp(encounter.totalExp())
+				if(warrior.level > wlevel) leveled_up = true
 				encounter.totalLoot().each{ item ->
 					def itemchance = new Random().nextInt(100)+1
 					if(itemchance <= item.chance){
@@ -216,12 +217,13 @@ class WarriorController {
 			
 			
 			
-//			warrior.save(flush:true)
+			warrior.save()
 			session.explore_results = true
 			session.encounter = encounter
 			session.fight = fight
 			session.expgained = expgained
 			session.itemsgained = itemsgained
+			session.leveled_up = leveled_up
 			redirect(controller:"warrior",action:"searchResults")
 			
 			
@@ -243,7 +245,8 @@ class WarriorController {
 		if(!session.explore_results)
 			redirect(controller:"warrior", action:"index")
 		def warrior = Warrior.get(session.warrior_id)
-		return [encounter:session.encounter, fight: session.fight, expgained:session.expgained, itemsgained:session.itemsgained, warrior:warrior]		
+		return [encounter:session.encounter, fight: session.fight, expgained:session.expgained, itemsgained:session.itemsgained, warrior:warrior,
+			leveled_up:session.leveled_up]		
 	}
 	
 	def worldmap = {
@@ -260,7 +263,8 @@ class WarriorController {
 		warrior.actualLocation = destiny
 		if(destiny.isCity())
 			warrior.resurrectionMap = destiny
-		newEntry(warrior, "You decided to walk for a while. You are now in <b>${destiny.name}</b>.", JournalEntry.TEXT)
+		warrior.save()
+//		newEntry(warrior, "You decided to walk for a while. You are now in <b>${destiny.name}</b>.", JournalEntry.TEXT)
 	}
 	
 	def move = {
@@ -274,7 +278,7 @@ class WarriorController {
 					moveWarrior(warrior, map)
 				}
 			}
-			warrior.save(flush:true)
+			warrior.save()
 		}
 		redirect(controller:"warrior", action:"index")
 	}
@@ -312,8 +316,8 @@ class WarriorController {
 				warrior.actualHP += (warrior.maxHP()/2).intValue()
 			}
 			warrior.lastHPRecovered = new DateTime().getMillis()
-			newEntry(warrior, "In the silence of the temple you recovered ${realhp} HP praying.", JournalEntry.TEXT)
-			warrior.save(flush:true)
+//			newEntry(warrior, "In the silence of the temple you recovered ${realhp} HP praying.", JournalEntry.TEXT)
+			warrior.save()
 		}
 		redirect(controller:"warrior", action:"index")
 	}
@@ -331,8 +335,8 @@ class WarriorController {
 				warrior.actualSTA += (warrior.maxSTA()/2).intValue()
 			}
 			warrior.lastSTARecovered = new DateTime().getMillis()
-			newEntry(warrior, "In the silence of the temple you recovered ${realsta} STA praying.", JournalEntry.TEXT)
-			warrior.save(flush:true)
+//			newEntry(warrior, "In the silence of the temple you recovered ${realsta} STA praying.", JournalEntry.TEXT)
+			warrior.save()
 		}
 		redirect(controller:"warrior", action:"index")
 	}
@@ -359,7 +363,7 @@ class WarriorController {
 			if(warrior.canBuy(item.price * qty))
 				warrior.giveItem(item, qty)
 		}
-		warrior.save(flush:true)
+		warrior.save()
 		def referer = request.getHeader("Referer")
 		redirect(url:referer)
 	}
@@ -372,7 +376,7 @@ class WarriorController {
 			//For alpha version, sell is for real price
 			//warrior.gold += (qtysold * (item.type.price / 2).intValue())
 			warrior.gold += (qtysold * item.type.price)
-			warrior.save(flush:true)
+			warrior.save()
 		}
 		def referer = request.getHeader("Referer")
 		redirect(url:referer)
@@ -389,6 +393,7 @@ class WarriorController {
 					JournalEntry.TEXT)
 			}
 		}
+		warrior.save()
 		redirect(controller:"warrior",action:"index")
 	}
 	
@@ -399,6 +404,7 @@ class WarriorController {
 			warrior.addToQuestsInProgress(quest)
 			newEntry(warrior, "You started quest <b>${quest.title}</b>.", JournalEntry.TEXT)
 		}
+		warrior.save()
 		redirect(controller:"warrior",action:"index")
 	}
 	
@@ -449,7 +455,7 @@ class WarriorController {
 				}
 			}
 		}
-		warrior.save(flush:true)
+		warrior.save()
 		redirect(controller:"warrior", action:"index")
 	}
 	
@@ -466,7 +472,7 @@ class WarriorController {
 		def je = new JournalEntry(type:type, text:text)
 		je.save(flush:true)
 		warrior.addToJournal(je)
-		warrior.save(flush:true)
+		warrior.save()
 	}
 	
 	void newEntry(def warrior, def fight, def expgained, def itemsgained){
@@ -478,7 +484,7 @@ class WarriorController {
 		}
 		je.save(flush:true)
 		warrior.addToJournal(je)
-		warrior.save(flush:true)
+		warrior.save()
 	}
 	
 	def getOrderedChances(def posible, def chance_mult){

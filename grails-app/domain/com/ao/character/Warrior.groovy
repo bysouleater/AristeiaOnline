@@ -13,7 +13,7 @@ import com.ao.items.ItemType
 
 class Warrior {
 	
-	static int INVENTORY_MAX_QTY = 20
+	static int INVENTORY_MAX_QTY = 30
 	
 	Long owner_id
 	String name
@@ -260,7 +260,6 @@ class Warrior {
 				def je = new JournalEntry(type:JournalEntry.TEXT, text:"<b>You reach the next level! You are now level ${level}. Congrats!</b>")
 				je.save()
 				addToJournal(je)
-				
 			}
 		}else{
 			return 0

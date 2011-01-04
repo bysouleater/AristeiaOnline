@@ -14,10 +14,10 @@
 						<g:warriorSmallSheet warrior="${warrior}">
    							<td colspan="2" align="right">
    								<g:if test="${warrior.status == 'A'}">
-									<a href="<g:createLink controller='warrior' action='index' id='${warrior.id}' />"><button class="buttonlindo" style="width:225px;" type="button">Play with ${warrior.name}</button></a>
+   									<a class="buttonlink2" style="width:225px;text-align:center;display:block;" href="<g:createLink controller='warrior' action='index' id='${warrior.id}' />"><b>Play with ${warrior.name}</b></a>
 								</g:if>
 								<g:elseif test="${warrior.status == 'B'}">
-									<button class="buttonlindo" type="button" style="background-color:#BBBBBB;width:225px;">${warrior.name} was Banned</button>
+									<a class="buttonlink2" style="width:225px;text-align:center;display:block;" href="#"><b>${warrior.name} was Banned</b></a>
 								</g:elseif>
 							</td>
 						</g:warriorSmallSheet>

@@ -36,6 +36,11 @@
 					<tr>
 						<td align="right" style="font-size: 14px;"><b>EXP Gained</b> ${expgained}</td>
 					</tr>
+					<g:if test="${leveled_up}">
+						<tr>
+							<td align="right" style="font-size: 14px;"><b>Level UP!</b> You are now Lvl ${warrior.level}</td>
+						</tr>
+					</g:if>
 					<g:if test="${itemsgained.size() > 0}"></g:if>
 					<tr>
 						<td><h4>Items Found</h4></td>
@@ -63,19 +68,36 @@
 						<g:if test="${encounter}">
 							<g:if test="${fight.won}">
 								<g:if test="${warrior.actualSTA >= 5}">
-									<a href="<g:createLink controller='warrior' action='explore' />"><button class="buttonlindo" type="button">Take all & Search Again</button></a>
+									<g:if test="${itemsgained.size() > 0}">
+										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='explore' />"><b>Discard all & Search Again</b></a>
+										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='index' />"><b>Discard all & Back to Journal</b></a>
+										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='takeAndSearch' />"><b>Take all & Search Again</b></a>
+										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='takeAndJournal' />"><b>Take all & Back to Journal</b></a>
+									</g:if>
+									<g:else>
+										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='explore' />"><b>Search Again</b></a>
+										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='index' />"><b>Back to Journal</b></a>
+									</g:else>
 								</g:if>
-								<a href="<g:createLink controller='warrior' action='index' />"><button class="buttonlindo" type="button">Take all & Back to Journal</button></a>
+								<g:else>
+									<g:if test="${itemsgained.size() > 0}">
+										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='index' />"><b>Discard all & Back to Journal</b></a>
+										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='takeAndJournal' />"><b>Take all & Back to Journal</b></a>
+									</g:if>
+									<g:else>
+										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='index' />"><b>Back to Journal</b></a>
+									</g:else>
+								</g:else>
 							</g:if>
 							<g:else>
-								<a href="<g:createLink controller='warrior' action='index' />"><button class="buttonlindo" type="button">Back to Journal</button></a>
+								<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='index' />"><b>Back to Journal</b></a>
 							</g:else>
 						</g:if>
 						<g:else>
 							<g:if test="${warrior.actualSTA >= 5}">
-								<a href="<g:createLink controller='warrior' action='explore' />"><button class="buttonlindo" type="button">Search Again</button></a>
+								<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='explore' />"><b>Search Again</b></a>
 							</g:if>
-							<a href="<g:createLink controller='warrior' action='index' />"><button class="buttonlindo" type="button">Back to Journal</button></a>	
+							<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='index' />"><b>Back to Journal</b></a>
 						</g:else>						
 					</td>
 				</tr>

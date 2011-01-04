@@ -18,8 +18,8 @@ class Monsters {
 		
 		def snake_stats = new StatsList(HP:30,PAtk:10,PDef:5,Acc:2,Eva:2,ARate:0,CRate:0,Luck:0,Init:0)
 		assertSave snake_stats
-		def snakeA = new Monster(name:"Snake A", stats: snake_stats, exp: 50L)
-		def snakeB = new Monster(name:"Snake B", stats: snake_stats, exp: 50L)
+		def snakeA = new Monster(name:"Snake A", stats: snake_stats, exp: /*50L*/500L)
+		def snakeB = new Monster(name:"Snake B", stats: snake_stats, exp: /*50L*/500L)
 		snakeA.addToLoot(snake_tooth_loot)
 		snakeB.addToLoot(snake_tooth_loot)
 		assertSave snakeA

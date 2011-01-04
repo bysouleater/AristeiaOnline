@@ -181,6 +181,12 @@ hr{
 	padding: 3px;
 	width: 90px;
 	}
+.buttonlink2{
+	font-size:12px;
+	line-height: 1.3em;
+	border: 1px solid #AAAAAA;
+	padding: 5px;
+	}
 .buttonlink img{
 	vertical-align:middle;
 	}
