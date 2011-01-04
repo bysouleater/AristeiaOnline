@@ -58,6 +58,27 @@
 						</td>
 					</tr>
 				</g:if>
+				<tr>
+					<td style="padding-top:20px;" align="right">
+						<g:if test="${encounter}">
+							<g:if test="${fight.won}">
+								<g:if test="${warrior.actualSTA >= 5}">
+									<a href="<g:createLink controller='warrior' action='explore' />"><button class="buttonlindo" type="button">Take all & Search Again</button></a>
+								</g:if>
+								<a href="<g:createLink controller='warrior' action='index' />"><button class="buttonlindo" type="button">Take all & Back to Journal</button></a>
+							</g:if>
+							<g:else>
+								<a href="<g:createLink controller='warrior' action='index' />"><button class="buttonlindo" type="button">Back to Journal</button></a>
+							</g:else>
+						</g:if>
+						<g:else>
+							<g:if test="${warrior.actualSTA >= 5}">
+								<a href="<g:createLink controller='warrior' action='explore' />"><button class="buttonlindo" type="button">Search Again</button></a>
+							</g:if>
+							<a href="<g:createLink controller='warrior' action='index' />"><button class="buttonlindo" type="button">Back to Journal</button></a>	
+						</g:else>						
+					</td>
+				</tr>
 			</table>
 		</div>
 	</td>

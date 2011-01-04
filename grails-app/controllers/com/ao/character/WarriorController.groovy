@@ -185,7 +185,7 @@ class WarriorController {
 		def warrior = Warrior.get(session.warrior_id)
 		warrior.refreshSTA()
 		warrior.refreshHP()
-		warrior.save(flush:true)
+//		warrior.save(flush:true)
 		if(warrior.canSpendSTA(5)){
 			def encounter = getEncounter(warrior.actualLocation, 1)
 			def fight
@@ -209,14 +209,14 @@ class WarriorController {
 							itemsgained[item.type] = item.qty
 					}
 				}
-				newEntry(warrior, fight, expgained, itemsgained)
+//				newEntry(warrior, fight, expgained, itemsgained)
 			}else{
-				newEntry(warrior, fight, 0, [:])
+//				newEntry(warrior, fight, 0, [:])
 			}
 			
 			
 			
-			warrior.save(flush:true)
+//			warrior.save(flush:true)
 			session.explore_results = true
 			session.encounter = encounter
 			session.fight = fight
@@ -242,7 +242,8 @@ class WarriorController {
 	def searchResults = {
 		if(!session.explore_results)
 			redirect(controller:"warrior", action:"index")
-		return [encounter:session.encounter, fight: session.fight, expgained:session.expgained, itemsgained:session.itemsgained]		
+		def warrior = Warrior.get(session.warrior_id)
+		return [encounter:session.encounter, fight: session.fight, expgained:session.expgained, itemsgained:session.itemsgained, warrior:warrior]		
 	}
 	
 	def worldmap = {

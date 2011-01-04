@@ -123,6 +123,6 @@ class Fight {
 		}
 		if(hits + criticalHits > 0)
 			averageDamagePerHit = ((double)damageDone / (double)(hits + criticalHits)).round(1)
-		warrior.save(flush:true)
+//		warrior.save(flush:true)
 	}
 }
