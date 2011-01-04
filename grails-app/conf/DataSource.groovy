@@ -49,6 +49,12 @@ environments {
 			cache.provider_class='com.opensymphony.oscache.hibernate.OSCacheProvider'
 		}
 	}
+	initDB {
+		dataSource {
+			dbCreate = "create-drop" // one of 'create', 'create-drop','update'
+			url = "jdbc:hsqldb:mem:devDB"
+		}
+	}
     production {
         dataSource {
             dbCreate = "update"

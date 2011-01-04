@@ -7,6 +7,7 @@ import com.ao.character.Job
 import com.ao.character.Quest;
 import com.ao.character.Warrior;
 import com.ao.environments.dev.DevelopmentEnvironment;
+import com.ao.environments.prod.ProductionEnvironment;
 import com.ao.items.Armor
 import com.ao.items.Consumable
 import com.ao.items.Item;
@@ -23,9 +24,10 @@ class BootStrap {
 
 	def init = { servletContext ->
 		
-		if(Environment.current == Environment.DEVELOPMENT){
-			
+		if(Environment.current == Environment.DEVELOPMENT)			
 			DevelopmentEnvironment.init()
+		if(Environment.current == "initDB")
+			ProductionEnvironment.init()
 						
 			
 			
@@ -104,8 +106,8 @@ class BootStrap {
 			
 //			501777856
 //			507858364
-//			507963940*/
-		}
+//			507963940
+		}*/
 		
 		
 		

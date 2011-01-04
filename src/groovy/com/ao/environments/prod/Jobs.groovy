@@ -1,4 +1,4 @@
-package com.ao.environments.dev
+package com.ao.environments.prod
 
 import com.ao.StatsList;
 import com.ao.character.Job;
