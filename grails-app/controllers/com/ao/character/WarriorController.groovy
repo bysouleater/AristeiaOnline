@@ -218,12 +218,12 @@ class WarriorController {
 			
 			
 			warrior.save()
-			session.explore_results = true
-			session.encounter = encounter
-			session.fight = fight
-			session.expgained = expgained
-			session.itemsgained = itemsgained
-			session.leveled_up = leveled_up
+			flash.explore_results = true
+			flash.encounter = encounter
+			flash.fight = fight
+			flash.expgained = expgained
+			flash.itemsgained = itemsgained
+			flash.leveled_up = leveled_up
 			redirect(controller:"warrior",action:"searchResults")
 			
 			
@@ -242,11 +242,34 @@ class WarriorController {
 	}
 	
 	def searchResults = {
-		if(!session.explore_results)
+		if(!flash.explore_results)
 			redirect(controller:"warrior", action:"index")
 		def warrior = Warrior.get(session.warrior_id)
-		return [encounter:session.encounter, fight: session.fight, expgained:session.expgained, itemsgained:session.itemsgained, warrior:warrior,
-			leveled_up:session.leveled_up]		
+		flash.itemsToTake = flash.itemsgained
+		return [encounter:flash.encounter, fight: flash.fight, expgained:flash.expgained, itemsgained:flash.itemsgained, warrior:warrior,
+			leveled_up:flash.leveled_up]		
+	}
+	
+	def takeAndSearch = {
+		if(flash.itemsToTake){
+			def warrior = Warrior.get(session.warrior_id)
+			flash.itemsToTake.each{ type, qty ->
+				warrior.giveItem(type, qty)
+			}
+			warrior.save()
+		}
+		redirect(controller:"warrior", action:"explore")
+	}
+	
+	def takeAndJournal = {
+		if(flash.itemsToTake){
+			def warrior = Warrior.get(session.warrior_id)
+			flash.itemsToTake.each{ type, qty ->
+				warrior.giveItem(type, qty)
+			}
+			warrior.save()
+		}
+		redirect(controller:"warrior", action:"index")
 	}
 	
 	def worldmap = {

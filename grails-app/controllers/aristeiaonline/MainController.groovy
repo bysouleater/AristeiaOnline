@@ -28,7 +28,7 @@ class MainController {
 		if(sig != expected_sig)
 			throw new Exception("Bad signed JSON signature!")
 			*/
-		println data
+//		println data
 		return data
 	}
 	

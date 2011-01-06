@@ -35,8 +35,9 @@
 					<div style="text-align:center;">
 						<img style="margin-bottom:20px;" src="/images/chapter1.png"/><br>
     					<b>What?!</b> You don't have any warrior?...<br><br> 
-    					<a href="<g:createLink controller='warrior' action='register'/>"><button class="buttonlindo" style="width:225px;" type="button">Create a new warrior</button></a>
-    					<!-- <br>and start playing! -->
+    					<a class="buttonlink2" style="width:225px;text-align:center;font-size: 16px;" href="<g:createLink controller='warrior' action='register'/>"><b>Create a new warrior</b></a>
+    					<!--<a href="<g:createLink controller='warrior' action='register'/>"><button class="buttonlindo" style="width:225px;" type="button">Create a new warrior</button></a>
+    					 <br>and start playing! -->
     				</div>
 				</g:else>
 			</td>
@@ -57,7 +58,7 @@
 					</g:if>
 					<g:else>
 						<tr>
-							<td style="font-size:14px;"><b>Woah!</b> Your friends aren't playing? Why don't you <a href="">invite some friends</a> to play with you?</td>
+							<td style="font-size:14px;"><b>Woah!</b> Your friends aren't playing? Why don't you <b><g:link action="inviteFriends" controller="main">invite some friends</g:link></b> to play with you?</td>
 						</tr>
 					</g:else>
 				</table>
@@ -68,26 +69,25 @@
 			</td>
 		</tr>
 	</table>
+	<jqui:resources theme="aristeia"/>
+	<script>
+		$(document).ready(function() {
+		    $("#delete_dialog").dialog({ autoOpen:false, resizable:false, position:[220,150],
+			    buttons: { "Ok": function() { document.deleteForm.submit();},
+		    			   "Cancel": function() { $(this).dialog("close");} }
+		    });
+		});
+	  		
+		function confirmDelete(wid, wname){
+			$("#wname").html("<b>" + wname + "</b>");
+			$("#warrior_id").attr("value",wid);
+			$("#delete_dialog").dialog("open");
+		}
+	</script>
+	<g:form name="deleteForm" method="get" controller="warrior" action="deleteWarrior">
+		<g:hiddenField name="warrior_id"/>
+		<div style="display:none;" id="delete_dialog" title="Are you sure you want to delete warrior">
+			<p>Are you sure you want to delete warrior <label id="wname"></label>?</p>
+		</div>
+	</g:form>
 </div>
-
-<jqui:resources theme="aristeia"/>
-<script>
-	$(document).ready(function() {
-	    $("#delete_dialog").dialog({ autoOpen:false, resizable:false, position:[220,150],
-		    buttons: { "Ok": function() { document.deleteForm.submit();},
-	    			   "Cancel": function() { $(this).dialog("close");} }
-	    });
-	});
-  		
-	function confirmDelete(wid, wname){
-		$("#wname").html("<b>" + wname + "</b>");
-		$("#warrior_id").attr("value",wid);
-		$("#delete_dialog").dialog("open");
-	}
-</script>
-<g:form name="deleteForm" method="get" controller="warrior" action="deleteWarrior">
-	<g:hiddenField name="warrior_id"/>
-	<div style="display:none;" id="delete_dialog" title="Are you sure you want to delete warrior">
-		<p>Are you sure you want to delete warrior <label id="wname"></label>?</p>
-	</div>
-</g:form>

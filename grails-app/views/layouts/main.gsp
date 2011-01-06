@@ -7,20 +7,24 @@
         <g:javascript library="application" />
     </head>
     <body>
-        <img style="margin-left:0.5em;" src="${resource(dir:'images',file:'logo_alpha.png')}"/>
+        <img style="margin-left:0.5em;" src="${resource(dir:'images',file:'logo_beta.png')}"/>
         <g:javascript library="jquery" plugin="jquery"/>
         <g:layoutBody />
-        <table width="100%">
-        	<tr>
-        		<td width="450">
-        			<iframe src="http://www.facebook.com/widgets/like.php?href=http://apps.facebook.com/aristeia_online"
-		scrolling="no" frameborder="0" style="margin-left:10px;margin-top:10px;border:none; width:450px; height:80px;"></iframe>
-        		</td>
-        		<td valign="top" align="right" style="padding-top:10px;">
-        			<a href="http://www.twitter.com/AristeiaOnline"><img src="http://twitter-badges.s3.amazonaws.com/follow_me-a.png" alt="Follow AristeiaOnline on Twitter"/></a>
-        		</td>
-        	</tr>
-        </table>
+        <div id="content" style="margin-top:10px;">
+	        <table width="720">
+	        	<tr><td colspan="2"><h3>Aristeia Online Social</h3></td></tr>
+	        	<tr>
+	        		<td>
+	        			<iframe src="http://www.facebook.com/widgets/like.php?href=http://apps.facebook.com/aristeia_online"
+			scrolling="no" frameborder="0" style="margin-left:10px;border:none; width:450px; height:80px;"></iframe>
+	        		</td>
+	        	
+	        		<td valign="top" align="right" style="padding-top:10px;">
+	        			<a href="http://www.twitter.com/AristeiaOnline"><img src="http://twitter-badges.s3.amazonaws.com/follow_me-a.png" alt="Follow AristeiaOnline on Twitter"/></a>
+	        		</td>
+	        	</tr>
+	        </table>
+		</div>
         
 		<div id="fb-root"></div>
 		<script>
