@@ -8,13 +8,13 @@
 					
 					<g:each in="${warriorlist}" status="i" var="warrior">
    						<h5 style="margin-bottom:5px;"><b style="margin-left:2px;">${warrior.name}</b> - <label style="font-size:12px;">${warrior.job.name} Lvl ${warrior.level}</label> 
-						<label style="float:right;font-size:12px;margin-left:20px;margin-right:12px;margin-top:2px;"><a title="Delete ${warrior.name}" href="javascript:confirmDelete(${warrior.id},'${warrior.name}');"><b>x</b></a></label>
 						<label style="float:right;font-size:12px;margin-top:2px;"><b>Origin</b> ${warrior.origin.name}</label>						
 						</h5>
 						<g:warriorSmallSheet warrior="${warrior}">
    							<td colspan="2" align="right">
    								<g:if test="${warrior.status == 'A'}">
-   									<a class="buttonlink2" style="width:225px;text-align:center;display:block;" href="<g:createLink controller='warrior' action='index' id='${warrior.id}' />"><b>Play with ${warrior.name}</b></a>
+   									<a href="<g:createLink controller='warrior' action='index' id='${warrior.id}' />" class="nuevoBoton">Play with ${warrior.name}</a>
+   									<a href="javascript:confirmDelete(${warrior.id},'${warrior.name}');" class="nuevoBotonCancel">Delete</a>
 								</g:if>
 								<g:elseif test="${warrior.status == 'B'}">
 									<a class="buttonlink2" style="width:225px;text-align:center;display:block;" href="#"><b>${warrior.name} was Banned</b></a>
@@ -35,9 +35,9 @@
 					<div style="text-align:center;">
 						<img style="margin-bottom:20px;" src="/images/chapter1.png"/><br>
     					<b>What?!</b> You don't have any warrior?...<br><br> 
-    					<a class="buttonlink2" style="width:225px;text-align:center;font-size: 16px;" href="<g:createLink controller='warrior' action='register'/>"><b>Create a new warrior</b></a>
-    					<!--<a href="<g:createLink controller='warrior' action='register'/>"><button class="buttonlindo" style="width:225px;" type="button">Create a new warrior</button></a>
-    					 <br>and start playing! -->
+    					
+    					<a href="<g:createLink controller='warrior' action='register'/>" class="nuevoBoton">Create a new warrior</a>
+    					
     				</div>
 				</g:else>
 			</td>
@@ -58,7 +58,7 @@
 					</g:if>
 					<g:else>
 						<tr>
-							<td style="font-size:14px;"><b>Woah!</b> Your friends aren't playing? Why don't you <b><g:link action="inviteFriends" controller="main">invite some friends</g:link></b> to play with you?</td>
+							<td style="font-size:14px;"><b>Woah!</b><br>Your friends aren't playing?<br>Why don't you <b><g:link action="inviteFriends" controller="main">invite some friends</g:link></b> to play with you?</td>
 						</tr>
 					</g:else>
 				</table>

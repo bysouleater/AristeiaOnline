@@ -69,35 +69,35 @@
 							<g:if test="${fight.won}">
 								<g:if test="${warrior.actualSTA >= 5}">
 									<g:if test="${itemsgained.size() > 0}">
-										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='explore' />"><b>Discard all & Search Again</b></a>
-										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='index' />"><b>Discard all & Back to Journal</b></a>
-										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='takeAndSearch' />"><b>Take all & Search Again</b></a>
-										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='takeAndJournal' />"><b>Take all & Back to Journal</b></a>
+										<a class="nuevoBoton" style="font-size:12px" href="<g:createLink controller='warrior' action='explore' />">Discard & Search Again</a>
+										<a class="nuevoBoton" style="font-size:12px" href="<g:createLink controller='warrior' action='index' />">Discard & Back to Journal</a>
+										<a class="nuevoBoton" style="font-size:12px" href="<g:createLink controller='warrior' action='takeAndSearch' />">Take & Search Again</a>
+										<a class="nuevoBoton" style="font-size:12px" href="<g:createLink controller='warrior' action='takeAndJournal' />">Take & Back to Journal</a>
 									</g:if>
 									<g:else>
-										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='explore' />"><b>Search Again</b></a>
-										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='index' />"><b>Back to Journal</b></a>
+										<a class="nuevoBoton" style="font-size:12px" href="<g:createLink controller='warrior' action='explore' />">Search Again</a>
+										<a class="nuevoBoton" style="font-size:12px" href="<g:createLink controller='warrior' action='index' />">Back to Journal</a>
 									</g:else>
 								</g:if>
 								<g:else>
 									<g:if test="${itemsgained.size() > 0}">
-										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='index' />"><b>Discard all & Back to Journal</b></a>
-										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='takeAndJournal' />"><b>Take all & Back to Journal</b></a>
+										<a class="nuevoBoton" style="font-size:12px" href="<g:createLink controller='warrior' action='index' />">Discard & Back to Journal</a>
+										<a class="nuevoBoton" style="font-size:12px" href="<g:createLink controller='warrior' action='takeAndJournal' />">Take & Back to Journal</a>
 									</g:if>
 									<g:else>
-										<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='index' />"><b>Back to Journal</b></a>
+										<a class="nuevoBoton" style="font-size:12px" href="<g:createLink controller='warrior' action='index' />">Back to Journal</a>
 									</g:else>
 								</g:else>
 							</g:if>
 							<g:else>
-								<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='index' />"><b>Back to Journal</b></a>
+								<a class="nuevoBoton" style="font-size:12px" href="<g:createLink controller='warrior' action='index' />">Back to Journal</a>
 							</g:else>
 						</g:if>
 						<g:else>
 							<g:if test="${warrior.actualSTA >= 5}">
-								<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='explore' />"><b>Search Again</b></a>
+								<a class="nuevoBoton" style="font-size:12px" href="<g:createLink controller='warrior' action='explore' />">Search Again</a>
 							</g:if>
-							<a class="buttonlink2" style="text-align:center;" href="<g:createLink controller='warrior' action='index' />"><b>Back to Journal</b></a>
+							<a class="nuevoBoton" style="font-size:12px" href="<g:createLink controller='warrior' action='index' />">Back to Journal</a>
 						</g:else>						
 					</td>
 				</tr>

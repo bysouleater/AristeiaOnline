@@ -100,8 +100,8 @@
 				</table>
 				<div class="clear"></div>
 				<div class="formButtons">
-					<button class="buttonlindo" type="submit">Create Warrior</button>
-					<g:link action="warriorList" controller="main"><button class="buttonlindo cancel">Cancel</button></g:link>
+					<input class="nuevoBoton" type="submit" value="Create Warrior"/>
+					<input class="nuevoBotonCancel" type="button" value="Cancel" onclick="location.href='<g:createLink controller="main" action="warriorList"/>'"/>
 				</div>
 			</g:form>
 		</div>

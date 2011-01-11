@@ -242,3 +242,34 @@ hr{
 	margin:10px 0 5px;
 	font-size:12px;
 }
+.nuevoBoton{
+	padding:5px 10px 5px 10px;
+	font-size:14px;
+	background-color: #2F3B85;
+	border:1px solid #2C3176 outset;
+	color:#EEEEEE;
+	cursor:pointer;
+	white-space: nowrap;
+}
+.nuevoBoton:link, .nuevoBoton:active, .nuevoBoton:visited{
+	color:#EEEEEE;
+}
+.nuevoBoton:hover{
+	color:#FFFFFF;
+	background-color: #3F4C96;
+}
+.nuevoBotonCancel{
+	background-color:#DDD;  
+	border:1px solid #666 outset; 
+	padding:5px 10px 5px 10px;
+	font-size:14px;
+	color:#333333;
+	cursor:pointer;
+}
+.nuevoBotonCancel:link, .nuevoBotonCancel:active, .nuevoBotonCancel:visited{
+	color:#333333;
+}
+.nuevoBotonCancel:hover{
+	color:#000000;
+	background-color: #CCC;
+}
