@@ -50,16 +50,20 @@
 						<td width="35" class="labeltxt" style="padding-right:0px;" title="Strength represents you power">STR</td>
 						<td width="25" align="right" class="labelvalue">${warrior.baseStat("STR").intValue()}</td>
 						<td width="25" align="left" class="labelvalue"><g:if test="${warrior.bonusBaseStat('STR').intValue() > 0}">+${warrior.bonusBaseStat("STR").intValue()}</g:if></td>
+						<td class="labeltxt">Stats Points</td>
+						<td class="labelvalue">${warrior.statPoints}</td>
 					</tr>
 					<tr>
 						<td width="35" class="labeltxt" style="padding-right:0px;" title="Constitution represents your defense">CON</td>
 						<td width="25" align="right" class="labelvalue">${warrior.baseStat("CON").intValue()}</td>
 						<td width="25" align="left" class="labelvalue"><g:if test="${warrior.bonusBaseStat('CON').intValue() > 0}">+${warrior.bonusBaseStat("CON").intValue()}</g:if></td>
+						<td colspan="2" style="white-space: nowrap;" class="labeltxt">Actual Location</td>
 					</tr>
 					<tr>
 						<td width="35" class="labeltxt" style="padding-right:0px;" title="Dexterity represents your accuracy">DEX</td>
 						<td width="25" align="right" class="labelvalue">${warrior.baseStat("DEX").intValue()}</td>
 						<td width="25" align="left" class="labelvalue"><g:if test="${warrior.bonusBaseStat('DEX').intValue() > 0}">+${warrior.bonusBaseStat("DEX").intValue()}</g:if></td>
+						<td rowspan="2" valign="top" class="labelvalue">${warrior.actualLocation.name}</td>
 					</tr>
 					<tr>
 						<td width="35" class="labeltxt" style="padding-right:0px;" title="Agility represents your speed">AGI</td>

@@ -28,6 +28,9 @@
 						<div style="text-align:right;margin-top:20px;font-size:14px;">Want to try something different? 
 						<g:link action="register" controller="warrior"><b>Create another warrior</b></g:link></div>
 					</g:if>
+					<g:else>
+						<div style="text-align:right;margin-top:20px;font-size:14px;">You can't create another warrior unless you delete one.</div>
+					</g:else>
 				</g:if>
 				<g:else>
 					<h3>Welcome to Aristeia Online</h3>
@@ -58,7 +61,7 @@
 					</g:if>
 					<g:else>
 						<tr>
-							<td style="font-size:14px;"><b>Woah!</b><br>Your friends aren't playing?<br>Why don't you <b><g:link action="inviteFriends" controller="main">invite some friends</g:link></b> to play with you?</td>
+							<td align="center" valign="middle" height="240" style="font-size:14px;"><b>Woah!</b><br>Your friends aren't playing?<br>Why don't you <br><b><g:link action="inviteFriends" controller="main">invite some friends</g:link></b> <br>to play with you?</td>
 						</tr>
 					</g:else>
 				</table>
