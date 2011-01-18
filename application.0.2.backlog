@@ -48,3 +48,6 @@ SHOULD DO
 - Change Job: Unequip all items that cant be equiped (CANT YET IMPLEMENT)
 - Implement Discard item window or Fight Details window
 - Give Item: check space available
+
+FUTURE
+- Inventory divided into Consumables / Equipables / Key Items

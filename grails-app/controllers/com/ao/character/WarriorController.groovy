@@ -396,9 +396,7 @@ class WarriorController {
 		def item = Item.get(params.sell_item_id)
 		if(item && warrior.inventory.contains(item)){
 			def qtysold = warrior.takeItem(item, params.sell_item_qty as int)
-			//For alpha version, sell is for real price
-			//warrior.gold += (qtysold * (item.type.price / 2).intValue())
-			warrior.gold += (qtysold * item.type.price)
+			warrior.gold += (qtysold * (item.type.price / 2).intValue())
 			warrior.save()
 		}
 		def referer = request.getHeader("Referer")
