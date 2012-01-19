@@ -47,6 +47,11 @@ grails.spring.bean.packages = []
 //JQuery
 grails.views.javascript.library="jquery"
 
+// Facebook API
+grails.facebook.appId="318166681560725";
+grails.facebook.accessToken="";
+grails.facebook.appNamespace="aristeia_test";
+
 // set per-environment serverURL stem for creating absolute links
 environments {
     production {
@@ -58,7 +63,6 @@ environments {
     test {
         grails.serverURL = "http://localhost:8080/${appName}"
     }
-
 }
 
 // log4j configuration
