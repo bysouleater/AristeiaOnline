@@ -6,8 +6,8 @@ import groovyx.net.http.RESTClient;
 
 class MainController {
 	
-	static final String FB_SECRET_KEY = "236efa3a85bf560f2cfc123a2debee30"
-	static final String FB_APP_ID = "165864820091012"
+	static final String FB_SECRET_KEY = "aa50e7ca84ba9387fe0cbcf6d8ba0b63"
+	static final String FB_APP_ID = "318166681560725"
 	
 	def friendsService
 	
@@ -43,6 +43,7 @@ class MainController {
 	}
 	
 	def index = {
+		println("index params>" + params);
 		if(params.signed_request){
 			def url_params = parse_signed_request(params.signed_request)
 			if(!url_params.user_id){

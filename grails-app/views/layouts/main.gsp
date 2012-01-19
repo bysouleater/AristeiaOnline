@@ -15,7 +15,7 @@
 	        	<tr><td colspan="2"><h3>Aristeia Online Social</h3></td></tr>
 	        	<tr>
 	        		<td>
-	        			<iframe src="http://www.facebook.com/widgets/like.php?href=http://apps.facebook.com/aristeia_online"
+	        			<iframe src="http://www.facebook.com/widgets/like.php?href=http://apps.facebook.com/aristeia_test"
 			scrolling="no" frameborder="0" style="margin-left:10px;border:none; width:450px; height:80px;"></iframe>
 	        		</td>
 	        	
@@ -30,7 +30,7 @@
 		<script src="http://connect.facebook.net/en_US/all.js"></script>
 		<script>
 		  FB.init({
-		    appId  : '141786259185672',
+		    appId  : '318166681560725',
 		    status : true, // check login status
 		    cookie : true, // enable cookies to allow the server to access the session
 		    xfbml  : true  // parse XFBML
